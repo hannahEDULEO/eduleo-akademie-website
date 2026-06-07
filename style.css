@@ -438,7 +438,7 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 .course-card-visual.bg-beige  { background: var(--beige); }
 .course-card-visual.bg-mauve  { background: var(--mauve-light); }
 
-.course-card-body { padding: 22px 22px 26px; display: flex; flex-direction: column; flex: 1; }
+.course-card-body { padding: 22px 22px 26px; display: grid; grid-template-rows: auto auto 1fr auto auto; flex: 1; min-height: 0; }
 .course-card-type {
   font-size: 0.73rem; font-weight: 800; letter-spacing: 0.10em; text-transform: uppercase;
   color: var(--green-dark); margin-bottom: 8px;
