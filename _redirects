@@ -1,0 +1,5 @@
+# Cloudflare Pages Redirects
+# Format: [source] [destination] [status]
+
+# Alte Jimdo-URLs können hier als Redirects eingetragen werden
+# Beispiel: /blog/alter-beitrag /blog/neuer-beitrag 301
