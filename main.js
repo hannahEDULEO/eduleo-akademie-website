@@ -1,5 +1,23 @@
 /* EDULEO Akademie – main.js */
 
+/* ── Cookie-Banner ──────────────────────────── */
+(function () {
+  if (localStorage.getItem('eduleo-cookies-ok')) return;
+  var b = document.createElement('div');
+  b.id = 'cookie-banner';
+  b.innerHTML =
+    '<span class="cookie-icon">🍪</span>' +
+    '<p>Diese Website nutzt technisch notwendige Cookies (z. B. für sicheres Hosting über Cloudflare). ' +
+    '<a href="/datenschutz.html">Mehr erfahren</a></p>' +
+    '<button id="cookie-btn">Alles klar!</button>';
+  document.body.appendChild(b);
+  document.getElementById('cookie-btn').addEventListener('click', function () {
+    localStorage.setItem('eduleo-cookies-ok', '1');
+    b.classList.add('hide');
+    setTimeout(function () { b.remove(); }, 400);
+  });
+})();
+
 /* ── Navigation ─────────────────────────────── */
 const nav       = document.getElementById('nav');
 const hamburger = document.querySelector('.hamburger');
