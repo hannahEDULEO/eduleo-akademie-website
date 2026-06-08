@@ -906,3 +906,256 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 
   .about-home-visual { grid-template-columns: 1fr 1fr; }
 }
+
+/* ── Teamfortbildungen-Seite ────────────────── */
+
+.team-hero {
+  background: linear-gradient(135deg, var(--green) 0%, var(--beige) 100%);
+  padding: calc(var(--nav-h) + 72px) 0 80px;
+  overflow: hidden;
+}
+.team-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.team-hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+.team-hero h1 { margin-bottom: 20px; }
+.team-hero-lead { font-size: 1.12rem; color: var(--text-light); margin-bottom: 32px; max-width: 520px; }
+.team-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.team-hero-visual {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  padding: 44px 36px;
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+}
+.team-hero-emoji { font-size: 4rem; line-height: 1; display: block; margin-bottom: 18px; }
+.team-hero-visual h3 { font-size: 1.05rem; margin-bottom: 8px; }
+.team-hero-visual p { font-size: 0.9rem; color: var(--text-light); }
+
+.page-divider { border: none; border-top: 2px solid var(--beige-dark); margin: 0; }
+
+/* Vorteile */
+.vorteile-section { background: var(--off-white); }
+.vorteile-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 48px;
+}
+.vorteil-item {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: 26px 20px;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.vorteil-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.vorteil-emoji { font-size: 1.7rem; margin-bottom: 10px; }
+.vorteil-title { font-size: 0.93rem; font-weight: 800; color: var(--dark); margin-bottom: 6px; }
+.vorteil-text { font-size: 0.86rem; color: var(--text-light); line-height: 1.6; }
+
+/* Module */
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+.module-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 34px 30px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  display: flex;
+  gap: 20px;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.module-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.module-card-emoji { font-size: 2.2rem; flex-shrink: 0; line-height: 1; margin-top: 4px; }
+.module-card-body { flex: 1; }
+.module-card-num {
+  font-size: 0.72rem; font-weight: 900; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--green-dark); margin-bottom: 8px; display: block;
+}
+.module-card h3 { font-size: 1.08rem; margin-bottom: 10px; }
+.module-card p { font-size: 0.93rem; color: var(--text-light); line-height: 1.7; }
+
+/* Tages-Hinweis */
+.tages-note-box {
+  background: var(--green);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-top: 36px;
+}
+.tages-note-icon { font-size: 1.8rem; flex-shrink: 0; }
+.tages-note-box p { font-size: 0.97rem; color: var(--text); line-height: 1.65; }
+.tages-note-box a { color: var(--green-dark); font-weight: 800; text-decoration: underline; }
+
+/* Ablauf */
+.ablauf-section { background: var(--dark); }
+.ablauf-section .section-header .section-label { color: var(--green-dark); }
+.ablauf-section .section-header h2 { color: var(--white); }
+.ablauf-section .section-header p { color: rgba(255,255,255,0.65); }
+.ablauf-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 52px;
+}
+.ablauf-step {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-lg);
+  padding: 34px 26px;
+}
+.ablauf-step-num {
+  width: 42px; height: 42px;
+  background: var(--green-dark);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.05rem; font-weight: 900; color: var(--white);
+  margin-bottom: 18px;
+}
+.ablauf-step h3 { font-size: 1.05rem; color: var(--white); margin-bottom: 10px; }
+.ablauf-step p { font-size: 0.92rem; color: rgba(255,255,255,0.60); line-height: 1.7; }
+
+/* Preise */
+.preis-section { background: var(--off-white); }
+.preis-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-top: 48px;
+}
+.preis-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 30px 22px;
+  text-align: center;
+  border: 2px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.preis-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.preis-card.highlight { border-color: var(--green-dark); background: var(--green); }
+.preis-gruppe {
+  font-size: 0.78rem; font-weight: 800; letter-spacing: 0.10em;
+  text-transform: uppercase; color: var(--text-light); margin-bottom: 14px;
+}
+.preis-betrag { font-size: 2.1rem; font-weight: 900; color: var(--dark); line-height: 1; }
+.preis-betrag sup { font-size: 1rem; vertical-align: super; }
+.preis-ab { font-size: 0.8rem; color: var(--text-light); margin-top: 6px; }
+.preis-praesenz {
+  margin-top: 28px;
+  background: var(--beige);
+  border-radius: var(--radius-md);
+  padding: 22px 26px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.preis-praesenz-icon { font-size: 1.5rem; flex-shrink: 0; }
+.preis-praesenz p { font-size: 0.93rem; color: var(--text); line-height: 1.6; }
+
+/* Anfrage-Formular */
+.anfrage-section { background: var(--white); }
+.anfrage-inner { max-width: 800px; margin: 0 auto; }
+.anfrage-intro { text-align: center; margin-bottom: 48px; }
+.anfrage-intro h2 { margin-bottom: 14px; }
+.anfrage-intro p { color: var(--text-light); max-width: 560px; margin: 0 auto; }
+
+.anfrage-form { display: flex; flex-direction: column; gap: 20px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-label { font-size: 0.87rem; font-weight: 800; color: var(--dark); }
+.form-label .req { color: var(--green-dark); }
+.form-input,
+.form-textarea,
+.form-select {
+  width: 100%;
+  padding: 13px 16px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font);
+  font-size: 1rem;
+  color: var(--dark);
+  background: var(--white);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  border-color: var(--green-dark);
+  box-shadow: 0 0 0 3px rgba(90,158,122,0.15);
+}
+.form-input::placeholder,
+.form-textarea::placeholder { color: var(--text-light); opacity: 1; }
+.form-textarea { resize: vertical; min-height: 120px; }
+.form-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237A6860' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 44px;
+  cursor: pointer;
+}
+.form-hint { font-size: 0.81rem; color: var(--text-light); }
+.form-checkbox-row { display: flex; gap: 12px; align-items: flex-start; }
+.form-checkbox-row input[type="checkbox"] {
+  width: 20px; height: 20px; flex-shrink: 0; margin-top: 2px;
+  border: 2px solid var(--border); border-radius: 5px;
+  -webkit-appearance: none; appearance: none;
+  background: var(--white); cursor: pointer;
+  transition: background var(--transition), border-color var(--transition);
+}
+.form-checkbox-row input[type="checkbox"]:checked {
+  background: var(--green-dark); border-color: var(--green-dark);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: center;
+}
+.form-checkbox-label { font-size: 0.92rem; color: var(--text); line-height: 1.55; }
+.form-checkbox-label a { color: var(--green-dark); font-weight: 700; }
+.form-datenschutz-note { font-size: 0.83rem; color: var(--text-light); }
+.form-datenschutz-note a { color: var(--green-dark); font-weight: 700; }
+.form-required-note { font-size: 0.82rem; color: var(--text-light); text-align: right; }
+.form-submit-wrap { display: flex; justify-content: center; padding-top: 10px; }
+.form-submit-wrap .btn { min-width: 240px; }
+
+.form-success {
+  background: var(--green);
+  border-radius: var(--radius-lg);
+  padding: 52px 36px;
+  text-align: center;
+  display: none;
+}
+.form-success.visible { display: block; }
+.form-success-icon { font-size: 3rem; display: block; margin-bottom: 18px; }
+.form-success h3 { margin-bottom: 10px; }
+.form-success p { color: var(--text-light); }
+
+/* Responsive: Teamfortbildungen */
+@media (max-width: 900px) {
+  .team-hero-inner { grid-template-columns: 1fr; }
+  .team-hero-visual { display: none; }
+  .vorteile-grid { grid-template-columns: repeat(2, 1fr); }
+  .module-grid { grid-template-columns: 1fr; }
+  .ablauf-grid { grid-template-columns: 1fr; }
+  .preis-grid { grid-template-columns: repeat(2, 1fr); }
+  .form-row { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .preis-grid { grid-template-columns: repeat(2, 1fr); }
+  .tages-note-box { flex-direction: column; }
+  .team-hero-actions { flex-direction: column; }
+  .team-hero-actions .btn { width: 100%; text-align: center; }
+  .form-submit-wrap .btn { width: 100%; }
+}
