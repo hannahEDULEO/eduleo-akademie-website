@@ -124,6 +124,33 @@ document.querySelectorAll('.faq-question').forEach(question => {
   });
 });
 
+/* ── Stats Zähler-Animation ─────────────────── */
+const statNumbers = document.querySelectorAll('.stat-number[data-target]');
+if (statNumbers.length && 'IntersectionObserver' in window) {
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseInt(el.dataset.target, 10);
+      const startVal = parseInt(el.dataset.from || '0', 10);
+      const suffix = el.dataset.suffix || '';
+      const duration = 1400;
+      const startTime = Date.now();
+      function tick() {
+        const elapsed = Date.now() - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        const current = Math.round(startVal + (target - startVal) * ease);
+        el.textContent = current + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      counterObserver.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  statNumbers.forEach(el => counterObserver.observe(el));
+}
+
 /* ── Kurs-Filter (Übersichtsseite) ──────────── */
 const filterTabs = document.querySelectorAll('.filter-tab');
 if (filterTabs.length) {
