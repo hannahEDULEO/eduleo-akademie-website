@@ -661,8 +661,9 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 .kurs-hero::before {
   content: ''; position: absolute; width: 500px; height: 500px; border-radius: 50%;
   background: var(--green); opacity: 0.4; top: -200px; right: -100px; pointer-events: none;
+  z-index: 0;
 }
-.kurs-hero-inner { display: grid; grid-template-columns: 1fr auto; gap: 60px; align-items: center; }
+.kurs-hero-inner { display: grid; grid-template-columns: 1fr auto; gap: 60px; align-items: center; position: relative; z-index: 1; }
 .kurs-hero-content {}
 .kurs-hero-eyecatcher {
   display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap;
