@@ -425,10 +425,13 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 .course-card {
   background: var(--white); border-radius: var(--radius-lg); overflow: hidden;
   box-shadow: var(--shadow-sm); border: 1.5px solid var(--border);
-  display: flex; flex-direction: column;
+  display: flex; flex-direction: column; position: relative; cursor: pointer;
   transition: transform var(--transition), box-shadow var(--transition);
 }
 .course-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+.course-card-link::after {
+  content: ''; position: absolute; inset: 0;
+}
 
 .course-card-visual {
   height: 140px; display: flex; align-items: center; justify-content: center;
