@@ -297,15 +297,15 @@
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="tf-zugangsemail">E-Mail(s) für Zugangsdaten <span style="font-weight:600; color:var(--text-light);">(bei Online-Fortbildung)</span></label>
-          <input class="form-input" type="text" id="tf-zugangsemail" name="E-Mail(s) für Zugangsdaten" placeholder="Falls abweichend von oben – mehrere durch Komma trennen">
+          <label class="form-label" for="tf-zugangsemail">E-Mail(s) für Zugangsdaten <span style="font-weight:600; color:var(--text-light);">(bei Online-Fortbildung)</span> <span class="req">*</span></label>
+          <input class="form-input" type="text" id="tf-zugangsemail" name="E-Mail(s) für Zugangsdaten" placeholder="Falls abweichend von oben – mehrere durch Komma trennen" required>
           <span class="form-hint">Alle E-Mail-Adressen, an die der Zoom-Link verschickt werden soll.</span>
         </div>
 
         <div class="form-row">
           <div class="form-group">
-            <label class="form-label" for="tf-termin">Wunschtermin(e)</label>
-            <input class="form-input" type="text" id="tf-termin" name="Wunschtermin(e)" placeholder="z. B. Februar 2025, oder: KW 8–10">
+            <label class="form-label" for="tf-termin">Wunschtermin(e) <span class="req">*</span></label>
+            <input class="form-input" type="text" id="tf-termin" name="Wunschtermin(e)" placeholder="z. B. Februar 2025, oder: KW 8–10" required>
           </div>
           <div class="form-group">
             <label class="form-label" for="tf-thema">Fortbildungsthema <span class="req">*</span></label>
@@ -325,8 +325,8 @@
 
         <div class="form-row">
           <div class="form-group">
-            <label class="form-label" for="tf-telefon">(Notfall-) Telefonnummer</label>
-            <input class="form-input" type="tel" id="tf-telefon" name="Telefonnummer" placeholder="+49 …">
+            <label class="form-label" for="tf-telefon">(Notfall-) Telefonnummer <span class="req">*</span></label>
+            <input class="form-input" type="tel" id="tf-telefon" name="Telefonnummer" placeholder="+49 …" required>
           </div>
           <div class="form-group">
             <label class="form-label" for="tf-gruppengroesse">Gruppengröße <span class="req">*</span></label>
@@ -341,13 +341,13 @@
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="tf-rechnung">Rechnungsadresse</label>
-          <input class="form-input" type="text" id="tf-rechnung" name="Rechnungsadresse" placeholder="Einrichtung, Straße, PLZ Ort">
+          <label class="form-label" for="tf-rechnung">Rechnungsadresse <span class="req">*</span></label>
+          <input class="form-input" type="text" id="tf-rechnung" name="Rechnungsadresse" placeholder="Einrichtung, Straße, PLZ Ort" required>
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="tf-aufmerksam">Wie bist du auf uns aufmerksam geworden?</label>
-          <select class="form-select" id="tf-aufmerksam" name="Aufmerksam geworden durch">
+          <label class="form-label" for="tf-aufmerksam">Wie bist du auf uns aufmerksam geworden? <span class="req">*</span></label>
+          <select class="form-select" id="tf-aufmerksam" name="Aufmerksam geworden durch" required>
             <option value="" disabled selected>Bitte auswählen …</option>
             <option>Instagram</option>
             <option>Google / Suchmaschine</option>
