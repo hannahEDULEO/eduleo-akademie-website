@@ -1427,6 +1427,7 @@ p   { font-size: 1.05rem; line-height: 1.75; }
   .team-hero-actions { flex-direction: column; }
   .team-hero-actions .btn { width: 100%; text-align: center; }
   .form-submit-wrap .btn { width: 100%; }
+}
 
 /* ── Stats Bar ─────────────────────────────── */
 .stats-bar {
@@ -1440,12 +1441,12 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 .stat-item {
   text-align: center;
   padding: 24px 20px;
-  border-right: 1px solid rgba(255,255,255,0.08);
+  border-right: 1px solid rgba(255,255,255,0.12);
 }
 .stat-item:last-child { border-right: none; }
 .stat-number {
   display: block;
-  font-size: 3.2rem;
+  font-size: 3.4rem;
   font-weight: 900;
   color: var(--green);
   line-height: 1;
@@ -1462,8 +1463,8 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 @media (max-width: 640px) {
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .stat-item:nth-child(2) { border-right: none; }
-  .stat-item:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.08); }
-  .stat-item:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.08); }
+  .stat-item:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.12); }
+  .stat-item:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.12); }
 }
 
 /* ── Fachgebiet-Tags (DozentInnen-Seite) ───── */
@@ -1482,5 +1483,4 @@ p   { font-size: 1.05rem; line-height: 1.75; }
   border-radius: var(--radius-full);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-}
 }
