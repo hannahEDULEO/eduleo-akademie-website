@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welche Fortbildung passt zu mir? – EDULEO Akademie</title>
+  <meta name="description" content="Beantworte 5 kurze Fragen und bekomme deine persönliche Fortbildungsempfehlung von der EDULEO Akademie.">
+  <link rel="canonical" href="https://www.eduleo-akademie.de/welche-fortbildung/">
+  <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="../" class="nav-logo"><img src="../assets/images/logo.png" alt="EDULEO Akademie" style="height:48px;width:auto;"></a>
+      <ul class="nav-links">
+        <li><a href="../fortbildungen/">Fortbildungen</a></li>
+        <li><a href="../ueber-uns/">Über uns</a></li>
+        <li><a href="../bring-a-friend/">Bring a Friend</a></li>
+        <li><a href="https://eduleo-akademie.simplyorg-seminare.de" target="_blank" rel="noopener noreferrer">Fortbildungskalender</a></li>
+        <li><a href="../#kontakt">Kontakt</a></li>
+        <li><a href="../anmeldebedingungen.html">Anmeldebedingungen</a></li>
+      </ul>
+      <div class="nav-cta"><a href="../fortbildungen/" class="btn btn-primary btn-sm">Alle Fortbildungen</a></div>
+      <button class="hamburger" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="../fortbildungen/">Fortbildungen</a>
+  <a href="../ueber-uns/">Über uns</a>
+  <a href="../bring-a-friend/">Bring a Friend</a>
+  <a href="https://eduleo-akademie.simplyorg-seminare.de" target="_blank" rel="noopener noreferrer">Fortbildungskalender</a>
+  <a href="../#kontakt">Kontakt</a>
+  <a href="../anmeldebedingungen.html">Anmeldebedingungen</a>
+  <a href="../fortbildungen/" class="btn btn-primary">Alle Fortbildungen</a>
+</div>
+
+<!-- HERO -->
+<section class="quiz-hero">
+  <div class="container">
+    <span class="badge badge-green" style="margin-bottom:16px;">Kostenlos · in 2 Minuten</span>
+    <h1>Welche Fortbildung<br>passt zu dir?</h1>
+    <p>Beantworte 5 kurze Fragen und bekomme deine persönliche Empfehlung.</p>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="quiz-section">
+  <div class="container">
+    <div class="quiz-wrap">
+
+      <div class="quiz-progress-wrap">
+        <div class="quiz-progress-bar">
+          <div class="quiz-progress-fill" id="quiz-progress-fill" style="width:20%"></div>
+        </div>
+        <span class="quiz-step-label" id="quiz-step-label">Frage 1 von 5</span>
+      </div>
+
+      <div id="quiz-questions-wrap"></div>
+
+      <div id="quiz-result" style="display:none">
+        <div class="quiz-result-card">
+          <h2>Deine persönliche Empfehlung</h2>
+          <p class="quiz-result-subtitle">Basierend auf deinen Antworten passen diese Fortbildungen am besten zu dir:</p>
+          <div class="quiz-recommendations" id="quiz-result-items"></div>
+          <div class="quiz-restart-wrap">
+            <button class="quiz-restart-btn" onclick="quizRestart()">↩ Nochmal von vorne starten</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <p>© 2025 EDULEO Akademie. Alle Rechte vorbehalten.</p>
+      <div class="footer-legal">
+        <a href="../impressum.html">Impressum</a>
+        <a href="../datenschutz.html">Datenschutz</a>
+        <a href="../agb.html">AGB</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../main.js"></script>
+<script>
+/* ── Quiz: Welche Fortbildung passt zu mir? ── */
+
+const COURSES = [
+  { id:'adhs3m',      name:'Kita-ExpertIn für ADHS & Autismus',           type:'3-Monats-Fortbildung', emoji:'🧠', url:'../fortbildungen/kita-expertin-adhs-autismus/',             desc:'Erkenne, verstehe und begleite Kinder mit ADHS und Autismus gezielt – in 8 Live-Terminen zur Expertin.',    tags:{adhs:3,autismus:3,verhalten:2,dreimonat:2,zertifikat:1,tief:2,fachkraft:1} },
+  { id:'verhalten3m', name:'Kita-ExpertIn für Verhaltensauffälligkeiten', type:'3-Monats-Fortbildung', emoji:'🌀', url:'../fortbildungen/kita-expertin-verhaltensauffaelligkeiten/', desc:'Verstehe Ursachen hinter auffälligem Verhalten und entwickle wirksame Strategien für den Alltag.',           tags:{verhalten:3,adhs:2,dreimonat:2,zertifikat:1,tief:2,fachkraft:1} },
+  { id:'teamcoach3m', name:'Teamcoach in der Kita',                        type:'3-Monats-Fortbildung', emoji:'🤝', url:'../fortbildungen/teamcoach-kita/',                          desc:'Stärke dein Team, löse Konflikte und baue eine gesunde Teamkultur auf – für Fachkräfte und Leitungen.',      tags:{team:3,kommunikation:2,leitung:2,dreimonat:2,zertifikat:1,tief:2} },
+  { id:'ks3m',        name:'Kita KoordinatorIn für Kinderschutz',          type:'3-Monats-Fortbildung', emoji:'🛡️', url:'../fortbildungen/kinderschutz-koordinatorin-kita/',         desc:'Werde die Kinderschutzfachkraft in deiner Einrichtung – kompetent, sicher und praxisnah ausgebildet.',       tags:{kinderschutz:3,dreimonat:2,zertifikat:1,tief:2,leitung:1,fachkraft:1} },
+  { id:'stress3m',    name:'Stressbewältigungscoach',                      type:'3-Monats-Fortbildung', emoji:'🧘', url:'../fortbildungen/stressbewaetigungscoach/',                 desc:'Lerne Stressbewältigung für dich selbst und entwickle Angebote, die du in deiner Kita einsetzen kannst.',    tags:{stress:3,yoga:2,dreimonat:2,zertifikat:1,tief:2,fachkraft:1} },
+  { id:'yoga3m',      name:'Kinderyoga Kursleitung',                       type:'3-Monats-Fortbildung', emoji:'🌿', url:'../fortbildungen/kinderyoga-kursleitung/',                  desc:'Führe eigenständig Kinderyoga-Einheiten durch – methodisch fundiert, praxisnah und sofort umsetzbar.',        tags:{yoga:4,stress:1,dreimonat:2,zertifikat:1,tief:2,fachkraft:1} },
+  { id:'stress1d',    name:'Stressbewältigung im Kita-Alltag',             type:'Tagesfortbildung',      emoji:'😤', url:'../fortbildungen/tagesfortbildungen/stressbewaltigung-kita-alltag/', desc:'Erkenne deine Stressauslöser und lerne Strategien, die du sofort einsetzen kannst.',           tags:{stress:3,tagesfortbildung:2,fachkraft:1,einstieg:1} },
+  { id:'autismus1d',  name:'Autismus im Kita-Alltag',                      type:'Tagesfortbildung',      emoji:'🧒', url:'../fortbildungen/tagesfortbildungen/autismus-kita-alltag/', desc:'Verstehe autistische Verhaltensweisen besser und erlerne konkrete Handlungsstrategien für die Praxis.',       tags:{autismus:3,adhs:2,verhalten:1,tagesfortbildung:2,fachkraft:1,einstieg:1} },
+  { id:'adhs1d',      name:'ADHS in der Kita',                             type:'Tagesfortbildung',      emoji:'🧠', url:'../fortbildungen/tagesfortbildungen/adhs-kita/',            desc:'Lerne, Kinder mit ADHS besser zu verstehen und im Kita-Alltag gezielt zu unterstützen.',                      tags:{adhs:3,verhalten:2,tagesfortbildung:2,fachkraft:1,einstieg:1} },
+  { id:'ks1d',        name:'Kinderschutz in der Kita',                     type:'Tagesfortbildung',      emoji:'🛡️', url:'../fortbildungen/tagesfortbildungen/kinderschutz-kita/',   desc:'Erkenne Anzeichen von Kindeswohlgefährdung frühzeitig und handle rechtssicher.',                              tags:{kinderschutz:3,tagesfortbildung:2,fachkraft:1,leitung:1,einstieg:1} },
+  { id:'gfk1d',       name:'Gewaltfreie Kommunikation',                    type:'Tagesfortbildung',      emoji:'💬', url:'../fortbildungen/tagesfortbildungen/gewaltfreie-kommunikation/', desc:'Kommuniziere bedürfnisorientiert mit Kindern, Eltern und KollegInnen – für mehr Miteinander.',             tags:{kommunikation:3,team:1,tagesfortbildung:2,fachkraft:1,einstieg:1} },
+  { id:'eltern1d',    name:'Elterngespräche führen',                       type:'Tagesfortbildung',      emoji:'👨‍👩‍👧', url:'../fortbildungen/tagesfortbildungen/elterngespraeche-fuehren/', desc:'Führe schwierige Gespräche mit Eltern souverän, empathisch und lösungsorientiert.',             tags:{kommunikation:3,tagesfortbildung:2,fachkraft:1,leitung:1,einstieg:1} },
+  { id:'leitung1d',   name:'Meine Führungsrolle als Kita-Leitung',         type:'Tagesfortbildung',      emoji:'🎓', url:'../fortbildungen/tagesfortbildungen/fuehrungsrolle-kita-leitung/', desc:'Stärke deine Leitungskompetenzen und lerne, dein Team zu motivieren und Strukturen aufzubauen.',   tags:{leitung:3,team:2,tagesfortbildung:2} },
+  { id:'vorschule1d', name:'Vorschulkonzept gestalten',                    type:'Tagesfortbildung',      emoji:'🌱', url:'../fortbildungen/tagesfortbildungen/vorschulkonzept-gestalten/', desc:'Entwickle ein pädagogisch fundiertes Vorschulkonzept für deine Einrichtung.',                     tags:{vorschule:3,sprache:2,tagesfortbildung:2,fachkraft:1} },
+  { id:'teamfortb',   name:'Teamfortbildung',                              type:'Teamfortbildung',        emoji:'🏫', url:'../fortbildungen/teamfortbildungen/',                       desc:'Individuelle Fortbildungen fürs ganze Team – online oder vor Ort, abgestimmt auf eure Situation.',            tags:{teamfortbildung:5} },
+];
+
+const QUESTIONS = [
+  {
+    id: 'rolle',
+    text: 'In welcher Rolle arbeitest du?',
+    options: [
+      { label: 'ErzieherIn oder pädagogische Fachkraft', icon: '👩‍🏫', tags: ['fachkraft'] },
+      { label: 'Kita-Leitung', icon: '🎓', tags: ['leitung'] },
+      { label: 'Berufseinsteigend oder Quereinsteigend', icon: '🌱', tags: ['fachkraft', 'einstieg'] },
+      { label: 'Ich plane eine Fortbildung fürs ganze Team', icon: '🤝', tags: ['teamfortbildung'] },
+    ]
+  },
+  {
+    id: 'thema',
+    text: 'Was beschäftigt dich gerade am meisten?',
+    options: [
+      { label: 'Kinder mit ADHS, Autismus oder Verhaltensauffälligkeiten', icon: '🧒', tags: ['adhs', 'autismus', 'verhalten'] },
+      { label: 'Stress, Erschöpfung und fehlende Energie', icon: '😮‍💨', tags: ['stress', 'yoga'] },
+      { label: 'Schwierige Gespräche mit Eltern oder im Team', icon: '💬', tags: ['kommunikation', 'team'] },
+      { label: 'Kinderschutz und meine Verantwortung', icon: '🛡️', tags: ['kinderschutz'] },
+      { label: 'Vorschulübergang, Sprache oder Projektthemen', icon: '🌱', tags: ['vorschule', 'sprache'] },
+    ]
+  },
+  {
+    id: 'tiefe',
+    text: 'Wie möchtest du dich weiterbilden?',
+    options: [
+      { label: 'Einen intensiven Tag – kompakt und sofort anwendbar', icon: '⚡', tags: ['tagesfortbildung'] },
+      { label: '3 Monate tief eintauchen und Expertin werden', icon: '🏆', tags: ['dreimonat', 'tief', 'zertifikat'] },
+      { label: 'Beides interessiert mich – der Inhalt zählt', icon: '🔄', tags: [] },
+    ]
+  },
+  {
+    id: 'zertifikat',
+    text: 'Ist ein offizielles Zertifikat wichtig für dich?',
+    options: [
+      { label: 'Ja – ich brauche einen Nachweis für Träger oder Lebenslauf', icon: '✅', tags: ['zertifikat', 'tief', 'dreimonat'] },
+      { label: 'Wäre schön, aber kein Muss', icon: '💡', tags: [] },
+      { label: 'Nein – der Inhalt zählt für mich', icon: '🎯', tags: ['tagesfortbildung'] },
+    ]
+  },
+  {
+    id: 'yoga',
+    text: 'Letzte Frage: Interessiert dich Kinderyoga als Methode?',
+    options: [
+      { label: 'Ja! Ich möchte Yoga in den Kita-Alltag integrieren', icon: '🌿', tags: ['yoga'] },
+      { label: 'Eher nicht – mir geht es um andere Inhalte', icon: '➡️', tags: [] },
+    ]
+  },
+];
+
+let currentQ = 0;
+let collectedTags = [];
+
+function quizRender() {
+  const q = QUESTIONS[currentQ];
+  const pct = Math.round(((currentQ + 1) / QUESTIONS.length) * 100);
+  document.getElementById('quiz-progress-fill').style.width = pct + '%';
+  document.getElementById('quiz-step-label').textContent = 'Frage ' + (currentQ + 1) + ' von ' + QUESTIONS.length;
+
+  document.getElementById('quiz-questions-wrap').innerHTML =
+    '<div class="quiz-question-card">' +
+      '<p class="quiz-question-title">' + q.text + '</p>' +
+      '<div class="quiz-options">' +
+        q.options.map(function(o, i) {
+          return '<button class="quiz-option" onclick="quizSelect(' + i + ')">' +
+            '<span class="quiz-option-icon">' + o.icon + '</span>' +
+            '<span class="quiz-option-label">' + o.label + '</span>' +
+            '</button>';
+        }).join('') +
+      '</div>' +
+    '</div>';
+}
+
+function quizSelect(i) {
+  collectedTags = collectedTags.concat(QUESTIONS[currentQ].options[i].tags);
+  currentQ++;
+  if (currentQ < QUESTIONS.length) {
+    quizRender();
+  } else {
+    quizShowResult();
+  }
+}
+
+function quizShowResult() {
+  document.getElementById('quiz-progress-fill').style.width = '100%';
+  document.getElementById('quiz-step-label').textContent = 'Dein Ergebnis';
+  document.getElementById('quiz-questions-wrap').innerHTML = '';
+
+  var scored = COURSES.map(function(c) {
+    var score = 0;
+    collectedTags.forEach(function(tag) { if (c.tags[tag]) score += c.tags[tag]; });
+    return { course: c, score: score };
+  });
+  scored.sort(function(a, b) { return b.score - a.score; });
+  var top = scored.slice(0, 3).filter(function(s) { return s.score > 0; });
+
+  var html = top.map(function(s) {
+    var c = s.course;
+    return '<a href="' + c.url + '" class="quiz-rec-item">' +
+      '<div class="quiz-rec-emoji">' + c.emoji + '</div>' +
+      '<div>' +
+        '<p class="quiz-rec-type">' + c.type + '</p>' +
+        '<p class="quiz-rec-name">' + c.name + '</p>' +
+        '<p class="quiz-rec-desc">' + c.desc + '</p>' +
+      '</div>' +
+    '</a>';
+  }).join('');
+
+  if (!html) html = '<p>Schau dir alle Fortbildungen an – sicher ist etwas dabei!</p>';
+  document.getElementById('quiz-result-items').innerHTML = html;
+  document.getElementById('quiz-result').style.display = 'block';
+  document.getElementById('quiz-result').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function quizRestart() {
+  currentQ = 0;
+  collectedTags = [];
+  document.getElementById('quiz-result').style.display = 'none';
+  quizRender();
+  document.querySelector('.quiz-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+quizRender();
+</script>
+</body>
+</html>
