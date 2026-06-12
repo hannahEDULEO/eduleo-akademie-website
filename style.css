@@ -588,6 +588,13 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 }
 .kontakt-method:hover { background: var(--green); border-color: var(--green); }
 .kontakt-method span { font-size: 1.1rem; }
+.kontakt-buerzeiten {
+  margin-top: 32px; background: var(--off-white); border-radius: var(--radius-md);
+  padding: 28px 32px; text-align: left; display: inline-block;
+}
+.kontakt-buerzeiten p { color: var(--text); margin-bottom: 14px; }
+.kontakt-buerzeiten ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.kontakt-buerzeiten li { font-size: 0.95rem; color: var(--text-light); }
 
 /* ============================================
    FOOTER
