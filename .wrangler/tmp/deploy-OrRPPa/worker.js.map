@@ -1,7 +1,7 @@
 {
   "version": 3,
   "sources": ["../../../worker.js"],
-  "sourceRoot": "/Users/hannahflunkert/Desktop/Claude/GitHub EDULEO-Akademie-Website/.wrangler/tmp/deploy-aCaDIi",
+  "sourceRoot": "/Users/hannahflunkert/Desktop/Claude/GitHub EDULEO-Akademie-Website/.wrangler/tmp/deploy-OrRPPa",
   "sourcesContent": ["export default {\n  async fetch(request, env) {\n    const url = new URL(request.url);\n    let path = url.pathname;\n\n    // Direkter Versuch\n    let response = await env.ASSETS.fetch(request);\n\n    // Bei 404: index.html im Verzeichnis versuchen\n    if (response.status === 404) {\n      if (!path.endsWith('/')) path += '/';\n      const indexUrl = new URL(request.url);\n      indexUrl.pathname = path + 'index.html';\n      response = await env.ASSETS.fetch(new Request(indexUrl.toString(), request));\n    }\n\n    return response;\n  }\n};\n"],
   "mappings": ";AAAA,IAAO,iBAAQ;AAAA,EACb,MAAM,MAAM,SAAS,KAAK;AACxB,UAAM,MAAM,IAAI,IAAI,QAAQ,GAAG;AAC/B,QAAI,OAAO,IAAI;AAGf,QAAI,WAAW,MAAM,IAAI,OAAO,MAAM,OAAO;AAG7C,QAAI,SAAS,WAAW,KAAK;AAC3B,UAAI,CAAC,KAAK,SAAS,GAAG,EAAG,SAAQ;AACjC,YAAM,WAAW,IAAI,IAAI,QAAQ,GAAG;AACpC,eAAS,WAAW,OAAO;AAC3B,iBAAW,MAAM,IAAI,OAAO,MAAM,IAAI,QAAQ,SAAS,SAAS,GAAG,OAAO,CAAC;AAAA,IAC7E;AAEA,WAAO;AAAA,EACT;AACF;",
   "names": []
