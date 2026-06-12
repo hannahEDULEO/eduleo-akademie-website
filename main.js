@@ -1,5 +1,56 @@
 /* EDULEO Akademie – main.js */
 
+/* ── SimplyOrg Termin-Widget ─────────────── */
+(async function () {
+  var widget = document.getElementById('termine-widget');
+  if (!widget) return;
+  var eventId = widget.dataset.eventId;
+  var qualId  = widget.dataset.qualificationId;
+  if (!eventId && !qualId) return;
+
+  var param     = eventId ? 'event_id=' + eventId : 'qualification_id=' + qualId;
+  var portalUrl = eventId
+    ? 'https://eduleo-akademie.simplyorg-seminare.de/event-details?event_id=' + eventId
+    : 'https://eduleo-akademie.simplyorg-seminare.de/qualification-details?qualification_id=' + qualId;
+
+  var MONATE = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+  function fmtDate(d) {
+    var p = d.split('.');
+    return parseInt(p[0]) + '. ' + MONATE[parseInt(p[1]) - 1] + ' 20' + p[2];
+  }
+
+  try {
+    var resp = await fetch('/api/termine?' + param);
+    var data = await resp.json();
+    var select = document.getElementById('tf-termin') || document.getElementById('m3-termin');
+
+    if (data.dates && data.dates.length > 0) {
+      widget.innerHTML = data.dates.map(function (d) {
+        return '<a class="termin-card" href="' + portalUrl + '" target="_blank" rel="noopener">'
+          + '<div class="termin-card-info">'
+          + '<span class="termin-datum">' + fmtDate(d.date) + '</span>'
+          + (d.time ? '<span class="termin-zeit">' + d.time + '</span>' : '')
+          + '</div><span class="termin-arrow">→</span></a>';
+      }).join('')
+        + '<a href="' + portalUrl + '" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%;margin-top:10px;font-size:0.84rem;">Alle Termine im Portal →</a>';
+
+      if (select && select.tagName === 'SELECT') {
+        data.dates.forEach(function (d) {
+          var opt = document.createElement('option');
+          opt.value = d.date;
+          opt.textContent = fmtDate(d.date) + (d.time ? ' · ' + d.time : '');
+          select.appendChild(opt);
+        });
+      }
+    } else {
+      widget.innerHTML = '<p class="termin-empty">Aktuell keine Termine geplant.<br>Schreib uns – wir setzen dich auf die Warteliste.</p>'
+        + '<a href="' + portalUrl + '" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%;margin-top:8px;font-size:0.84rem;">Im Portal ansehen →</a>';
+    }
+  } catch (e) {
+    widget.innerHTML = '<a href="' + portalUrl + '" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%;font-size:0.84rem;">Termine im Portal ansehen →</a>';
+  }
+})();
+
 /* ── Cookie-Banner ──────────────────────────── */
 (function () {
   if (localStorage.getItem('eduleo-cookies-ok')) return;
