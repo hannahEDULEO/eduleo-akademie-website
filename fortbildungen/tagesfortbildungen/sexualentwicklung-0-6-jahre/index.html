@@ -196,7 +196,7 @@ else if(el.type!=='checkbox'&&!el.value.trim()){ok=false;el.style.borderColor='#
 if(!ok)return;
 var data=new FormData(form);var body='TAGESFORTBILDUNG: Sexualentwicklung 0–6 Jahre und der Umgang im Kita Alltag\n'+'='.repeat(30)+'\n\n';
 data.forEach(function(v,k){body+=k+': '+v+'\n';});
-window.open('mailto:kontakt@eduleo.de?subject='+encodeURIComponent('Anmeldung Tagesfortbildung – Sexualentwicklung 0–6 Jahre und der Umgang im Kita Alltag')+'&body='+encodeURIComponent(body));
+window.open('mailto:kontakt@eduleo-akademie.de?subject='+encodeURIComponent('Anmeldung Tagesfortbildung – Sexualentwicklung 0–6 Jahre und der Umgang im Kita Alltag')+'&body='+encodeURIComponent(body));
 form.style.display='none';succ.style.display='block';});}
 </script>
 </body>
