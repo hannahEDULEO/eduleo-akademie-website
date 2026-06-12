@@ -41,7 +41,7 @@
           <span class="badge badge-mauve">2. Person kostenfrei</span>
         </div>
         <h1>Bring a Friend –<br>Gemeinsam fortbilden lohnt sich</h1>
-        <p class="baf-hero-lead">Du möchtest dich fachlich weiterentwickeln und die nächsten 3 Monate intensiv in deine pädagogische Kompetenz investieren? Dann bring einfach jemanden mit – kostenlos.</p>
+        <p class="baf-hero-lead">Du möchtest dich fachlich weiterentwickeln und die nächsten 3 Monate intensiv in deine pädagogische Kompetenz investieren? Dann bring einfach jemanden mit, kostenlos.</p>
         <div class="baf-hero-actions">
           <a href="#anmeldung" class="btn btn-primary">Jetzt anmelden</a>
           <a href="../fortbildungen/#3-monate" class="btn btn-outline">Alle 3-Monats-Fortbildungen</a>
@@ -49,7 +49,7 @@
       </div>
       <div class="baf-hero-card fade-in delay-2">
         <span class="baf-hero-emoji">🤝</span>
-        <h3>1 zahlt – 2 lernen</h3>
+        <h3>1 zahlt, 2 lernen</h3>
         <p>Melde dich regulär an und eine zweite Person nimmt kostenfrei an derselben Fortbildung teil.</p>
       </div>
     </div>
@@ -75,7 +75,7 @@
       <div class="baf-info-card fade-in delay-1">
         <span class="baf-info-emoji">🎁</span>
         <h3>Freund:in einladen</h3>
-        <p>Eine zweite Person – Kollegin, Freundin, Teamkollegin – nimmt <strong>kostenfrei</strong> an exakt derselben Fortbildung teil.</p>
+        <p>Eine zweite Person, Kollegin, Freundin, Teamkollegin, nimmt <strong>kostenfrei</strong> an exakt derselben Fortbildung teil.</p>
       </div>
       <div class="baf-info-card fade-in delay-2">
         <span class="baf-info-emoji">🌱</span>
@@ -105,7 +105,7 @@
       <div class="anfrage-intro fade-in">
         <span class="section-label">Anmeldeformular</span>
         <h2>Anmeldeformular zur Bring a Friend Aktion</h2>
-        <p>Fülle alle Pflichtfelder aus – wir tragen euch dann gemeinsam ins Buchungssystem ein.</p>
+        <p>Fülle alle Pflichtfelder aus, wir tragen euch dann gemeinsam ins Buchungssystem ein.</p>
       </div>
 
       <form class="anfrage-form fade-in" id="baf-form" novalidate>
@@ -271,10 +271,10 @@
       if (!valid) return;
 
       var data = new FormData(form);
-      var body = 'BRING A FRIEND – ANMELDUNG\n' + '='.repeat(30) + '\n\n';
+      var body = 'BRING A FRIEND, ANMELDUNG\n' + '='.repeat(30) + '\n\n';
       data.forEach(function (value, key) { body += key + ': ' + value + '\n'; });
 
-      var subject = encodeURIComponent('Bring a Friend Anmeldung – EDULEO Akademie');
+      var subject = encodeURIComponent('Bring a Friend Anmeldung, EDULEO Akademie');
       var bodyEnc = encodeURIComponent(body);
       window.open('mailto:kontakt@eduleo-akademie.de?subject=' + subject + '&body=' + bodyEnc);
 
