@@ -129,13 +129,12 @@
       </div>
       <div class="booking-oder"><span>oder</span></div>
       <div class="booking-option-form">
-        <div class="option-header-row" style="margin-bottom:12px;">
-          <span class="option-num option-num--alt">2</span>
-          <div>
-            <div class="option-title">Per Formular anmelden</div>
-            <div class="option-desc">Lieber klassisch? Füll das Formular aus – wir kümmern uns um alles.</div>
-          </div>
-        </div>
+        <button class="form-toggle-btn" type="button" aria-expanded="false" onclick="var c=this.nextElementSibling;var o=c.classList.toggle('open');this.setAttribute('aria-expanded',o);">
+          <span><span class="option-num option-num--alt" style="margin-right:8px;">2</span> Per Formular anmelden</span>
+          <span class="form-toggle-arrow">▼</span>
+        </button>
+        <div class="form-collapsible">
+        <p class="option-desc" style="margin:10px 0 12px;">Lieber klassisch? Füll das Formular aus – wir kümmern uns um alles.</p>
       <form id="tages-form" novalidate style="margin-top:18px;display:flex;flex-direction:column;gap:12px;">
         <div class="form-group">
           <label class="form-label" for="tf-termin">Gewünschter Termin <span class="req">*</span></label>
@@ -175,6 +174,7 @@
         <h4>Anmeldung eingegangen!</h4>
         <p style="font-size:0.88rem;color:var(--text-light);margin-top:8px;">Wir melden uns schnellstmöglich bei dir.</p>
       </div>
+        </div>
       </div>
       <p class="booking-box-note" style="margin-top:8px;">Deine Unterlagen (Aufgaben, Präsentation) stehen nach der Anmeldung jederzeit im Portal zum Download bereit.</p>
     </div>

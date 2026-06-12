@@ -809,6 +809,38 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 .booking-box .btn { width: 100%; margin-bottom: 10px; text-align: center; }
 .booking-box-note { font-size: 0.8rem; color: var(--text-light); text-align: center; }
 
+/* ── Formular einklappbar ── */
+.form-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 11px 14px;
+  cursor: pointer;
+  font-family: var(--font);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 0;
+  transition: border-color 0.2s;
+}
+.form-toggle-btn:hover { border-color: var(--text-light); }
+.form-toggle-arrow {
+  font-size: 0.75rem;
+  transition: transform 0.25s;
+  color: var(--text-light);
+}
+.form-toggle-btn[aria-expanded="true"] .form-toggle-arrow { transform: rotate(180deg); }
+.form-collapsible {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+.form-collapsible.open { max-height: 2000px; }
+
 /* ── Zwei-Wege Anmeldung ── */
 .booking-option-portal {
   background: var(--green);

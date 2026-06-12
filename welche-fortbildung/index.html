@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welche Fortbildung passt zu mir? – EDULEO Akademie</title>
-  <meta name="description" content="Beantworte 5 kurze Fragen und bekomme deine persönliche Fortbildungsempfehlung von der EDULEO Akademie.">
+  <meta name="description" content="Beantworte 6 kurze Fragen und bekomme deine persönliche Fortbildungsempfehlung von der EDULEO Akademie.">
   <link rel="canonical" href="https://www.eduleo-akademie.de/welche-fortbildung/">
   <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="../style.css">
@@ -43,7 +43,7 @@
   <div class="container">
     <span class="badge badge-green" style="margin-bottom:16px;">Kostenlos · in 2 Minuten</span>
     <h1>Welche Fortbildung<br>passt zu dir?</h1>
-    <p>Beantworte 5 kurze Fragen und bekomme deine persönliche Empfehlung.</p>
+    <p>Beantworte 6 kurze Fragen und bekomme deine persönliche Empfehlung.</p>
   </div>
 </section>
 
@@ -54,9 +54,9 @@
 
       <div class="quiz-progress-wrap">
         <div class="quiz-progress-bar">
-          <div class="quiz-progress-fill" id="quiz-progress-fill" style="width:20%"></div>
+          <div class="quiz-progress-fill" id="quiz-progress-fill" style="width:16%"></div>
         </div>
-        <span class="quiz-step-label" id="quiz-step-label">Frage 1 von 5</span>
+        <span class="quiz-step-label" id="quiz-step-label">Frage 1 von 6</span>
       </div>
 
       <div id="quiz-questions-wrap"></div>
@@ -66,6 +66,9 @@
           <h2>Deine persönliche Empfehlung</h2>
           <p class="quiz-result-subtitle">Basierend auf deinen Antworten passen diese Fortbildungen am besten zu dir:</p>
           <div class="quiz-recommendations" id="quiz-result-items"></div>
+          <div style="text-align:center;margin-top:24px;">
+            <a href="../fortbildungen/" class="btn btn-outline" style="margin-right:12px;">Alle Fortbildungen ansehen →</a>
+          </div>
           <div class="quiz-restart-wrap">
             <button class="quiz-restart-btn" onclick="quizRestart()">↩ Nochmal von vorne starten</button>
           </div>
@@ -94,21 +97,48 @@
 /* ── Quiz: Welche Fortbildung passt zu mir? ── */
 
 const COURSES = [
-  { id:'adhs3m',      name:'Kita-ExpertIn für ADHS & Autismus',           type:'3-Monats-Fortbildung', emoji:'🧠', url:'../fortbildungen/kita-expertin-adhs-autismus/',             desc:'Erkenne, verstehe und begleite Kinder mit ADHS und Autismus gezielt – in 8 Live-Terminen zur Expertin.',    tags:{adhs:3,autismus:3,verhalten:2,dreimonat:2,zertifikat:1,tief:2,fachkraft:1} },
-  { id:'verhalten3m', name:'Kita-ExpertIn für Verhaltensauffälligkeiten', type:'3-Monats-Fortbildung', emoji:'🌀', url:'../fortbildungen/kita-expertin-verhaltensauffaelligkeiten/', desc:'Verstehe Ursachen hinter auffälligem Verhalten und entwickle wirksame Strategien für den Alltag.',           tags:{verhalten:3,adhs:2,dreimonat:2,zertifikat:1,tief:2,fachkraft:1} },
-  { id:'teamcoach3m', name:'Teamcoach in der Kita',                        type:'3-Monats-Fortbildung', emoji:'🤝', url:'../fortbildungen/teamcoach-kita/',                          desc:'Stärke dein Team, löse Konflikte und baue eine gesunde Teamkultur auf – für Fachkräfte und Leitungen.',      tags:{team:3,kommunikation:2,leitung:2,dreimonat:2,zertifikat:1,tief:2} },
-  { id:'ks3m',        name:'Kita KoordinatorIn für Kinderschutz',          type:'3-Monats-Fortbildung', emoji:'🛡️', url:'../fortbildungen/kinderschutz-koordinatorin-kita/',         desc:'Werde die Kinderschutzfachkraft in deiner Einrichtung – kompetent, sicher und praxisnah ausgebildet.',       tags:{kinderschutz:3,dreimonat:2,zertifikat:1,tief:2,leitung:1,fachkraft:1} },
-  { id:'stress3m',    name:'Stressbewältigungscoach',                      type:'3-Monats-Fortbildung', emoji:'🧘', url:'../fortbildungen/stressbewaetigungscoach/',                 desc:'Lerne Stressbewältigung für dich selbst und entwickle Angebote, die du in deiner Kita einsetzen kannst.',    tags:{stress:3,yoga:2,dreimonat:2,zertifikat:1,tief:2,fachkraft:1} },
-  { id:'yoga3m',      name:'Kinderyoga Kursleitung',                       type:'3-Monats-Fortbildung', emoji:'🌿', url:'../fortbildungen/kinderyoga-kursleitung/',                  desc:'Führe eigenständig Kinderyoga-Einheiten durch – methodisch fundiert, praxisnah und sofort umsetzbar.',        tags:{yoga:4,stress:1,dreimonat:2,zertifikat:1,tief:2,fachkraft:1} },
-  { id:'stress1d',    name:'Stressbewältigung im Kita-Alltag',             type:'Tagesfortbildung',      emoji:'😤', url:'../fortbildungen/tagesfortbildungen/stressbewaltigung-kita-alltag/', desc:'Erkenne deine Stressauslöser und lerne Strategien, die du sofort einsetzen kannst.',           tags:{stress:3,tagesfortbildung:2,fachkraft:1,einstieg:1} },
-  { id:'autismus1d',  name:'Autismus im Kita-Alltag',                      type:'Tagesfortbildung',      emoji:'🧒', url:'../fortbildungen/tagesfortbildungen/autismus-kita-alltag/', desc:'Verstehe autistische Verhaltensweisen besser und erlerne konkrete Handlungsstrategien für die Praxis.',       tags:{autismus:3,adhs:2,verhalten:1,tagesfortbildung:2,fachkraft:1,einstieg:1} },
-  { id:'adhs1d',      name:'ADHS in der Kita',                             type:'Tagesfortbildung',      emoji:'🧠', url:'../fortbildungen/tagesfortbildungen/adhs-kita/',            desc:'Lerne, Kinder mit ADHS besser zu verstehen und im Kita-Alltag gezielt zu unterstützen.',                      tags:{adhs:3,verhalten:2,tagesfortbildung:2,fachkraft:1,einstieg:1} },
-  { id:'ks1d',        name:'Kinderschutz in der Kita',                     type:'Tagesfortbildung',      emoji:'🛡️', url:'../fortbildungen/tagesfortbildungen/kinderschutz-kita/',   desc:'Erkenne Anzeichen von Kindeswohlgefährdung frühzeitig und handle rechtssicher.',                              tags:{kinderschutz:3,tagesfortbildung:2,fachkraft:1,leitung:1,einstieg:1} },
-  { id:'gfk1d',       name:'Gewaltfreie Kommunikation',                    type:'Tagesfortbildung',      emoji:'💬', url:'../fortbildungen/tagesfortbildungen/gewaltfreie-kommunikation/', desc:'Kommuniziere bedürfnisorientiert mit Kindern, Eltern und KollegInnen – für mehr Miteinander.',             tags:{kommunikation:3,team:1,tagesfortbildung:2,fachkraft:1,einstieg:1} },
-  { id:'eltern1d',    name:'Elterngespräche führen',                       type:'Tagesfortbildung',      emoji:'👨‍👩‍👧', url:'../fortbildungen/tagesfortbildungen/elterngespraeche-fuehren/', desc:'Führe schwierige Gespräche mit Eltern souverän, empathisch und lösungsorientiert.',             tags:{kommunikation:3,tagesfortbildung:2,fachkraft:1,leitung:1,einstieg:1} },
-  { id:'leitung1d',   name:'Meine Führungsrolle als Kita-Leitung',         type:'Tagesfortbildung',      emoji:'🎓', url:'../fortbildungen/tagesfortbildungen/fuehrungsrolle-kita-leitung/', desc:'Stärke deine Leitungskompetenzen und lerne, dein Team zu motivieren und Strukturen aufzubauen.',   tags:{leitung:3,team:2,tagesfortbildung:2} },
-  { id:'vorschule1d', name:'Vorschulkonzept gestalten',                    type:'Tagesfortbildung',      emoji:'🌱', url:'../fortbildungen/tagesfortbildungen/vorschulkonzept-gestalten/', desc:'Entwickle ein pädagogisch fundiertes Vorschulkonzept für deine Einrichtung.',                     tags:{vorschule:3,sprache:2,tagesfortbildung:2,fachkraft:1} },
-  { id:'teamfortb',   name:'Teamfortbildung',                              type:'Teamfortbildung',        emoji:'🏫', url:'../fortbildungen/teamfortbildungen/',                       desc:'Individuelle Fortbildungen fürs ganze Team – online oder vor Ort, abgestimmt auf eure Situation.',            tags:{teamfortbildung:5} },
+  /* 3-Monats-Fortbildungen */
+  { id:'adhs3m',      name:'Kita-ExpertIn für ADHS & Autismus',           type:'3-Monats-Fortbildung', emoji:'🧠', url:'../fortbildungen/kita-expertin-adhs-autismus/',             desc:'Erkenne, verstehe und begleite Kinder mit ADHS und Autismus gezielt – in 8 Live-Terminen zur Expertin.',    tags:{adhs:3,autismus:3,verhalten:2,dreimonat:2,tief:2,fachkraft:1,sicherheit:1,fachwissen:2} },
+  { id:'verhalten3m', name:'Kita-ExpertIn für Verhaltensauffälligkeiten', type:'3-Monats-Fortbildung', emoji:'🌀', url:'../fortbildungen/kita-expertin-verhaltensauffaelligkeiten/', desc:'Verstehe Ursachen hinter auffälligem Verhalten und entwickle wirksame Strategien für den Alltag.',           tags:{verhalten:3,adhs:2,dreimonat:2,tief:2,fachkraft:1,sicherheit:2,fachwissen:2} },
+  { id:'teamcoach3m', name:'Teamcoach in der Kita',                        type:'3-Monats-Fortbildung', emoji:'🤝', url:'../fortbildungen/teamcoach-kita/',                          desc:'Stärke dein Team, löse Konflikte und baue eine gesunde Teamkultur auf – für Fachkräfte und Leitungen.',      tags:{team:3,kommunikation:2,leitung:2,dreimonat:2,tief:2,teamarbeit:3,methode:1} },
+  { id:'ks3m',        name:'Kita KoordinatorIn für Kinderschutz',          type:'3-Monats-Fortbildung', emoji:'🛡️', url:'../fortbildungen/kinderschutz-koordinatorin-kita/',         desc:'Werde die Kinderschutzfachkraft in deiner Einrichtung – kompetent, sicher und praxisnah ausgebildet.',       tags:{kinderschutz:3,dreimonat:2,tief:2,leitung:1,fachkraft:1,sicherheit:3,fachwissen:2} },
+  { id:'stress3m',    name:'Stressbewältigungscoach',                      type:'3-Monats-Fortbildung', emoji:'🧘', url:'../fortbildungen/stressbewaetigungscoach/',                 desc:'Lerne Stressbewältigung für dich selbst und entwickle Angebote, die du in deiner Kita einsetzen kannst.',    tags:{stress:3,yoga:2,dreimonat:2,tief:2,fachkraft:1,weniger_stress:3,methode:2} },
+  { id:'yoga3m',      name:'Kinderyoga Kursleitung',                       type:'3-Monats-Fortbildung', emoji:'🌿', url:'../fortbildungen/kinderyoga-kursleitung/',                  desc:'Führe eigenständig Kinderyoga-Einheiten durch – methodisch fundiert, praxisnah und sofort umsetzbar.',        tags:{yoga:4,stress:1,dreimonat:2,tief:2,fachkraft:1,methode:3,weniger_stress:1} },
+
+  /* Tagesfortbildungen – Gesundheit & Verhalten */
+  { id:'stress1d',    name:'Stressbewältigung im Kita-Alltag',             type:'Tagesfortbildung',      emoji:'😤', url:'../fortbildungen/tagesfortbildungen/stressbewaltigung-kita-alltag/', desc:'Erkenne deine Stressauslöser und lerne Strategien, die du sofort einsetzen kannst.',           tags:{stress:3,tagesfortbildung:2,fachkraft:1,einstieg:1,weniger_stress:3,fachwissen:1} },
+  { id:'autismus1d',  name:'Autismus im Kita-Alltag',                      type:'Tagesfortbildung',      emoji:'🧒', url:'../fortbildungen/tagesfortbildungen/autismus-kita-alltag/', desc:'Verstehe autistische Verhaltensweisen besser und erlerne konkrete Handlungsstrategien für die Praxis.',       tags:{autismus:3,adhs:2,verhalten:1,tagesfortbildung:2,fachkraft:1,einstieg:1,sicherheit:2,fachwissen:2} },
+  { id:'adhs1d',      name:'ADHS in der Kita',                             type:'Tagesfortbildung',      emoji:'🧠', url:'../fortbildungen/tagesfortbildungen/adhs-kita/',            desc:'Lerne, Kinder mit ADHS besser zu verstehen und im Kita-Alltag gezielt zu unterstützen.',                      tags:{adhs:3,verhalten:2,tagesfortbildung:2,fachkraft:1,einstieg:1,sicherheit:2,fachwissen:2} },
+
+  /* Tagesfortbildungen – Schutz & Recht */
+  { id:'ks1d',        name:'Kinderschutz in der Kita',                     type:'Tagesfortbildung',      emoji:'🛡️', url:'../fortbildungen/tagesfortbildungen/kinderschutz-kita/',   desc:'Erkenne Anzeichen von Kindeswohlgefährdung frühzeitig und handle rechtssicher.',                              tags:{kinderschutz:3,tagesfortbildung:2,fachkraft:1,leitung:1,einstieg:1,sicherheit:3,fachwissen:2} },
+  { id:'sex1d',       name:'Sexualentwicklung 0–6 Jahre',                  type:'Tagesfortbildung',      emoji:'🌸', url:'../fortbildungen/tagesfortbildungen/sexualentwicklung-0-6-jahre/', desc:'Entwickle einen professionellen Umgang mit kindlicher Sexualentwicklung und stärke deine Handlungssicherheit.',  tags:{sexualentwicklung:4,kinderschutz:1,tagesfortbildung:2,fachkraft:1,sicherheit:3,fachwissen:2} },
+
+  /* Tagesfortbildungen – Kommunikation */
+  { id:'gfk1d',       name:'Gewaltfreie Kommunikation',                    type:'Tagesfortbildung',      emoji:'💬', url:'../fortbildungen/tagesfortbildungen/gewaltfreie-kommunikation/', desc:'Kommuniziere bedürfnisorientiert mit Kindern, Eltern und KollegInnen – für weniger Konflikte.',             tags:{kommunikation:3,team:1,tagesfortbildung:2,fachkraft:1,einstieg:1,teamarbeit:2,fachwissen:1} },
+  { id:'eltern1d',    name:'Elterngespräche führen',                       type:'Tagesfortbildung',      emoji:'👨‍👩‍👧', url:'../fortbildungen/tagesfortbildungen/elterngespraeche-fuehren/', desc:'Führe schwierige Gespräche mit Eltern souverän, empathisch und lösungsorientiert.',             tags:{kommunikation:3,tagesfortbildung:2,fachkraft:1,leitung:1,einstieg:1,sicherheit:1,fachwissen:1} },
+
+  /* Tagesfortbildungen – Leitung & Team */
+  { id:'leitung1d',   name:'Meine Führungsrolle als Kita-Leitung',         type:'Tagesfortbildung',      emoji:'🎓', url:'../fortbildungen/tagesfortbildungen/fuehrungsrolle-kita-leitung/', desc:'Stärke deine Leitungskompetenzen und lerne, dein Team zu motivieren und Strukturen aufzubauen.',   tags:{leitung:3,team:2,tagesfortbildung:2,teamarbeit:2,fachwissen:1} },
+  { id:'teams1d',     name:'Teams leiten & stärken',                       type:'Tagesfortbildung',      emoji:'🏆', url:'../fortbildungen/tagesfortbildungen/teams-leiten-staerken/', desc:'Stärke deine Teamführungskompetenzen und schaffe ein Arbeitsklima, in dem alle aufblühen.',                   tags:{team:3,leitung:2,tagesfortbildung:2,personalmangel:1,teamarbeit:3,fachwissen:1} },
+  { id:'personal1d',  name:'Umgang mit Personalmangel',                    type:'Tagesfortbildung',      emoji:'👥', url:'../fortbildungen/tagesfortbildungen/umgang-mit-personalmangel/', desc:'Lerne Strategien, wie du als Team trotz Personalmangel handlungsfähig und resilient bleibst.',       tags:{personalmangel:4,stress:2,team:1,tagesfortbildung:2,weniger_stress:2,teamarbeit:2} },
+
+  /* Tagesfortbildungen – Yoga & Entspannung */
+  { id:'yoga1d',      name:'Kinderyoga in der Kita',                       type:'Tagesfortbildung',      emoji:'🧘', url:'../fortbildungen/tagesfortbildungen/kinderyoga-kita/',      desc:'Lerne, wie du Yoga und Entspannung spielerisch in den Kita-Alltag integrierst.',                              tags:{yoga:3,stress:1,tagesfortbildung:2,fachkraft:1,einstieg:1,methode:2,weniger_stress:1} },
+  { id:'yoga2d',      name:'Kinderyoga – Praxisübungen',                   type:'Tagesfortbildung',      emoji:'🌿', url:'../fortbildungen/tagesfortbildungen/kinderyoga-praxisuebungen/', desc:'Vertiefe deine Kinderyoga-Praxis mit konkreten Übungssequenzen für verschiedene Altersgruppen.',         tags:{yoga:4,tagesfortbildung:2,fachkraft:1,methode:2} },
+
+  /* Tagesfortbildungen – Vorschule & Projekte */
+  { id:'vorschule1d', name:'Vorschulkonzept gestalten',                    type:'Tagesfortbildung',      emoji:'🌱', url:'../fortbildungen/tagesfortbildungen/vorschulkonzept-gestalten/', desc:'Entwickle ein pädagogisch fundiertes Vorschulkonzept für deine Einrichtung.',                     tags:{vorschule:3,sprache:2,tagesfortbildung:2,fachkraft:1,fachwissen:2} },
+  { id:'schule1d',    name:'Schule in Sicht – Endspurt in der Kita',       type:'Tagesfortbildung',      emoji:'🏫', url:'../fortbildungen/tagesfortbildungen/schule-in-sicht/',      desc:'Bereite Vorschulkinder gezielt und spielerisch auf den Schulstart vor.',                                      tags:{vorschule:4,sprache:1,tagesfortbildung:2,fachkraft:1,fachwissen:2} },
+  { id:'wuppi1d',     name:'Sprache erforschen mit „Wuppi"',               type:'Tagesfortbildung',      emoji:'💬', url:'../fortbildungen/tagesfortbildungen/sprache-wuppi/',        desc:'Fördere Sprachentwicklung spielerisch und effektiv – mit dem Finken-Verlag-Charakter Wuppi.',                tags:{sprache:3,projekte:2,vorschule:2,tagesfortbildung:2,fachkraft:1,musik:1,fachwissen:2} },
+  { id:'musik1d',     name:'Musik, Tanz und Bewegung mit „Bodo"',          type:'Tagesfortbildung',      emoji:'🎵', url:'../fortbildungen/tagesfortbildungen/musik-tanz-bodo/',      desc:'Integriere Musik, Tanz und Bewegung spielerisch in deinen Kita-Alltag – mit dem Finken-Verlag-Charakter Bodo.', tags:{musik:4,projekte:2,vorschule:1,tagesfortbildung:2,fachkraft:1,methode:1,fachwissen:1} },
+  { id:'fred1d',      name:'Forschen und Entdecken mit „Fred"',            type:'Tagesfortbildung',      emoji:'🔬', url:'../fortbildungen/tagesfortbildungen/forschen-entdecken-fred/', desc:'Gestalte naturwissenschaftliche Entdeckungsprojekte mit Kindern – mit dem Finken-Verlag-Charakter Fred.',   tags:{projekte:4,musik:1,vorschule:1,tagesfortbildung:2,fachkraft:1,methode:1,fachwissen:1} },
+
+  /* Digitale Kita */
+  { id:'digital1d',   name:'Digitale Kita mit Kitaversum',                 type:'Tagesfortbildung',      emoji:'📱', url:'../fortbildungen/tagesfortbildungen/digitale-kita-kitaversum/', desc:'Entdecke, wie du digitale Medien sinnvoll und alltagstauglich in deiner Kita einsetzt.',               tags:{digital:4,tagesfortbildung:2,fachkraft:1,methode:2,fachwissen:1} },
+
+  /* Teamfortbildung */
+  { id:'teamfortb',   name:'Teamfortbildung',                              type:'Teamfortbildung',        emoji:'🏫', url:'../fortbildungen/teamfortbildungen/',                       desc:'Individuelle Fortbildungen fürs ganze Team – online oder vor Ort, abgestimmt auf eure Situation.',            tags:{teamfortbildung:5,team:2,teamarbeit:2} },
 ];
 
 const QUESTIONS = [
@@ -116,39 +146,52 @@ const QUESTIONS = [
     id: 'rolle',
     text: 'In welcher Rolle arbeitest du?',
     options: [
-      { label: 'ErzieherIn oder pädagogische Fachkraft', icon: '👩‍🏫', tags: ['fachkraft'] },
-      { label: 'Kita-Leitung', icon: '🎓', tags: ['leitung'] },
-      { label: 'Berufseinsteigend oder Quereinsteigend', icon: '🌱', tags: ['fachkraft', 'einstieg'] },
-      { label: 'Ich plane eine Fortbildung fürs ganze Team', icon: '🤝', tags: ['teamfortbildung'] },
+      { label: 'ErzieherIn oder pädagogische Fachkraft',    icon: '👩‍🏫', tags: ['fachkraft'] },
+      { label: 'Kita-Leitung',                               icon: '🎓',  tags: ['leitung'] },
+      { label: 'Berufseinsteigend oder Quereinsteigend',     icon: '🌱',  tags: ['fachkraft', 'einstieg'] },
+      { label: 'Ich plane eine Fortbildung fürs ganze Team', icon: '🤝',  tags: ['teamfortbildung'] },
     ]
   },
   {
     id: 'thema',
     text: 'Was beschäftigt dich gerade am meisten?',
     options: [
-      { label: 'Kinder mit ADHS, Autismus oder Verhaltensauffälligkeiten', icon: '🧒', tags: ['adhs', 'autismus', 'verhalten'] },
-      { label: 'Stress, Erschöpfung und fehlende Energie', icon: '😮‍💨', tags: ['stress', 'yoga'] },
-      { label: 'Schwierige Gespräche mit Eltern oder im Team', icon: '💬', tags: ['kommunikation', 'team'] },
-      { label: 'Kinderschutz und meine Verantwortung', icon: '🛡️', tags: ['kinderschutz'] },
-      { label: 'Vorschulübergang, Sprache oder Projektthemen', icon: '🌱', tags: ['vorschule', 'sprache'] },
+      { label: 'Kinder mit ADHS, Autismus oder Verhaltensauffälligkeiten', icon: '🧒',    tags: ['adhs', 'autismus', 'verhalten'] },
+      { label: 'Stress, Erschöpfung und fehlende Energie',                  icon: '😮‍💨', tags: ['stress', 'yoga'] },
+      { label: 'Schwierige Gespräche mit Eltern oder im Team',              icon: '💬',    tags: ['kommunikation', 'team'] },
+      { label: 'Kinderschutz und meine Verantwortung',                      icon: '🛡️',   tags: ['kinderschutz'] },
+      { label: 'Vorschulübergang, Sprache oder Projektthemen',              icon: '🌱',    tags: ['vorschule', 'sprache'] },
+    ]
+  },
+  {
+    id: 'spezial',
+    text: 'Gibt es ein Thema, das dich noch besonders interessiert?',
+    options: [
+      { label: 'Sexualentwicklung & Körperwissen bei Kindern (0–6 J.)', icon: '🌸',  tags: ['sexualentwicklung'] },
+      { label: 'Digitale Medien sinnvoll in der Kita einsetzen',         icon: '📱',  tags: ['digital'] },
+      { label: 'Umgang mit Personalmangel und Teambelastung',            icon: '👥',  tags: ['personalmangel'] },
+      { label: 'Musik, Bewegung oder Forschen als Projektthema',         icon: '🎵',  tags: ['musik', 'projekte'] },
+      { label: 'Keines davon – mein Thema ist schon dabei',             icon: '➡️',  tags: [] },
+    ]
+  },
+  {
+    id: 'ziel',
+    text: 'Was soll sich durch die Fortbildung für dich verändern?',
+    options: [
+      { label: 'Mehr Sicherheit in schwierigen Situationen', icon: '🛡️',  tags: ['sicherheit'] },
+      { label: 'Weniger Stress – für mich persönlich',       icon: '💪',  tags: ['weniger_stress'] },
+      { label: 'Neues Fachwissen direkt in die Praxis',      icon: '📚',  tags: ['fachwissen'] },
+      { label: 'Bessere Zusammenarbeit im Team',             icon: '🤝',  tags: ['teamarbeit'] },
+      { label: 'Eine neue Methode oder Qualifikation',       icon: '🌟',  tags: ['methode'] },
     ]
   },
   {
     id: 'tiefe',
     text: 'Wie möchtest du dich weiterbilden?',
     options: [
-      { label: 'Einen intensiven Tag – kompakt und sofort anwendbar', icon: '⚡', tags: ['tagesfortbildung'] },
-      { label: '3 Monate tief eintauchen und Expertin werden', icon: '🏆', tags: ['dreimonat', 'tief', 'zertifikat'] },
-      { label: 'Beides interessiert mich – der Inhalt zählt', icon: '🔄', tags: [] },
-    ]
-  },
-  {
-    id: 'zertifikat',
-    text: 'Ist ein offizielles Zertifikat wichtig für dich?',
-    options: [
-      { label: 'Ja – ich brauche einen Nachweis für Träger oder Lebenslauf', icon: '✅', tags: ['zertifikat', 'tief', 'dreimonat'] },
-      { label: 'Wäre schön, aber kein Muss', icon: '💡', tags: [] },
-      { label: 'Nein – der Inhalt zählt für mich', icon: '🎯', tags: ['tagesfortbildung'] },
+      { label: 'Einen intensiven Tag – kompakt und sofort anwendbar', icon: '⚡',  tags: ['tagesfortbildung'] },
+      { label: '3 Monate tief eintauchen und Expertin werden',        icon: '🏆', tags: ['dreimonat', 'tief'] },
+      { label: 'Beides interessiert mich – der Inhalt zählt',        icon: '🔄',  tags: [] },
     ]
   },
   {
@@ -156,19 +199,20 @@ const QUESTIONS = [
     text: 'Letzte Frage: Interessiert dich Kinderyoga als Methode?',
     options: [
       { label: 'Ja! Ich möchte Yoga in den Kita-Alltag integrieren', icon: '🌿', tags: ['yoga'] },
-      { label: 'Eher nicht – mir geht es um andere Inhalte', icon: '➡️', tags: [] },
+      { label: 'Eher nicht – mir geht es um andere Inhalte',         icon: '➡️', tags: [] },
     ]
   },
 ];
 
+const TOTAL = QUESTIONS.length;
 let currentQ = 0;
 let collectedTags = [];
 
 function quizRender() {
   const q = QUESTIONS[currentQ];
-  const pct = Math.round(((currentQ + 1) / QUESTIONS.length) * 100);
+  const pct = Math.round(((currentQ + 1) / TOTAL) * 100);
   document.getElementById('quiz-progress-fill').style.width = pct + '%';
-  document.getElementById('quiz-step-label').textContent = 'Frage ' + (currentQ + 1) + ' von ' + QUESTIONS.length;
+  document.getElementById('quiz-step-label').textContent = 'Frage ' + (currentQ + 1) + ' von ' + TOTAL;
 
   document.getElementById('quiz-questions-wrap').innerHTML =
     '<div class="quiz-question-card">' +
@@ -178,7 +222,7 @@ function quizRender() {
           return '<button class="quiz-option" onclick="quizSelect(' + i + ')">' +
             '<span class="quiz-option-icon">' + o.icon + '</span>' +
             '<span class="quiz-option-label">' + o.label + '</span>' +
-            '</button>';
+          '</button>';
         }).join('') +
       '</div>' +
     '</div>';
@@ -187,7 +231,7 @@ function quizRender() {
 function quizSelect(i) {
   collectedTags = collectedTags.concat(QUESTIONS[currentQ].options[i].tags);
   currentQ++;
-  if (currentQ < QUESTIONS.length) {
+  if (currentQ < TOTAL) {
     quizRender();
   } else {
     quizShowResult();
@@ -219,7 +263,7 @@ function quizShowResult() {
     '</a>';
   }).join('');
 
-  if (!html) html = '<p>Schau dir alle Fortbildungen an – sicher ist etwas dabei!</p>';
+  if (!html) html = '<p style="color:var(--text-light);">Schau dir alle Fortbildungen an – sicher ist etwas dabei!</p>';
   document.getElementById('quiz-result-items').innerHTML = html;
   document.getElementById('quiz-result').style.display = 'block';
   document.getElementById('quiz-result').scrollIntoView({ behavior: 'smooth', block: 'start' });
