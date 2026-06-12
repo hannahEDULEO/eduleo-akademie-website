@@ -127,7 +127,7 @@
             <div class="option-desc">Wähle deinen Termin und buche direkt. Du erhältst sofort Zugang zum Portal – die Materialien werden eine Woche vor deinem Termin freigeschaltet.</div>
           </div>
         </div>
-        <a href="https://eduleo-akademie.simplyorg-seminare.de" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%;margin-top:8px;font-size:0.88rem;">Alle Termine im Portal ansehen →</a>
+        <div class="termine-widget" id="termine-widget" data-category-id="21"><div class="termine-loading">Termine werden geladen…</div></div>
       </div>
       <div class="booking-oder"><span>oder</span></div>
       <div class="booking-option-form">
@@ -141,7 +141,9 @@
       <form id="tages-form" novalidate style="margin-top:18px;display:flex;flex-direction:column;gap:12px;">
         <div class="form-group">
           <label class="form-label" for="tf-termin">Gewünschter Termin <span class="req">*</span></label>
-          <input class="form-input" type="text" id="tf-termin" name="Gewünschter Termin" placeholder="Termin aus dem Portal notieren" required style="font-size:0.9rem;padding:10px 12px;">
+          <select class="form-input" id="tf-termin" name="Gewünschter Termin" required style="font-size:0.9rem;padding:10px 12px;">
+            <option value="">Bitte Termin wählen …</option>
+          </select>
         </div>
         <div class="form-group">
           <label class="form-label" for="tf-name">Name TeilnehmerIn <span class="req">*</span></label>

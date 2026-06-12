@@ -6,12 +6,17 @@
   if (!widget) return;
   var eventId = widget.dataset.eventId;
   var qualId  = widget.dataset.qualificationId;
-  if (!eventId && !qualId) return;
+  var catId   = widget.dataset.categoryId;
+  if (!eventId && !qualId && !catId) return;
 
-  var param     = eventId ? 'event_id=' + eventId : 'qualification_id=' + qualId;
-  var portalUrl = eventId
-    ? 'https://eduleo-akademie.simplyorg-seminare.de/event-details?event_id=' + eventId
-    : 'https://eduleo-akademie.simplyorg-seminare.de/qualification-details?qualification_id=' + qualId;
+  var param = catId    ? 'category_id=' + catId
+            : eventId  ? 'event_id=' + eventId
+            :            'qualification_id=' + qualId;
+  var portalUrl = catId
+    ? 'https://eduleo-akademie.simplyorg-seminare.de/event-list?page=1&categoryId=' + catId
+    : eventId
+      ? 'https://eduleo-akademie.simplyorg-seminare.de/event-details?event_id=' + eventId
+      : 'https://eduleo-akademie.simplyorg-seminare.de/qualification-details?qualification_id=' + qualId;
 
   var MONATE = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
   function fmtDate(d) {

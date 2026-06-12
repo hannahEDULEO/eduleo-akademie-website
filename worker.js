@@ -27,21 +27,35 @@ async function handleTermine(url) {
     'Cache-Control': 'public, max-age=3600'
   };
 
-  const eventId = url.searchParams.get('event_id');
-  const qualId  = url.searchParams.get('qualification_id');
-  if (!eventId && !qualId) {
+  const eventId  = url.searchParams.get('event_id');
+  const qualId   = url.searchParams.get('qualification_id');
+  const catId    = url.searchParams.get('category_id');
+  if (!eventId && !qualId && !catId) {
     return new Response(JSON.stringify({ dates: [] }), { headers });
   }
 
-  const simplyUrl = eventId
-    ? `https://eduleo-akademie.simplyorg-seminare.de/event-details?event_id=${eventId}`
-    : `https://eduleo-akademie.simplyorg-seminare.de/qualification-details?qualification_id=${qualId}`;
+  const simplyUrl = catId
+    ? `https://eduleo-akademie.simplyorg-seminare.de/event-list?page=1&categoryId=${catId}`
+    : eventId
+      ? `https://eduleo-akademie.simplyorg-seminare.de/event-details?event_id=${eventId}`
+      : `https://eduleo-akademie.simplyorg-seminare.de/qualification-details?qualification_id=${qualId}`;
 
   try {
     const resp = await fetch(simplyUrl, {
       headers: { 'User-Agent': 'Mozilla/5.0 (compatible; EDULEO/1.0)' }
     });
     const html = await resp.text();
+
+    // Bei Kategorie-Listen: event_ids aus Links extrahieren, um pro Termin direkt zu verlinken
+    const eventIdLinks = [];
+    if (catId) {
+      const linkRe = /event-details\?event_id=(\d+)/g;
+      const seen2 = new Set();
+      let lm;
+      while ((lm = linkRe.exec(html)) !== null) {
+        if (!seen2.has(lm[1])) { seen2.add(lm[1]); eventIdLinks.push(lm[1]); }
+      }
+    }
 
     // Uhrzeiten extrahieren
     const timeRe = /(\d{1,2}:\d{2})\s*Uhr\s*[–\-]\s*(\d{1,2}:\d{2})\s*Uhr/g;
@@ -70,7 +84,10 @@ async function handleTermine(url) {
       if (dt.getMonth() !== moNum - 1) continue;
       if (dt >= today) {
         seen.add(iso);
-        dates.push({ date: `${d}.${mo}.${y}`, dateISO: iso, time: times[ti] || '', url: simplyUrl });
+        const eventUrl = (catId && eventIdLinks[ti])
+          ? `https://eduleo-akademie.simplyorg-seminare.de/event-details?event_id=${eventIdLinks[ti]}`
+          : simplyUrl;
+        dates.push({ date: `${d}.${mo}.${y}`, dateISO: iso, time: times[ti] || '', url: eventUrl });
         ti++;
       }
     }
