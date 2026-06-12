@@ -224,9 +224,17 @@
     <!-- TAGESFORTBILDUNGEN -->
     <div class="filter-section" id="tagesfortbildungen" style="margin-top:72px;">
       <p class="courses-section-title">Tagesfortbildungen – Gezielter Input, sofort anwendbar</p>
-      <div class="course-grid">
+      <div class="tages-cat-filter" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px;">
+        <button class="tages-cat-btn active" data-cat="all">Alle</button>
+        <button class="tages-cat-btn" data-cat="vorschule">Vorschule</button>
+        <button class="tages-cat-btn" data-cat="kitaalltag">Kita Alltag</button>
+        <button class="tages-cat-btn" data-cat="kinderyoga">Kinderyoga</button>
+        <button class="tages-cat-btn" data-cat="projektthemen">Projektthemen</button>
+        <button class="tages-cat-btn" data-cat="kitaleitung">Kita Leitung</button>
+      </div>
+      <div class="course-grid" id="tages-grid">
 
-        <div class="course-card filterable fade-in" data-type="tages">
+        <div class="course-card filterable fade-in" data-type="tages" data-category="kitaalltag">
           <div class="course-card-visual bg-beige">😤</div>
           <div class="course-card-body">
             <p class="course-card-type">Tagesfortbildung</p>
@@ -237,7 +245,7 @@
           </div>
         </div>
 
-        <div class="course-card filterable fade-in delay-1" data-type="tages">
+        <div class="course-card filterable fade-in delay-1" data-type="tages" data-category="kitaalltag">
           <div class="course-card-visual bg-green">🌱</div>
           <div class="course-card-body">
             <p class="course-card-type">Tagesfortbildung</p>
@@ -248,7 +256,7 @@
           </div>
         </div>
 
-        <div class="course-card filterable fade-in delay-2" data-type="tages">
+        <div class="course-card filterable fade-in delay-2" data-type="tages" data-category="kitaalltag">
           <div class="course-card-visual bg-mauve">👥</div>
           <div class="course-card-body">
             <p class="course-card-type">Tagesfortbildung</p>
@@ -259,7 +267,7 @@
           </div>
         </div>
 
-        <div class="course-card filterable fade-in delay-3" data-type="tages">
+        <div class="course-card filterable fade-in delay-3" data-type="tages" data-category="kitaalltag">
           <div class="course-card-visual bg-green">🧩</div>
           <div class="course-card-body">
             <p class="course-card-type">Tagesfortbildung</p>
@@ -270,7 +278,7 @@
           </div>
         </div>
 
-        <div class="course-card filterable fade-in" data-type="tages">
+        <div class="course-card filterable fade-in" data-type="tages" data-category="kitaalltag">
           <div class="course-card-visual bg-beige">👨‍👩‍👧</div>
           <div class="course-card-body">
             <p class="course-card-type">Tagesfortbildung</p>
@@ -281,7 +289,7 @@
           </div>
         </div>
 
-        <div class="course-card filterable fade-in delay-1" data-type="tages">
+        <div class="course-card filterable fade-in delay-1" data-type="tages" data-category="kitaalltag">
           <div class="course-card-visual bg-mauve">💬</div>
           <div class="course-card-body">
             <p class="course-card-type">Tagesfortbildung</p>
@@ -292,7 +300,7 @@
           </div>
         </div>
 
-        <div class="course-card filterable fade-in delay-2" data-type="tages">
+        <div class="course-card filterable fade-in delay-2" data-type="tages" data-category="kitaalltag">
           <div class="course-card-visual bg-green">🛡️</div>
           <div class="course-card-body">
             <p class="course-card-type">Tagesfortbildung</p>
@@ -303,7 +311,7 @@
           </div>
         </div>
 
-        <div class="course-card filterable fade-in delay-3" data-type="tages">
+        <div class="course-card filterable fade-in delay-3" data-type="tages" data-category="kitaalltag">
           <div class="course-card-visual bg-beige">📱</div>
           <div class="course-card-body">
             <p class="course-card-type">Tagesfortbildung · Kooperation</p>
@@ -314,7 +322,7 @@
           </div>
         </div>
 
-        <div class="course-card filterable fade-in" data-type="tages">
+        <div class="course-card filterable fade-in" data-type="tages" data-category="kinderyoga">
           <div class="course-card-visual bg-green">🌿</div>
           <div class="course-card-body">
             <p class="course-card-type">Tagesfortbildung</p>
@@ -325,7 +333,7 @@
           </div>
         </div>
 
-        <div class="course-card filterable fade-in delay-1" data-type="tages">
+        <div class="course-card filterable fade-in delay-1" data-type="tages" data-category="kitaleitung">
           <div class="course-card-visual bg-mauve">🎓</div>
           <div class="course-card-body">
             <p class="course-card-type">Tagesfortbildung</p>
@@ -336,7 +344,7 @@
           </div>
         </div>
 
-        <div class="course-card filterable fade-in delay-2" data-type="tages">
+        <div class="course-card filterable fade-in delay-2" data-type="tages" data-category="kitaleitung">
           <div class="course-card-visual bg-beige">🎓</div>
           <div class="course-card-body">
             <p class="course-card-type">Tagesfortbildung</p>
@@ -347,7 +355,7 @@
           </div>
         </div>
 
-        <div class="course-card filterable fade-in delay-3" data-type="tages">
+        <div class="course-card filterable fade-in delay-3" data-type="tages" data-category="vorschule">
           <div class="course-card-visual bg-green">🏫</div>
           <div class="course-card-body">
             <p class="course-card-type">Tagesfortbildung</p>
@@ -358,7 +366,7 @@
           </div>
         </div>
 
-        <div class="course-card filterable fade-in" data-type="tages">
+        <div class="course-card filterable fade-in" data-type="tages" data-category="projektthemen">
           <div class="course-card-visual bg-beige">📚</div>
           <div class="course-card-body">
             <p class="course-card-type">Tagesfortbildung · Projektthema</p>
@@ -369,7 +377,7 @@
           </div>
         </div>
 
-        <div class="course-card filterable fade-in delay-1" data-type="tages">
+        <div class="course-card filterable fade-in delay-1" data-type="tages" data-category="projektthemen">
           <div class="course-card-visual bg-green">🎵</div>
           <div class="course-card-body">
             <p class="course-card-type">Tagesfortbildung · Projektthema</p>
@@ -380,7 +388,7 @@
           </div>
         </div>
 
-        <div class="course-card filterable fade-in delay-2" data-type="tages">
+        <div class="course-card filterable fade-in delay-2" data-type="tages" data-category="projektthemen">
           <div class="course-card-visual bg-mauve">🔬</div>
           <div class="course-card-body">
             <p class="course-card-type">Tagesfortbildung · Projektthema</p>
@@ -391,7 +399,7 @@
           </div>
         </div>
 
-        <div class="course-card filterable fade-in delay-3" data-type="tages">
+        <div class="course-card filterable fade-in delay-3" data-type="tages" data-category="kitaalltag">
           <div class="course-card-visual bg-beige">💫</div>
           <div class="course-card-body">
             <p class="course-card-type">Tagesfortbildung</p>
@@ -402,7 +410,7 @@
           </div>
         </div>
 
-        <div class="course-card filterable fade-in" data-type="tages">
+        <div class="course-card filterable fade-in" data-type="tages" data-category="kinderyoga">
           <div class="course-card-visual bg-green">🧘</div>
           <div class="course-card-body">
             <p class="course-card-type">Tagesfortbildung · Mit Vorkenntnissen</p>
@@ -413,7 +421,7 @@
           </div>
         </div>
 
-        <div class="course-card filterable fade-in delay-1" data-type="tages">
+        <div class="course-card filterable fade-in delay-1" data-type="tages" data-category="vorschule">
           <div class="course-card-visual bg-mauve">🎒</div>
           <div class="course-card-body">
             <p class="course-card-type">Tagesfortbildung</p>
@@ -492,5 +500,30 @@
 </footer>
 
 <script src="../main.js"></script>
+<script>
+(function(){
+  var btns = document.querySelectorAll('.tages-cat-btn');
+  if (!btns.length) return;
+  btns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      btns.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      var cat = btn.dataset.cat;
+      document.querySelectorAll('#tages-grid .course-card').forEach(function(card){
+        card.style.display = (cat === 'all' || card.dataset.category === cat) ? '' : 'none';
+      });
+    });
+  });
+})();
+</script>
+<style>
+.tages-cat-btn {
+  background: var(--white); border: 2px solid var(--border-color, #e5e1dc);
+  border-radius: 999px; padding: 8px 18px; font-size: 0.88rem; font-weight: 700;
+  cursor: pointer; color: var(--text-light, #6b5e57); transition: all .2s;
+}
+.tages-cat-btn:hover { border-color: var(--green-dark); color: var(--green-dark); }
+.tages-cat-btn.active { background: var(--green-dark); border-color: var(--green-dark); color: var(--white); }
+</style>
 </body>
 </html>
