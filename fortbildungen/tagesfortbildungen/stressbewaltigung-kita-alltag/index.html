@@ -127,15 +127,7 @@
             <div class="option-desc">Wähle deinen Termin und buche direkt. Du erhältst sofort Zugang zum Portal – die Materialien werden eine Woche vor deinem Termin freigeschaltet.</div>
           </div>
         </div>
-        <div style="margin-top:10px;border-radius:var(--radius-sm);overflow:hidden;">
-          <so-seminarlist
-            cmsurl="https://eduleo-akademie.simplyorg-seminare.de/"
-            backendurl="https://eduleo-akademie-admin.simplyorg-seminare.de/"
-            widgetid="1"
-            detailpage="false"
-            showarticle="false">
-          </so-seminarlist>
-        </div>
+        <div class="termine-widget" id="termine-widget" data-category-id="9"><div class="termine-loading">Termine werden geladen…</div></div>
       </div>
       <div class="booking-oder"><span>oder</span></div>
       <div class="booking-option-form">
@@ -223,8 +215,6 @@
   </div>
 </div></footer>
 
-<script type="module" src="https://widgets-v3.simplyorg.de/build/simplyorgwidget.esm.js"></script>
-<script nomodule src="https://widgets-v3.simplyorg.de/build/simplyorgwidget.js"></script>
 <script src="../../../main.js"></script>
 <script>
 var form=document.getElementById('tages-form');
