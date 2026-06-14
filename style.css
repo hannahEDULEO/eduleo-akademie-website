@@ -1598,3 +1598,227 @@ p   { font-size: 1.05rem; line-height: 1.75; }
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
+
+/* ============================================
+   PREMIUM UPGRADE – Animationen & Effekte
+   ============================================ */
+
+/* ── Keyframes ── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-14px); }
+}
+@keyframes float-sm {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-7px); }
+}
+@keyframes blob-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(22px, -16px) scale(1.04); }
+  66%       { transform: translate(-16px, 22px) scale(0.96); }
+}
+@keyframes blob-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(-20px, 14px) scale(0.96); }
+  66%       { transform: translate(14px, -20px) scale(1.04); }
+}
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(90,158,122,0.5); }
+  50%       { box-shadow: 0 0 0 7px rgba(90,158,122,0); }
+}
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+@keyframes progress-fill {
+  from { width: 0%; }
+  to   { width: 75%; }
+}
+@keyframes shimmer-slide {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ── Animierte Hero-Blobs ── */
+.hero-blob-1 { animation: blob-drift-1 14s ease-in-out infinite; }
+.hero-blob-2 { animation: blob-drift-2 11s ease-in-out infinite; }
+.hero-blob-3 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(196,160,146,.10) 0%, transparent 70%);
+  bottom: 10px; right: 25%;
+  animation: blob-drift-2 18s ease-in-out infinite reverse;
+}
+
+/* ── Hero Mockup (Pure CSS, kein Bild) ── */
+.hero-mockup {
+  position: relative; width: 100%; max-width: 440px; margin: 0 auto;
+}
+.hero-mockup-bg-circle {
+  position: absolute; width: 380px; height: 380px;
+  background: var(--green); border-radius: 50%;
+  top: 50%; left: 50%; transform: translate(-40%, -50%);
+  z-index: 0; opacity: 0.65;
+  animation: blob-drift-2 9s ease-in-out infinite;
+}
+.hero-mockup-bg-blob {
+  position: absolute; width: 200px; height: 200px;
+  background: var(--beige); border-radius: 50%;
+  bottom: -30px; right: -20px;
+  z-index: 0; opacity: 0.85;
+  animation: blob-drift-1 11s ease-in-out infinite;
+}
+.hero-mockup-card {
+  position: relative; z-index: 2;
+  background: var(--white); border-radius: var(--radius-xl);
+  padding: 28px 30px;
+  box-shadow: 0 24px 64px rgba(38,29,24,0.13), 0 4px 18px rgba(38,29,24,0.07);
+  border: 1.5px solid var(--border);
+  animation: float 7s ease-in-out infinite;
+}
+.hero-mockup-tag-row {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;
+}
+.hero-mockup-tag {
+  font-size: 0.7rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--green-dark);
+  background: var(--green); padding: 4px 10px; border-radius: var(--radius-full);
+}
+.hero-mockup-live {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 0.78rem; font-weight: 700; color: var(--green-dark);
+}
+.hero-mockup-live-dot {
+  width: 8px; height: 8px; background: var(--green-dark); border-radius: 50%;
+  animation: live-pulse 1.5s ease-in-out infinite;
+}
+.hero-mockup-title {
+  font-size: 1.18rem; font-weight: 900; color: var(--dark); line-height: 1.2; margin-bottom: 18px;
+}
+.hero-mockup-items { display: flex; flex-direction: column; gap: 9px; margin-bottom: 20px; }
+.hero-mockup-item {
+  display: flex; align-items: center; gap: 9px;
+  font-size: 0.87rem; font-weight: 600; color: var(--text);
+}
+.hero-mockup-check {
+  width: 20px; height: 20px; background: var(--green); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.65rem; color: var(--green-deeper); font-weight: 900; flex-shrink: 0;
+}
+.hero-mockup-progress-bar {
+  height: 5px; background: var(--border); border-radius: var(--radius-full); margin-bottom: 10px; overflow: hidden;
+}
+.hero-mockup-progress-fill {
+  height: 100%; width: 0%;
+  background: linear-gradient(90deg, var(--green-dark), var(--green-deeper));
+  border-radius: var(--radius-full);
+  animation: progress-fill 1.8s 0.8s ease-out forwards;
+}
+.hero-mockup-meta { font-size: 0.77rem; color: var(--text-light); font-weight: 600; }
+
+/* Float Badges animiert */
+.hero-float-badge { animation: float-sm 5s ease-in-out infinite; }
+.hero-float-1 { animation-delay: 0s; }
+.hero-float-2 { animation-delay: 1.8s; }
+.hero-float-3 { animation-delay: 3.2s; }
+
+/* ── Trust Dots pulsieren ── */
+.hero-trust-dot { animation: pulse-dot 2.2s ease-in-out infinite; }
+.hero-trust-item:nth-child(2) .hero-trust-dot { animation-delay: 0.7s; }
+.hero-trust-item:nth-child(3) .hero-trust-dot { animation-delay: 1.4s; }
+
+/* ── Premium Button ── */
+.btn-primary {
+  background: linear-gradient(270deg, #261D18 0%, #3D302A 50%, #261D18 100%);
+  background-size: 200% auto;
+  transition: background-position 0.6s ease, transform 0.25s, box-shadow 0.25s;
+}
+.btn-primary:hover {
+  background-position: right center;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(38,29,24,0.32);
+}
+
+/* ── Pain Cards aufgewertet ── */
+.pain-card { border-left: 3px solid transparent; position: relative; overflow: hidden; }
+.pain-card::before {
+  content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px;
+  background: linear-gradient(to bottom, var(--green-dark), var(--mauve-dark));
+}
+.pain-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+.pain-card-icon {
+  width: 50px; height: 50px; line-height: 1;
+  background: linear-gradient(135deg, var(--green) 0%, rgba(210,234,218,0.3) 100%);
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; margin-bottom: 16px;
+}
+
+/* ── USP Items aufgewertet ── */
+.usp-item { position: relative; overflow: hidden; }
+.usp-item::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--green-dark), var(--mauve-dark));
+  transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease;
+}
+.usp-item:hover::after { transform: scaleX(1); }
+.usp-item:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.usp-icon {
+  background: linear-gradient(135deg, var(--green) 0%, rgba(210,234,218,0.3) 100%);
+  transition: transform 0.3s ease;
+}
+.usp-item:hover .usp-icon { transform: scale(1.08) rotate(-4deg); }
+
+/* ── Kurs-Karten aufgewertet ── */
+.course-card { position: relative; overflow: hidden; }
+.course-card::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(90,158,122,0.06) 100%);
+  opacity: 0; transition: opacity 0.35s; z-index: 1; pointer-events: none;
+}
+.course-card:hover::after { opacity: 1; }
+.course-card:hover { transform: translateY(-8px); box-shadow: 0 22px 50px rgba(38,29,24,0.13); }
+.course-card-visual { transition: transform 0.35s ease; }
+.course-card:hover .course-card-visual { transform: scale(1.08) rotate(-3deg); }
+
+/* ── Quiz CTA Banner aufgewertet ── */
+.quiz-cta-banner {
+  background: linear-gradient(135deg, var(--dark) 0%, #3D302A 100%);
+  color: var(--white); border-radius: var(--radius-xl);
+  padding: 42px 52px; box-shadow: 0 18px 44px rgba(38,29,24,0.22);
+  position: relative; overflow: hidden;
+}
+.quiz-cta-banner::before {
+  content: ''; position: absolute; top: -70px; right: -70px;
+  width: 220px; height: 220px;
+  background: var(--green); border-radius: 50%; opacity: 0.07;
+  pointer-events: none;
+}
+.quiz-cta-banner::after {
+  content: ''; position: absolute; bottom: -50px; left: -50px;
+  width: 160px; height: 160px;
+  background: var(--mauve); border-radius: 50%; opacity: 0.09;
+  pointer-events: none;
+}
+.quiz-cta-banner h3 { color: var(--white); }
+.quiz-cta-banner p  { color: rgba(255,255,255,0.72); }
+.quiz-cta-banner .quiz-cta-icon { filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2)); }
+
+/* ── Stats Bar – leichter Gradient ── */
+.stats-bar {
+  background: linear-gradient(135deg, #261D18 0%, #2e221c 50%, #261D18 100%);
+  position: relative; overflow: hidden;
+}
+.stats-bar::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 20% 50%, rgba(210,234,218,0.05) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 50%, rgba(196,160,146,0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+.stat-number { letter-spacing: -0.02em; }
+
+/* ── Sektions-Dekor-Punkte ── */
+.section-dot-grid {
+  position: absolute; pointer-events: none;
+  background-image: radial-gradient(circle, rgba(90,158,122,0.14) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+}
