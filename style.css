@@ -1057,7 +1057,7 @@ p   { font-size: 1.05rem; line-height: 1.75; }
   .kurs-hero-visual { display: none; }
   .kurs-fakten-row { grid-template-columns: repeat(2, 1fr); }
   .kurs-body-grid { grid-template-columns: 1fr; }
-  .kurs-sidebar { display: none; }
+  .kurs-sidebar { display: block; margin-top: 48px; }
 
   .about-mission-grid { grid-template-columns: 1fr; gap: 40px; }
   .team-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1524,8 +1524,8 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 @media (max-width: 640px) {
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .stat-item:nth-child(2) { border-right: none; }
-  .stat-item:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.12); }
-  .stat-item:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.12); }
+  .stat-item:nth-child(3) { border-top: 1px solid var(--border); }
+  .stat-item:nth-child(4) { border-top: 1px solid var(--border); }
 }
 
 /* ── Quiz CTA Banner ───────────────────────── */

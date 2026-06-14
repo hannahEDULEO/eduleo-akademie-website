@@ -4,9 +4,12 @@
 (function () {
   var v = document.querySelector('.hero-video');
   if (!v) return;
-  if (v.readyState >= 3) { v.classList.add('loaded'); return; }
-  v.addEventListener('canplaythrough', function () { v.classList.add('loaded'); }, { once: true });
-  v.addEventListener('loadeddata', function () { v.classList.add('loaded'); }, { once: true });
+  function show() { v.classList.add('loaded'); }
+  if (v.readyState >= 3) { show(); return; }
+  v.addEventListener('canplaythrough', show, { once: true });
+  v.addEventListener('loadeddata', show, { once: true });
+  // Fallback für Mobile-Browser, die Events nicht zuverlässig feuern
+  setTimeout(show, 2500);
 })();
 
 /* ── SimplyOrg Termin-Widget ─────────────── */
@@ -56,11 +59,10 @@
         });
       }
     } else {
-      widget.innerHTML = '<p class="termin-empty">Aktuell keine Termine geplant.<br>Schreib uns – wir setzen dich auf die Warteliste.</p>'
-        + '<a href="' + portalUrl + '" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%;margin-top:8px;font-size:0.84rem;">Im Portal ansehen →</a>';
+      widget.innerHTML = '<p class="termin-empty">Aktuell keine Termine geplant.<br>Schreib uns – wir setzen dich auf die Warteliste.</p>';
     }
   } catch (e) {
-    widget.innerHTML = '<a href="' + portalUrl + '" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%;font-size:0.84rem;">Termine im Portal ansehen →</a>';
+    widget.innerHTML = '<p class="termin-empty">Termine konnten nicht geladen werden.<br>Schreib uns – wir helfen dir weiter.</p>';
   }
 })();
 
