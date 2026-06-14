@@ -1491,7 +1491,7 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 
 /* ── Stats Bar ─────────────────────────────── */
 .stats-bar {
-  background: var(--white);
+  background: #ffffff !important;
   padding: 52px 0;
   border-bottom: 1.5px solid var(--border);
 }
