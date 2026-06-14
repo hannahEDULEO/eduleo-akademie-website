@@ -1832,17 +1832,6 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 .quiz-cta-banner p  { color: rgba(255,255,255,0.72); }
 .quiz-cta-banner .quiz-cta-icon { filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2)); }
 
-/* ── Stats Bar – leichter Gradient ── */
-.stats-bar {
-  background: linear-gradient(135deg, #261D18 0%, #2e221c 50%, #261D18 100%);
-  position: relative; overflow: hidden;
-}
-.stats-bar::before {
-  content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 20% 50%, rgba(210,234,218,0.05) 0%, transparent 60%),
-              radial-gradient(ellipse at 80% 50%, rgba(196,160,146,0.05) 0%, transparent 60%);
-  pointer-events: none;
-}
 .stat-number { letter-spacing: -0.02em; }
 
 /* ── Sektions-Dekor-Punkte ── */
