@@ -40,13 +40,12 @@
 
     if (data.dates && data.dates.length > 0) {
       widget.innerHTML = data.dates.map(function (d) {
-        return '<a class="termin-card" href="' + portalUrl + '" target="_blank" rel="noopener">'
+        return '<a class="termin-card" href="' + (d.url || portalUrl) + '" target="_blank" rel="noopener">'
           + '<div class="termin-card-info">'
           + '<span class="termin-datum">' + fmtDate(d.date) + '</span>'
           + (d.time ? '<span class="termin-zeit">' + d.time + '</span>' : '')
           + '</div><span class="termin-arrow">→</span></a>';
-      }).join('')
-        + '<a href="' + portalUrl + '" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%;margin-top:10px;font-size:0.84rem;">Alle Termine im Portal →</a>';
+      }).join('');
 
       if (select && select.tagName === 'SELECT') {
         data.dates.forEach(function (d) {
