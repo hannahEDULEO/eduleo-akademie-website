@@ -63,6 +63,12 @@ async function handleTermine(url) {
     let tm;
     while ((tm = timeRe.exec(html)) !== null) times.push(`${tm[1]}–${tm[2]} Uhr`);
 
+    // Enddaten aus Datumsbereichen (z.B. "10.09.26 – 17.12.26") sammeln und überspringen
+    const endDates = new Set();
+    const rangeRe = /\d{2}\.\d{2}\.\d{2}\s*[–\-]\s*(\d{2})\.(\d{2})\.(\d{2})(?!\d)/g;
+    let rm;
+    while ((rm = rangeRe.exec(html)) !== null) endDates.add(`${rm[1]}.${rm[2]}.${rm[3]}`);
+
     // Daten extrahieren (DD.MM.YY, nicht als Teil einer längeren Zahl)
     const dateRe = /(\d{2})\.(\d{2})\.(\d{2})(?!\d)/g;
     const today = new Date();
@@ -77,6 +83,8 @@ async function handleTermine(url) {
       const dNum  = +d;
       // Ungültige Monate (> 12) oder Tage (> 31) überspringen
       if (moNum < 1 || moNum > 12 || dNum < 1 || dNum > 31) continue;
+      // Enddaten aus Datumsbereichen überspringen (nur Kursstart anzeigen)
+      if (endDates.has(`${d}.${mo}.${y}`)) continue;
       const iso = `20${y}-${mo}-${d}`;
       if (seen.has(iso)) continue;
       const dt = new Date(+`20${y}`, moNum - 1, dNum);
