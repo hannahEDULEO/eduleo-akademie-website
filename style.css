@@ -1032,10 +1032,8 @@ p   { font-size: 1.05rem; line-height: 1.75; }
   .nav-links, .nav-cta { display: none; }
   .hamburger { display: flex; }
 
-  /* Video auf Mobil ausblenden – dunkler Gradient stattdessen */
-  .hero-video { display: none; }
-  .hero { background: linear-gradient(135deg, #261D18 0%, #2e221c 60%, #3a2820 100%); }
-  .hero-video-overlay { background: none; }
+  /* Video auf Mobil: mittig zuschneiden */
+  .hero-video { object-position: center center; }
 
   .hero-inner { grid-template-columns: 1fr; gap: 40px; padding: 60px 0; }
   .hero-visual { display: none; }
