@@ -97,29 +97,6 @@
         </div>
       </div>
 
-      <div class="hero-visual slide-right delay-2">
-        <div class="hero-mockup">
-          <div class="hero-mockup-bg-circle"></div>
-          <div class="hero-mockup-bg-blob"></div>
-          <div class="hero-mockup-card">
-            <div class="hero-mockup-tag-row">
-              <span class="hero-mockup-tag">3-Monats-Fortbildung</span>
-              <span class="hero-mockup-live"><span class="hero-mockup-live-dot"></span>Live</span>
-            </div>
-            <div class="hero-mockup-title">Kita-ExpertIn für<br>ADHS &amp; Autismus</div>
-            <div class="hero-mockup-items">
-              <div class="hero-mockup-item"><span class="hero-mockup-check">✓</span>8 Live-Termine via Zoom</div>
-              <div class="hero-mockup-item"><span class="hero-mockup-check">✓</span>Zertifikat inklusive</div>
-              <div class="hero-mockup-item"><span class="hero-mockup-check">✓</span>Workbook &amp; Materialien</div>
-            </div>
-            <div class="hero-mockup-progress-bar"><div class="hero-mockup-progress-fill"></div></div>
-            <div class="hero-mockup-meta">Nächster Start: Herbst 2026 &nbsp;·&nbsp; 900 €</div>
-          </div>
-          <div class="hero-float-badge hero-float-1">📜 Zertifikat inklusive</div>
-          <div class="hero-float-badge hero-float-2">👩‍🏫 Expertinnen-Team</div>
-          <div class="hero-float-badge hero-float-3">⭐ Sofort buchbar</div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -534,12 +511,39 @@
       <span class="badge badge-green" style="margin-bottom:18px;">Kostenlos &amp; jederzeit abbestellbar</span>
       <h2 id="newsletter-title">Bleib auf dem Laufenden.</h2>
       <p>Neue Fortbildungen, Praxistipps und Einblicke direkt in dein Postfach. Kein Spam, nur echte Inhalte.</p>
-      <!-- SimplyOrg Newsletter-Formular hier einbetten -->
-      <form class="newsletter-form" action="#" method="post" aria-label="Newsletter anmelden">
-        <input type="email" name="email" class="newsletter-input" placeholder="deine@email.de" required aria-label="E-Mail-Adresse">
-        <button type="submit" class="btn btn-green">Anmelden</button>
+      <form class="newsletter-form" id="newsletter-form" action="#" method="post" aria-label="Newsletter anmelden" style="flex-direction:column;gap:12px;max-width:480px;margin:0 auto;">
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <input type="text" name="vorname" class="newsletter-input" placeholder="Dein Vorname" required aria-label="Vorname" style="flex:1;min-width:140px;">
+          <input type="email" name="email" class="newsletter-input" placeholder="deine@email.de" required aria-label="E-Mail-Adresse" style="flex:2;min-width:200px;">
+        </div>
+        <button type="submit" class="btn btn-green" style="width:100%;">Jetzt anmelden →</button>
       </form>
-      <p class="newsletter-note">Durch die Anmeldung stimmst du der Verarbeitung deiner E-Mail-Adresse zu. Datenschutzhinweise findest du in unserer <a href="datenschutz.html" style="color:rgba(255,255,255,0.5);text-decoration:underline;">Datenschutzerklärung</a>.</p>
+      <div id="newsletter-success" style="display:none;background:rgba(255,255,255,0.12);border-radius:12px;padding:20px 24px;margin-top:8px;max-width:480px;margin-left:auto;margin-right:auto;">
+        <strong style="color:#fff;">✓ Fast geschafft!</strong>
+        <p style="margin:6px 0 0;color:rgba(255,255,255,0.8);font-size:0.9rem;">Du bekommst gleich eine Bestätigungsmail – bitte klick darin auf den Link, um deine Anmeldung abzuschließen.</p>
+      </div>
+      <p class="newsletter-note">Durch die Anmeldung stimmst du der Verarbeitung deiner Daten gemäß unserer <a href="datenschutz.html" style="color:rgba(255,255,255,0.5);text-decoration:underline;">Datenschutzerklärung</a> zu. Abmeldung jederzeit möglich.</p>
+      <script>
+        (function(){
+          var f = document.getElementById('newsletter-form');
+          if(!f) return;
+          f.addEventListener('submit', function(e){
+            e.preventDefault();
+            var vorname = f.querySelector('[name="vorname"]').value.trim();
+            var email   = f.querySelector('[name="email"]').value.trim();
+            var subject = encodeURIComponent('Newsletter-Anmeldung, EDULEO Akademie');
+            var body    = encodeURIComponent(
+              'Neue Newsletter-Anmeldung:\n\n' +
+              'Vorname: ' + vorname + '\n' +
+              'E-Mail:  ' + email + '\n\n' +
+              '→ Bitte Kontakt in SimplyOrg anlegen und Double-Opt-In-E-Mail senden.'
+            );
+            window.open('mailto:kontakt@eduleo-akademie.de?subject=' + subject + '&body=' + body);
+            f.style.display = 'none';
+            document.getElementById('newsletter-success').style.display = 'block';
+          });
+        })();
+      </script>
     </div>
   </div>
 </section>
