@@ -276,7 +276,10 @@ p   { font-size: 1.05rem; line-height: 1.75; }
   width: 100%; height: 100%;
   object-fit: cover; object-position: center;
   z-index: 0;
+  opacity: 0;
+  transition: opacity 1s ease;
 }
+.hero-video.loaded { opacity: 1; }
 .hero-video-overlay {
   position: absolute; inset: 0; z-index: 1;
   background: linear-gradient(
@@ -1028,6 +1031,11 @@ p   { font-size: 1.05rem; line-height: 1.75; }
   :root { --nav-h: 66px; }
   .nav-links, .nav-cta { display: none; }
   .hamburger { display: flex; }
+
+  /* Video auf Mobil ausblenden – dunkler Gradient stattdessen */
+  .hero-video { display: none; }
+  .hero { background: linear-gradient(135deg, #261D18 0%, #2e221c 60%, #3a2820 100%); }
+  .hero-video-overlay { background: none; }
 
   .hero-inner { grid-template-columns: 1fr; gap: 40px; padding: 60px 0; }
   .hero-visual { display: none; }

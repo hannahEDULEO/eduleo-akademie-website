@@ -1,5 +1,14 @@
 /* EDULEO Akademie – main.js */
 
+/* ── Hero Video Fade-in ─────────────────────── */
+(function () {
+  var v = document.querySelector('.hero-video');
+  if (!v) return;
+  if (v.readyState >= 3) { v.classList.add('loaded'); return; }
+  v.addEventListener('canplaythrough', function () { v.classList.add('loaded'); }, { once: true });
+  v.addEventListener('loadeddata', function () { v.classList.add('loaded'); }, { once: true });
+})();
+
 /* ── SimplyOrg Termin-Widget ─────────────── */
 (async function () {
   var widget = document.getElementById('termine-widget');
