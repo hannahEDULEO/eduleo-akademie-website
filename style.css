@@ -1491,8 +1491,9 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 
 /* ── Stats Bar ─────────────────────────────── */
 .stats-bar {
-  background: var(--dark);
+  background: var(--white);
   padding: 52px 0;
+  border-bottom: 1.5px solid var(--border);
 }
 .stats-grid {
   display: grid;
@@ -1501,21 +1502,21 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 .stat-item {
   text-align: center;
   padding: 24px 20px;
-  border-right: 1px solid rgba(255,255,255,0.12);
+  border-right: 1px solid var(--border);
 }
 .stat-item:last-child { border-right: none; }
 .stat-number {
   display: block;
   font-size: 3.4rem;
   font-weight: 900;
-  color: var(--green);
+  color: var(--green-dark);
   line-height: 1;
   margin-bottom: 10px;
   font-family: var(--font);
 }
 .stat-label {
   font-size: 0.8rem;
-  color: rgba(255,255,255,0.55);
+  color: var(--text-light);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-weight: 700;
