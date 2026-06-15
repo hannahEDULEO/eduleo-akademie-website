@@ -287,16 +287,18 @@
       if (!valid) return;
 
       var data = new FormData(form);
-      var body = 'BRING A FRIEND, ANMELDUNG\n' + '='.repeat(30) + '\n\n';
-      data.forEach(function (value, key) { body += key + ': ' + value + '\n'; });
-
-      var subject = encodeURIComponent('Bring a Friend Anmeldung, EDULEO Akademie');
-      var bodyEnc = encodeURIComponent(body);
-      window.open('mailto:kontakt@eduleo-akademie.de?subject=' + subject + '&body=' + bodyEnc);
-
-      form.style.display = 'none';
-      success.classList.add('visible');
-      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      fetch('https://api.web3forms.com/submit', { method: 'POST', body: data })
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        if (d.success) {
+          form.style.display = 'none';
+          success.classList.add('visible');
+          success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      })
+      .catch(function() {
+        alert('Es ist ein Fehler aufgetreten. Bitte versuche es erneut oder schreibe uns direkt an kontakt@eduleo-akademie.de');
+      });
     });
   }
 </script>
