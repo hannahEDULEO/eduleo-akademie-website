@@ -642,8 +642,8 @@ p   { font-size: 1.05rem; line-height: 1.75; }
    NEWSLETTER
    ============================================ */
 .newsletter {
-  background: linear-gradient(rgba(38,29,24,0.78), rgba(38,29,24,0.78)),
-              url('assets/Newsletter.png') center/cover no-repeat;
+  background: linear-gradient(rgba(38,29,24,0.58), rgba(38,29,24,0.58)),
+              url('assets/newsletter-bg.png') center/cover no-repeat;
   padding: 72px 0;
 }
 .newsletter-inner { display: grid; grid-template-columns: 1fr; gap: 0; align-items: center; max-width: 680px; margin: 0 auto; }
