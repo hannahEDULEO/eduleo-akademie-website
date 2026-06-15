@@ -466,6 +466,7 @@ p   { font-size: 1.05rem; line-height: 1.75; }
   height: 140px; display: flex; align-items: center; justify-content: center;
   font-size: 3.2rem; position: relative; overflow: hidden;
 }
+.course-card-visual img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; }
 .course-card-visual.bg-green  { background: var(--green); }
 .course-card-visual.bg-beige  { background: var(--beige); }
 .course-card-visual.bg-mauve  { background: var(--mauve-light); }
