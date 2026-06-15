@@ -524,7 +524,7 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 /* ============================================
    TESTIMONIALS
    ============================================ */
-.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
 .testimonial-card {
   background: var(--white); border-radius: var(--radius-lg); padding: 30px 26px;
   box-shadow: var(--shadow-sm); border: 1.5px solid var(--border);
@@ -657,6 +657,12 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 .footer-col a  { font-size: 0.92rem; color: rgba(255,255,255,0.65); transition: color var(--transition); }
 .footer-col a:hover { color: var(--white); }
 
+.footer-mini-impressum {
+  border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; margin-bottom: 16px;
+  text-align: center;
+}
+.footer-mini-impressum p { font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.7; }
+.footer-mini-impressum a { color: rgba(255,255,255,0.55); text-decoration: underline; }
 .footer-bottom {
   border-top: 1px solid rgba(255,255,255,0.08); padding-top: 28px;
   display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
