@@ -111,6 +111,11 @@
         <p>Fülle alle Pflichtfelder aus, wir tragen euch dann gemeinsam ins Buchungssystem ein.</p>
       </div>
 
+      <button class="form-toggle-btn" type="button" aria-expanded="false" onclick="var c=this.nextElementSibling;var o=c.classList.toggle('open');this.setAttribute('aria-expanded',o);">
+        <span>Formular ausklappen</span>
+        <span class="form-toggle-arrow">▼</span>
+      </button>
+      <div class="form-collapsible">
       <form class="anfrage-form fade-in" id="baf-form" novalidate>
 
         <div class="form-group">
@@ -193,6 +198,7 @@
         </div>
 
       </form>
+      </div>
 
       <div class="form-success" id="baf-success">
         <span class="form-success-icon">✓</span>
