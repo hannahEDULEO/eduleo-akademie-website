@@ -455,6 +455,7 @@ p   { font-size: 1.05rem; line-height: 1.75; }
   display: flex; flex-direction: column; position: relative; cursor: pointer;
   transition: transform var(--transition), box-shadow var(--transition);
 }
+.course-card--beige { background: var(--beige); border-color: rgba(196,160,146,0.3); }
 .course-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
 .course-card-link::after {
   content: ''; position: absolute; inset: 0;
