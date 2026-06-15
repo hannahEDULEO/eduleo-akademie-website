@@ -170,6 +170,9 @@
         <div class="form-collapsible">
         <p class="option-desc" style="margin:10px 0 12px;">Lieber klassisch? Füll das Formular aus – wir kümmern uns um alles.</p>
         <form id="m3-form" novalidate style="display:flex;flex-direction:column;gap:12px;">
+              <input type="hidden" name="access_key" value="cedf781f-63db-4e25-b30d-49ee10a44b96">
+              <input type="hidden" name="subject" value="Anmeldung: Kita Fachberaterin für Inklusion">
+              <input type="hidden" name="from_name" value="EDULEO Akademie Website">
           <div class="form-group">
             <label class="form-label" for="m3-termin">Gewünschter Kursstart <span class="req">*</span></label>
           <select class="form-input" id="m3-termin" name="Gewünschter Kursstart" required style="font-size:0.9rem;padding:10px 12px;">
@@ -213,10 +216,11 @@ req.forEach(function(el){el.style.borderColor="";
 if(el.type==="checkbox"&&!el.checked){ok=false;}
 else if(el.type!=="checkbox"&&!el.value.trim()){ok=false;el.style.borderColor="#e05252";}});
 if(!ok)return;
-var data=new FormData(m3f);var body="3-MONATS-FORTBILDUNG: FachberaterIn für Inklusion\n"+"=".repeat(30)+"\n\n";
-data.forEach(function(v,k){body+=k+": "+v+"\n";});
-window.open("mailto:kontakt@eduleo-akademie.de?subject="+encodeURIComponent("Anmeldung 3-Monats-Fortbildung, FachberaterIn für Inklusion")+"&body="+encodeURIComponent(body));
-m3f.style.display="none";m3s.style.display="block";});}
+var data=new FormData(m3f);
+fetch('https://api.web3forms.com/submit',{method:'POST',body:data})
+.then(function(r){return r.json();})
+.then(function(d){if(d.success){m3f.style.display='none';m3s.style.display='block';}})
+.catch(function(){alert('Es ist ein Fehler aufgetreten. Bitte versuche es erneut oder schreibe uns direkt an kontakt@eduleo-akademie.de');});});}
 </script>
 </body>
 </html>
