@@ -1,5 +1,72 @@
 /* EDULEO Akademie – main.js */
 
+/* ── Testimonials Karussell ─────────────────── */
+(function () {
+  var track = document.getElementById('tTrack');
+  var dotsWrap = document.getElementById('tDots');
+  if (!track || !dotsWrap) return;
+
+  var cards = Array.from(track.querySelectorAll('.testimonial-card'));
+  var total = cards.length;
+  var current = 0;
+  var autoTimer;
+  var GAP = 22;
+
+  function visibleCount() {
+    return window.innerWidth < 768 ? 1 : 3;
+  }
+
+  function maxIndex() {
+    return Math.max(0, total - visibleCount());
+  }
+
+  function cardWidth() {
+    return cards[0].getBoundingClientRect().width;
+  }
+
+  function goTo(n) {
+    current = Math.max(0, Math.min(n, maxIndex()));
+    track.style.transform = 'translateX(-' + (current * (cardWidth() + GAP)) + 'px)';
+    buildDots();
+  }
+
+  function buildDots() {
+    var vis = visibleCount();
+    var max = maxIndex();
+    dotsWrap.innerHTML = '';
+    for (var i = 0; i <= max; i++) {
+      var dot = document.createElement('button');
+      dot.className = 't-dot' + (i === current ? ' active' : '');
+      dot.setAttribute('aria-label', 'Testimonial ' + (i + 1));
+      (function(idx) { dot.addEventListener('click', function() { goTo(idx); resetTimer(); }); })(i);
+      dotsWrap.appendChild(dot);
+    }
+  }
+
+  function resetTimer() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(function () {
+      goTo(current >= maxIndex() ? 0 : current + 1);
+    }, 6000);
+  }
+
+  var prevBtn = document.querySelector('.t-prev');
+  var nextBtn = document.querySelector('.t-next');
+  if (prevBtn) prevBtn.addEventListener('click', function () { goTo(current - 1); resetTimer(); });
+  if (nextBtn) nextBtn.addEventListener('click', function () { goTo(current + 1); resetTimer(); });
+
+  var outer = document.querySelector('.t-carousel-outer');
+  if (outer) {
+    outer.addEventListener('mouseenter', function () { clearInterval(autoTimer); });
+    outer.addEventListener('mouseleave', resetTimer);
+  }
+
+  window.addEventListener('resize', function () { goTo(current); });
+
+  goTo(0);
+  resetTimer();
+})();
+
 /* ── Hero Video Fade-in ─────────────────────── */
 (function () {
   var v = document.querySelector('.hero-video');
@@ -191,3 +258,4 @@ if (filterTabs.length) {
     });
   });
 }
+
