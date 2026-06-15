@@ -162,9 +162,11 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 
 /* ── Section-Label ──────────────────────────── */
 .section-label {
-  display: block; font-size: 1.05rem; font-weight: 900;
+  display: inline-block; font-size: 0.82rem; font-weight: 900;
   letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--green-dark); margin-bottom: 16px;
+  color: var(--green-dark); margin-bottom: 20px;
+  background: var(--green); border-radius: var(--radius-full);
+  padding: 7px 20px;
 }
 .section-label-dark { color: var(--mauve); }
 
