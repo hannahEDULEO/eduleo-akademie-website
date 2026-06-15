@@ -11,27 +11,34 @@
   var current = 0;
   var autoTimer;
   var GAP = 22;
+  var viewport = track.parentElement;
 
-  function visibleCount() {
-    return window.innerWidth < 768 ? 1 : 3;
+  function isMobile() { return window.innerWidth < 768; }
+  function visibleCount() { return isMobile() ? 1 : 3; }
+  function maxIndex() { return Math.max(0, total - visibleCount()); }
+
+  function updateLayout() {
+    if (isMobile()) {
+      var w = viewport.offsetWidth;
+      track.style.gap = '0px';
+      cards.forEach(function(c) { c.style.width = w + 'px'; c.style.flexBasis = w + 'px'; });
+    } else {
+      track.style.gap = '';
+      cards.forEach(function(c) { c.style.width = ''; c.style.flexBasis = ''; });
+    }
   }
 
-  function maxIndex() {
-    return Math.max(0, total - visibleCount());
-  }
+  function cardWidth() { return cards[0].getBoundingClientRect().width; }
 
-  function cardWidth() {
-    return cards[0].getBoundingClientRect().width;
-  }
+  function stepSize() { return isMobile() ? cardWidth() : cardWidth() + GAP; }
 
   function goTo(n) {
     current = Math.max(0, Math.min(n, maxIndex()));
-    track.style.transform = 'translateX(-' + (current * (cardWidth() + GAP)) + 'px)';
+    track.style.transform = 'translateX(-' + (current * stepSize()) + 'px)';
     buildDots();
   }
 
   function buildDots() {
-    var vis = visibleCount();
     var max = maxIndex();
     dotsWrap.innerHTML = '';
     for (var i = 0; i <= max; i++) {
@@ -61,8 +68,9 @@
     outer.addEventListener('mouseleave', resetTimer);
   }
 
-  window.addEventListener('resize', function () { goTo(current); });
+  window.addEventListener('resize', function () { updateLayout(); goTo(current); });
 
+  updateLayout();
   goTo(0);
   resetTimer();
 })();

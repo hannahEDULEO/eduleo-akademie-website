@@ -1136,7 +1136,7 @@ p   { font-size: 1.05rem; line-height: 1.75; }
   .team-banner p { max-width: 100%; }
   .team-banner-actions { justify-content: center; }
 
-  .testimonial-card { flex: 0 0 calc(100% - 0px); }
+  .testimonial-card { flex: 0 0 auto; }
   .t-arrow { width: 36px; height: 36px; font-size: 1.3rem; }
   .about-home-grid { grid-template-columns: 1fr; gap: 40px; }
   .about-home-visual { order: -1; }
