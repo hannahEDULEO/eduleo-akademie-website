@@ -98,18 +98,17 @@
 (async function () {
   var widget = document.getElementById('termine-widget');
   if (!widget) return;
-  var eventId = widget.dataset.eventId;
-  var qualId  = widget.dataset.qualificationId;
-  var catId   = widget.dataset.categoryId;
-  if (!eventId && !qualId && !catId) return;
+  var eventId  = widget.dataset.eventId;
+  var eventIds = widget.dataset.eventIds;
+  var qualId   = widget.dataset.qualificationId;
+  var catId    = widget.dataset.categoryId;
+  if (!eventId && !eventIds && !qualId && !catId) return;
 
-  var param = catId    ? 'category_id=' + catId
-            : eventId  ? 'event_id=' + eventId
-            :            'qualification_id=' + qualId;
+  var firstId = eventIds ? eventIds.split(',')[0].trim() : eventId;
   var portalUrl = catId
     ? 'https://eduleo-akademie.simplyorg-seminare.de/event-list?page=1&categoryId=' + catId
-    : eventId
-      ? 'https://eduleo-akademie.simplyorg-seminare.de/event-details?event_id=' + eventId
+    : firstId
+      ? 'https://eduleo-akademie.simplyorg-seminare.de/event-details?event_id=' + firstId
       : 'https://eduleo-akademie.simplyorg-seminare.de/qualification-details?qualification_id=' + qualId;
 
   var MONATE = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
@@ -119,12 +118,30 @@
   }
 
   try {
-    var resp = await fetch('/api/termine?' + param);
-    var data = await resp.json();
+    var allDates = [];
+
+    if (eventIds) {
+      var ids = eventIds.split(',').map(function(s) { return s.trim(); });
+      var responses = await Promise.all(ids.map(function(id) {
+        return fetch('/api/termine?event_id=' + id).then(function(r) { return r.json(); });
+      }));
+      responses.forEach(function(res) {
+        if (res.dates) allDates = allDates.concat(res.dates);
+      });
+      allDates.sort(function(a, b) { return a.dateISO < b.dateISO ? -1 : 1; });
+    } else {
+      var param = catId    ? 'category_id=' + catId
+                : eventId  ? 'event_id=' + eventId
+                :            'qualification_id=' + qualId;
+      var resp = await fetch('/api/termine?' + param);
+      var data = await resp.json();
+      allDates = data.dates || [];
+    }
+
     var select = document.getElementById('tf-termin') || document.getElementById('m3-termin');
 
-    if (data.dates && data.dates.length > 0) {
-      widget.innerHTML = data.dates.map(function (d) {
+    if (allDates.length > 0) {
+      widget.innerHTML = allDates.map(function (d) {
         return '<a class="termin-card" href="' + (d.url || portalUrl) + '" target="_blank" rel="noopener">'
           + '<div class="termin-card-info">'
           + '<span class="termin-datum">' + fmtDate(d.date) + '</span>'
@@ -133,7 +150,7 @@
       }).join('');
 
       if (select && select.tagName === 'SELECT') {
-        data.dates.forEach(function (d) {
+        allDates.forEach(function (d) {
           var opt = document.createElement('option');
           opt.value = d.date;
           opt.textContent = fmtDate(d.date) + (d.time ? ' · ' + d.time : '');
