@@ -1060,8 +1060,9 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 }
 .team-card-photo {
   background: var(--green); overflow: hidden;
+  height: 220px; display: flex; align-items: center; justify-content: center;
 }
-.team-card-photo img { width: 100%; height: auto; display: block; }
+.team-card-photo img { width: 180px; height: auto; display: block; }
 .team-card-photo.bg-mauve { background: var(--mauve-light); }
 .team-card-photo.bg-beige { background: var(--beige); }
 .team-card-body { padding: 22px; }
