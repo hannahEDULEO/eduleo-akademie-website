@@ -461,16 +461,18 @@
       if (!valid) { return; }
 
       const data = new FormData(form);
-      let body = 'TEAMFORTBILDUNG ANFRAGE\n' + '='.repeat(30) + '\n\n';
-      data.forEach(function (value, key) { body += key + ': ' + value + '\n'; });
-
-      const subject = encodeURIComponent('Teamfortbildung Anfrage, EDULEO Akademie');
-      const bodyEnc = encodeURIComponent(body);
-      window.open('mailto:kontakt@eduleo-akademie.de?subject=' + subject + '&body=' + bodyEnc);
-
-      form.style.display = 'none';
-      success.classList.add('visible');
-      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      fetch('https://api.web3forms.com/submit', { method: 'POST', body: data })
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        if (d.success) {
+          form.style.display = 'none';
+          success.classList.add('visible');
+          success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      })
+      .catch(function() {
+        alert('Es ist ein Fehler aufgetreten. Bitte versuche es erneut oder schreibe uns direkt an kontakt@eduleo-akademie.de');
+      });
     });
   }
 </script>
