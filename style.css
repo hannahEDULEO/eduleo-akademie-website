@@ -635,7 +635,7 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 /* ============================================
    NEWSLETTER
    ============================================ */
-.newsletter { background: var(--dark); padding: 72px 0; }
+.newsletter { background: linear-gradient(135deg, #261D18 0%, #3D2E27 100%); padding: 72px 0; }
 .newsletter-inner { display: grid; grid-template-columns: 280px 1fr; gap: 60px; align-items: center; max-width: 900px; margin: 0 auto; }
 .newsletter-visual { border-radius: var(--radius-xl); overflow: hidden; }
 .newsletter-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
