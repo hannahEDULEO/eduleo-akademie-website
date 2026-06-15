@@ -588,7 +588,11 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 /* ============================================
    KOOPERATIONEN
    ============================================ */
-.koops { padding: 80px 0; background: var(--off-white); }
+.koops {
+  padding: 80px 0;
+  background: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)),
+              url('assets/teaem.png') center/cover no-repeat;
+}
 .koops-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 760px; margin: 0 auto; }
 .koop-card {
   background: var(--white); border-radius: var(--radius-md); padding: 36px 32px;
