@@ -1620,7 +1620,7 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 
 /* ── Quiz CTA Banner ───────────────────────── */
 .quiz-cta-banner {
-  background: linear-gradient(135deg, #2D7A5A 0%, #4AAF82 100%);
+  background: linear-gradient(135deg, #261D18 0%, #3D2E27 100%);
   border-radius: var(--radius-xl);
   padding: 32px 40px;
   display: flex;
@@ -1902,7 +1902,7 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 
 /* ── Quiz CTA Banner aufgewertet ── */
 .quiz-cta-banner {
-  background: linear-gradient(135deg, #2D7A5A 0%, #4AAF82 100%);
+  background: linear-gradient(135deg, #261D18 0%, #3D2E27 100%);
   color: var(--white); border-radius: var(--radius-xl);
   padding: 42px 52px; box-shadow: 0 12px 36px rgba(45,122,90,0.30);
   position: relative; overflow: hidden;
