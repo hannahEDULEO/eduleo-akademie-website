@@ -653,7 +653,9 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 /* ============================================
    KONTAKT
    ============================================ */
-.kontakt-inner { text-align: center; max-width: 560px; margin: 0 auto; }
+.kontakt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.kontakt-visual { border-radius: var(--radius-xl); overflow: hidden; max-height: 560px; }
+.kontakt-inner { text-align: center; }
 .kontakt-inner h2 { margin-bottom: 14px; }
 .kontakt-inner p  { color: var(--text-light); margin-bottom: 30px; }
 .kontakt-methods { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
@@ -1167,6 +1169,8 @@ p   { font-size: 1.05rem; line-height: 1.75; }
   .koops-row { gap: 28px; }
 
   .about-home-visual { grid-template-columns: 1fr 1fr; }
+  .kontakt-grid { grid-template-columns: 1fr; }
+  .kontakt-visual { display: none; }
 }
 
 /* ── Cookie-Banner ─────────────────────────── */
