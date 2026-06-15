@@ -1146,7 +1146,12 @@ p   { font-size: 1.05rem; line-height: 1.75; }
   .team-banner p { max-width: 100%; }
   .team-banner-actions { justify-content: center; }
 
-  .testimonial-card { flex: 0 0 auto; }
+  .testimonial-card { flex: 0 0 auto; padding: 18px 16px; }
+  .testimonial-card blockquote { font-size: 0.78rem; line-height: 1.55; margin-bottom: 14px; }
+  .testimonial-stars { font-size: 0.82rem; margin-bottom: 10px; letter-spacing: 1px; }
+  .testimonial-avatar { width: 34px; height: 34px; font-size: 0.9rem; }
+  .testimonial-author-info strong { font-size: 0.8rem; }
+  .testimonial-author-info span { font-size: 0.74rem; }
   .t-arrow { width: 36px; height: 36px; font-size: 1.3rem; }
   .about-home-grid { grid-template-columns: 1fr; gap: 40px; }
   .about-home-visual { order: -1; }
