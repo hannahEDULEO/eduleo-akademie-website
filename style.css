@@ -456,7 +456,7 @@ p   { font-size: 1.05rem; line-height: 1.75; }
   transition: transform var(--transition), box-shadow var(--transition);
 }
 .course-card--beige { background: var(--beige); border-color: rgba(196,160,146,0.3); }
-.course-card--green { background: var(--green); border-color: rgba(90,158,122,0.2); }
+.course-card--green { background: rgba(210,234,218,0.78); border-color: rgba(90,158,122,0.2); backdrop-filter: blur(2px); }
 .course-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
 .course-card-link::after {
   content: ''; position: absolute; inset: 0;
