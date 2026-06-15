@@ -514,9 +514,18 @@ p   { font-size: 1.05rem; line-height: 1.75; }
    TEAM-FORTBILDUNGEN BANNER
    ============================================ */
 .team-banner {
-  background: var(--beige); border-radius: var(--radius-xl); padding: 52px 56px;
+  background-image: url('team-fortbildungen-der-eduleo-akademie.png');
+  background-size: cover; background-position: center top;
+  border-radius: var(--radius-xl); padding: 52px 56px;
   display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center;
+  position: relative; overflow: hidden;
 }
+.team-banner::before {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(237, 230, 226, 0.82);
+  border-radius: inherit; z-index: 0;
+}
+.team-banner > * { position: relative; z-index: 1; }
 .team-banner h2 { margin-bottom: 12px; }
 .team-banner p  { color: var(--text-light); max-width: 560px; }
 .team-banner-actions { display: flex; gap: 14px; }
@@ -585,8 +594,8 @@ p   { font-size: 1.05rem; line-height: 1.75; }
   background: var(--white); border-radius: var(--radius-md); padding: 36px 32px;
   box-shadow: var(--shadow-sm); text-align: center; display: flex; flex-direction: column; align-items: center; gap: 12px;
 }
-.koop-card-icon { font-size: 2.8rem; display: flex; align-items: center; min-height: 60px; }
-.koop-logo { max-height: 56px; max-width: 180px; width: auto; object-fit: contain; }
+.koop-card-icon { font-size: 2.8rem; display: flex; align-items: center; justify-content: center; height: 100px; }
+.koop-logo { max-height: 90px; max-width: 240px; width: auto; object-fit: contain; }
 .koop-card-name { font-size: 1.15rem; font-weight: 900; color: var(--dark); margin: 0; }
 .koop-card-text { font-size: 0.92rem; color: var(--text-light); line-height: 1.65; margin: 0; }
 .koop-card-link { font-size: 0.88rem; font-weight: 800; color: var(--green-dark); text-decoration: none; margin-top: auto; }
