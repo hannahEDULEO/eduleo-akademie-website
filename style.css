@@ -636,7 +636,14 @@ p   { font-size: 1.05rem; line-height: 1.75; }
    NEWSLETTER
    ============================================ */
 .newsletter { background: var(--dark); padding: 72px 0; }
-.newsletter-inner { text-align: center; max-width: 540px; margin: 0 auto; }
+.newsletter-inner { display: grid; grid-template-columns: 280px 1fr; gap: 60px; align-items: center; max-width: 900px; margin: 0 auto; }
+.newsletter-visual { display: flex; align-items: center; justify-content: center; }
+.newsletter-visual img { max-width: 220px; width: 100%; height: auto; }
+.newsletter-content { text-align: center; }
+@media (max-width: 700px) {
+  .newsletter-inner { grid-template-columns: 1fr; gap: 32px; }
+  .newsletter-visual { display: none; }
+}
 .newsletter h2 { color: var(--white); margin-bottom: 14px; }
 .newsletter p  { color: rgba(255,255,255,0.7); margin-bottom: 32px; }
 .newsletter-form { display: flex; gap: 10px; max-width: 440px; margin: 0 auto; }
