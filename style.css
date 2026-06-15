@@ -1491,9 +1491,9 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 
 /* ── Stats Bar ─────────────────────────────── */
 .stats-bar {
-  background: #ffffff !important;
+  background: var(--beige);
   padding: 52px 0;
-  border-bottom: 1.5px solid var(--border);
+  border-bottom: 1.5px solid var(--beige-dark);
 }
 .stats-grid {
   display: grid;
