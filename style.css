@@ -1620,13 +1620,14 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 
 /* ── Quiz CTA Banner ───────────────────────── */
 .quiz-cta-banner {
-  background: var(--dark);
+  background: linear-gradient(135deg, #2D7A5A 0%, #4AAF82 100%);
   border-radius: var(--radius-xl);
   padding: 32px 40px;
   display: flex;
   align-items: center;
   gap: 28px;
   color: var(--white);
+  max-width: 860px; margin: 0 auto;
 }
 .quiz-cta-icon { font-size: 2.5rem; flex-shrink: 0; }
 .quiz-cta-banner h3 { color: var(--white); margin-bottom: 6px; font-size: 1.2rem; }
@@ -1901,26 +1902,27 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 
 /* ── Quiz CTA Banner aufgewertet ── */
 .quiz-cta-banner {
-  background: linear-gradient(135deg, var(--dark) 0%, #3D302A 100%);
+  background: linear-gradient(135deg, #2D7A5A 0%, #4AAF82 100%);
   color: var(--white); border-radius: var(--radius-xl);
-  padding: 42px 52px; box-shadow: 0 18px 44px rgba(38,29,24,0.22);
+  padding: 42px 52px; box-shadow: 0 12px 36px rgba(45,122,90,0.30);
   position: relative; overflow: hidden;
+  max-width: 860px; margin: 0 auto;
 }
 .quiz-cta-banner::before {
   content: ''; position: absolute; top: -70px; right: -70px;
   width: 220px; height: 220px;
-  background: var(--green); border-radius: 50%; opacity: 0.07;
+  background: rgba(255,255,255,0.12); border-radius: 50%;
   pointer-events: none;
 }
 .quiz-cta-banner::after {
   content: ''; position: absolute; bottom: -50px; left: -50px;
   width: 160px; height: 160px;
-  background: var(--mauve); border-radius: 50%; opacity: 0.09;
+  background: rgba(255,255,255,0.08); border-radius: 50%;
   pointer-events: none;
 }
 .quiz-cta-banner h3 { color: var(--white); }
-.quiz-cta-banner p  { color: rgba(255,255,255,0.72); }
-.quiz-cta-banner .quiz-cta-icon { filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2)); }
+.quiz-cta-banner p  { color: rgba(255,255,255,0.82); }
+.quiz-cta-banner .quiz-cta-icon { filter: drop-shadow(0 2px 8px rgba(0,0,0,0.15)); }
 
 .stat-number { letter-spacing: -0.02em; }
 
