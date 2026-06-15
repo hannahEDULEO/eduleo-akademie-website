@@ -665,14 +665,14 @@ p   { font-size: 1.05rem; line-height: 1.75; }
   padding: 14px 10px; text-align: center;
   display: flex; flex-direction: column; gap: 6px;
 }
-.buerozeit-card--freitag { border-color: var(--green-dark); background: var(--green); }
+.buerozeit-card--today { border-color: var(--green-dark); background: var(--green); }
 .buerozeit-tag {
   font-size: 0.95rem; font-weight: 900; color: var(--dark); letter-spacing: 0.04em;
 }
 .buerozeit-time {
   font-size: 0.8rem; color: var(--text-light); line-height: 1.4;
 }
-.buerozeit-card--freitag .buerozeit-time { color: var(--dark); }
+.buerozeit-card--today .buerozeit-time { color: var(--dark); }
 .kontakt-social { margin-top: 32px; }
 .kontakt-social-label {
   font-size: 0.92rem; color: var(--text-light); margin-bottom: 16px;

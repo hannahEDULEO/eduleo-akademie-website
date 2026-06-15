@@ -67,6 +67,13 @@
   resetTimer();
 })();
 
+/* ── Bürozeiten: aktuellen Tag grün markieren ── */
+(function () {
+  var today = new Date().getDay(); // 0=So, 1=Mo, 2=Di, 3=Mi, 4=Do, 5=Fr, 6=Sa
+  var card = document.querySelector('[data-day="' + today + '"]');
+  if (card) card.classList.add('buerozeit-card--today');
+})();
+
 /* ── Hero Video Fade-in ─────────────────────── */
 (function () {
   var v = document.querySelector('.hero-video');
