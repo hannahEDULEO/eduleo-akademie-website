@@ -276,6 +276,24 @@
 
 <hr class="page-divider">
 
+<!-- ── FAQs ────────────────────────────────────── -->
+<section class="section section-offwhite">
+  <div class="container" style="max-width:780px;">
+    <div class="section-header">
+      <span class="section-label">Häufige Fragen</span>
+      <h2>Das wollt ihr wissen.</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item"><summary class="faq-question">Was kostet eine Teamfortbildung?</summary><div class="faq-answer"><p>Die Preise sind Pauschalpreise abhängig von der Gruppengröße:<br><strong>Bis 10 Personen:</strong> 1.100 €<br><strong>11–20 Personen:</strong> ab 1.210 €<br><strong>21–29 Personen:</strong> ab 2.310 €<br><strong>Ab 30 Personen:</strong> 3.500 €<br>Für Präsenztermine vor Ort berechnen wir zusätzlich eine Pauschale von 450 €. Alle Preise sind umsatzsteuerbefreit.</p></div></details>
+      <details class="faq-item"><summary class="faq-question">Online oder vor Ort – was ist möglich?</summary><div class="faq-answer"><p>Beides ist möglich! Online-Fortbildungen via Zoom sind flexibel und ohne Anfahrtskosten. Präsenztermine direkt in eurer Einrichtung sind gegen einen Aufpreis von 450 € buchbar.</p></div></details>
+      <details class="faq-item"><summary class="faq-question">Wie lange dauert eine Teamfortbildung?</summary><div class="faq-answer"><p>Ein Seminartag dauert 6 Stunden (9:00–15:00 Uhr inkl. 45 Min. Mittagspause). Die genaue Dauer kann auch individuell abgestimmt werden.</p></div></details>
+      <details class="faq-item"><summary class="faq-question">Wie viele Personen können teilnehmen?</summary><div class="faq-answer"><p>Unsere Teamfortbildungen sind für Gruppen jeder Größe geeignet – von kleinen Teams bis hin zu ganzen Kita-Verbünden ab 30 Personen.</p></div></details>
+      <details class="faq-item"><summary class="faq-question">Wie läuft die Buchung ab?</summary><div class="faq-answer"><p>Einfach das Anfrageformular unten ausfüllen. Wir melden uns dann schnellstmöglich für ein kurzes Beratungsgespräch, in dem wir gemeinsam das passende Thema, den Termin und die Rahmenbedingungen festlegen.</p></div></details>
+      <details class="faq-item"><summary class="faq-question">Gibt es ein Zertifikat?</summary><div class="faq-answer"><p>Ja, ein Teilnahmezertifikat wird auf Anfrage ausgestellt.</p></div></details>
+    </div>
+  </div>
+</section>
+
 <!-- ── ANFRAGE-FORMULAR ───────────────────────── -->
 <section class="section anfrage-section" id="anfrage">
   <div class="container">
@@ -283,10 +301,16 @@
       <div class="anfrage-intro fade-in">
         <span class="section-label">Teamfortbildung anfragen</span>
         <h2>Kontaktiert uns und stellt uns eure Fragen</h2>
-        <p>Füllt das Formular aus und wir melden uns schnellstmöglich bei euch für ein persönliches Beratungsgespräch.</p>
       </div>
 
-      <form class="anfrage-form fade-in" id="team-anfrage-form" novalidate>
+      <div class="fade-in">
+        <button class="form-toggle-btn" type="button" aria-expanded="false" onclick="var c=this.nextElementSibling;var o=c.classList.toggle('open');this.setAttribute('aria-expanded',o);">
+          <span>Anfrageformular öffnen</span>
+          <span class="form-toggle-arrow">▼</span>
+        </button>
+        <div class="form-collapsible">
+        <p style="margin:10px 0 16px;color:var(--text-light);font-size:0.95rem;">Füllt das Formular aus und wir melden uns schnellstmöglich bei euch.</p>
+      <form class="anfrage-form" id="team-anfrage-form" novalidate>
         <input type="hidden" name="access_key" value="cedf781f-63db-4e25-b30d-49ee10a44b96">
         <input type="hidden" name="subject" value="Anfrage: Teamfortbildung">
         <input type="hidden" name="from_name" value="EDULEO Akademie Website">
@@ -386,11 +410,9 @@
 
       </form>
 
-      <div class="form-success" id="form-success">
-        <span class="form-success-icon">✓</span>
-        <h3>Vielen Dank für eure Anfrage!</h3>
-        <p>Wir melden uns schnellstmöglich bei euch für ein persönliches Beratungsgespräch.</p>
-      </div>
+      <div class="form-success" id="form-success" style="display:none;background:var(--green);border-radius:var(--radius-md);padding:24px;text-align:center;margin-top:16px;"><div style="font-size:2rem;margin-bottom:12px;">✓</div><h4>Vielen Dank für eure Anfrage!</h4><p style="font-size:0.88rem;color:var(--text-light);margin-top:8px;">Wir melden uns schnellstmöglich bei euch.</p></div>
+      </div><!-- end form-collapsible -->
+      </div><!-- end fade-in -->
 
     </div>
   </div>
