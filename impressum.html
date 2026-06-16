@@ -22,7 +22,7 @@
       top: -60px; right: -60px;
       width: 320px; height: 320px;
       border-radius: 50%;
-      background: rgba(210,234,218,0.07);
+      background: rgba(90,158,122,0.14);
       pointer-events: none;
     }
     .imp-hero::after {
@@ -31,7 +31,7 @@
       bottom: -40px; left: -40px;
       width: 200px; height: 200px;
       border-radius: 50%;
-      background: rgba(196,160,146,0.07);
+      background: rgba(196,160,146,0.14);
       pointer-events: none;
     }
     .imp-hero-inner { position: relative; z-index: 1; }
@@ -64,6 +64,7 @@
       flex-wrap: wrap;
       gap: 32px;
       align-items: flex-start;
+      border-left: 5px solid var(--green-dark);
     }
     .imp-contact-item { color: var(--white); }
     .imp-contact-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 8px; }
@@ -74,21 +75,30 @@
     .imp-para {
       background: #fff;
       border: 1px solid var(--border);
+      border-left: 5px solid var(--green-dark);
       border-radius: var(--radius-lg);
       padding: 32px 36px;
       margin-bottom: 16px;
       scroll-margin-top: 90px;
     }
+    .imp-para:nth-child(2) { border-left-color: var(--green-dark); }
+    .imp-para:nth-child(3) { border-left-color: #C4A092; }
+    .imp-para:nth-child(4) { border-left-color: var(--green-dark); }
+    .imp-para:nth-child(5) { border-left-color: #C4A092; }
+    .imp-para:nth-child(6) { border-left-color: var(--green-dark); }
+
     .imp-para-head { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px; }
     .imp-para-icon {
       display: inline-flex; align-items: center; justify-content: center;
       min-width: 40px; height: 40px;
       border-radius: 50%;
-      background: var(--dark);
+      background: var(--green);
       font-size: 1rem;
       flex-shrink: 0;
       margin-top: 2px;
     }
+    .imp-para:nth-child(3) .imp-para-icon,
+    .imp-para:nth-child(5) .imp-para-icon { background: #EDE6E2; }
     .imp-para h2 { font-size: 1.15rem; color: var(--dark); margin: 0 0 4px; }
     .imp-para-subtitle { font-size: 0.8rem; color: var(--text-light); font-weight: 500; letter-spacing: 0.04em; }
     .imp-para p { font-size: 0.96rem; color: var(--text); line-height: 1.75; margin-bottom: 12px; }
@@ -150,7 +160,8 @@
         </div>
         <div class="imp-contact-item">
           <div class="imp-contact-label">Kontakt</div>
-          <p><a href="mailto:kontakt@eduleo-akademie.de">kontakt@eduleo-akademie.de</a></p>
+          <p><a href="mailto:kontakt@eduleo-akademie.de">kontakt@eduleo-akademie.de</a><br>
+          <a href="tel:+491605059620">0160 50 59 620</a></p>
         </div>
         <div class="imp-contact-item">
           <div class="imp-contact-label">USt.-ID</div>
