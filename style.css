@@ -1058,7 +1058,10 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 /* ============================================
    ÜBER UNS
    ============================================ */
-.about-hero { background: var(--beige); padding: 100px 0 72px; text-align: center; }
+.about-hero { position: relative; overflow: hidden; text-align: center; }
+.about-hero-img { width: 100%; height: auto; display: block; }
+.about-hero-overlay { position: absolute; inset: 0; background: rgba(237,230,226,0.78); }
+.about-hero-content { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 20px; }
 .about-hero h1 { margin-bottom: 16px; }
 .about-hero p   { color: var(--text-light); font-size: 1.1rem; max-width: 560px; margin: 0 auto; }
 
