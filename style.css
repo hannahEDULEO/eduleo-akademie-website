@@ -1090,7 +1090,7 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 .team-card-photo.bg-beige { background: var(--beige); }
 .team-card-body { padding: 22px; }
 .team-card-body h3 { font-size: 1.15rem; margin-bottom: 4px; }
-.team-card-role { font-size: 0.82rem; font-weight: 800; color: var(--green-dark); margin-bottom: 12px; display: block; letter-spacing: 0.05em; text-transform: uppercase; }
+.team-card-role { font-size: 0.82rem; font-weight: 800; color: var(--green-dark); margin-bottom: 12px; display: block; letter-spacing: 0.05em; text-transform: uppercase; min-height: 4.5em; }
 .team-card-body p  { font-size: 0.92rem; color: var(--text-light); line-height: 1.65; }
 .team-card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
 .team-card-tag {
