@@ -9,6 +9,242 @@
   <link rel="icon" href="assets/favicon-16x16.png" type="image/png" sizes="16x16">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon-6/apple-touch-icon-180x180.png">
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── Hero ── */
+    .agb-hero {
+      background: var(--dark);
+      padding: 80px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .agb-hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: rgba(210,234,218,0.07);
+      pointer-events: none;
+    }
+    .agb-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: -40px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(196,160,146,0.07);
+      pointer-events: none;
+    }
+    .agb-hero-inner { position: relative; z-index: 1; }
+    .agb-hero-badge {
+      display: inline-block;
+      background: rgba(210,234,218,0.15);
+      color: var(--green);
+      border: 1px solid rgba(210,234,218,0.3);
+      border-radius: 50px;
+      padding: 6px 18px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .agb-hero h1 { color: var(--white); font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 10px; }
+    .agb-hero-sub { color: rgba(255,255,255,0.5); font-size: 0.93rem; }
+    .agb-hero-line {
+      width: 48px; height: 3px;
+      background: var(--green-dark);
+      border-radius: 2px;
+      margin: 22px 0 0;
+    }
+
+    /* ── Layout ── */
+    .agb-content { padding: 64px 0 80px; }
+    .agb-inner { max-width: 820px; margin: 0 auto; }
+
+    /* ── TOC ── */
+    .agb-toc {
+      background: var(--beige);
+      border-radius: var(--radius-lg);
+      padding: 28px 32px;
+      margin-bottom: 48px;
+    }
+    .agb-toc-title {
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green-dark);
+      margin-bottom: 16px;
+    }
+    .agb-toc-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 6px 24px;
+      list-style: none;
+      padding: 0; margin: 0;
+    }
+    .agb-toc-list li a {
+      font-size: 0.88rem;
+      color: var(--dark);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 0;
+      transition: color 0.2s;
+    }
+    .agb-toc-list li a:hover { color: var(--green-dark); }
+    .agb-toc-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: var(--green-dark);
+      color: #fff;
+      font-size: 0.68rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    /* ── Paragraph Cards ── */
+    .agb-para {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px 36px;
+      margin-bottom: 20px;
+      scroll-margin-top: 90px;
+    }
+    .agb-para-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .agb-para-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--dark);
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 800;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .agb-para h2 {
+      font-size: 1.15rem;
+      color: var(--dark);
+      margin: 0 0 4px;
+    }
+    .agb-para-subtitle {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+    .agb-para p {
+      font-size: 0.96rem;
+      color: var(--text);
+      line-height: 1.75;
+      margin-bottom: 12px;
+    }
+    .agb-para p:last-child { margin-bottom: 0; }
+    .agb-para ul {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0;
+    }
+    .agb-para ul li {
+      font-size: 0.96rem;
+      color: var(--text);
+      line-height: 1.7;
+      padding: 6px 0 6px 22px;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+    }
+    .agb-para ul li:last-child { border-bottom: none; }
+    .agb-para ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--green-dark);
+      font-weight: 700;
+    }
+    .agb-para a { color: var(--green-dark); text-decoration: underline; }
+
+    /* ── Storno Cards ── */
+    .agb-storno-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin: 20px 0;
+    }
+    @media (max-width: 640px) {
+      .agb-storno-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .agb-storno-card {
+      background: var(--beige);
+      border-radius: var(--radius-md);
+      padding: 16px 14px;
+      text-align: center;
+    }
+    .agb-storno-card.best {
+      background: var(--green);
+    }
+    .agb-storno-when {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+    .agb-storno-pct {
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--dark);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .agb-storno-label {
+      font-size: 0.78rem;
+      color: var(--text-light);
+    }
+
+    /* ── Hinweis Box ── */
+    .agb-hint {
+      background: var(--green);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin-top: 16px;
+      font-size: 0.93rem;
+      color: var(--dark);
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .agb-hint-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+
+    /* ── Footer Note ── */
+    .agb-footer-note {
+      text-align: center;
+      padding: 32px 0 0;
+      font-size: 0.85rem;
+      color: var(--text-light);
+      border-top: 1px solid var(--border);
+      margin-top: 16px;
+    }
+
+    @media (max-width: 600px) {
+      .agb-para { padding: 24px 20px; }
+      .agb-toc { padding: 22px 20px; }
+    }
+  </style>
 </head>
 <body>
 <nav class="nav" id="nav"><div class="container"><div class="nav-inner">
@@ -22,73 +258,248 @@
   <a href="bring-a-friend/">Bring a Friend</a>
   <a href="fortbildungen/" class="btn btn-primary">Alle Fortbildungen</a></div>
 
-<section class="legal-hero">
+<!-- HERO -->
+<section class="agb-hero">
   <div class="container">
-    <h1>Allgemeine Geschäftsbedingungen (AGB)</h1>
-    <p>Stand: Juni 2025</p>
+    <div class="agb-hero-inner">
+      <div class="agb-hero-badge">EDULEO Akademie</div>
+      <h1>Allgemeine Geschäftsbedingungen</h1>
+      <p class="agb-hero-sub">Klumper &amp; Flunkert EDULEO GbR &nbsp;·&nbsp; Stand: Juni 2025</p>
+      <div class="agb-hero-line"></div>
+    </div>
   </div>
 </section>
 
-<section class="section">
+<!-- INHALT -->
+<section class="agb-content">
   <div class="container">
-    <div class="legal-body">
+    <div class="agb-inner">
 
-      <h2>§ 1 Geltungsbereich</h2>
-      <p>Diese Allgemeinen Geschäftsbedingungen gelten für alle Verträge zwischen der Klumper &amp; Flunkert EDULEO GbR (Janine Klumper &amp; Hannah Flunkert, nachfolgend „Anbieter") und den Kundinnen und Kunden (nachfolgend „Teilnehmende") über Online-Fortbildungen und Teamfortbildungen.</p>
+      <!-- Inhaltsverzeichnis -->
+      <div class="agb-toc">
+        <div class="agb-toc-title">Inhalt</div>
+        <ul class="agb-toc-list">
+          <li><a href="#p1"><span class="agb-toc-num">1</span> Geltungsbereich</a></li>
+          <li><a href="#p2"><span class="agb-toc-num">2</span> Vertragsschluss</a></li>
+          <li><a href="#p3"><span class="agb-toc-num">3</span> Leistungsumfang</a></li>
+          <li><a href="#p4"><span class="agb-toc-num">4</span> Preise und Zahlung</a></li>
+          <li><a href="#p5"><span class="agb-toc-num">5</span> Stornierung</a></li>
+          <li><a href="#p6"><span class="agb-toc-num">6</span> Absage durch den Anbieter</a></li>
+          <li><a href="#p7"><span class="agb-toc-num">7</span> Zertifikat</a></li>
+          <li><a href="#p8"><span class="agb-toc-num">8</span> Urheberrecht</a></li>
+          <li><a href="#p9"><span class="agb-toc-num">9</span> Haftung</a></li>
+          <li><a href="#p10"><span class="agb-toc-num">10</span> Datenschutz</a></li>
+          <li><a href="#p11"><span class="agb-toc-num">11</span> Gerichtsstand</a></li>
+          <li><a href="#p12"><span class="agb-toc-num">12</span> Anwendbares Recht</a></li>
+          <li><a href="#p13"><span class="agb-toc-num">13</span> Streitschlichtung</a></li>
+          <li><a href="#p14"><span class="agb-toc-num">14</span> Salvatorische Klausel</a></li>
+        </ul>
+      </div>
 
-      <h2>§ 2 Vertragsschluss</h2>
-      <p>Durch die Buchung einer Fortbildung über SimplyOrg und die Bestätigung per E-Mail kommt ein verbindlicher Vertrag zustande. Bei Teamfortbildungen erfolgt der Vertragsschluss durch schriftliche Bestätigung nach dem Anfragegespräch. Die Buchungs- bzw. Auftragsbestätigung gilt als Vertragsannahme.</p>
+      <!-- § 1 -->
+      <div class="agb-para" id="p1">
+        <div class="agb-para-head">
+          <div class="agb-para-num">§1</div>
+          <div>
+            <h2>Geltungsbereich</h2>
+            <div class="agb-para-subtitle">Für wen gelten diese AGB?</div>
+          </div>
+        </div>
+        <p>Diese Allgemeinen Geschäftsbedingungen gelten für alle Verträge zwischen der <strong>Klumper &amp; Flunkert EDULEO GbR</strong> (Janine Klumper &amp; Hannah Flunkert, nachfolgend „Anbieter") und den Kundinnen und Kunden (nachfolgend „Teilnehmende") über Online-Fortbildungen und Teamfortbildungen.</p>
+      </div>
 
-      <h2>§ 3 Leistungsumfang</h2>
-      <p>Der Anbieter erbringt folgende Leistungen:</p>
-      <ul>
-        <li>Durchführung der gebuchten Online-Fortbildung gemäß Kursbeschreibung</li>
-        <li>Bereitstellung digitaler Kursunterlagen</li>
-        <li>Ausstellung eines Zertifikats nach erfolgreichem Abschluss (bei 3-Monats-Fortbildungen)</li>
-        <li>Zugang zu Aufzeichnungen verpasster Sitzungen (sofern technisch möglich)</li>
-      </ul>
+      <!-- § 2 -->
+      <div class="agb-para" id="p2">
+        <div class="agb-para-head">
+          <div class="agb-para-num">§2</div>
+          <div>
+            <h2>Vertragsschluss</h2>
+            <div class="agb-para-subtitle">Wie kommt ein Vertrag zustande?</div>
+          </div>
+        </div>
+        <p>Durch die Buchung einer Fortbildung über SimplyOrg und die Bestätigung per E-Mail kommt ein verbindlicher Vertrag zustande. Bei Teamfortbildungen erfolgt der Vertragsschluss durch schriftliche Bestätigung nach dem Anfragegespräch. Die Buchungs- bzw. Auftragsbestätigung gilt als Vertragsannahme.</p>
+      </div>
 
-      <h2>§ 4 Preise und Zahlung</h2>
-      <p>Die Preise für Fortbildungen sind in der jeweiligen Kursbeschreibung oder im Buchungssystem (SimplyOrg) angegeben. Die Zahlung erfolgt gemäß den im Buchungssystem angegebenen Zahlungsmethoden.</p>
-      <p>Der Anbieter ist als Bildungseinrichtung nach <strong>§ 4 Nr. 21 UStG</strong> von der Umsatzsteuer befreit. Die ausgewiesenen Preise sind daher Nettopreise ohne gesonderten Umsatzsteuerausweis.</p>
+      <!-- § 3 -->
+      <div class="agb-para" id="p3">
+        <div class="agb-para-head">
+          <div class="agb-para-num">§3</div>
+          <div>
+            <h2>Leistungsumfang</h2>
+            <div class="agb-para-subtitle">Was ist inbegriffen?</div>
+          </div>
+        </div>
+        <ul>
+          <li>Durchführung der gebuchten Online-Fortbildung gemäß Kursbeschreibung</li>
+          <li>Bereitstellung digitaler Kursunterlagen</li>
+          <li>Ausstellung eines Zertifikats nach erfolgreichem Abschluss (bei 3-Monats-Fortbildungen)</li>
+          <li>Zugang zu Aufzeichnungen verpasster Sitzungen (sofern technisch möglich)</li>
+        </ul>
+      </div>
 
-      <h2>§ 5 Stornierung durch Teilnehmende</h2>
-      <p>Im Falle einer Absage durch die Einrichtung oder die teilnehmende Person gilt:</p>
-      <ul>
-        <li><strong>Bis 6 Wochen vor Kursbeginn:</strong> 100 % Erstattung</li>
-        <li><strong>Bis 4 Wochen vor Kursbeginn:</strong> 50 % Erstattung</li>
-        <li><strong>Bis 1 Woche vor Kursbeginn:</strong> 20 % Erstattung</li>
-        <li><strong>Weniger als 1 Woche vor Kursbeginn:</strong> keine Erstattung</li>
-      </ul>
-      <p>Wenn ein Termin abgesagt wird, kann ein anderer Termin gewählt werden. Wurde bereits eine Rechnung gestellt, wird diese storniert und für den neuen Termin neu erstellt.</p>
-      <p>Das gesetzliche Widerrufsrecht bleibt unberührt (siehe <a href="widerruf.html">Widerrufsbelehrung</a>).</p>
+      <!-- § 4 -->
+      <div class="agb-para" id="p4">
+        <div class="agb-para-head">
+          <div class="agb-para-num">§4</div>
+          <div>
+            <h2>Preise und Zahlung</h2>
+            <div class="agb-para-subtitle">Kosten und Abrechnung</div>
+          </div>
+        </div>
+        <p>Die Preise für Fortbildungen sind in der jeweiligen Kursbeschreibung oder im Buchungssystem (SimplyOrg) angegeben. Die Zahlung erfolgt gemäß den im Buchungssystem angegebenen Zahlungsmethoden.</p>
+        <p>Der Anbieter ist als Bildungseinrichtung nach <strong>§ 4 Nr. 21 UStG</strong> von der Umsatzsteuer befreit. Die ausgewiesenen Preise sind daher Nettopreise ohne gesonderten Umsatzsteuerausweis.</p>
+      </div>
 
-      <h2>§ 6 Absage durch den Anbieter</h2>
-      <p>Der Anbieter behält sich vor, eine Fortbildung bei zu geringer Teilnehmendenzahl oder aus wichtigem Grund abzusagen. In diesem Fall werden bereits geleistete Zahlungen vollständig erstattet. Weitergehende Ansprüche bestehen nicht.</p>
+      <!-- § 5 -->
+      <div class="agb-para" id="p5">
+        <div class="agb-para-head">
+          <div class="agb-para-num">§5</div>
+          <div>
+            <h2>Stornierung durch Teilnehmende</h2>
+            <div class="agb-para-subtitle">Rücktrittsregelungen im Überblick</div>
+          </div>
+        </div>
+        <p>Im Falle einer Absage durch die Einrichtung oder die teilnehmende Person gilt:</p>
+        <div class="agb-storno-grid">
+          <div class="agb-storno-card best">
+            <div class="agb-storno-when">bis 6 Wochen vorher</div>
+            <div class="agb-storno-pct">100 %</div>
+            <div class="agb-storno-label">Erstattung</div>
+          </div>
+          <div class="agb-storno-card">
+            <div class="agb-storno-when">bis 4 Wochen vorher</div>
+            <div class="agb-storno-pct">50 %</div>
+            <div class="agb-storno-label">Erstattung</div>
+          </div>
+          <div class="agb-storno-card">
+            <div class="agb-storno-when">bis 1 Woche vorher</div>
+            <div class="agb-storno-pct">20 %</div>
+            <div class="agb-storno-label">Erstattung</div>
+          </div>
+          <div class="agb-storno-card">
+            <div class="agb-storno-when">unter 1 Woche</div>
+            <div class="agb-storno-pct">0 %</div>
+            <div class="agb-storno-label">keine Erstattung</div>
+          </div>
+        </div>
+        <div class="agb-hint">
+          <span class="agb-hint-icon">💡</span>
+          <span>Wenn ein Termin abgesagt wird, kann ein anderer Termin gewählt werden. Wurde bereits eine Rechnung gestellt, wird diese storniert und für den neuen Termin neu erstellt.</span>
+        </div>
+        <p style="margin-top:14px;">Das gesetzliche Widerrufsrecht bleibt unberührt (siehe <a href="widerruf.html">Widerrufsbelehrung</a>).</p>
+      </div>
 
-      <h2>§ 7 Zertifikat</h2>
-      <p>Das Zertifikat wird nach Abschluss der Fortbildung und regelmäßiger Teilnahme ausgestellt. Als regelmäßige Teilnahme gilt die Teilnahme an mindestens 6 (von 8) oder 7 (von 9) Live-Sessions einer 3-Monats-Fortbildung. Bei einer Tagesfortbildung wird das Zertifikat nur bei Teilnahme ausgestellt.</p>
+      <!-- § 6 -->
+      <div class="agb-para" id="p6">
+        <div class="agb-para-head">
+          <div class="agb-para-num">§6</div>
+          <div>
+            <h2>Absage durch den Anbieter</h2>
+            <div class="agb-para-subtitle">Was passiert bei Kursausfall?</div>
+          </div>
+        </div>
+        <p>Der Anbieter behält sich vor, eine Fortbildung bei zu geringer Teilnehmendenzahl oder aus wichtigem Grund abzusagen. In diesem Fall werden bereits geleistete Zahlungen vollständig erstattet. Weitergehende Ansprüche bestehen nicht.</p>
+      </div>
 
-      <h2>§ 8 Urheberrecht</h2>
-      <p>Alle Kursunterlagen, Präsentationen und Materialien sind urheberrechtlich geschützt. Eine Vervielfältigung, Weitergabe oder öffentliche Nutzung ist ohne schriftliche Genehmigung des Anbieters nicht gestattet.</p>
+      <!-- § 7 -->
+      <div class="agb-para" id="p7">
+        <div class="agb-para-head">
+          <div class="agb-para-num">§7</div>
+          <div>
+            <h2>Zertifikat</h2>
+            <div class="agb-para-subtitle">Wann wird das Zertifikat ausgestellt?</div>
+          </div>
+        </div>
+        <p>Das Zertifikat wird nach Abschluss der Fortbildung und regelmäßiger Teilnahme ausgestellt. Als regelmäßige Teilnahme gilt die Teilnahme an mindestens 6 (von 8) oder 7 (von 9) Live-Sessions einer 3-Monats-Fortbildung. Bei einer Tagesfortbildung wird das Zertifikat nur bei Teilnahme ausgestellt.</p>
+      </div>
 
-      <h2>§ 9 Haftungsbeschränkung</h2>
-      <p>Der Anbieter haftet nicht für technische Störungen, die außerhalb seines Einflussbereichs liegen (z. B. Ausfall des Videokonferenzdienstes Zoom). Bei wesentlichen technischen Problemen wird nach Möglichkeit ein Ersatztermin angeboten.</p>
+      <!-- § 8 -->
+      <div class="agb-para" id="p8">
+        <div class="agb-para-head">
+          <div class="agb-para-num">§8</div>
+          <div>
+            <h2>Urheberrecht</h2>
+            <div class="agb-para-subtitle">Nutzung von Kursmaterialien</div>
+          </div>
+        </div>
+        <p>Alle Kursunterlagen, Präsentationen und Materialien sind urheberrechtlich geschützt. Eine Vervielfältigung, Weitergabe oder öffentliche Nutzung ist ohne schriftliche Genehmigung des Anbieters nicht gestattet.</p>
+      </div>
 
-      <h2>§ 10 Datenschutz</h2>
-      <p>Informationen zur Datenverarbeitung findest du in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+      <!-- § 9 -->
+      <div class="agb-para" id="p9">
+        <div class="agb-para-head">
+          <div class="agb-para-num">§9</div>
+          <div>
+            <h2>Haftungsbeschränkung</h2>
+            <div class="agb-para-subtitle">Technische Störungen</div>
+          </div>
+        </div>
+        <p>Der Anbieter haftet nicht für technische Störungen, die außerhalb seines Einflussbereichs liegen (z. B. Ausfall des Videokonferenzdienstes Zoom). Bei wesentlichen technischen Problemen wird nach Möglichkeit ein Ersatztermin angeboten.</p>
+      </div>
 
-      <h2>§ 11 Gerichtsstand</h2>
-      <p>Gerichtsstand für alle Streitigkeiten aus oder im Zusammenhang mit diesen AGB ist Berlin, sofern die Teilnehmenden Kaufleute, juristische Personen des öffentlichen Rechts oder öffentlich-rechtliche Sondervermögen sind. Im Übrigen gelten die gesetzlichen Gerichtsstandsregelungen.</p>
+      <!-- § 10 -->
+      <div class="agb-para" id="p10">
+        <div class="agb-para-head">
+          <div class="agb-para-num">§10</div>
+          <div>
+            <h2>Datenschutz</h2>
+            <div class="agb-para-subtitle">Umgang mit personenbezogenen Daten</div>
+          </div>
+        </div>
+        <p>Informationen zur Datenverarbeitung findest du in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+      </div>
 
-      <h2>§ 12 Anwendbares Recht</h2>
-      <p>Es gilt das Recht der Bundesrepublik Deutschland unter Ausschluss des UN-Kaufrechts.</p>
+      <!-- § 11 -->
+      <div class="agb-para" id="p11">
+        <div class="agb-para-head">
+          <div class="agb-para-num">§11</div>
+          <div>
+            <h2>Gerichtsstand</h2>
+            <div class="agb-para-subtitle">Zuständiges Gericht</div>
+          </div>
+        </div>
+        <p>Gerichtsstand für alle Streitigkeiten aus oder im Zusammenhang mit diesen AGB ist Berlin, sofern die Teilnehmenden Kaufleute, juristische Personen des öffentlichen Rechts oder öffentlich-rechtliche Sondervermögen sind. Im Übrigen gelten die gesetzlichen Gerichtsstandsregelungen.</p>
+      </div>
 
-      <h2>§ 13 Streitschlichtung</h2>
-      <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr</a>. Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+      <!-- § 12 -->
+      <div class="agb-para" id="p12">
+        <div class="agb-para-head">
+          <div class="agb-para-num">§12</div>
+          <div>
+            <h2>Anwendbares Recht</h2>
+            <div class="agb-para-subtitle">Rechtswahl</div>
+          </div>
+        </div>
+        <p>Es gilt das Recht der Bundesrepublik Deutschland unter Ausschluss des UN-Kaufrechts.</p>
+      </div>
 
-      <h2>§ 14 Salvatorische Klausel</h2>
-      <p>Sollte eine Bestimmung dieser AGB unwirksam sein, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt.</p>
+      <!-- § 13 -->
+      <div class="agb-para" id="p13">
+        <div class="agb-para-head">
+          <div class="agb-para-num">§13</div>
+          <div>
+            <h2>Streitschlichtung</h2>
+            <div class="agb-para-subtitle">Online-Streitbeilegung</div>
+          </div>
+        </div>
+        <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr</a>. Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+      </div>
+
+      <!-- § 14 -->
+      <div class="agb-para" id="p14">
+        <div class="agb-para-head">
+          <div class="agb-para-num">§14</div>
+          <div>
+            <h2>Salvatorische Klausel</h2>
+            <div class="agb-para-subtitle">Teilunwirksamkeit</div>
+          </div>
+        </div>
+        <p>Sollte eine Bestimmung dieser AGB unwirksam sein, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt.</p>
+      </div>
+
+      <div class="agb-footer-note">
+        Klumper &amp; Flunkert EDULEO GbR &nbsp;·&nbsp; Janine Klumper &amp; Hannah Flunkert &nbsp;·&nbsp; Ortlerweg 39, 12207 Berlin &nbsp;·&nbsp; <a href="mailto:kontakt@eduleo-akademie.de">kontakt@eduleo-akademie.de</a>
+      </div>
 
     </div>
   </div>
