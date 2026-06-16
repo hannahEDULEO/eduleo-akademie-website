@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /agb.html
+Disallow: /datenschutz.html
+Disallow: /impressum.html
+Disallow: /widerruf.html
+Disallow: /anmeldebedingungen.html
+
+Sitemap: https://www.eduleo-akademie.de/sitemap.xml
