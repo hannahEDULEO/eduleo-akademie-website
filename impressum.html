@@ -9,6 +9,106 @@
   <link rel="icon" href="assets/favicon-16x16.png" type="image/png" sizes="16x16">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon-6/apple-touch-icon-180x180.png">
   <link rel="stylesheet" href="style.css">
+  <style>
+    .imp-hero {
+      background: var(--dark);
+      padding: 80px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .imp-hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: rgba(210,234,218,0.07);
+      pointer-events: none;
+    }
+    .imp-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: -40px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(196,160,146,0.07);
+      pointer-events: none;
+    }
+    .imp-hero-inner { position: relative; z-index: 1; }
+    .imp-hero-badge {
+      display: inline-block;
+      background: rgba(210,234,218,0.15);
+      color: var(--green);
+      border: 1px solid rgba(210,234,218,0.3);
+      border-radius: 50px;
+      padding: 6px 18px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .imp-hero h1 { color: var(--white); font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 10px; }
+    .imp-hero-sub { color: rgba(255,255,255,0.5); font-size: 0.93rem; }
+    .imp-hero-line { width: 48px; height: 3px; background: var(--green-dark); border-radius: 2px; margin: 22px 0 0; }
+
+    .imp-content { padding: 64px 0 80px; }
+    .imp-inner { max-width: 820px; margin: 0 auto; }
+
+    .imp-contact {
+      background: var(--dark);
+      border-radius: var(--radius-lg);
+      padding: 32px 36px;
+      margin-bottom: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      align-items: flex-start;
+    }
+    .imp-contact-item { color: var(--white); }
+    .imp-contact-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 8px; }
+    .imp-contact-item p { color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.7; margin: 0; }
+    .imp-contact-item a { color: var(--green); text-decoration: none; }
+    .imp-contact-item a:hover { text-decoration: underline; }
+
+    .imp-para {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px 36px;
+      margin-bottom: 16px;
+      scroll-margin-top: 90px;
+    }
+    .imp-para-head { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px; }
+    .imp-para-icon {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--dark);
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .imp-para h2 { font-size: 1.15rem; color: var(--dark); margin: 0 0 4px; }
+    .imp-para-subtitle { font-size: 0.8rem; color: var(--text-light); font-weight: 500; letter-spacing: 0.04em; }
+    .imp-para p { font-size: 0.96rem; color: var(--text); line-height: 1.75; margin-bottom: 12px; }
+    .imp-para p:last-child { margin-bottom: 0; }
+    .imp-para a { color: var(--green-dark); text-decoration: underline; }
+
+    .imp-footer-note {
+      text-align: center;
+      padding: 28px 0 0;
+      font-size: 0.82rem;
+      color: var(--text-light);
+      border-top: 1px solid var(--border);
+      margin-top: 16px;
+    }
+
+    @media (max-width: 600px) {
+      .imp-para { padding: 24px 20px; }
+      .imp-contact { padding: 24px 20px; gap: 20px; }
+    }
+  </style>
 </head>
 <body>
 <nav class="nav" id="nav"><div class="container"><div class="nav-inner">
@@ -17,58 +117,122 @@
   <div class="nav-cta"><a href="fortbildungen/" class="btn btn-primary btn-sm">Alle Fortbildungen</a></div>
   <button class="hamburger" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span><span></span></button>
 </div></div></nav>
-<div class="mobile-menu"><a href="fortbildungen/">Fortbildungen</a><a href="ueber-uns/">Über uns</a>
-  <a href="bring-a-friend/">Bring a Friend</a>
+<div class="mobile-menu"><a href="fortbildungen/">Fortbildungen</a><a href="ueber-uns/">Über uns</a><a href="bring-a-friend/">Bring a Friend</a><a href="/#kontakt">Kontakt</a><a href="anmeldebedingungen.html">Anmeldebedingungen</a>
   <a href="fortbildungen/" class="btn btn-primary">Alle Fortbildungen</a></div>
 
-<section class="legal-hero">
+<!-- HERO -->
+<section class="imp-hero">
   <div class="container">
-    <h1>Impressum</h1>
-    <p>Angaben gemäß § 5 DDG</p>
+    <div class="imp-hero-inner">
+      <div class="imp-hero-badge">Rechtliches</div>
+      <h1>Impressum</h1>
+      <p class="imp-hero-sub">Angaben gemäß § 5 DDG</p>
+      <div class="imp-hero-line"></div>
+    </div>
   </div>
 </section>
 
-<section class="section">
+<!-- INHALT -->
+<section class="imp-content">
   <div class="container">
-    <div class="legal-body">
+    <div class="imp-inner">
 
-      <h2>Verantwortlich für den Inhalt dieser Website</h2>
-      <p>
-        <strong>Klumper &amp; Flunkert EDULEO GbR</strong><br>
-        Janine Klumper &amp; Hannah Flunkert<br>
-        Ortlerweg 39<br>
-        12207 Berlin
-      </p>
+      <!-- Kontaktbox -->
+      <div class="imp-contact">
+        <div class="imp-contact-item">
+          <div class="imp-contact-label">Unternehmen</div>
+          <p><strong style="color:#fff;">Klumper &amp; Flunkert EDULEO GbR</strong><br>
+          Janine Klumper &amp; Hannah Flunkert</p>
+        </div>
+        <div class="imp-contact-item">
+          <div class="imp-contact-label">Adresse</div>
+          <p>Ortlerweg 39<br>12207 Berlin</p>
+        </div>
+        <div class="imp-contact-item">
+          <div class="imp-contact-label">Kontakt</div>
+          <p><a href="mailto:kontakt@eduleo-akademie.de">kontakt@eduleo-akademie.de</a></p>
+        </div>
+        <div class="imp-contact-item">
+          <div class="imp-contact-label">USt.-ID</div>
+          <p>DE276533059</p>
+        </div>
+      </div>
 
-      <p>USt.-ID: DE276533059</p>
+      <!-- Haftung Inhalte -->
+      <div class="imp-para">
+        <div class="imp-para-head">
+          <div class="imp-para-icon">📋</div>
+          <div>
+            <h2>Haftung für Inhalte</h2>
+            <div class="imp-para-subtitle">§ 7 Abs. 1 DDG</div>
+          </div>
+        </div>
+        <p>Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+        <p>Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p>
+      </div>
 
-      <p><a href="mailto:kontakt@eduleo-akademie.de">kontakt@eduleo-akademie.de</a></p>
+      <!-- Haftung Links -->
+      <div class="imp-para">
+        <div class="imp-para-head">
+          <div class="imp-para-icon">🔗</div>
+          <div>
+            <h2>Haftung für Links</h2>
+            <div class="imp-para-subtitle">Externe Verlinkungen</div>
+          </div>
+        </div>
+        <p>Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
+        <p>Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p>
+      </div>
 
-      <h2>Haftung für Inhalte</h2>
-      <p>Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p>
+      <!-- Urheberrecht -->
+      <div class="imp-para">
+        <div class="imp-para-head">
+          <div class="imp-para-icon">©</div>
+          <div>
+            <h2>Urheberrecht</h2>
+            <div class="imp-para-subtitle">Nutzung von Inhalten</div>
+          </div>
+        </div>
+        <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.</p>
+        <p>Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.</p>
+      </div>
 
-      <h2>Haftung für Links</h2>
-      <p>Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p>
+      <!-- Datenschutz -->
+      <div class="imp-para">
+        <div class="imp-para-head">
+          <div class="imp-para-icon">🔒</div>
+          <div>
+            <h2>Datenschutz</h2>
+            <div class="imp-para-subtitle">Hinweis zur Datenverarbeitung</div>
+          </div>
+        </div>
+        <p>Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder E-Mail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben.</p>
+        <p>Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.</p>
+        <p>Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen. Die Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa durch Spam-Mails, vor.</p>
+      </div>
 
-      <h2>Urheberrecht</h2>
-      <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.</p>
+      <!-- Streitschlichtung -->
+      <div class="imp-para">
+        <div class="imp-para-head">
+          <div class="imp-para-icon">⚖️</div>
+          <div>
+            <h2>Streitschlichtung</h2>
+            <div class="imp-para-subtitle">Online-Streitbeilegung</div>
+          </div>
+        </div>
+        <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr</a>.</p>
+        <p>Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+      </div>
 
-      <h2>Datenschutz</h2>
-      <p>Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder E-Mail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben.</p>
-      <p>Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.</p>
-      <p>Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen. Die Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa durch Spam-Mails, vor.</p>
-
-      <h2>Streitschlichtung</h2>
-      <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr</a>.</p>
-      <p>Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
-
-      <p><small>Quelle: Disclaimer von eRecht24, dem Portal zum Internetrecht von Rechtsanwalt Sören Siebert.</small></p>
+      <div class="imp-footer-note">
+        Klumper &amp; Flunkert EDULEO GbR · Janine Klumper &amp; Hannah Flunkert · Ortlerweg 39, 12207 Berlin
+      </div>
 
     </div>
   </div>
 </section>
 
-<footer class="footer"><div class="container"><div class="footer-bottom"><p>© 2026 EDULEO Akademie</p><div class="footer-legal"><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="agb.html">AGB</a></div></div></div></footer>
+<footer class="footer"><div class="container"><div class="footer-bottom"><p>© 2026 EDULEO Akademie</p><div class="footer-legal"><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="agb.html">AGB</a><a href="anmeldebedingungen.html">Anmeldebedingungen</a></div></div></div></footer>
 <script src="main.js"></script>
 </body>
 </html>
