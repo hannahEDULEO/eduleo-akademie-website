@@ -214,25 +214,49 @@
         <p>Bei Online-Live-Kursen, die bereits begonnen haben, erlischt das Widerrufsrecht mit dem Beginn der ersten Sitzung, sofern du der vorzeitigen Ausführung zugestimmt hast.</p>
       </div>
 
-      <!-- Muster-Widerrufsformular -->
+      <!-- Widerrufsformular -->
       <div class="imp-para">
         <div class="imp-para-head">
           <div class="imp-para-icon">📄</div>
           <div>
-            <h2>Muster-Widerrufsformular</h2>
-            <div class="imp-para-subtitle">Per E-Mail an uns senden</div>
+            <h2>Widerrufsformular</h2>
+            <div class="imp-para-subtitle">Direkt online einreichen</div>
           </div>
         </div>
-        <p>Wenn du den Vertrag widerrufen willst, kannst du uns folgendes Formular ausgefüllt per E-Mail an <a href="mailto:kontakt@eduleo-akademie.de">kontakt@eduleo-akademie.de</a> senden:</p>
+        <p>Füll das Formular aus – deine Widerrufserklärung wird direkt an uns übermittelt. Du erhältst keine automatische Bestätigung; wir melden uns nach Eingang bei dir.</p>
         <div class="widerruf-formular">
-          <p><strong>An Klumper &amp; Flunkert EDULEO GbR, <a href="mailto:kontakt@eduleo-akademie.de">kontakt@eduleo-akademie.de</a></strong></p>
-          <p>Hiermit widerrufe(n) ich/wir (*) den von mir/uns (*) abgeschlossenen Vertrag über die Buchung folgender Fortbildung:</p>
-          <p>Name der Fortbildung: _______________________</p>
-          <p>Datum der Buchung: _______________________</p>
-          <p>Name des/der Teilnehmenden: _______________________</p>
-          <p>Datum: _______________________</p>
-          <p>Unterschrift: _______________________</p>
-          <p><em>(*) Unzutreffendes streichen.</em></p>
+          <form id="widerruf-form" novalidate style="display:flex;flex-direction:column;gap:14px;">
+            <input type="hidden" name="access_key" value="cedf781f-63db-4e25-b30d-49ee10a44b96">
+            <input type="hidden" name="subject" value="Widerruf einer Fortbildungsbuchung">
+            <input type="hidden" name="from_name" value="EDULEO Akademie Website">
+            <p style="font-size:0.88rem;color:var(--text-light);margin:0 0 4px;">Hiermit widerrufe ich den von mir abgeschlossenen Vertrag über die Buchung folgender Fortbildung:</p>
+            <div>
+              <label style="font-size:0.85rem;font-weight:700;display:block;margin-bottom:5px;">Name der Fortbildung <span style="color:#e05252;">*</span></label>
+              <input type="text" name="Name der Fortbildung" required placeholder="z. B. Kinderyoga Kursleitung" style="width:100%;border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:10px 12px;font-size:0.92rem;font-family:var(--font);background:#fff;">
+            </div>
+            <div>
+              <label style="font-size:0.85rem;font-weight:700;display:block;margin-bottom:5px;">Datum der Buchung <span style="color:#e05252;">*</span></label>
+              <input type="text" name="Datum der Buchung" required placeholder="z. B. 15.05.2026" style="width:100%;border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:10px 12px;font-size:0.92rem;font-family:var(--font);background:#fff;">
+            </div>
+            <div>
+              <label style="font-size:0.85rem;font-weight:700;display:block;margin-bottom:5px;">Name der/des Teilnehmenden <span style="color:#e05252;">*</span></label>
+              <input type="text" name="Name Teilnehmende" required placeholder="Vorname Nachname" style="width:100%;border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:10px 12px;font-size:0.92rem;font-family:var(--font);background:#fff;">
+            </div>
+            <div>
+              <label style="font-size:0.85rem;font-weight:700;display:block;margin-bottom:5px;">E-Mail-Adresse <span style="color:#e05252;">*</span></label>
+              <input type="email" name="email" required placeholder="deine@email.de" style="width:100%;border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:10px 12px;font-size:0.92rem;font-family:var(--font);background:#fff;">
+            </div>
+            <div>
+              <label style="font-size:0.85rem;font-weight:700;display:block;margin-bottom:5px;">Datum der Widerrufserklärung <span style="color:#e05252;">*</span></label>
+              <input type="text" name="Datum Widerruf" required placeholder="z. B. 17.06.2026" style="width:100%;border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:10px 12px;font-size:0.92rem;font-family:var(--font);background:#fff;">
+            </div>
+            <button type="submit" style="background:#7A5240;color:#fff;border:none;border-radius:50px;padding:12px 28px;font-size:0.95rem;font-weight:700;font-family:var(--font);cursor:pointer;margin-top:4px;transition:background 0.2s;">Widerruf einreichen →</button>
+          </form>
+          <div id="widerruf-success" style="display:none;background:var(--green);border-radius:var(--radius-md);padding:24px;text-align:center;margin-top:16px;">
+            <div style="font-size:2rem;margin-bottom:10px;">✓</div>
+            <strong>Widerruf eingegangen!</strong>
+            <p style="font-size:0.88rem;margin-top:8px;color:var(--text-light);">Wir haben deine Widerrufserklärung erhalten und melden uns bei dir.</p>
+          </div>
         </div>
       </div>
 
@@ -246,5 +270,18 @@
 
 <footer class="footer"><div class="container"><div class="footer-bottom"><p>© 2026 EDULEO Akademie</p><div class="footer-legal"><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="agb.html">AGB</a></div></div></div></footer>
 <script src="main.js"></script>
+<script>
+var wf=document.getElementById('widerruf-form');
+var ws=document.getElementById('widerruf-success');
+if(wf){wf.addEventListener('submit',function(e){e.preventDefault();
+var req=wf.querySelectorAll('[required]');var ok=true;
+req.forEach(function(el){el.style.borderColor='';if(!el.value.trim()){ok=false;el.style.borderColor='#e05252';}});
+if(!ok)return;
+var data=new FormData(wf);
+fetch('https://api.web3forms.com/submit',{method:'POST',body:data})
+.then(function(r){return r.json();})
+.then(function(d){if(d.success){wf.style.display='none';ws.style.display='block';}})
+.catch(function(){alert('Es ist ein Fehler aufgetreten. Bitte schreibe uns direkt an kontakt@eduleo-akademie.de');});});}
+</script>
 </body>
 </html>
