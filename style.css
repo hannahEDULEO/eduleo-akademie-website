@@ -1981,9 +1981,9 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 
 /* ── Quiz CTA Banner aufgewertet ── */
 .quiz-cta-banner {
-  background: linear-gradient(135deg, var(--green-dark) 0%, #4a8a6a 100%);
+  background: linear-gradient(135deg, #7A5240 0%, #5C3D2E 100%);
   color: var(--white); border-radius: var(--radius-xl);
-  padding: 42px 52px; box-shadow: 0 12px 36px rgba(45,122,90,0.25);
+  padding: 42px 52px; box-shadow: 0 12px 36px rgba(92,61,46,0.25);
   position: relative; overflow: hidden;
   max-width: 860px; margin: 0 auto;
 }
