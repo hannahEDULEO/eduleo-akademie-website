@@ -1201,6 +1201,7 @@ p   { font-size: 1.05rem; line-height: 1.75; }
   .newsletter-form { flex-direction: column; }
 
   .kurs-fakten-row { grid-template-columns: 1fr 1fr; }
+  .kurs-main div[style*="1fr 1fr"] { grid-template-columns: 1fr !important; }
   .kurs-hero-actions { flex-direction: column; }
   .kurs-hero-actions .btn { width: 100%; text-align: center; }
 
