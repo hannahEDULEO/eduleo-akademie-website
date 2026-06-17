@@ -113,12 +113,12 @@ p   { font-size: 1.05rem; line-height: 1.75; }
   white-space: nowrap;
 }
 .btn-primary {
-  background: var(--dark); color: var(--white);
-  box-shadow: 0 4px 16px rgba(38, 29, 24, 0.25);
+  background: var(--beige); color: var(--dark);
+  box-shadow: 0 4px 16px rgba(38, 29, 24, 0.15);
 }
 .btn-primary:hover {
-  background: var(--text); transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(38, 29, 24, 0.30);
+  background: var(--beige-dark); transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(38, 29, 24, 0.20);
 }
 .btn-outline {
   background: transparent; color: var(--dark);
@@ -235,8 +235,8 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 .nav-links a:hover::after { transform: scaleX(1); }
 
 .nav-cta { display: flex; align-items: center; gap: 12px; }
-.nav-cta .btn-primary { background: var(--green-dark); }
-.nav-cta .btn-primary:hover { background: #4a8a6a; }
+.nav-cta .btn-primary { background: var(--green-dark); color: var(--white); }
+.nav-cta .btn-primary:hover { background: #4a8a6a; color: var(--white); }
 
 .hamburger {
   display: none; flex-direction: column; gap: 5px; cursor: pointer;
@@ -263,7 +263,7 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 }
 .mobile-menu a:last-of-type { border-bottom: none; }
 .mobile-menu .btn { margin-top: 14px; text-align: center; }
-.mobile-menu .btn-primary { color: var(--white); }
+.mobile-menu .btn-primary { background: var(--green-dark); color: var(--white); }
 
 /* ============================================
    HERO – STARTSEITE
@@ -1363,7 +1363,7 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 .baf-important-body p + p { margin-top: 8px; }
 
 /* BaF-Banner auf Kurs-Seiten */
-.baf-banner-section { background: var(--dark); padding: 0; }
+.baf-banner-section { background: #7A5240; padding: 0; }
 .baf-banner {
   display: flex;
   align-items: center;
@@ -1927,14 +1927,13 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 
 /* ── Premium Button ── */
 .btn-primary {
-  background: linear-gradient(270deg, #261D18 0%, #3D302A 50%, #261D18 100%);
-  background-size: 200% auto;
-  transition: background-position 0.6s ease, transform 0.25s, box-shadow 0.25s;
+  background: var(--beige);
+  transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
 }
 .btn-primary:hover {
-  background-position: right center;
+  background: var(--beige-dark);
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(38,29,24,0.32);
+  box-shadow: 0 12px 30px rgba(38,29,24,0.18);
 }
 
 /* ── Pain Cards aufgewertet ── */
