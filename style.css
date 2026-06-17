@@ -235,6 +235,8 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 .nav-links a:hover::after { transform: scaleX(1); }
 
 .nav-cta { display: flex; align-items: center; gap: 12px; }
+.nav-cta .btn-primary { background: var(--green-dark); }
+.nav-cta .btn-primary:hover { background: #4a8a6a; }
 
 .hamburger {
   display: none; flex-direction: column; gap: 5px; cursor: pointer;
@@ -816,19 +818,19 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 
 /* Fakten-Leiste */
 .kurs-fakten {
-  background: var(--dark); padding: 0;
+  background: var(--beige); padding: 0;
 }
 .kurs-fakten-row {
   display: grid; grid-template-columns: repeat(4, 1fr);
   divide-x: var(--border);
 }
 .kurs-fakt {
-  padding: 28px 32px; border-right: 1px solid rgba(255,255,255,0.08);
+  padding: 28px 32px; border-right: 1px solid rgba(38,29,24,0.12);
   text-align: center;
 }
 .kurs-fakt:last-child { border-right: none; }
-.kurs-fakt-label { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.10em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 6px; display: block; }
-.kurs-fakt-value { font-size: 1.05rem; font-weight: 800; color: var(--white); }
+.kurs-fakt-label { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.10em; text-transform: uppercase; color: var(--text-light); margin-bottom: 6px; display: block; }
+.kurs-fakt-value { font-size: 1.05rem; font-weight: 800; color: var(--dark); }
 
 /* Kurs-Inhalt */
 .kurs-body { padding: 88px 0; }
@@ -912,6 +914,27 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 
 /* Sidebar – Buchungs-Box */
 .kurs-sidebar {}
+
+/* ── Einblicke-Slider (Kursseiten Sidebar) ────── */
+.adhs-slider-wrap { margin-bottom: 0; }
+.adhs-slider-viewport { overflow: hidden; border-radius: 12px; }
+.adhs-slider-track { display: flex; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1); }
+.adhs-slide { flex: 0 0 100%; }
+.adhs-slide img { width: 100%; height: auto; display: block; }
+.adhs-slider-controls { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 14px; }
+.adhs-arr {
+  background: var(--dark); color: #fff; border: none; border-radius: 50%;
+  width: 38px; height: 38px; cursor: pointer; font-size: 1.1rem;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s; flex-shrink: 0;
+}
+.adhs-arr:hover { background: var(--green-dark); }
+.adhs-dots { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
+.adhs-dot {
+  width: 8px; height: 8px; border-radius: 50%; border: none; cursor: pointer;
+  padding: 0; background: var(--border); transition: background 0.2s;
+}
+.adhs-dot.active { background: var(--green-dark); }
 
 /* FAQ außerhalb des Body-Grids (Mobile: nach Sidebar) */
 .kurs-faq-wrap { padding-top: 48px; }
