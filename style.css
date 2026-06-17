@@ -794,7 +794,7 @@ p   { font-size: 1.05rem; line-height: 1.75; }
    KURS-DETAIL (fortbildungen/[slug]/index.html)
    ============================================ */
 .kurs-hero {
-  background: var(--beige); padding: 100px 0 72px; overflow: hidden; position: relative;
+  background: var(--beige); padding: 148px 0 72px; overflow: hidden; position: relative;
 }
 .kurs-hero::before {
   content: ''; position: absolute; width: 500px; height: 500px; border-radius: 50%;
