@@ -180,8 +180,7 @@
       </div>
     </div>
 
-    <div class="feature-slider-grid">
-    <div style="background:var(--green);border-radius:var(--radius-md);padding:28px 32px;">
+    <div style="background:var(--green);border-radius:var(--radius-md);padding:28px 32px;margin-top:8px;">
       <h3 style="font-size:1rem;font-weight:700;margin-bottom:20px;color:var(--dark);">So läuft deine Fortbildung ab – alles auf einen Blick</h3>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
         <div style="display:flex;align-items:flex-start;gap:12px;">
@@ -210,61 +209,6 @@
         </div>
       </div>
     </div>
-    <div>
-    <h2 class="kurs-section-title" style="margin-top:0;margin-bottom:16px;">Einblicke in die Fortbildung</h2>
-    <div class="adhs-slider-wrap" style="margin-bottom:0;">
-      <div class="adhs-slider-viewport">
-        <div class="adhs-slider-track" id="adhsTrack">
-          <div class="adhs-slide"><img src="../../assets/images/adhs-slider/einblick-fotos.png" alt="Einblick in die Fortbildung – Kita ExpertIn für ADHS & Autismus" loading="lazy"></div>
-          <div class="adhs-slide"><img src="../../assets/images/adhs-slider/willkommen.png" alt="Willkommen zur 3-Monats-Fortbildung" loading="lazy"></div>
-          <div class="adhs-slide"><img src="../../assets/images/adhs-slider/adhs-symptomatik.png" alt="ADHS Symptomatik" loading="lazy"></div>
-          <div class="adhs-slide"><img src="../../assets/images/adhs-slider/autismus-diagnosen.png" alt="Autismus und weitere Diagnosen" loading="lazy"></div>
-          <div class="adhs-slide"><img src="../../assets/images/adhs-slider/autismus-gesichter.png" alt="Autismus hat viele Gesichter" loading="lazy"></div>
-          <div class="adhs-slide"><img src="../../assets/images/adhs-slider/koerpergefuehl.png" alt="Spezifische Über- und Unterempfindlichkeiten" loading="lazy"></div>
-          <div class="adhs-slide"><img src="../../assets/images/adhs-slider/strukturierung.png" alt="Grundprinzip Strukturierung" loading="lazy"></div>
-          <div class="adhs-slide"><img src="../../assets/images/adhs-slider/stand-out.png" alt="Why fit in when you were born to stand out" loading="lazy"></div>
-        </div>
-      </div>
-      <div class="adhs-slider-controls">
-        <button class="adhs-arr" id="adhsPrev" aria-label="Vorheriges Bild">&#8592;</button>
-        <div class="adhs-dots" id="adhsDots"></div>
-        <button class="adhs-arr" id="adhsNext" aria-label="Nächstes Bild">&#8594;</button>
-      </div>
-    </div>
-    <script>
-    (function(){
-      var track = document.getElementById('adhsTrack');
-      var dotsWrap = document.getElementById('adhsDots');
-      if (!track) return;
-      var slides = track.querySelectorAll('.adhs-slide');
-      var total = slides.length;
-      var cur = 0;
-      var timer;
-      function goTo(n){
-        cur = (n + total) % total;
-        track.style.transform = 'translateX(-' + (cur * 100) + '%)';
-        buildDots();
-      }
-      function buildDots(){
-        dotsWrap.innerHTML = '';
-        for(var i=0;i<total;i++){
-          var d = document.createElement('button');
-          d.className = 'adhs-dot' + (i===cur?' active':'');
-          d.setAttribute('aria-label','Bild '+(i+1));
-          (function(idx){d.addEventListener('click',function(){goTo(idx);reset();});})(i);
-          dotsWrap.appendChild(d);
-        }
-      }
-      function reset(){clearInterval(timer);timer=setInterval(function(){goTo(cur+1);},5000);}
-      document.getElementById('adhsPrev').addEventListener('click',function(){goTo(cur-1);reset();});
-      document.getElementById('adhsNext').addEventListener('click',function(){goTo(cur+1);reset();});
-      buildDots();
-      reset();
-    })();
-    </script>
-    </div>
-    </div>
-
   </div>
 
       <!-- SIDEBAR -->
@@ -324,6 +268,56 @@
         </div>
       </div>
     </div>
+    <!-- Einblicke-Slider: unter Formular, volle Breite -->
+    <div style="padding-top:48px;">
+      <h2 class="kurs-section-title" style="margin-top:0;">Einblicke in die Fortbildung</h2>
+      <div class="adhs-slider-wrap">
+        <div class="adhs-slider-viewport">
+          <div class="adhs-slider-track" id="adhsTrack">
+            <div class="adhs-slide"><img src="../../assets/images/adhs-slider/einblick-fotos.png" alt="Einblick in die Fortbildung – Kita ExpertIn für ADHS & Autismus" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../assets/images/adhs-slider/willkommen.png" alt="Willkommen zur 3-Monats-Fortbildung" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../assets/images/adhs-slider/adhs-symptomatik.png" alt="ADHS Symptomatik" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../assets/images/adhs-slider/autismus-diagnosen.png" alt="Autismus und weitere Diagnosen" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../assets/images/adhs-slider/autismus-gesichter.png" alt="Autismus hat viele Gesichter" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../assets/images/adhs-slider/koerpergefuehl.png" alt="Spezifische Über- und Unterempfindlichkeiten" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../assets/images/adhs-slider/strukturierung.png" alt="Grundprinzip Strukturierung" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../assets/images/adhs-slider/stand-out.png" alt="Why fit in when you were born to stand out" loading="lazy"></div>
+          </div>
+        </div>
+        <div class="adhs-slider-controls">
+          <button class="adhs-arr" id="adhsPrev" aria-label="Vorheriges Bild">&#8592;</button>
+          <div class="adhs-dots" id="adhsDots"></div>
+          <button class="adhs-arr" id="adhsNext" aria-label="Nächstes Bild">&#8594;</button>
+        </div>
+      </div>
+      <script>
+      (function(){
+        var track = document.getElementById('adhsTrack');
+        var dotsWrap = document.getElementById('adhsDots');
+        if (!track) return;
+        var slides = track.querySelectorAll('.adhs-slide');
+        var total = slides.length;
+        var cur = 0;
+        var timer;
+        function goTo(n){ cur=(n+total)%total; track.style.transform='translateX(-'+(cur*100)+'%)'; buildDots(); }
+        function buildDots(){
+          dotsWrap.innerHTML='';
+          for(var i=0;i<total;i++){
+            var d=document.createElement('button');
+            d.className='adhs-dot'+(i===cur?' active':'');
+            d.setAttribute('aria-label','Bild '+(i+1));
+            (function(idx){d.addEventListener('click',function(){goTo(idx);reset();});})(i);
+            dotsWrap.appendChild(d);
+          }
+        }
+        function reset(){clearInterval(timer);timer=setInterval(function(){goTo(cur+1);},5000);}
+        document.getElementById('adhsPrev').addEventListener('click',function(){goTo(cur-1);reset();});
+        document.getElementById('adhsNext').addEventListener('click',function(){goTo(cur+1);reset();});
+        buildDots(); reset();
+      })();
+      </script>
+    </div>
+
     <!-- FAQ außerhalb des Grids: Mobile-Reihenfolge Inhalt → Buchung → FAQ -->
     <div class="kurs-faq-wrap">
       <h2 class="kurs-section-title">Häufige Fragen</h2>
