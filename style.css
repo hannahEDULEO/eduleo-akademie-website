@@ -113,12 +113,12 @@ p   { font-size: 1.05rem; line-height: 1.75; }
   white-space: nowrap;
 }
 .btn-primary {
-  background: var(--beige); color: var(--dark);
-  box-shadow: 0 4px 16px rgba(38, 29, 24, 0.15);
+  background: #7A5240; color: var(--white);
+  box-shadow: 0 4px 16px rgba(122, 82, 64, 0.30);
 }
 .btn-primary:hover {
-  background: var(--beige-dark); transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(38, 29, 24, 0.20);
+  background: #5C3D2E; transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(92, 61, 46, 0.35);
 }
 .btn-outline {
   background: transparent; color: var(--dark);
@@ -1927,13 +1927,13 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 
 /* ── Premium Button ── */
 .btn-primary {
-  background: var(--beige);
+  background: #7A5240;
   transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
 }
 .btn-primary:hover {
-  background: var(--beige-dark);
+  background: #5C3D2E;
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(38,29,24,0.18);
+  box-shadow: 0 12px 30px rgba(92,61,46,0.35);
 }
 
 /* ── Pain Cards aufgewertet ── */
