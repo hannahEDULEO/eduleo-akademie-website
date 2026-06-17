@@ -30,6 +30,10 @@
     .kurs-hero .btn-outline { border-color: rgba(255,255,255,0.7); color: #fff; }
     .kurs-hero .btn-outline:hover { background: rgba(255,255,255,0.15); border-color: #fff; }
 
+    /* Feature + Slider nebeneinander */
+    .feature-slider-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; margin-top: 8px; }
+    @media (max-width: 900px) { .feature-slider-grid { grid-template-columns: 1fr; } }
+
     /* Einblicke-Slider */
     .adhs-slider-wrap { margin-bottom: 48px; }
     .adhs-slider-viewport { overflow: hidden; border-radius: 12px; }
@@ -176,7 +180,8 @@
       </div>
     </div>
 
-    <div style="background:var(--green);border-radius:var(--radius-md);padding:28px 32px;margin-top:8px;">
+    <div class="feature-slider-grid">
+    <div style="background:var(--green);border-radius:var(--radius-md);padding:28px 32px;">
       <h3 style="font-size:1rem;font-weight:700;margin-bottom:20px;color:var(--dark);">So läuft deine Fortbildung ab – alles auf einen Blick</h3>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
         <div style="display:flex;align-items:flex-start;gap:12px;">
@@ -205,9 +210,9 @@
         </div>
       </div>
     </div>
-
-    <h2 class="kurs-section-title" style="margin-top:48px;">Einblicke in die Fortbildung</h2>
-    <div class="adhs-slider-wrap">
+    <div>
+    <h2 class="kurs-section-title" style="margin-top:0;margin-bottom:16px;">Einblicke in die Fortbildung</h2>
+    <div class="adhs-slider-wrap" style="margin-bottom:0;">
       <div class="adhs-slider-viewport">
         <div class="adhs-slider-track" id="adhsTrack">
           <div class="adhs-slide"><img src="../../assets/images/adhs-slider/einblick-fotos.png" alt="Einblick in die Fortbildung – Kita ExpertIn für ADHS & Autismus" loading="lazy"></div>
@@ -257,16 +262,9 @@
       reset();
     })();
     </script>
-
-    <h2 class="kurs-section-title" style="margin-top:48px;">Häufige Fragen</h2>
-    <div class="faq-list">
-      <div class="faq-item"><div class="faq-question">Was kostet die Fortbildung? <span class="faq-icon">+</span></div><div class="faq-answer">Die Fortbildung kostet 900,– €, inklusive Workbook, Materialien und Zertifikat. Der Betrag ist umsatzsteuerbefreit. Ratenzahlung ist möglich, sprich uns einfach an.</div></div>
-      <div class="faq-item"><div class="faq-question">Wie lange geht die Fortbildung? <span class="faq-icon">+</span></div><div class="faq-answer">Die Fortbildung umfasst 8 Live-Termine über 3 Monate, die regelmäßig online via Zoom stattfinden. So lässt sie sich gut in deinen Kita-Alltag integrieren. Verpasste Termine können als Aufzeichnung nachgeholt werden.</div></div>
-      <div class="faq-item"><div class="faq-question">Muss ich Vorkenntnisse haben? <span class="faq-icon">+</span></div><div class="faq-answer">Nein. Die Fortbildung ist so aufgebaut, dass du ohne Vorkenntnisse starten kannst. Alles, was du wissen musst, wird aufgebaut und erklärt.</div></div>
-      <div class="faq-item"><div class="faq-question">Wie läuft die Fortbildung konkret ab? <span class="faq-icon">+</span></div><div class="faq-answer">Die Fortbildung findet über 3 Monate online und live via Zoom statt. Du nimmst regelmäßig an Live-Sessions teil, erhältst Materialien zum Nacharbeiten und hast die Möglichkeit, Fragen direkt zu stellen. Verpasste Sitzungen können als Aufzeichnung nachgeholt werden.</div></div>
-      <div class="faq-item"><div class="faq-question">Was bekomme ich am Ende der Fortbildung? <span class="faq-icon">+</span></div><div class="faq-answer">Du erhältst ein Zertifikat als „Kita-ExpertIn für ADHS & Autismus". Das Zertifikat kannst du als Nachweis deiner Zusatzqualifikation beim Träger, bei Bewerbungen oder für dein eigenes Portfolio nutzen.</div></div>
-      <div class="faq-item"><div class="faq-question">Kann mein Träger die Kosten übernehmen? <span class="faq-icon">+</span></div><div class="faq-answer">Du erhältst nach der Buchung automatisch eine Rechnung. In der Regel übernehmen Träger die Kosten für Fortbildungen. Du kannst dich aber auch auf eigene Kosten anmelden.</div></div>
     </div>
+    </div>
+
   </div>
 
       <!-- SIDEBAR -->
@@ -324,6 +322,18 @@
           </div>
           <p class="booking-box-note" style="margin-top:12px;">Deine Unterlagen (Workbook, Präsentation) stehen nach der Anmeldung jederzeit im Portal zum Download bereit.</p>
         </div>
+      </div>
+    </div>
+    <!-- FAQ außerhalb des Grids: Mobile-Reihenfolge Inhalt → Buchung → FAQ -->
+    <div class="kurs-faq-wrap">
+      <h2 class="kurs-section-title">Häufige Fragen</h2>
+      <div class="faq-list">
+        <div class="faq-item"><div class="faq-question">Was kostet die Fortbildung? <span class="faq-icon">+</span></div><div class="faq-answer">Die Fortbildung kostet 900,– €, inklusive Workbook, Materialien und Zertifikat. Der Betrag ist umsatzsteuerbefreit. Ratenzahlung ist möglich, sprich uns einfach an.</div></div>
+        <div class="faq-item"><div class="faq-question">Wie lange geht die Fortbildung? <span class="faq-icon">+</span></div><div class="faq-answer">Die Fortbildung umfasst 8 Live-Termine über 3 Monate, die regelmäßig online via Zoom stattfinden. So lässt sie sich gut in deinen Kita-Alltag integrieren. Verpasste Termine können als Aufzeichnung nachgeholt werden.</div></div>
+        <div class="faq-item"><div class="faq-question">Muss ich Vorkenntnisse haben? <span class="faq-icon">+</span></div><div class="faq-answer">Nein. Die Fortbildung ist so aufgebaut, dass du ohne Vorkenntnisse starten kannst. Alles, was du wissen musst, wird aufgebaut und erklärt.</div></div>
+        <div class="faq-item"><div class="faq-question">Wie läuft die Fortbildung konkret ab? <span class="faq-icon">+</span></div><div class="faq-answer">Die Fortbildung findet über 3 Monate online und live via Zoom statt. Du nimmst regelmäßig an Live-Sessions teil, erhältst Materialien zum Nacharbeiten und hast die Möglichkeit, Fragen direkt zu stellen. Verpasste Sitzungen können als Aufzeichnung nachgeholt werden.</div></div>
+        <div class="faq-item"><div class="faq-question">Was bekomme ich am Ende der Fortbildung? <span class="faq-icon">+</span></div><div class="faq-answer">Du erhältst ein Zertifikat als „Kita-ExpertIn für ADHS & Autismus". Das Zertifikat kannst du als Nachweis deiner Zusatzqualifikation beim Träger, bei Bewerbungen oder für dein eigenes Portfolio nutzen.</div></div>
+        <div class="faq-item"><div class="faq-question">Kann mein Träger die Kosten übernehmen? <span class="faq-icon">+</span></div><div class="faq-answer">Du erhältst nach der Buchung automatisch eine Rechnung. In der Regel übernehmen Träger die Kosten für Fortbildungen. Du kannst dich aber auch auf eigene Kosten anmelden.</div></div>
       </div>
     </div>
   </div>

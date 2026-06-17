@@ -912,6 +912,17 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 
 /* Sidebar – Buchungs-Box */
 .kurs-sidebar {}
+
+/* FAQ außerhalb des Body-Grids (Mobile: nach Sidebar) */
+.kurs-faq-wrap { padding-top: 48px; }
+@media (min-width: 901px) {
+  .kurs-faq-wrap {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    column-gap: 60px;
+  }
+  .kurs-faq-wrap > * { grid-column: 1; }
+}
 .booking-box {
   background: var(--white); border-radius: var(--radius-xl); padding: 32px;
   box-shadow: var(--shadow-md); border: 1.5px solid var(--border);
