@@ -248,6 +248,8 @@ if (statNumbers.length && 'IntersectionObserver' in window) {
       const target = parseInt(el.dataset.target, 10);
       const startVal = parseInt(el.dataset.from || '0', 10);
       const suffix = el.dataset.suffix || '';
+      counterObserver.unobserve(el);
+      if (target === startVal) { el.textContent = target + suffix; return; }
       const duration = 1400;
       const startTime = Date.now();
       function tick() {
@@ -259,7 +261,6 @@ if (statNumbers.length && 'IntersectionObserver' in window) {
         if (progress < 1) requestAnimationFrame(tick);
       }
       requestAnimationFrame(tick);
-      counterObserver.unobserve(el);
     });
   }, { threshold: 0.5 });
   statNumbers.forEach(el => counterObserver.observe(el));

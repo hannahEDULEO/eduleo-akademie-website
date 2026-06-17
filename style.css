@@ -1981,26 +1981,26 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 
 /* ── Quiz CTA Banner aufgewertet ── */
 .quiz-cta-banner {
-  background: linear-gradient(135deg, #261D18 0%, #3D2E27 100%);
+  background: linear-gradient(135deg, var(--green-dark) 0%, #4a8a6a 100%);
   color: var(--white); border-radius: var(--radius-xl);
-  padding: 42px 52px; box-shadow: 0 12px 36px rgba(45,122,90,0.30);
+  padding: 42px 52px; box-shadow: 0 12px 36px rgba(45,122,90,0.25);
   position: relative; overflow: hidden;
   max-width: 860px; margin: 0 auto;
 }
 .quiz-cta-banner::before {
   content: ''; position: absolute; top: -70px; right: -70px;
   width: 220px; height: 220px;
-  background: rgba(255,255,255,0.12); border-radius: 50%;
+  background: rgba(255,255,255,0.15); border-radius: 50%;
   pointer-events: none;
 }
 .quiz-cta-banner::after {
   content: ''; position: absolute; bottom: -50px; left: -50px;
   width: 160px; height: 160px;
-  background: rgba(255,255,255,0.08); border-radius: 50%;
+  background: rgba(255,255,255,0.10); border-radius: 50%;
   pointer-events: none;
 }
 .quiz-cta-banner h3 { color: var(--white); }
-.quiz-cta-banner p  { color: rgba(255,255,255,0.82); }
+.quiz-cta-banner p  { color: rgba(255,255,255,0.88); }
 .quiz-cta-banner .quiz-cta-icon { filter: drop-shadow(0 2px 8px rgba(0,0,0,0.15)); }
 
 .stat-number { letter-spacing: -0.02em; }
