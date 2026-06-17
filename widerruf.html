@@ -9,6 +9,125 @@
   <link rel="icon" href="assets/favicon-16x16.png" type="image/png" sizes="16x16">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon-6/apple-touch-icon-180x180.png">
   <link rel="stylesheet" href="style.css">
+  <style>
+    .imp-hero {
+      background: #3d2e27;
+      padding: calc(var(--nav-h) + 72px) 0 72px;
+      position: relative;
+      overflow: hidden;
+    }
+    .imp-hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: rgba(90,158,122,0.14);
+      pointer-events: none;
+    }
+    .imp-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: -40px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(196,160,146,0.14);
+      pointer-events: none;
+    }
+    .imp-hero-inner { position: relative; z-index: 1; }
+    .imp-hero-badge {
+      display: inline-block;
+      background: rgba(210,234,218,0.15);
+      color: var(--green);
+      border: 1px solid rgba(210,234,218,0.3);
+      border-radius: 50px;
+      padding: 6px 18px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .imp-hero h1 { color: var(--white); font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 10px; }
+    .imp-hero-sub { color: rgba(255,255,255,0.5); font-size: 0.93rem; }
+    .imp-hero-line { width: 48px; height: 3px; background: var(--green-dark); border-radius: 2px; margin: 22px 0 0; }
+
+    .imp-content { padding: 64px 0 80px; }
+    .imp-inner { max-width: 820px; margin: 0 auto; }
+
+    .imp-contact {
+      background: var(--dark);
+      border-radius: var(--radius-lg);
+      padding: 32px 36px;
+      margin-bottom: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      align-items: flex-start;
+      border-left: 5px solid var(--green-dark);
+    }
+    .imp-contact-item { color: var(--white); }
+    .imp-contact-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 8px; }
+    .imp-contact-item p { color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.7; margin: 0; }
+    .imp-contact-item a { color: var(--green); text-decoration: none; }
+    .imp-contact-item a:hover { text-decoration: underline; }
+
+    .imp-para {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-left: 5px solid var(--green-dark);
+      border-radius: var(--radius-lg);
+      padding: 32px 36px;
+      margin-bottom: 16px;
+      scroll-margin-top: 90px;
+    }
+    .imp-para:nth-child(2) { border-left-color: var(--green-dark); }
+    .imp-para:nth-child(3) { border-left-color: #C4A092; }
+    .imp-para:nth-child(4) { border-left-color: var(--green-dark); }
+    .imp-para:nth-child(5) { border-left-color: #C4A092; }
+
+    .imp-para-head { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px; }
+    .imp-para-icon {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--green);
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .imp-para:nth-child(3) .imp-para-icon,
+    .imp-para:nth-child(5) .imp-para-icon { background: #EDE6E2; }
+    .imp-para h2 { font-size: 1.15rem; color: var(--dark); margin: 0 0 4px; }
+    .imp-para-subtitle { font-size: 0.8rem; color: var(--text-light); font-weight: 500; letter-spacing: 0.04em; }
+    .imp-para p { font-size: 0.96rem; color: var(--text); line-height: 1.75; margin-bottom: 12px; }
+    .imp-para p:last-child { margin-bottom: 0; }
+    .imp-para a { color: var(--green-dark); text-decoration: underline; }
+
+    .widerruf-formular {
+      background: var(--off-white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px 28px;
+      margin-top: 16px;
+    }
+    .widerruf-formular p { font-size: 0.92rem; margin-bottom: 10px; }
+    .widerruf-formular p:last-child { margin-bottom: 0; }
+
+    .imp-footer-note {
+      text-align: center;
+      padding: 28px 0 0;
+      font-size: 0.82rem;
+      color: var(--text-light);
+      border-top: 1px solid var(--border);
+      margin-top: 16px;
+    }
+
+    @media (max-width: 600px) {
+      .imp-para { padding: 24px 20px; }
+      .imp-contact { padding: 24px 20px; gap: 20px; }
+    }
+  </style>
 </head>
 <body>
 <nav class="nav" id="nav"><div class="container"><div class="nav-inner">
@@ -20,41 +139,105 @@
 <div class="mobile-menu"><a href="fortbildungen/">Fortbildungen</a><a href="ueber-uns/">Über uns</a><a href="bring-a-friend/">Bring a Friend</a><a href="/#kontakt">Kontakt</a><a href="anmeldebedingungen.html">Anmeldebedingungen</a>
   <a href="fortbildungen/" class="btn btn-primary">Alle Fortbildungen</a></div>
 
-<section class="legal-hero">
+<!-- HERO -->
+<section class="imp-hero">
   <div class="container">
-    <h1>Widerrufsbelehrung</h1>
-    <p>Für Online-Fortbildungen</p>
+    <div class="imp-hero-inner">
+      <div class="imp-hero-badge">Rechtliches</div>
+      <h1>Widerrufsbelehrung</h1>
+      <p class="imp-hero-sub">Für Online-Fortbildungen</p>
+      <div class="imp-hero-line"></div>
+    </div>
   </div>
 </section>
 
-<section class="section">
+<!-- INHALT -->
+<section class="imp-content">
   <div class="container">
-    <div class="legal-body">
+    <div class="imp-inner">
 
-      <h2>Widerrufsrecht</h2>
-      <p>Du hast das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen.</p>
-      <p>Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag des Vertragsabschlusses.</p>
-      <p>Um dein Widerrufsrecht auszuüben, musst du uns (Klumper &amp; Flunkert EDULEO GbR, Janine Klumper &amp; Hannah Flunkert, Ortlerweg 39, 12207 Berlin, E-Mail: <a href="mailto:kontakt@eduleo-akademie.de">kontakt@eduleo-akademie.de</a>) mittels einer eindeutigen Erklärung (z. B. per E-Mail) über deinen Entschluss, diesen Vertrag zu widerrufen, informieren.</p>
-      <p>Zur Wahrung der Widerrufsfrist reicht es aus, dass du die Mitteilung über die Ausübung des Widerrufsrechts vor Ablauf der Widerrufsfrist absendest.</p>
+      <!-- Kontaktbox -->
+      <div class="imp-contact">
+        <div class="imp-contact-item">
+          <div class="imp-contact-label">Anbieter</div>
+          <p><strong style="color:#fff;">Klumper &amp; Flunkert EDULEO GbR</strong><br>
+          Janine Klumper &amp; Hannah Flunkert</p>
+        </div>
+        <div class="imp-contact-item">
+          <div class="imp-contact-label">Adresse</div>
+          <p>Ortlerweg 39<br>12207 Berlin</p>
+        </div>
+        <div class="imp-contact-item">
+          <div class="imp-contact-label">Widerruf per E-Mail</div>
+          <p><a href="mailto:kontakt@eduleo-akademie.de">kontakt@eduleo-akademie.de</a></p>
+        </div>
+      </div>
 
-      <h2>Folgen des Widerrufs</h2>
-      <p>Wenn du diesen Vertrag widerrufst, haben wir dir alle Zahlungen, die wir von dir erhalten haben, unverzüglich und spätestens binnen vierzehn Tagen ab dem Tag zurückzuzahlen, an dem die Mitteilung über deinen Widerruf dieses Vertrags bei uns eingegangen ist. Für diese Rückzahlung verwenden wir dasselbe Zahlungsmittel, das du bei der ursprünglichen Transaktion eingesetzt hast.</p>
+      <!-- Widerrufsrecht -->
+      <div class="imp-para">
+        <div class="imp-para-head">
+          <div class="imp-para-icon">↩️</div>
+          <div>
+            <h2>Widerrufsrecht</h2>
+            <div class="imp-para-subtitle">14-tägiges Rückgaberecht</div>
+          </div>
+        </div>
+        <p>Du hast das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen.</p>
+        <p>Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag des Vertragsabschlusses.</p>
+        <p>Um dein Widerrufsrecht auszuüben, musst du uns (Klumper &amp; Flunkert EDULEO GbR, Janine Klumper &amp; Hannah Flunkert, Ortlerweg 39, 12207 Berlin, E-Mail: <a href="mailto:kontakt@eduleo-akademie.de">kontakt@eduleo-akademie.de</a>) mittels einer eindeutigen Erklärung (z. B. per E-Mail) über deinen Entschluss, diesen Vertrag zu widerrufen, informieren.</p>
+        <p>Zur Wahrung der Widerrufsfrist reicht es aus, dass du die Mitteilung über die Ausübung des Widerrufsrechts vor Ablauf der Widerrufsfrist absendest.</p>
+      </div>
 
-      <h2>Erlöschen des Widerrufsrechts bei digitalen Inhalten</h2>
-      <p>Das Widerrufsrecht erlischt vorzeitig bei Verträgen zur Lieferung von digitalen Inhalten, wenn der Anbieter mit der Ausführung des Vertrags begonnen hat und du ausdrücklich zugestimmt hast, dass wir mit der Ausführung beginnen, und du deine Kenntnis davon bestätigt hast, dass du durch deine Zustimmung mit Beginn der Ausführung des Vertrags dein Widerrufsrecht verlierst.</p>
-      <p>Bei Online-Live-Kursen, die bereits begonnen haben, erlischt das Widerrufsrecht mit dem Beginn der ersten Sitzung, sofern du der vorzeitigen Ausführung zugestimmt hast.</p>
+      <!-- Folgen des Widerrufs -->
+      <div class="imp-para">
+        <div class="imp-para-head">
+          <div class="imp-para-icon">🔄</div>
+          <div>
+            <h2>Folgen des Widerrufs</h2>
+            <div class="imp-para-subtitle">Rückzahlung innerhalb von 14 Tagen</div>
+          </div>
+        </div>
+        <p>Wenn du diesen Vertrag widerrufst, haben wir dir alle Zahlungen, die wir von dir erhalten haben, unverzüglich und spätestens binnen vierzehn Tagen ab dem Tag zurückzuzahlen, an dem die Mitteilung über deinen Widerruf dieses Vertrags bei uns eingegangen ist.</p>
+        <p>Für diese Rückzahlung verwenden wir dasselbe Zahlungsmittel, das du bei der ursprünglichen Transaktion eingesetzt hast.</p>
+      </div>
 
-      <h2>Muster-Widerrufsformular</h2>
-      <p>Wenn du den Vertrag widerrufen willst, kannst du uns folgendes Formular ausgefüllt per E-Mail an <a href="mailto:kontakt@eduleo-akademie.de">kontakt@eduleo-akademie.de</a> senden:</p>
-      <div style="background: var(--off-white); border: 1.5px solid var(--border); border-radius: var(--radius-md); padding: 24px; margin: 20px 0;">
-        <p><strong>An Klumper &amp; Flunkert EDULEO GbR, <a href="mailto:kontakt@eduleo-akademie.de">kontakt@eduleo-akademie.de</a></strong></p>
-        <p>Hiermit widerrufe(n) ich/wir (*) den von mir/uns (*) abgeschlossenen Vertrag über die Buchung folgender Fortbildung:</p>
-        <p>Name der Fortbildung: _______________________</p>
-        <p>Datum der Buchung: _______________________</p>
-        <p>Name des/der Teilnehmenden: _______________________</p>
-        <p>Datum: _______________________</p>
-        <p>Unterschrift: _______________________</p>
-        <p><em>(*) Unzutreffendes streichen.</em></p>
+      <!-- Erlöschen -->
+      <div class="imp-para">
+        <div class="imp-para-head">
+          <div class="imp-para-icon">⏱️</div>
+          <div>
+            <h2>Erlöschen des Widerrufsrechts bei digitalen Inhalten</h2>
+            <div class="imp-para-subtitle">Besondere Regelung für Online-Kurse</div>
+          </div>
+        </div>
+        <p>Das Widerrufsrecht erlischt vorzeitig bei Verträgen zur Lieferung von digitalen Inhalten, wenn der Anbieter mit der Ausführung des Vertrags begonnen hat und du ausdrücklich zugestimmt hast, dass wir mit der Ausführung beginnen, und du deine Kenntnis davon bestätigt hast, dass du durch deine Zustimmung mit Beginn der Ausführung des Vertrags dein Widerrufsrecht verlierst.</p>
+        <p>Bei Online-Live-Kursen, die bereits begonnen haben, erlischt das Widerrufsrecht mit dem Beginn der ersten Sitzung, sofern du der vorzeitigen Ausführung zugestimmt hast.</p>
+      </div>
+
+      <!-- Muster-Widerrufsformular -->
+      <div class="imp-para">
+        <div class="imp-para-head">
+          <div class="imp-para-icon">📄</div>
+          <div>
+            <h2>Muster-Widerrufsformular</h2>
+            <div class="imp-para-subtitle">Per E-Mail an uns senden</div>
+          </div>
+        </div>
+        <p>Wenn du den Vertrag widerrufen willst, kannst du uns folgendes Formular ausgefüllt per E-Mail an <a href="mailto:kontakt@eduleo-akademie.de">kontakt@eduleo-akademie.de</a> senden:</p>
+        <div class="widerruf-formular">
+          <p><strong>An Klumper &amp; Flunkert EDULEO GbR, <a href="mailto:kontakt@eduleo-akademie.de">kontakt@eduleo-akademie.de</a></strong></p>
+          <p>Hiermit widerrufe(n) ich/wir (*) den von mir/uns (*) abgeschlossenen Vertrag über die Buchung folgender Fortbildung:</p>
+          <p>Name der Fortbildung: _______________________</p>
+          <p>Datum der Buchung: _______________________</p>
+          <p>Name des/der Teilnehmenden: _______________________</p>
+          <p>Datum: _______________________</p>
+          <p>Unterschrift: _______________________</p>
+          <p><em>(*) Unzutreffendes streichen.</em></p>
+        </div>
+      </div>
+
+      <div class="imp-footer-note">
+        Klumper &amp; Flunkert EDULEO GbR · Janine Klumper &amp; Hannah Flunkert · Ortlerweg 39, 12207 Berlin
       </div>
 
     </div>
