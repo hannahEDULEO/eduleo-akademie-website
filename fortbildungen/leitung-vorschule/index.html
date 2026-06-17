@@ -151,14 +151,6 @@
       </div>
     </div>
 
-    <h2 class="kurs-section-title" style="margin-top:40px;">Häufige Fragen</h2>
-    <div class="faq-list">
-      <div class="faq-item"><div class="faq-question">Was kostet die Fortbildung? <span class="faq-icon">+</span></div><div class="faq-answer">Die Fortbildung kostet 900,– €, inklusive Workbook, Materialien und Zertifikat. Der Betrag ist umsatzsteuerbefreit. Ratenzahlung ist möglich, sprich uns einfach an.</div></div>
-      <div class="faq-item"><div class="faq-question">Wie lange geht die Fortbildung? <span class="faq-icon">+</span></div><div class="faq-answer">Die Fortbildung umfasst 8 Live-Termine über 3 Monate, die regelmäßig online via Zoom stattfinden. Verpasste Termine können als Aufzeichnung nachgeholt werden.</div></div>
-      <div class="faq-item"><div class="faq-question">Erhalte ich konkrete Materialien für die Vorschularbeit? <span class="faq-icon">+</span></div><div class="faq-answer">Ja. Du erhältst Materialien, Vorlagen und konkrete Praxisideen, die du direkt in deiner Gruppe einsetzen kannst. Im Rahmen der Fortbildung werden auch Kooperationsmaterialien von Finken Verlag (Wuppi, Bodo, Fred) vorgestellt.</div></div>
-      <div class="faq-item"><div class="faq-question">Ist das Konzept, das ich entwickle, für meine Einrichtung nutzbar? <span class="faq-icon">+</span></div><div class="faq-answer">Genau das ist das Ziel. Du entwickelst kein generisches Konzept, sondern ein Konzept, das zu deiner Einrichtung, deinen Kindern und deinen Bedingungen passt.</div></div>
-      <div class="faq-item"><div class="faq-question">Richtet sich die Fortbildung auch an Träger? <span class="faq-icon">+</span></div><div class="faq-answer">Ja. Träger und Verbände, die mehrere Einrichtungen unterstützen möchten, können sich für die Teamfortbildungsvariante interessieren. Kontaktiere uns für ein individuelles Angebot.</div></div>
-    </div>
   </div>
 
   <div class="kurs-sidebar">
@@ -211,8 +203,54 @@
       </div>
       <p class="booking-box-note" style="margin-top:12px;">Deine Unterlagen (Workbook, Präsentation) stehen nach der Anmeldung jederzeit im Portal zum Download bereit.</p>
     </div>
+    <!-- Einblicke-Slider -->
+    <div style="margin-top:24px;">
+      <h3 style="font-size:1rem;font-weight:700;margin-bottom:12px;color:var(--dark);">Einblicke in die Fortbildung</h3>
+      <div class="adhs-slider-wrap" style="margin-bottom:0;">
+        <div class="adhs-slider-viewport">
+          <div class="adhs-slider-track" id="vSliderTrack">
+            <div class="adhs-slide"><img src="../../assets/images/vorschule-slider/ebene-der-kinder.png" alt="Ebene der Kinder" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../assets/images/vorschule-slider/uebergangskompetenz.png" alt="Übergangsbewältigungskompetenzen" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../assets/images/vorschule-slider/tipps-uebergang.png" alt="Tipps für den Übergang" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../assets/images/vorschule-slider/selbstfuersorge.png" alt="Selbstfürsorge und Entspannung" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../assets/images/vorschule-slider/montessori-zitat.png" alt="Maria Montessori Zitat" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../assets/images/vorschule-slider/uebergang-schule.png" alt="Übergang in die Schule" loading="lazy"></div>
+          </div>
+        </div>
+        <div class="adhs-slider-controls">
+          <button class="adhs-arr" id="vSliderPrev" aria-label="Zurück">&#8592;</button>
+          <div class="adhs-dots" id="vSliderDots"></div>
+          <button class="adhs-arr" id="vSliderNext" aria-label="Weiter">&#8594;</button>
+        </div>
+      </div>
+      <script>
+      (function(){
+        var track=document.getElementById('vSliderTrack'),dotsWrap=document.getElementById('vSliderDots');
+        if(!track)return;
+        var slides=track.querySelectorAll('.adhs-slide'),total=slides.length,cur=0,timer;
+        function goTo(n){cur=(n+total)%total;track.style.transform='translateX(-'+(cur*100)+'%)';buildDots();}
+        function buildDots(){dotsWrap.innerHTML='';for(var i=0;i<total;i++){var d=document.createElement('button');d.className='adhs-dot'+(i===cur?' active':'');d.setAttribute('aria-label','Bild '+(i+1));(function(idx){d.addEventListener('click',function(){goTo(idx);reset();});})(i);dotsWrap.appendChild(d);}}
+        function reset(){clearInterval(timer);timer=setInterval(function(){goTo(cur+1);},5000);}
+        document.getElementById('vSliderPrev').addEventListener('click',function(){goTo(cur-1);reset();});
+        document.getElementById('vSliderNext').addEventListener('click',function(){goTo(cur+1);reset();});
+        buildDots();reset();
+      })();
+      </script>
+    </div>
   </div>
-</div></div></section>
+</div>
+    <!-- FAQ außerhalb Grid -->
+    <div class="kurs-faq-wrap">
+      <h2 class="kurs-section-title">Häufige Fragen</h2>
+      <div class="faq-list">
+        <div class="faq-item"><div class="faq-question">Was kostet die Fortbildung? <span class="faq-icon">+</span></div><div class="faq-answer">Die Fortbildung kostet 900,– €, inklusive Workbook, Materialien und Zertifikat. Der Betrag ist umsatzsteuerbefreit. Ratenzahlung ist möglich, sprich uns einfach an.</div></div>
+        <div class="faq-item"><div class="faq-question">Wie lange geht die Fortbildung? <span class="faq-icon">+</span></div><div class="faq-answer">Die Fortbildung umfasst 8 Live-Termine über 3 Monate, die regelmäßig online via Zoom stattfinden. Verpasste Termine können als Aufzeichnung nachgeholt werden.</div></div>
+        <div class="faq-item"><div class="faq-question">Erhalte ich konkrete Materialien für die Vorschularbeit? <span class="faq-icon">+</span></div><div class="faq-answer">Ja. Du erhältst Materialien, Vorlagen und konkrete Praxisideen, die du direkt in deiner Gruppe einsetzen kannst.</div></div>
+        <div class="faq-item"><div class="faq-question">Ist das Konzept, das ich entwickle, für meine Einrichtung nutzbar? <span class="faq-icon">+</span></div><div class="faq-answer">Genau das ist das Ziel. Du entwickelst ein Konzept, das zu deiner Einrichtung, deinen Kindern und deinen Bedingungen passt.</div></div>
+        <div class="faq-item"><div class="faq-question">Richtet sich die Fortbildung auch an Träger? <span class="faq-icon">+</span></div><div class="faq-answer">Ja. Träger und Verbände können sich für die Teamfortbildungsvariante interessieren. Kontaktiere uns für ein individuelles Angebot.</div></div>
+      </div>
+    </div>
+</div></section>
 
 <section class="baf-banner-section"><div class="container"><div class="baf-banner fade-in"><div class="baf-banner-left"><span class="baf-banner-emoji">🤝</span><div><span class="baf-banner-label">Bring a Friend</span><h3>Gemeinsam fortbilden lohnt sich!</h3><p>Melde dich an und eine zweite Person nimmt <strong>kostenfrei</strong> an dieser Fortbildung teil.</p></div></div><a href="../../bring-a-friend/" class="btn btn-primary">Jetzt gemeinsam anmelden →</a></div></div></section>
 <section class="related-courses"><div class="container">
