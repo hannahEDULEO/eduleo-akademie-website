@@ -1353,6 +1353,7 @@ p   { font-size: 1.05rem; line-height: 1.75; }
   border-radius: var(--radius-lg);
   padding: 30px 34px;
   margin-top: 36px;
+  margin-bottom: 28px;
   display: flex;
   gap: 18px;
   align-items: flex-start;
