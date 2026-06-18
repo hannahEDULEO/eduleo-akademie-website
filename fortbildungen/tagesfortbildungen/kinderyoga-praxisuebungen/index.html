@@ -212,6 +212,44 @@
       </div>
       <p class="booking-box-note" style="margin-top:8px;">Deine Unterlagen (Aufgaben, Präsentation) stehen nach der Anmeldung jederzeit im Portal zum Download bereit.</p>
     </div>
+    <!-- Einblicke-Slider -->
+    <div style="margin-top:24px;">
+      <h3 style="font-size:1rem;font-weight:700;margin-bottom:12px;color:var(--dark);">Einblicke in die Fortbildung</h3>
+      <div class="adhs-slider-wrap" style="margin-bottom:0;">
+        <div class="adhs-slider-viewport">
+          <div class="adhs-slider-track" id="kyPraxisTrack">
+            <div class="adhs-slide"><img src="../../../assets/images/tages-slider/kinderyoga-praxis/einblick.png" alt="Einblick" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../../assets/images/tages-slider/kinderyoga-praxis/willkommen.png" alt="Willkommen" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../../assets/images/tages-slider/kinderyoga-praxis/aufgabe-1.png" alt="Aufgabe 1" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../../assets/images/tages-slider/kinderyoga-praxis/besonderheiten.png" alt="Besonderheiten" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../../assets/images/tages-slider/kinderyoga-praxis/werte.png" alt="Werte im Kinderyoga" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../../assets/images/tages-slider/kinderyoga-praxis/uebungen-darstellung.png" alt="Übungen darstellen" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../../assets/images/tages-slider/kinderyoga-praxis/parcours.png" alt="Parcours" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../../assets/images/tages-slider/kinderyoga-praxis/entspannung-meditation.png" alt="Entspannung und Meditation" loading="lazy"></div>
+          </div>
+        </div>
+        <div class="adhs-slider-controls">
+          <button class="adhs-arr" id="kyPraxisPrev" aria-label="Vorheriges Bild">&#8592;</button>
+          <div class="adhs-dots" id="kyPraxisDots"></div>
+          <button class="adhs-arr" id="kyPraxisNext" aria-label="Nächstes Bild">&#8594;</button>
+        </div>
+      </div>
+      <script>
+      (function(){
+        var track=document.getElementById('kyPraxisTrack');
+        var dotsWrap=document.getElementById('kyPraxisDots');
+        if(!track)return;
+        var slides=track.querySelectorAll('.adhs-slide');
+        var total=slides.length,cur=0,timer;
+        function goTo(n){cur=(n+total)%total;track.style.transform='translateX(-'+(cur*100)+'%)';buildDots();}
+        function buildDots(){dotsWrap.innerHTML='';for(var i=0;i<total;i++){var d=document.createElement('button');d.className='adhs-dot'+(i===cur?' active':'');d.setAttribute('aria-label','Bild '+(i+1));(function(idx){d.addEventListener('click',function(){goTo(idx);reset();});})(i);dotsWrap.appendChild(d);}}
+        function reset(){clearInterval(timer);timer=setInterval(function(){goTo(cur+1);},5000);}
+        document.getElementById('kyPraxisPrev').addEventListener('click',function(){goTo(cur-1);reset();});
+        document.getElementById('kyPraxisNext').addEventListener('click',function(){goTo(cur+1);reset();});
+        buildDots();reset();
+      })();
+      </script>
+    </div>
   </div>
 </div></div></section>
 
