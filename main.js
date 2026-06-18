@@ -292,3 +292,19 @@ if (filterTabs.length) {
   });
 }
 
+
+/* ── Back-to-top Button ─────────────────────── */
+(function () {
+  var btn = document.createElement('button');
+  btn.id = 'back-to-top';
+  btn.setAttribute('aria-label', 'Nach oben scrollen');
+  btn.innerHTML = '&#8679;';
+  document.body.appendChild(btn);
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 400) btn.classList.add('visible');
+    else btn.classList.remove('visible');
+  }, { passive: true });
+  btn.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
