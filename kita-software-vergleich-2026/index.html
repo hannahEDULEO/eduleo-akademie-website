@@ -24,14 +24,14 @@
       position: relative;
       min-height: 380px;
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       padding: 0;
       overflow: hidden;
     }
     .blog-hero-bg {
       position: absolute;
       inset: 0;
-      background-image: url('../assets/blog/kitaversum/vorschau.png');
+      background-image: url('../assets/blog/kitaversum/2.png');
       background-size: cover;
       background-position: center;
     }
@@ -283,18 +283,21 @@
       top: 100px;
     }
     .blog-sidebar-card {
-      background: var(--beige);
+      background: #fff;
+      border: 1px solid var(--border);
       border-radius: var(--radius-xl);
       padding: 1.5rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
     }
     .blog-sidebar-card h4 {
-      font-size: 0.85rem;
+      font-size: 0.72rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.07em;
-      color: var(--green);
+      letter-spacing: 0.1em;
+      color: var(--text-light);
       margin: 0 0 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
     }
     .blog-sidebar-card ul {
       list-style: none;
@@ -302,54 +305,61 @@
       margin: 0;
     }
     .blog-sidebar-card ul li {
-      margin-bottom: 0.5rem;
+      border-bottom: 1px solid #F0EBE8;
     }
+    .blog-sidebar-card ul li:last-child { border-bottom: none; }
     .blog-sidebar-card ul li a {
-      font-size: 0.88rem;
-      color: #555;
+      font-size: 0.87rem;
+      font-weight: 600;
+      color: var(--dark);
       text-decoration: none;
       display: flex;
-      align-items: flex-start;
-      gap: 0.4rem;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.6rem 0;
       line-height: 1.4;
+      transition: color 0.15s;
     }
-    .blog-sidebar-card ul li a:hover { color: var(--green); }
-    .blog-sidebar-card ul li a::before {
+    .blog-sidebar-card ul li a:hover { color: var(--green-dark); }
+    .blog-sidebar-card ul li a::after {
       content: '→';
       flex-shrink: 0;
-      color: var(--green);
+      color: var(--beige-dark);
+      font-size: 0.8rem;
     }
+    .blog-sidebar-card ul li a:hover::after { color: var(--green-dark); }
+
     .blog-cta-card {
-      background: var(--green);
+      background: var(--dark);
       border-radius: var(--radius-xl);
       padding: 1.5rem;
-      color: #fff;
+      margin-bottom: 1.25rem;
     }
     .blog-cta-card h4 {
       font-size: 1rem;
       font-weight: 800;
-      margin: 0 0 0.75rem;
+      margin: 0 0 0.6rem;
       color: #fff;
     }
     .blog-cta-card p {
-      font-size: 0.88rem;
-      color: rgba(255,255,255,0.9);
+      font-size: 0.86rem;
+      color: rgba(255,255,255,0.75);
       line-height: 1.6;
-      margin-bottom: 1rem;
+      margin-bottom: 1.1rem;
     }
     .blog-cta-card a.btn {
-      background: #fff;
-      color: var(--green);
+      background: var(--green-dark);
+      color: #fff;
       font-weight: 700;
       font-size: 0.85rem;
-      padding: 0.6rem 1.2rem;
+      padding: 0.65rem 1.2rem;
       border-radius: 8px;
       text-decoration: none;
       display: block;
       text-align: center;
-      transition: opacity 0.2s;
+      transition: background 0.2s;
     }
-    .blog-cta-card a.btn:hover { opacity: 0.9; }
+    .blog-cta-card a.btn:hover { background: var(--green-deeper); }
 
     .author-box {
       background: #fff;
