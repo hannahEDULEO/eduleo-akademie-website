@@ -196,6 +196,45 @@
       </div>
       <p class="booking-box-note" style="margin-top:8px;">Deine Unterlagen (Aufgaben, Präsentation) stehen nach der Anmeldung jederzeit im Portal zum Download bereit.</p>
     </div>
+    <!-- Einblicke-Slider -->
+    <div style="margin-top:24px;">
+      <h3 style="font-size:1rem;font-weight:700;margin-bottom:12px;color:var(--dark);">Einblicke in die Fortbildung</h3>
+      <div class="adhs-slider-wrap" style="margin-bottom:0;">
+        <div class="adhs-slider-viewport">
+          <div class="adhs-slider-track" id="teamsLeitenTrack">
+            <div class="adhs-slide"><img src="../../../assets/images/tages-slider/teams-leiten/einblick.png" alt="Einblick in die Fortbildung" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../../assets/images/tages-slider/teams-leiten/willkommen.png" alt="Willkommen zur Fortbildung" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../../assets/images/tages-slider/teams-leiten/teamkultur.png" alt="8 Schritte zur gesunden Teamkultur" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../../assets/images/tages-slider/teams-leiten/rollen.png" alt="Handlungsorientierte Rollen" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../../assets/images/tages-slider/teams-leiten/staerken.png" alt="Meine Stärken" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../../assets/images/tages-slider/teams-leiten/onboarding.png" alt="Gruppenarbeit zum Onboarding" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../../assets/images/tages-slider/teams-leiten/teamsitzung.png" alt="Sieben Schritte zur effektiven Teamsitzung" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../../assets/images/tages-slider/teams-leiten/einstieg.png" alt="Einstieg in die Teamsitzung" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../../assets/images/tages-slider/teams-leiten/veraenderung.png" alt="Kurve der Veränderung – Kübler Ross" loading="lazy"></div>
+          </div>
+        </div>
+        <div class="adhs-slider-controls">
+          <button class="adhs-arr" id="teamsLeitenPrev" aria-label="Vorheriges Bild">&#8592;</button>
+          <div class="adhs-dots" id="teamsLeitenDots"></div>
+          <button class="adhs-arr" id="teamsLeitenNext" aria-label="Nächstes Bild">&#8594;</button>
+        </div>
+      </div>
+      <script>
+      (function(){
+        var track=document.getElementById('teamsLeitenTrack');
+        var dotsWrap=document.getElementById('teamsLeitenDots');
+        if(!track)return;
+        var slides=track.querySelectorAll('.adhs-slide');
+        var total=slides.length,cur=0,timer;
+        function goTo(n){cur=(n+total)%total;track.style.transform='translateX(-'+(cur*100)+'%)';buildDots();}
+        function buildDots(){dotsWrap.innerHTML='';for(var i=0;i<total;i++){var d=document.createElement('button');d.className='adhs-dot'+(i===cur?' active':'');d.setAttribute('aria-label','Bild '+(i+1));(function(idx){d.addEventListener('click',function(){goTo(idx);reset();});})(i);dotsWrap.appendChild(d);}}
+        function reset(){clearInterval(timer);timer=setInterval(function(){goTo(cur+1);},5000);}
+        document.getElementById('teamsLeitenPrev').addEventListener('click',function(){goTo(cur-1);reset();});
+        document.getElementById('teamsLeitenNext').addEventListener('click',function(){goTo(cur+1);reset();});
+        buildDots();reset();
+      })();
+      </script>
+    </div>
   </div>
 </div></div></section>
 

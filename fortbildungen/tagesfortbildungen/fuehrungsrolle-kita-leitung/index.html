@@ -197,6 +197,43 @@
       </div>
       <p class="booking-box-note" style="margin-top:8px;">Deine Unterlagen (Aufgaben, Präsentation) stehen nach der Anmeldung jederzeit im Portal zum Download bereit.</p>
     </div>
+    <!-- Einblicke-Slider -->
+    <div style="margin-top:24px;">
+      <h3 style="font-size:1rem;font-weight:700;margin-bottom:12px;color:var(--dark);">Einblicke in die Fortbildung</h3>
+      <div class="adhs-slider-wrap" style="margin-bottom:0;">
+        <div class="adhs-slider-viewport">
+          <div class="adhs-slider-track" id="fuehrungsrolleTrack">
+            <div class="adhs-slide"><img src="../../../assets/images/tages-slider/fuehrungsrolle/einblick.png" alt="Einblick in die Fortbildung" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../../assets/images/tages-slider/fuehrungsrolle/willkommen.png" alt="Willkommen zur Fortbildung" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../../assets/images/tages-slider/fuehrungsrolle/fuehren-leiten.png" alt="Führe oder leite ich?" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../../assets/images/tages-slider/fuehrungsrolle/wichtig.png" alt="Wichtig: Führen vs. Leiten" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../../assets/images/tages-slider/fuehrungsrolle/fuehren-sinn.png" alt="Führen fragt nach Sinn" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../../assets/images/tages-slider/fuehrungsrolle/systemisch.png" alt="Systemische Haltung in der Kita-Leitung" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../../assets/images/tages-slider/fuehrungsrolle/big-five.png" alt="Big Five – Lösungsblockaden für Konflikte" loading="lazy"></div>
+          </div>
+        </div>
+        <div class="adhs-slider-controls">
+          <button class="adhs-arr" id="fuehrungsrollePrev" aria-label="Vorheriges Bild">&#8592;</button>
+          <div class="adhs-dots" id="fuehrungsrolleDots"></div>
+          <button class="adhs-arr" id="fuehrungsrolleNext" aria-label="Nächstes Bild">&#8594;</button>
+        </div>
+      </div>
+      <script>
+      (function(){
+        var track=document.getElementById('fuehrungsrolleTrack');
+        var dotsWrap=document.getElementById('fuehrungsrolleDots');
+        if(!track)return;
+        var slides=track.querySelectorAll('.adhs-slide');
+        var total=slides.length,cur=0,timer;
+        function goTo(n){cur=(n+total)%total;track.style.transform='translateX(-'+(cur*100)+'%)';buildDots();}
+        function buildDots(){dotsWrap.innerHTML='';for(var i=0;i<total;i++){var d=document.createElement('button');d.className='adhs-dot'+(i===cur?' active':'');d.setAttribute('aria-label','Bild '+(i+1));(function(idx){d.addEventListener('click',function(){goTo(idx);reset();});})(i);dotsWrap.appendChild(d);}}
+        function reset(){clearInterval(timer);timer=setInterval(function(){goTo(cur+1);},5000);}
+        document.getElementById('fuehrungsrollePrev').addEventListener('click',function(){goTo(cur-1);reset();});
+        document.getElementById('fuehrungsrolleNext').addEventListener('click',function(){goTo(cur+1);reset();});
+        buildDots();reset();
+      })();
+      </script>
+    </div>
   </div>
 </div></div></section>
 

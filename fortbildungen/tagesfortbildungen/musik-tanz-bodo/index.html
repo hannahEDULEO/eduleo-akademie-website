@@ -210,6 +210,43 @@
       </div>
       <p class="booking-box-note" style="margin-top:8px;">Deine Unterlagen (Aufgaben, Präsentation) stehen nach der Anmeldung jederzeit im Portal zum Download bereit.</p>
     </div>
+    <!-- Einblicke-Slider -->
+    <div style="margin-top:24px;">
+      <h3 style="font-size:1rem;font-weight:700;margin-bottom:12px;color:var(--dark);">Einblicke in die Fortbildung</h3>
+      <div class="adhs-slider-wrap" style="margin-bottom:0;">
+        <div class="adhs-slider-viewport">
+          <div class="adhs-slider-track" id="bodoTrack">
+            <div class="adhs-slide"><img src="../../../assets/images/tages-slider/bodo/einblick.png" alt="Einblick in die Fortbildung" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../../assets/images/tages-slider/bodo/willkommen.png" alt="Willkommen zur Fortbildung" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../../assets/images/tages-slider/bodo/bodo.png" alt="Bodo – Das bin ich" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../../assets/images/tages-slider/bodo/musik.png" alt="Was Musik bewirkt" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../../assets/images/tages-slider/bodo/stimmen.png" alt="Kinderstimme, Bruststimme, Kopfstimme" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../../assets/images/tages-slider/bodo/materialordner.png" alt="Materialordner: Affe Bodo klatscht im Takt" loading="lazy"></div>
+            <div class="adhs-slide"><img src="../../../assets/images/tages-slider/bodo/entstehung.png" alt="Entstehungsprozess des Materialordners" loading="lazy"></div>
+          </div>
+        </div>
+        <div class="adhs-slider-controls">
+          <button class="adhs-arr" id="bodoPrev" aria-label="Vorheriges Bild">&#8592;</button>
+          <div class="adhs-dots" id="bodoDots"></div>
+          <button class="adhs-arr" id="bodoNext" aria-label="Nächstes Bild">&#8594;</button>
+        </div>
+      </div>
+      <script>
+      (function(){
+        var track=document.getElementById('bodoTrack');
+        var dotsWrap=document.getElementById('bodoDots');
+        if(!track)return;
+        var slides=track.querySelectorAll('.adhs-slide');
+        var total=slides.length,cur=0,timer;
+        function goTo(n){cur=(n+total)%total;track.style.transform='translateX(-'+(cur*100)+'%)';buildDots();}
+        function buildDots(){dotsWrap.innerHTML='';for(var i=0;i<total;i++){var d=document.createElement('button');d.className='adhs-dot'+(i===cur?' active':'');d.setAttribute('aria-label','Bild '+(i+1));(function(idx){d.addEventListener('click',function(){goTo(idx);reset();});})(i);dotsWrap.appendChild(d);}}
+        function reset(){clearInterval(timer);timer=setInterval(function(){goTo(cur+1);},5000);}
+        document.getElementById('bodoPrev').addEventListener('click',function(){goTo(cur-1);reset();});
+        document.getElementById('bodoNext').addEventListener('click',function(){goTo(cur+1);reset();});
+        buildDots();reset();
+      })();
+      </script>
+    </div>
   </div>
 </div></div></section>
 
