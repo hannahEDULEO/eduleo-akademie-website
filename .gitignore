@@ -1,6 +1,3 @@
-# Videos (zu groß für git – direkt via wrangler deploy hochladen)
-assets/videos/
-
 # Wrangler temp
 .wrangler/
 
