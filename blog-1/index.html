@@ -17,39 +17,49 @@
   <link rel="apple-touch-icon" sizes="180x180" href="../favicon-6/apple-touch-icon-180x180.png">
   <link rel="stylesheet" href="../style.css">
   <style>
+    /* ── Hero ── */
     .blog-index-hero {
-      background: var(--dark);
-      padding: 5rem 0 3.5rem;
-      text-align: center;
+      background: var(--beige);
+      padding: 4rem 0 3rem;
+    }
+    .blog-index-hero .eyebrow {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 0.75rem;
     }
     .blog-index-hero h1 {
-      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-size: clamp(2rem, 5vw, 3rem);
       font-weight: 800;
-      color: #fff;
-      margin: 0 0 1rem;
+      color: var(--dark);
+      margin: 0 0 0.75rem;
+      line-height: 1.15;
     }
     .blog-index-hero p {
-      color: rgba(255,255,255,0.75);
-      font-size: 1.05rem;
-      max-width: 560px;
-      margin: 0 auto;
+      color: #666;
+      font-size: 1rem;
+      max-width: 520px;
       line-height: 1.7;
+      margin: 0;
     }
 
+    /* ── Grid ── */
     .blog-grid-section {
-      padding: 4rem 0 5rem;
-      background: #FAFAF8;
+      padding: 3.5rem 0 5rem;
+      background: #fff;
     }
     .blog-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
     }
     .blog-card {
       background: #fff;
       border-radius: var(--radius-xl);
       overflow: hidden;
-      box-shadow: 0 2px 12px rgba(38,29,24,0.07);
+      box-shadow: 0 2px 16px rgba(38,29,24,0.08);
       display: flex;
       flex-direction: column;
       transition: transform 0.2s, box-shadow 0.2s;
@@ -57,73 +67,88 @@
       color: inherit;
     }
     .blog-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 24px rgba(38,29,24,0.12);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 28px rgba(38,29,24,0.13);
     }
     .blog-card-img {
       width: 100%;
-      aspect-ratio: 16/9;
+      aspect-ratio: 4/3;
       object-fit: cover;
       display: block;
     }
     .blog-card-body {
-      padding: 1.5rem;
+      padding: 1.4rem 1.5rem 1.6rem;
       flex: 1;
       display: flex;
       flex-direction: column;
     }
-    .blog-card-tags {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      margin-bottom: 0.75rem;
-    }
-    .blog-card-tag {
+    .blog-card-date {
       font-size: 0.72rem;
       font-weight: 700;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      letter-spacing: 0.07em;
-      padding: 0.25rem 0.65rem;
-      border-radius: 20px;
-      background: var(--mint);
       color: var(--green);
+      margin-bottom: 0.6rem;
     }
-    .blog-card-tag.guest {
+    .blog-card-tags {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.7rem;
+    }
+    .blog-card-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
       background: #F0E8E5;
       color: var(--mauve);
     }
+    .blog-card-tag.thema {
+      background: var(--mint);
+      color: var(--green);
+    }
     .blog-card-title {
-      font-size: 1.05rem;
+      font-size: 1rem;
       font-weight: 800;
       color: var(--dark);
       line-height: 1.35;
-      margin: 0 0 0.75rem;
+      margin: 0 0 0.7rem;
     }
     .blog-card-excerpt {
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       color: #666;
       line-height: 1.65;
       flex: 1;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.4rem;
     }
-    .blog-card-meta {
-      font-size: 0.78rem;
-      color: #999;
-      display: flex;
-      gap: 1rem;
+    .blog-card-footer {
+      margin-top: auto;
+    }
+    .blog-card-btn {
+      display: inline-flex;
       align-items: center;
-    }
-    .blog-card-read {
-      margin-left: auto;
-      font-size: 0.82rem;
+      gap: 0.4rem;
+      font-size: 0.85rem;
       font-weight: 700;
-      color: var(--green);
+      color: var(--dark);
+      background: var(--beige);
+      padding: 0.55rem 1.1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .blog-card:hover .blog-card-btn {
+      background: #E5DDD9;
     }
 
-    .blog-empty {
-      text-align: center;
-      padding: 4rem 1rem;
-      color: #888;
+    @media (max-width: 900px) {
+      .blog-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 580px) {
+      .blog-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -176,7 +201,8 @@
 <!-- ── HERO ── -->
 <section class="blog-index-hero">
   <div class="container">
-    <h1>Blog</h1>
+    <p class="eyebrow">Von EDULEO Akademie</p>
+    <h1>Unser Blog</h1>
     <p>Fachwissen für Kita-Fachkräfte: Ratgeber, Praxistipps und Gastbeiträge rund um Kita-Alltag, Pädagogik und Fortbildung.</p>
   </div>
 </section>
@@ -190,21 +216,20 @@
       <a href="../kita-software-vergleich-2026/" class="blog-card">
         <img src="../assets/blog/kitaversum/vorschau.png" alt="Kita-Software-Vergleich 2026" class="blog-card-img">
         <div class="blog-card-body">
+          <p class="blog-card-date">Juni 2026</p>
           <div class="blog-card-tags">
-            <span class="blog-card-tag guest">Gastartikel</span>
-            <span class="blog-card-tag">Digitale Kita</span>
+            <span class="blog-card-tag">Gastartikel</span>
+            <span class="blog-card-tag thema">Digitale Kita</span>
           </div>
           <h2 class="blog-card-title">Kita-Software-Vergleich 2026: Welche Lösung passt zu deiner Einrichtung?</h2>
           <p class="blog-card-excerpt">Fünf führende Kita-Software-Lösungen im Vergleich – mit Preisen, KI-Features und konkreten Empfehlungen für Einzel-Kita und Träger.</p>
-          <div class="blog-card-meta">
-            <span>Juni 2026</span>
-            <span>· 7 Min. Lesezeit</span>
-            <span class="blog-card-read">Lesen →</span>
+          <div class="blog-card-footer">
+            <span class="blog-card-btn">Weiterlesen →</span>
           </div>
         </div>
       </a>
 
-      <!-- Platzhalter für weitere Artikel -->
+      <!-- Weitere Artikel kommen hier rein -->
 
     </div>
   </div>
