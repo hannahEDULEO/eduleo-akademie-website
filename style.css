@@ -1303,12 +1303,32 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 /* ── Bring a Friend ────────────────────────── */
 
 .baf-hero {
-  background: linear-gradient(135deg, var(--mauve-light) 0%, var(--green) 100%);
+  position: relative;
+  overflow: hidden;
   padding: calc(var(--nav-h) + 72px) 0 80px;
+}
+.baf-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('../assets/Banner-19.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.22;
+}
+.baf-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(212,226,210,0.6) 0%, rgba(166,197,178,0.5) 100%);
+}
+.baf-hero .container {
+  position: relative;
+  z-index: 1;
 }
 .baf-hero-inner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 60px;
   align-items: center;
 }
