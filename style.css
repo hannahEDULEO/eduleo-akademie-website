@@ -1435,7 +1435,7 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 }
 .team-hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; justify-content: center; }
 .team-hero h1 { margin-bottom: 20px; }
-.team-hero-lead { font-size: 1.12rem; color: var(--text-light); margin-bottom: 32px; max-width: 600px; }
+.team-hero-lead { font-size: 1.12rem; color: var(--text-light); margin: 0 auto 32px; max-width: 600px; text-align: center; }
 .team-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
 .team-hero-visual { display: none; }
 .team-hero-emoji { display: none; }
