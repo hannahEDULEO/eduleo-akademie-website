@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ADHS in der Kita verstehen und begleiten – EDULEO Akademie</title>
-  <meta name="description" content="ADHS in der Kita: Wie du Kinder mit ADHS im Alltag liebevoll und klar begleitest — von Morgenritual bis Übergang. Praxisnahe Tipps für ErzieherInnen.">
+  <title>Digitale Medien in der Kita: Schluss mit Papierkram – EDULEO Akademie</title>
+  <meta name="description" content="Digitale Medien in der Kita einfach nutzen: Wie die Kitaversum App euren Alltag strukturiert — Anwesenheit, Dokumentation, Kommunikation und Abholorganisation an einem Ort.">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="EDULEO Akademie">
   <meta property="og:locale" content="de_DE">
-  <meta property="og:url" content="https://www.eduleo-akademie.de/adhs-in-der-kita-verstehen-und-begleiten/">
-  <meta property="og:title" content="ADHS in der Kita verstehen und begleiten — So unterstützt du Kinder sicher im Alltag">
-  <meta property="og:description" content="Struktur, Rituale, Haltung — wie du Kinder mit ADHS durch einen ganzen Kita-Tag sicher begleitest.">
-  <meta property="og:image" content="https://www.eduleo-akademie.de/assets/blog/adhs-kita/hero.png">
+  <meta property="og:url" content="https://www.eduleo-akademie.de/digitale-kita-mit-kitaversum/">
+  <meta property="og:title" content="Schluss mit Papierkram — So rockst du digitale Medien in der Kita">
+  <meta property="og:description" content="Digitale Medien ohne Überforderung: Wie Kitaversum euren Kita-Alltag strukturiert, entlastet und endlich wieder machbar macht.">
+  <meta property="og:image" content="https://www.eduleo-akademie.de/assets/blog/digitale-kita/hero.png">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://www.eduleo-akademie.de/adhs-in-der-kita-verstehen-und-begleiten/">
+  <link rel="canonical" href="https://www.eduleo-akademie.de/digitale-kita-mit-kitaversum/">
   <link rel="icon" href="../favicon-32x32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" sizes="180x180" href="../favicon-6/apple-touch-icon-180x180.png">
   <link rel="stylesheet" href="../style.css">
   <style>
     .blog-hero { position: relative; min-height: 520px; display: flex; align-items: center; overflow: hidden; }
-    .blog-hero-bg { position: absolute; inset: 0; background-image: url('../assets/blog/adhs-kita/hero.png'); background-size: cover; background-position: center top; }
-    .blog-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(38,29,24,0.45) 0%, rgba(38,29,24,0.82) 100%); }
+    .blog-hero-bg { position: absolute; inset: 0; background-image: url('../assets/blog/digitale-kita/hero.png'); background-size: cover; background-position: center; }
+    .blog-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(38,29,24,0.40) 0%, rgba(38,29,24,0.82) 100%); }
     .blog-hero-content { position: relative; z-index: 2; padding: 3rem 0 3.5rem; color: #fff; width: 100%; }
     .blog-breadcrumb { font-size: 0.85rem; color: rgba(255,255,255,0.75); margin-bottom: 1rem; }
     .blog-breadcrumb a { color: rgba(255,255,255,0.75); text-decoration: none; }
@@ -53,22 +53,39 @@
     /* ── Bilder ── */
     .blog-img { width: 100%; border-radius: var(--radius-xl); margin: 1.75rem 0; display: block; }
 
-    /* ── Tagesablauf-Karten ── */
-    .tagesablauf { display: flex; flex-direction: column; gap: 1rem; margin: 1.5rem 0; }
-    .tag-card { background: var(--beige); border-radius: var(--radius-xl); padding: 1.5rem 1.75rem; border-left: 4px solid var(--green-dark); }
-    .tag-label { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.6rem; }
-    .tag-zeit { background: var(--dark); color: #fff; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.25rem 0.75rem; border-radius: 20px; }
-    .tag-card h3 { font-size: 1.05rem; font-weight: 800; color: var(--dark); margin: 0 0 0.6rem; }
-    .tag-card p { font-size: 0.93rem; color: #555; line-height: 1.75; margin-bottom: 0.6rem; }
-    .tag-card p:last-child { margin-bottom: 0; }
-    .tag-card ul { padding-left: 1.2rem; margin: 0.5rem 0 0; }
-    .tag-card ul li { font-size: 0.91rem; color: #555; line-height: 1.7; margin-bottom: 0.3rem; }
-    .tag-hinweis { background: #fff; border-radius: var(--radius-lg); padding: 0.8rem 1rem; margin-top: 0.75rem; font-size: 0.88rem; font-style: italic; color: var(--dark); }
+    /* ── Kooperations-Badge ── */
+    .koop-badge { display: flex; align-items: center; gap: 0.75rem; background: var(--beige); border-radius: var(--radius-lg); padding: 0.9rem 1.25rem; margin: 1.5rem 0; }
+    .koop-badge img { width: 52px; height: 52px; object-fit: contain; border-radius: 8px; flex-shrink: 0; }
+    .koop-badge p { font-size: 0.87rem; color: #555; margin: 0; line-height: 1.5; }
+    .koop-badge strong { color: var(--dark); }
 
-    /* ── Stärken-Grid ── */
-    .staerken-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.8rem; margin: 1.25rem 0; }
-    .staerke-item { background: var(--beige); border-radius: var(--radius-lg); padding: 1rem 1.1rem; text-align: center; }
-    .staerke-item p { font-size: 0.87rem; font-weight: 700; color: var(--dark); margin: 0; line-height: 1.4; }
+    /* ── Vergleichstabelle ── */
+    .vergleich-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; border-radius: var(--radius-lg); overflow: hidden; font-size: 0.9rem; }
+    .vergleich-table th { padding: 0.85rem 1.1rem; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; }
+    .vergleich-table th:first-child { background: #e8e0db; color: var(--dark); text-align: left; }
+    .vergleich-table th:nth-child(2) { background: #d0d0d0; color: #555; }
+    .vergleich-table th:nth-child(3) { background: var(--green-dark); color: #fff; }
+    .vergleich-table td { padding: 0.8rem 1.1rem; border-bottom: 1px solid #f0ebe8; vertical-align: top; line-height: 1.6; }
+    .vergleich-table td:first-child { font-weight: 700; color: var(--dark); background: #faf7f5; }
+    .vergleich-table td:nth-child(2) { color: #777; background: #f5f5f5; }
+    .vergleich-table td:nth-child(3) { color: #2a5c3f; background: #f0f8f4; font-weight: 600; }
+    .vergleich-table tr:last-child td { border-bottom: none; }
+
+    /* ── Feature-Karten ── */
+    .feature-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+    .feature-card { background: var(--beige); border-radius: var(--radius-lg); padding: 1.25rem 1.4rem; }
+    .feature-card-icon { font-size: 1.4rem; margin-bottom: 0.5rem; }
+    .feature-card h3 { font-size: 0.95rem; font-weight: 800; color: var(--dark); margin: 0 0 0.4rem; }
+    .feature-card p { font-size: 0.85rem; color: #555; line-height: 1.65; margin: 0; }
+    .feature-card ul { padding-left: 1.1rem; margin: 0.4rem 0 0; }
+    .feature-card ul li { font-size: 0.83rem; color: #555; line-height: 1.6; margin-bottom: 0.2rem; }
+
+    /* ── Start-Tipps ── */
+    .start-steps { display: flex; flex-direction: column; gap: 0.75rem; margin: 1.25rem 0; counter-reset: step-counter; }
+    .start-step { display: flex; align-items: flex-start; gap: 1rem; background: var(--beige); border-radius: var(--radius-lg); padding: 1rem 1.25rem; }
+    .step-nr { background: var(--green-dark); color: #fff; font-weight: 900; font-size: 0.85rem; min-width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+    .start-step p { font-size: 0.92rem; color: #555; line-height: 1.7; margin: 0; }
+    .start-step strong { color: var(--dark); }
 
     /* ── CTA ── */
     .blog-cta-banner { background: var(--dark); border-radius: var(--radius-xl); padding: 2rem; margin: 2.5rem 0; color: #fff; }
@@ -102,7 +119,8 @@
       .blog-layout { grid-template-columns: 1fr; padding: 0 1rem; }
       .blog-sidebar { display: none; }
       .facts-row { grid-template-columns: 1fr; gap: 0.75rem; }
-      .staerken-grid { grid-template-columns: 1fr; }
+      .feature-cards { grid-template-columns: 1fr; }
+      .vergleich-table { font-size: 0.82rem; }
     }
   </style>
 </head>
@@ -163,11 +181,11 @@
         <span>›</span>
         <a href="../blog-1/">Blog</a>
         <span>›</span>
-        <span>ADHS in der Kita</span>
+        <span>Digitale Kita</span>
       </nav>
-      <span class="blog-tag">ADHS &amp; Autismus</span>
+      <span class="blog-tag">Digitale Kita</span>
       <span class="blog-tag">Kita-Alltag</span>
-      <h1 class="blog-hero-title">ADHS in der Kita verstehen und begleiten — So unterstützt du Kinder sicher im Alltag</h1>
+      <h1 class="blog-hero-title">Schluss mit Papierkram — So rockst du digitale Medien in der Kita</h1>
       <div class="blog-meta">
         <div class="blog-meta-item">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -175,11 +193,11 @@
         </div>
         <div class="blog-meta-item">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          ca. 7 Min. Lesezeit
+          ca. 6 Min. Lesezeit
         </div>
         <div class="blog-meta-item">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          Janine Klumper &amp; Hannah Flunkert
+          EDULEO Akademie &amp; Kitaversum
         </div>
       </div>
     </div>
@@ -192,164 +210,200 @@
 
     <article class="blog-content">
 
-      <p class="blog-intro">Vielleicht hast du ein Kind in deiner Gruppe, das ständig in Bewegung ist, schnell abgelenkt wirkt oder große Schwierigkeiten hat, sich an Regeln zu halten. Und vielleicht kennst du auch diesen inneren Druck: Du willst helfen, aber weißt manchmal nicht genau wie. Genau hier setzt dieser Artikel an. Denn du bist nicht allein — und es gibt Wege, wie du Kinder mit ADHS liebevoll, klar und sicher begleiten kannst.</p>
+      <p class="blog-intro">Papierlisten, Zettelchaos und ständiger Stress im Alltag müssen nicht sein. Digitale Medien in der Kita können euch genau da entlasten, wo es gerade am anstrengendsten ist. Mit der richtigen Struktur — und einer klaren Lösung wie Kitaversum — wird euer Alltag übersichtlicher, ruhiger und endlich wieder machbar.</p>
 
       <div class="facts-row">
         <div>
-          <div class="fact-num">5 %</div>
-          <div class="fact-label">der Kinder haben ADHS —<br>in jeder Gruppe ein Kind</div>
+          <div class="fact-num">73 %</div>
+          <div class="fact-label">der Kitas fühlen sich durch<br>Verwaltungsaufwand belastet¹</div>
         </div>
         <div>
-          <div class="fact-num">5</div>
-          <div class="fact-label">Momente im Kita-Tag<br>mit konkreten Tipps</div>
+          <div class="fact-num">4</div>
+          <div class="fact-label">Alltagsbereiche, in denen<br>digitale Tools sofort entlasten</div>
         </div>
         <div>
-          <div class="fact-num">1</div>
-          <div class="fact-label">Schlüssel macht<br>den größten Unterschied: Struktur</div>
+          <div class="fact-num">1 App</div>
+          <div class="fact-label">bündelt Anwesenheit, Doku,<br>Kommunikation &amp; Abholung</div>
         </div>
       </div>
 
-      <img src="../assets/blog/adhs-kita/was-steckt-hinter-adhs.png" alt="Was steckt hinter ADHS — Illustration" class="blog-img">
+      <div class="koop-badge">
+        <img src="../assets/blog/digitale-kita/kitaversum-logo.png" alt="Kitaversum Logo">
+        <p>Dieser Artikel entstand in Kooperation mit <strong>Kitaversum</strong> — der digitalen Kita-Verwaltung, die euren Alltag strukturiert. Folgt uns auf Instagram: <a href="https://www.instagram.com/kitaversumapp/" target="_blank" rel="noopener" style="color:var(--green-dark);font-weight:600;">@kitaversumapp</a></p>
+      </div>
 
-      <h2>ADHS in der Kita: Was dahinter steckt und warum es uns herausfordert</h2>
+      <h2>Digitale Medien in der Kita endlich einfach nutzen — ohne Überforderung</h2>
 
-      <p>ADHS bedeutet nicht einfach nur unruhig sein. Es geht um viel mehr. Kinder mit ADHS nehmen ihre Umwelt oft intensiver wahr. Sie sind schneller überfordert, reagieren impulsiv und haben Schwierigkeiten, ihre Aufmerksamkeit zu steuern.</p>
+      <p>Kennst du dieses Gefühl, wenn das Thema digitale Medien in der Kita aufkommt und sofort alles zu viel wirkt? Neue Systeme, neue Anforderungen und irgendwie keine Zeit, sich wirklich einzuarbeiten.</p>
 
-      <p>Im Kita-Alltag zeigt sich das zum Beispiel so:</p>
+      <p>Gleichzeitig läuft der Alltag oft am Limit. Zettel stapeln sich, Informationen gehen verloren und Absprachen passieren nebenbei. Genau hier entsteht dieser Dauerstress, den so viele pädagogische Fachkräfte kennen.</p>
+
+      <div class="pull-quote">
+        Digitale Medien sind nicht dafür da, euch zusätzlich zu belasten. Sie sind dafür da, euch zu entlasten — und endlich wieder durchzuatmen.
+      </div>
+
+      <hr class="blog-divider">
+
+      <h2>Analog vs. Digital: Was der Unterschied im Kita-Alltag wirklich bedeutet</h2>
+
+      <table class="vergleich-table" aria-label="Vergleich analoger und digitaler Kita-Organisation">
+        <thead>
+          <tr>
+            <th>Bereich</th>
+            <th>Analog (bisher)</th>
+            <th>Digital mit Kitaversum</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Anwesenheit</td>
+            <td>Papierliste, Zettelchaos, morgens suchen</td>
+            <td>Alle Kinder auf einen Blick, sofort abrufbar</td>
+          </tr>
+          <tr>
+            <td>Dokumentation</td>
+            <td>Notizzettel, später nicht mehr auffindbar</td>
+            <td>Direkt im Moment erfassen, immer verfügbar</td>
+          </tr>
+          <tr>
+            <td>Elternkommunikation</td>
+            <td>Aushänge, mündlich, Infos gehen verloren</td>
+            <td>Nachrichten, Stories, Pinnwand — alles zentral</td>
+          </tr>
+          <tr>
+            <td>Abholorganisation</td>
+            <td>Zettel, Unsicherheit bei Änderungen</td>
+            <td>Aktuelle Abholinfos jederzeit griffbereit</td>
+          </tr>
+          <tr>
+            <td>Teamkommunikation</td>
+            <td>Nebenbei, Missverständnisse, Vergessen</td>
+            <td>Absprachen festhalten, für alle sichtbar</td>
+          </tr>
+          <tr>
+            <td>Datenschutz</td>
+            <td>Unsicher, schwer nachvollziehbar</td>
+            <td>DSGVO-konform, verschlüsselt, revisionssicher</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr class="blog-divider">
+
+      <img src="../assets/blog/digitale-kita/dashboard.png" alt="Kitaversum App: Digitale Kita-Verwaltung auf dem Tablet" class="blog-img">
+
+      <h2>Vier Bereiche, in denen Kitaversum euren Alltag sofort verändert</h2>
+
+      <div class="feature-cards">
+
+        <div class="feature-card">
+          <div class="feature-card-icon">📋</div>
+          <h3>Digitale Anwesenheitsliste</h3>
+          <p>Der Tag startet und oft geht es direkt los. Mit der digitalen Anwesenheitsliste öffnest du die App und siehst sofort alles auf einen Blick. Kein Suchen, kein Rätselraten.</p>
+          <ul>
+            <li>Feste Morgenroutine einführen</li>
+            <li>Alle Kinder direkt digital erfassen</li>
+            <li>Übersicht gemeinsam im Team nutzen</li>
+          </ul>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card-icon">📝</div>
+          <h3>Digitale Dokumentation</h3>
+          <p>Beobachtungen, Notizen, Gedanken für später — direkt im Moment erfassen. Alles wird gespeichert und ist jederzeit wieder verfügbar.</p>
+          <ul>
+            <li>Direkt im Moment dokumentieren</li>
+            <li>Kurz und verständlich halten</li>
+            <li>Transparent im Team arbeiten</li>
+          </ul>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card-icon">💬</div>
+          <h3>Digitale Kommunikation</h3>
+          <p>Informationen zentral bündeln, klar weitergeben und für alle sichtbar machen — so entstehen weniger Missverständnisse und mehr Klarheit im Team und mit Eltern.</p>
+          <ul>
+            <li>Wichtige Hinweise teilen</li>
+            <li>Absprachen festhalten</li>
+            <li>Infos zentral bündeln</li>
+          </ul>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card-icon">🚗</div>
+          <h3>Abholorganisation</h3>
+          <p>Änderungen bei Abholzeiten oder neue Abholpersonen — mit der App habt ihr alle Infos sofort griffbereit. Ihr wisst genau, was gilt, und könnt sicher handeln.</p>
+          <ul>
+            <li>Abholinfos regelmäßig prüfen</li>
+            <li>App aktiv im Alltag nutzen</li>
+            <li>Zuständigkeiten im Team klären</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <img src="../assets/blog/digitale-kita/kommunikation.png" alt="Kitaversum App auf dem Smartphone: Elternkommunikation leicht gemacht" class="blog-img">
+
+      <hr class="blog-divider">
+
+      <h2>Vorteile digitaler Medien in der Kita — weniger Stress, mehr Klarheit</h2>
+
+      <p>Digitale Medien können euch wirklich entlasten — wenn sie sinnvoll eingesetzt werden. Sie helfen euch dabei:</p>
       <ul>
-        <li>Ein Kind steht ständig auf und wechselt Aktivitäten</li>
-        <li>Es fällt schwer, Anweisungen zu folgen</li>
-        <li>Gefühle kommen plötzlich und stark</li>
-        <li>Übergänge führen schnell zu Stress</li>
+        <li>Informationen schneller zu finden</li>
+        <li>Abläufe klar zu strukturieren</li>
+        <li>Fehler zu vermeiden</li>
+        <li>Euch im Team besser abzustimmen</li>
       </ul>
 
-      <p>Und genau hier beginnt eure wichtige Arbeit. Denn diese Kinder brauchen keine Strafen oder ständige Korrektur. Sie brauchen Verständnis, Struktur und klare Orientierung.</p>
-
       <div class="pull-quote">
-        Struktur bedeutet nicht Strenge. Struktur bedeutet Verlässlichkeit — und Verlässlichkeit schafft Sicherheit.
-      </div>
-
-      <p>Wenn Kinder wissen, was als Nächstes passiert, können sie sich besser orientieren. Wenn Abläufe gleich bleiben, entsteht Sicherheit. Und genau das hilft ihnen, sich zu regulieren.</p>
-
-      <hr class="blog-divider">
-
-      <h2>Ein typischer Kita-Tag mit einem ADHS-Kind — so kannst du konkret unterstützen</h2>
-
-      <p>Stell dir vor, du begleitest ein Kind mit ADHS bewusster durch euren Alltag. Nicht perfekt, aber ruhiger und klarer. Genau hier kannst du ansetzen und wirklich etwas verändern.</p>
-
-      <div class="tagesablauf">
-
-        <div class="tag-card">
-          <div class="tag-label">
-            <span class="tag-zeit">Der Morgen</span>
-          </div>
-          <h3>Sicherheit durch klare Rituale</h3>
-          <p>Der Start in den Tag ist für Kinder mit ADHS oft besonders herausfordernd. Viele Eindrücke treffen gleichzeitig auf sie ein: Geräusche, Menschen, Erwartungen. Du kannst helfen, indem du den Morgen klar strukturierst.</p>
-          <ul>
-            <li>Begrüße das Kind ruhig und bewusst</li>
-            <li>Nutze jeden Morgen denselben Ablauf</li>
-            <li>Erkläre kurz und klar, was heute passiert</li>
-          </ul>
-          <div class="tag-hinweis">Weniger Worte helfen oft mehr. Klare, ruhige Sätze geben Orientierung.</div>
-        </div>
-
-        <div class="tag-card">
-          <div class="tag-label">
-            <span class="tag-zeit">Der Vormittag</span>
-          </div>
-          <h3>Reize reduzieren und Orientierung geben</h3>
-          <p>Im Laufe des Vormittags steigt oft die Unruhe. Kinder mit ADHS nehmen viele Dinge gleichzeitig wahr und können Reize schwer filtern. Du kannst unterstützen, indem du bewusst für Entlastung sorgst.</p>
-          <ul>
-            <li>Reduziere unnötige Reize im Raum</li>
-            <li>Gib kurze und klare Anweisungen</li>
-            <li>Stelle Blickkontakt her, bevor du sprichst</li>
-            <li>Arbeite mit kleinen, überschaubaren Aufgaben</li>
-          </ul>
-          <div class="tag-hinweis">Es geht nicht darum, alles perfekt zu machen — sondern bewusst kleine Dinge zu verändern, die große Wirkung haben.</div>
-        </div>
-
-        <div class="tag-card">
-          <div class="tag-label">
-            <span class="tag-zeit">Übergänge</span>
-          </div>
-          <h3>Damit es nicht eskaliert</h3>
-          <p>Übergänge sind oft die schwierigsten Momente. Vom Spielen zum Aufräumen. Vom Raum nach draußen. Vom freien Spiel zur festen Situation. Für Kinder mit ADHS fühlt sich das oft wie ein Bruch an.</p>
-          <ul>
-            <li>Kündige Veränderungen frühzeitig an</li>
-            <li>Nutze immer die gleiche Reihenfolge</li>
-            <li>Gib dem Kind Zeit, sich einzustellen</li>
-          </ul>
-          <div class="tag-hinweis">„Gleich räumen wir auf" — ein einfacher Satz, der regelmäßig genutzt alles verändern kann.</div>
-        </div>
-
-        <div class="tag-card">
-          <div class="tag-label">
-            <span class="tag-zeit">Die Mittagszeit</span>
-          </div>
-          <h3>Gefühle verstehen und begleiten</h3>
-          <p>Gerade rund um das Essen entstehen oft Spannungen. Kinder sind müde, reizüberflutet oder angespannt. Wenn ein Kind impulsiv reagiert oder sich verweigert, steckt oft Überforderung dahinter.</p>
-          <p>Hier ist deine Haltung entscheidend. Versuche, ruhig zu bleiben und das Verhalten nicht persönlich zu nehmen. Das Kind braucht in diesem Moment keine Strafe, sondern Unterstützung.</p>
-          <div class="tag-hinweis">Das Kind will nicht schwierig sein. Es hat gerade Schwierigkeiten. Dieser Perspektivwechsel allein kann so viel verändern.</div>
-        </div>
-
-        <div class="tag-card">
-          <div class="tag-label">
-            <span class="tag-zeit">Der Nachmittag</span>
-          </div>
-          <h3>Ruhe bewahren und Sicherheit geben</h3>
-          <p>Am Nachmittag sind viele Kinder erschöpft — für Kinder mit ADHS ist das oft besonders spürbar. Unruhe, schnelle Reaktionen und emotionale Ausbrüche können zunehmen.</p>
-          <ul>
-            <li>Halte Abläufe klar und vorhersehbar</li>
-            <li>Bleibe selbst ruhig und präsent</li>
-            <li>Begleite Übergänge besonders bewusst</li>
-          </ul>
-          <div class="tag-hinweis">Deine Ruhe ist der Anker für das Kind.</div>
-        </div>
-
+        Ihr gewinnt Zeit zurück. Zeit, die ihr nicht mehr mit Suchen oder Chaos verbringt, sondern bewusst nutzen könnt.
       </div>
 
       <hr class="blog-divider">
 
-      <img src="../assets/blog/adhs-kita/adhs-sicher-handeln.png" alt="ADHS in der Kita sicher verstehen und praxisnah handeln" class="blog-img">
+      <img src="../assets/blog/digitale-kita/einfuehren.png" alt="Digitale Medien in der Kita einführen — Team bespricht gemeinsam die App" class="blog-img">
 
-      <h2>ADHS in der Kita verstehen heißt: Verhalten neu sehen</h2>
+      <h2>Digitale Medien in der Kita einführen — so gelingt euch der Start</h2>
 
-      <p>Vielleicht merkst du beim Lesen, dass sich dein Blick verändert. ADHS ist keine böse Absicht. Es ist auch kein Trotz. Es ist eine andere Art, die Welt wahrzunehmen und darauf zu reagieren.</p>
+      <p>Der Einstieg muss nicht perfekt sein. Viel wichtiger ist, dass ihr überhaupt beginnt. Geht Schritt für Schritt und nehmt euch den Druck raus.</p>
 
-      <p>Wenn du beginnst, Verhalten nicht mehr zu bewerten, sondern zu verstehen, entsteht etwas Neues:</p>
-
-      <div class="staerken-grid">
-        <div class="staerke-item"><p>Mehr Geduld</p></div>
-        <div class="staerke-item"><p>Mehr Ruhe</p></div>
-        <div class="staerke-item"><p>Mehr Verbindung</p></div>
-      </div>
-
-      <p>Und genau das brauchen diese Kinder.</p>
-
-      <h2>Du kannst den Unterschied machen</h2>
-
-      <p>Du bist jeden Tag nah dran. Du erlebst die Herausforderungen — aber auch die kleinen Fortschritte. Und genau darin liegt deine Stärke.</p>
-
-      <div class="pull-quote">
-        Dein Blick, deine Haltung und deine Reaktion machen einen Unterschied. Jeden Tag. Auch wenn es sich manchmal nicht so anfühlt.
+      <div class="start-steps">
+        <div class="start-step">
+          <div class="step-nr">1</div>
+          <p><strong>Beginnt mit einem Bereich</strong> — zum Beispiel der Anwesenheit. Einen Bereich einführen ist besser als nichts zu tun.</p>
+        </div>
+        <div class="start-step">
+          <div class="step-nr">2</div>
+          <p><strong>Legt klare Abläufe fest</strong> — wer erfasst die Anwesenheit, wer schreibt Beobachtungen? Klare Zuständigkeiten helfen.</p>
+        </div>
+        <div class="start-step">
+          <div class="step-nr">3</div>
+          <p><strong>Besprecht Unsicherheiten offen im Team</strong> — ihr dürft lernen, ausprobieren und auch Fehler machen.</p>
+        </div>
+        <div class="start-step">
+          <div class="step-nr">4</div>
+          <p><strong>Klärt Datenschutzfragen frühzeitig</strong> — Kitaversum ist DSGVO-konform, aber besprecht es trotzdem mit eurem Träger.</p>
+        </div>
       </div>
 
       <div class="blog-cta-banner">
-        <h3>Tiefer einsteigen: Online-Fortbildung „ADHS in der Kita"</h3>
-        <p>In unserer Fortbildung der EDULEO Akademie zeigen wir dir Schritt für Schritt, wie du Kinder mit ADHS besser verstehst und sicher begleitest. Du bekommst:</p>
+        <h3>Tagesfortbildung: Digitale Medien in der Kita — sicher und praxisnah starten</h3>
+        <p>In unserer Tagesfortbildung in Kooperation mit Kitaversum zeigen wir dir ganz konkret, wie du digitale Medien in deinen Alltag integrierst. Du bekommst nicht nur Wissen, sondern echte Lösungen.</p>
         <ul>
-          <li>Konkrete Strategien für deinen Alltag</li>
-          <li>Sicherheit im Umgang mit herausforderndem Verhalten</li>
-          <li>Klarheit in deiner pädagogischen Haltung</li>
-          <li>Praxisnahe Beispiele, die du direkt umsetzen kannst</li>
+          <li>Wie du deine Geräte sicher nutzt</li>
+          <li>Worauf du beim Datenschutz achten musst</li>
+          <li>Wie du die Kitaversum App gezielt einsetzt</li>
+          <li>Wie du dein Team sicher mitnimmst</li>
         </ul>
         <div class="blog-cta-banner-links">
-          <a href="../fortbildungen/kita-expertin-adhs-autismus/">Zur Fortbildung</a>
+          <a href="../fortbildungen/tagesfortbildungen/digitale-medien-kita/">Zur Fortbildung</a>
           <a href="../bring-a-friend/">Bring a Friend</a>
         </div>
       </div>
 
-      <p style="font-size:0.88rem;color:#888;margin-top:2rem;">Folge uns auf Instagram: <a href="https://www.instagram.com/eduleo_akademie/" target="_blank" rel="noopener" style="color:var(--green-dark);font-weight:600;">@eduleo_akademie</a></p>
+      <p style="font-size:0.8rem;color:#aaa;margin-top:2rem;">¹ Quelle: Befragung pädagogischer Fachkräfte, Kitaversum 2024</p>
+      <p style="font-size:0.88rem;color:#888;margin-top:0.5rem;">Folge uns auf Instagram: <a href="https://www.instagram.com/eduleo_akademie/" target="_blank" rel="noopener" style="color:var(--green-dark);font-weight:600;">@eduleo_akademie</a> &amp; <a href="https://www.instagram.com/kitaversumapp/" target="_blank" rel="noopener" style="color:var(--green-dark);font-weight:600;">@kitaversumapp</a></p>
 
     </article>
 
@@ -358,28 +412,27 @@
       <div class="blog-sidebar-inner">
 
         <div class="blog-cta-sidebar">
-          <h4>ADHS in der Kita</h4>
-          <p>3-Monats-Online-Fortbildung — ADHS &amp; Autismus verstehen, Kinder sicher begleiten.</p>
-          <a href="../fortbildungen/adhs-und-autismus/" class="btn">Zur Fortbildung →</a>
+          <h4>Digitale Kita Fortbildung</h4>
+          <p>Tagesfortbildung in Kooperation mit Kitaversum — praxisnah, sicher, direkt umsetzbar.</p>
+          <a href="../fortbildungen/tagesfortbildungen/digitale-medien-kita/" class="btn">Zur Fortbildung →</a>
         </div>
 
         <div class="blog-sidebar-card">
           <h4>Inhaltsverzeichnis</h4>
           <ul>
-            <li><a href="#was-dahinter-steckt">Was hinter ADHS steckt</a></li>
-            <li><a href="#tagesablauf">Der typische Kita-Tag</a></li>
-            <li><a href="#verhalten-neu-sehen">Verhalten neu sehen</a></li>
-            <li><a href="#du-kannst">Du kannst den Unterschied machen</a></li>
+            <li><a href="#analog-vs-digital">Analog vs. Digital im Vergleich</a></li>
+            <li><a href="#vier-bereiche">4 Bereiche, die sofort entlasten</a></li>
+            <li><a href="#vorteile">Vorteile digitaler Medien</a></li>
+            <li><a href="#start">So gelingt der Einstieg</a></li>
           </ul>
         </div>
 
         <div class="blog-sidebar-card">
           <h4>Passende Artikel</h4>
           <ul>
-            <li><a href="../autismus-in-der-kita/">Autismus in der Kita: 10 Tipps</a></li>
-            <li><a href="../autismus-und-teacch/">Autismus &amp; TEACCH</a></li>
-            <li><a href="../wenn-adhs-und-autismus-zusammenkommen/">AuDHS in der Kita</a></li>
+            <li><a href="../kita-software-vergleich-2026/">Kita-Apps im Vergleich 2026</a></li>
             <li><a href="../übergänge-in-der-kita/">Übergänge in der Kita</a></li>
+            <li><a href="../vorschulkonzept-für-die-kita/">Vorschulkonzept für die Kita</a></li>
           </ul>
         </div>
 
