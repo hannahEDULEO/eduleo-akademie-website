@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Digitale Medien in der Kita: Schluss mit Papierkram – EDULEO Akademie</title>
-  <meta name="description" content="Digitale Medien in der Kita einfach nutzen: Wie die Kitaversum App euren Alltag strukturiert — Anwesenheit, Dokumentation, Kommunikation und Abholorganisation an einem Ort.">
+  <title>Vorschule leicht gemacht: Wochenplan für die Kita – EDULEO Akademie</title>
+  <meta name="description" content="Dein kompletter Vorschul-Wochenplan für die Kita: Montag bis Freitag mit konkreten Ideen für Sprache, Feinmotorik, Zahlen, Sozialkompetenz und Kreativität — sofort umsetzbar.">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="EDULEO Akademie">
   <meta property="og:locale" content="de_DE">
-  <meta property="og:url" content="https://www.eduleo-akademie.de/digitale-kita-mit-kitaversum/">
-  <meta property="og:title" content="Schluss mit Papierkram — So rockst du digitale Medien in der Kita">
-  <meta property="og:description" content="Digitale Medien ohne Überforderung: Wie Kitaversum euren Kita-Alltag strukturiert, entlastet und endlich wieder machbar macht.">
-  <meta property="og:image" content="https://www.eduleo-akademie.de/assets/blog/digitale-kita/hero.png">
+  <meta property="og:url" content="https://www.eduleo-akademie.de/vorschule-leicht-gemacht/">
+  <meta property="og:title" content="Vorschule leicht gemacht: Dein kompletter Wochenplan für die Kita">
+  <meta property="og:description" content="5 Tage, 5 Schwerpunkte, 20–30 Minuten pro Tag: Der Wochenplan, der Vorschularbeit einfach, klar und sofort umsetzbar macht.">
+  <meta property="og:image" content="https://www.eduleo-akademie.de/assets/blog/vorschule-wochenplan/hero.png">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://www.eduleo-akademie.de/digitale-kita-mit-kitaversum/">
+  <link rel="canonical" href="https://www.eduleo-akademie.de/vorschule-leicht-gemacht/">
   <link rel="icon" href="../favicon-32x32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" sizes="180x180" href="../favicon-6/apple-touch-icon-180x180.png">
   <link rel="stylesheet" href="../style.css">
   <style>
     .blog-hero { position: relative; min-height: 520px; display: flex; align-items: center; overflow: hidden; }
-    .blog-hero-bg { position: absolute; inset: 0; background-image: url('../assets/blog/digitale-kita/hero.png'); background-size: cover; background-position: center; }
-    .blog-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(38,29,24,0.40) 0%, rgba(38,29,24,0.82) 100%); }
+    .blog-hero-bg { position: absolute; inset: 0; background-image: url('../assets/blog/vorschule-wochenplan/hero.png'); background-size: cover; background-position: center 35%; }
+    .blog-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(38,29,24,0.38) 0%, rgba(38,29,24,0.80) 100%); }
     .blog-hero-content { position: relative; z-index: 2; padding: 3rem 0 3.5rem; color: #fff; width: 100%; }
     .blog-breadcrumb { font-size: 0.85rem; color: rgba(255,255,255,0.75); margin-bottom: 1rem; }
     .blog-breadcrumb a { color: rgba(255,255,255,0.75); text-decoration: none; }
@@ -41,6 +41,7 @@
     .blog-content ul li { color: #444; line-height: 1.8; margin-bottom: 0.3rem; }
     .blog-intro { font-size: 1.08rem; color: #333; line-height: 1.8; border-left: 4px solid var(--green-dark); padding-left: 1.25rem; margin-bottom: 2rem; font-style: italic; }
     .blog-divider { border: none; border-top: 2px solid var(--beige); margin: 2.5rem 0; }
+    .blog-img { width: 100%; border-radius: var(--radius-xl); margin: 1.75rem 0; display: block; }
 
     /* ── Fakten ── */
     .facts-row { background: var(--beige); border-radius: var(--radius-xl); padding: 1.5rem 2rem; margin-bottom: 2rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; text-align: center; }
@@ -50,49 +51,42 @@
     /* ── Pull-Quote ── */
     .pull-quote { border-left: 4px solid var(--green-dark); padding: 1.1rem 1.5rem; margin: 1.75rem 0; background: var(--beige); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; font-size: 1rem; font-weight: 700; color: var(--dark); line-height: 1.7; font-style: italic; }
 
-    /* ── Bilder ── */
-    .blog-img { width: 100%; border-radius: var(--radius-xl); margin: 1.75rem 0; display: block; }
+    /* ── Vorschul-Ziele Grid ── */
+    .ziele-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; margin: 1.25rem 0; }
+    .ziel-item { background: var(--beige); border-radius: var(--radius-lg); padding: 0.85rem 1rem; text-align: center; }
+    .ziel-item p { font-size: 0.82rem; font-weight: 700; color: var(--dark); margin: 0; line-height: 1.4; }
 
-    /* ── Kooperations-Badge ── */
-    .koop-badge { display: flex; align-items: center; gap: 0.75rem; background: var(--beige); border-radius: var(--radius-lg); padding: 0.9rem 1.25rem; margin: 1.5rem 0; }
-    .koop-badge img { width: 52px; height: 52px; object-fit: contain; border-radius: 8px; flex-shrink: 0; }
-    .koop-badge p { font-size: 0.87rem; color: #555; margin: 0; line-height: 1.5; }
-    .koop-badge strong { color: var(--dark); }
+    /* ── Wochenplan-Karten ── */
+    .wochenplan { display: flex; flex-direction: column; gap: 1.1rem; margin: 1.5rem 0; }
+    .tag-card { border-radius: var(--radius-xl); overflow: hidden; box-shadow: 0 2px 8px rgba(38,29,24,0.06); }
+    .tag-header { padding: 0.85rem 1.5rem; display: flex; align-items: center; gap: 1rem; }
+    .tag-name { font-size: 0.95rem; font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: 0.06em; }
+    .tag-thema { font-size: 0.82rem; color: rgba(255,255,255,0.85); font-weight: 600; }
+    .tag-body { background: var(--beige); padding: 1.25rem 1.5rem; }
+    .tag-body .tag-sub { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-light); margin-bottom: 0.5rem; }
+    .tag-body p { font-size: 0.92rem; color: #555; line-height: 1.75; margin-bottom: 0.75rem; }
+    .tag-body ul { padding-left: 1.2rem; margin: 0.5rem 0; }
+    .tag-body ul li { font-size: 0.88rem; color: #555; line-height: 1.7; margin-bottom: 0.25rem; }
+    .tag-tipp { background: #fff; border-radius: var(--radius-sm); padding: 0.7rem 1rem; font-size: 0.86rem; font-style: italic; color: var(--dark); margin-top: 0.5rem; border-left: 3px solid var(--green-dark); }
 
-    /* ── Vergleichstabelle ── */
-    .vergleich-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; border-radius: var(--radius-lg); overflow: hidden; font-size: 0.9rem; }
-    .vergleich-table th { padding: 0.85rem 1.1rem; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; }
-    .vergleich-table th:first-child { background: #e8e0db; color: var(--dark); text-align: left; }
-    .vergleich-table th:nth-child(2) { background: #d0d0d0; color: #555; }
-    .vergleich-table th:nth-child(3) { background: var(--green-dark); color: #fff; }
-    .vergleich-table td { padding: 0.8rem 1.1rem; border-bottom: 1px solid #f0ebe8; vertical-align: top; line-height: 1.6; }
-    .vergleich-table td:first-child { font-weight: 700; color: var(--dark); background: #faf7f5; }
-    .vergleich-table td:nth-child(2) { color: #777; background: #f5f5f5; }
-    .vergleich-table td:nth-child(3) { color: #2a5c3f; background: #f0f8f4; font-weight: 600; }
-    .vergleich-table tr:last-child td { border-bottom: none; }
+    /* Tag-Farben */
+    .tag-mo .tag-header { background: #5A9E7A; }
+    .tag-di .tag-header { background: #C4A092; }
+    .tag-mi .tag-header { background: #7A8FA0; }
+    .tag-do .tag-header { background: #A07A5A; }
+    .tag-fr .tag-header { background: #261D18; }
 
-    /* ── Feature-Karten ── */
-    .feature-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
-    .feature-card { background: var(--beige); border-radius: var(--radius-lg); padding: 1.25rem 1.4rem; }
-    .feature-card-icon { font-size: 1.4rem; margin-bottom: 0.5rem; }
-    .feature-card h3 { font-size: 0.95rem; font-weight: 800; color: var(--dark); margin: 0 0 0.4rem; }
-    .feature-card p { font-size: 0.85rem; color: #555; line-height: 1.65; margin: 0; }
-    .feature-card ul { padding-left: 1.1rem; margin: 0.4rem 0 0; }
-    .feature-card ul li { font-size: 0.83rem; color: #555; line-height: 1.6; margin-bottom: 0.2rem; }
-
-    /* ── Start-Tipps ── */
-    .start-steps { display: flex; flex-direction: column; gap: 0.75rem; margin: 1.25rem 0; counter-reset: step-counter; }
-    .start-step { display: flex; align-items: flex-start; gap: 1rem; background: var(--beige); border-radius: var(--radius-lg); padding: 1rem 1.25rem; }
-    .step-nr { background: var(--green-dark); color: #fff; font-weight: 900; font-size: 0.85rem; min-width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
-    .start-step p { font-size: 0.92rem; color: #555; line-height: 1.7; margin: 0; }
-    .start-step strong { color: var(--dark); }
+    /* ── 4 Hebel ── */
+    .hebel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.25rem 0; }
+    .hebel-item { background: var(--beige); border-radius: var(--radius-lg); padding: 1.1rem 1.3rem; display: flex; align-items: flex-start; gap: 0.75rem; }
+    .hebel-nr { background: var(--green-dark); color: #fff; font-weight: 900; font-size: 0.85rem; min-width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .hebel-item p { font-size: 0.87rem; color: #555; line-height: 1.65; margin: 0; }
+    .hebel-item strong { color: var(--dark); }
 
     /* ── CTA ── */
     .blog-cta-banner { background: var(--dark); border-radius: var(--radius-xl); padding: 2rem; margin: 2.5rem 0; color: #fff; }
     .blog-cta-banner h3 { font-size: 1.1rem; font-weight: 800; margin: 0 0 0.6rem; color: #fff; }
-    .blog-cta-banner p { color: rgba(255,255,255,0.8); font-size: 0.92rem; margin-bottom: 1.25rem; }
-    .blog-cta-banner ul { padding-left: 1.3rem; margin-bottom: 1.25rem; }
-    .blog-cta-banner ul li { color: rgba(255,255,255,0.8); font-size: 0.92rem; line-height: 1.8; }
+    .blog-cta-banner p { color: rgba(255,255,255,0.8); font-size: 0.92rem; margin-bottom: 1rem; }
     .blog-cta-banner-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
     .blog-cta-banner-links a { background: var(--green-dark); color: #fff; font-weight: 700; font-size: 0.85rem; padding: 0.6rem 1.1rem; border-radius: 8px; text-decoration: none; transition: background 0.2s; }
     .blog-cta-banner-links a:hover { background: var(--green-deeper); }
@@ -108,7 +102,6 @@
     .blog-sidebar-card ul li a { font-size: 0.87rem; font-weight: 600; color: var(--dark); text-decoration: none; display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 0; line-height: 1.4; transition: color 0.15s; }
     .blog-sidebar-card ul li a:hover { color: var(--green-dark); }
     .blog-sidebar-card ul li a::after { content: '→'; color: var(--beige-dark); font-size: 0.8rem; }
-    .blog-sidebar-card ul li a:hover::after { color: var(--green-dark); }
     .blog-cta-sidebar { background: var(--dark); border-radius: var(--radius-xl); padding: 1.5rem; margin-bottom: 1.25rem; }
     .blog-cta-sidebar h4 { font-size: 1rem; font-weight: 800; margin: 0 0 0.6rem; color: #fff; }
     .blog-cta-sidebar p { font-size: 0.86rem; color: rgba(255,255,255,0.75); line-height: 1.6; margin-bottom: 1.1rem; }
@@ -119,8 +112,8 @@
       .blog-layout { grid-template-columns: 1fr; padding: 0 1rem; }
       .blog-sidebar { display: none; }
       .facts-row { grid-template-columns: 1fr; gap: 0.75rem; }
-      .feature-cards { grid-template-columns: 1fr; }
-      .vergleich-table { font-size: 0.82rem; }
+      .ziele-grid { grid-template-columns: 1fr 1fr; }
+      .hebel-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -181,23 +174,23 @@
         <span>›</span>
         <a href="../blog-1/">Blog</a>
         <span>›</span>
-        <span>Digitale Kita</span>
+        <span>Vorschularbeit</span>
       </nav>
-      <span class="blog-tag">Digitale Kita</span>
+      <span class="blog-tag">Vorschularbeit</span>
       <span class="blog-tag">Kita-Alltag</span>
-      <h1 class="blog-hero-title">Schluss mit Papierkram — So rockst du digitale Medien in der Kita</h1>
+      <h1 class="blog-hero-title">Vorschule leicht gemacht: Dein kompletter Wochenplan für die Kita</h1>
       <div class="blog-meta">
         <div class="blog-meta-item">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Juni 2026
+          2026
         </div>
         <div class="blog-meta-item">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          ca. 6 Min. Lesezeit
+          ca. 7 Min. Lesezeit
         </div>
         <div class="blog-meta-item">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          EDULEO Akademie &amp; Kitaversum
+          Janine Klumper &amp; Hannah Flunkert
         </div>
       </div>
     </div>
@@ -210,199 +203,199 @@
 
     <article class="blog-content">
 
-      <p class="blog-intro">Papierlisten, Zettelchaos und ständiger Stress im Alltag müssen nicht sein. Digitale Medien in der Kita können euch genau da entlasten, wo es gerade am anstrengendsten ist. Mit der richtigen Struktur — und einer klaren Lösung wie Kitaversum — wird euer Alltag übersichtlicher, ruhiger und endlich wieder machbar.</p>
+      <p class="blog-intro">Vorschule wird gemacht, wenn Zeit ist. Spoiler: Zeit ist nie. Und trotzdem spürst du diesen Druck — von Eltern, von Schulen, vor allem von dir selbst. Starke Vorschularbeit muss nicht kompliziert sein. Sie braucht keinen Materialwagen für 400 €. Sie braucht DICH — mit klaren Ritualen, einfachen Ideen und einem Wochenplan, der dir wirklich Arbeit abnimmt.</p>
 
       <div class="facts-row">
         <div>
-          <div class="fact-num">73 %</div>
-          <div class="fact-label">der Kitas fühlen sich durch<br>Verwaltungsaufwand belastet¹</div>
+          <div class="fact-num">5</div>
+          <div class="fact-label">Tage, 5 Schwerpunkte —<br>je 20–30 Minuten</div>
         </div>
         <div>
-          <div class="fact-num">4</div>
-          <div class="fact-label">Alltagsbereiche, in denen<br>digitale Tools sofort entlasten</div>
+          <div class="fact-num">8</div>
+          <div class="fact-label">Kompetenzen, die Vorschule<br>wirklich fördern sollte</div>
         </div>
         <div>
-          <div class="fact-num">1 App</div>
-          <div class="fact-label">bündelt Anwesenheit, Doku,<br>Kommunikation &amp; Abholung</div>
+          <div class="fact-num">0 €</div>
+          <div class="fact-label">extra Material nötig für<br>den Großteil der Ideen</div>
         </div>
       </div>
 
-      <div class="koop-badge">
-        <img src="../assets/blog/digitale-kita/kitaversum-logo.png" alt="Kitaversum Logo">
-        <p>Dieser Artikel entstand in Kooperation mit <strong>Kitaversum</strong> — der digitalen Kita-Verwaltung, die euren Alltag strukturiert. Folgt uns auf Instagram: <a href="https://www.instagram.com/kitaversumapp/" target="_blank" rel="noopener" class="instagram-btn" style="font-size:0.82rem;padding:0.45rem 1rem;margin-left:0.25rem;vertical-align:middle;"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> @kitaversumapp folgen</a></p>
+      <h2>Was Vorschule wirklich braucht — und warum viele Kitas scheitern</h2>
+
+      <p>Viele denken bei Vorschule an Arbeitsblätter. Doch Vorschule ist viel mehr als „Setz dich hin und mach das mal". Vorschule bedeutet:</p>
+
+      <div class="ziele-grid">
+        <div class="ziel-item"><p>Konzentration fördern</p></div>
+        <div class="ziel-item"><p>Selbstständigkeit stärken</p></div>
+        <div class="ziel-item"><p>Sprache trainieren</p></div>
+        <div class="ziel-item"><p>Mengen &amp; Zahlen erleben</p></div>
+        <div class="ziel-item"><p>Frust aushalten</p></div>
+        <div class="ziel-item"><p>Feinmotorik entwickeln</p></div>
+        <div class="ziel-item"><p>Dazugehören</p></div>
+        <div class="ziel-item"><p>Mutig sein</p></div>
       </div>
-
-      <h2>Digitale Medien in der Kita endlich einfach nutzen — ohne Überforderung</h2>
-
-      <p>Kennst du dieses Gefühl, wenn das Thema digitale Medien in der Kita aufkommt und sofort alles zu viel wirkt? Neue Systeme, neue Anforderungen und irgendwie keine Zeit, sich wirklich einzuarbeiten.</p>
-
-      <p>Gleichzeitig läuft der Alltag oft am Limit. Zettel stapeln sich, Informationen gehen verloren und Absprachen passieren nebenbei. Genau hier entsteht dieser Dauerstress, den so viele pädagogische Fachkräfte kennen.</p>
 
       <div class="pull-quote">
-        Digitale Medien sind nicht dafür da, euch zusätzlich zu belasten. Sie sind dafür da, euch zu entlasten — und endlich wieder durchzuatmen.
+        Der wahre Grund, warum Vorschule in vielen Kitas scheitert? Es fehlt die Struktur — nicht die Motivation. Lass uns das ändern.
       </div>
 
-      <hr class="blog-divider">
-
-      <h2>Analog vs. Digital: Was der Unterschied im Kita-Alltag wirklich bedeutet</h2>
-
-      <table class="vergleich-table" aria-label="Vergleich analoger und digitaler Kita-Organisation">
-        <thead>
-          <tr>
-            <th>Bereich</th>
-            <th>Analog (bisher)</th>
-            <th>Digital mit Kitaversum</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Anwesenheit</td>
-            <td>Papierliste, Zettelchaos, morgens suchen</td>
-            <td>Alle Kinder auf einen Blick, sofort abrufbar</td>
-          </tr>
-          <tr>
-            <td>Dokumentation</td>
-            <td>Notizzettel, später nicht mehr auffindbar</td>
-            <td>Direkt im Moment erfassen, immer verfügbar</td>
-          </tr>
-          <tr>
-            <td>Elternkommunikation</td>
-            <td>Aushänge, mündlich, Infos gehen verloren</td>
-            <td>Nachrichten, Stories, Pinnwand — alles zentral</td>
-          </tr>
-          <tr>
-            <td>Abholorganisation</td>
-            <td>Zettel, Unsicherheit bei Änderungen</td>
-            <td>Aktuelle Abholinfos jederzeit griffbereit</td>
-          </tr>
-          <tr>
-            <td>Teamkommunikation</td>
-            <td>Nebenbei, Missverständnisse, Vergessen</td>
-            <td>Absprachen festhalten, für alle sichtbar</td>
-          </tr>
-          <tr>
-            <td>Datenschutz</td>
-            <td>Unsicher, schwer nachvollziehbar</td>
-            <td>DSGVO-konform, verschlüsselt, revisionssicher</td>
-          </tr>
-        </tbody>
-      </table>
+      <img src="../assets/blog/vorschule-wochenplan/bedeutet.png" alt="Was Vorschule wirklich bedeutet — Kind lernt mit Holzzahlen" class="blog-img">
 
       <hr class="blog-divider">
 
-      <img src="../assets/blog/digitale-kita/dashboard.png" alt="Kitaversum App: Digitale Kita-Verwaltung auf dem Tablet" class="blog-img">
+      <h2>Der Vorschul-Wochenplan — leicht umsetzbar, wenig Material, maximaler Effekt</h2>
 
-      <h2>Vier Bereiche, in denen Kitaversum euren Alltag sofort verändert</h2>
+      <p>Dieser Plan ist so aufgebaut, dass du ihn sofort nutzen kannst. Keine Vorbereitung, kein Chaos — nur klare Impulse. So könnte dein Wochenplan aussehen (wie du ihn am Ende umsetzt, entscheidest du oder dein Team).</p>
 
-      <div class="feature-cards">
+      <div class="wochenplan">
 
-        <div class="feature-card">
-          <div class="feature-card-icon">📋</div>
-          <h3>Digitale Anwesenheitsliste</h3>
-          <p>Der Tag startet und oft geht es direkt los. Mit der digitalen Anwesenheitsliste öffnest du die App und siehst sofort alles auf einen Blick. Kein Suchen, kein Rätselraten.</p>
-          <ul>
-            <li>Feste Morgenroutine einführen</li>
-            <li>Alle Kinder direkt digital erfassen</li>
-            <li>Übersicht gemeinsam im Team nutzen</li>
-          </ul>
+        <div class="tag-card tag-mo">
+          <div class="tag-header">
+            <div>
+              <div class="tag-name">Montag</div>
+              <div class="tag-thema">Sprachpower &amp; Hörtraining · 20–30 Min.</div>
+            </div>
+          </div>
+          <div class="tag-body">
+            <p class="tag-sub">Phonologische Bewusstheit · Kommunikation · Konzentration</p>
+            <p>Montags setzt du den Startpunkt für die Woche. Die Kinder wissen: „Heute geht's um Sprache!" Und Sprache ist die Grundlage für alles.</p>
+            <ul>
+              <li>Anlaute hören: „Was hörst du am Anfang? L wie Löwe."</li>
+              <li>Reimpaare suchen: Haus – Maus, Ball – Fall</li>
+              <li>Silben klatschen: Namen, Tiere, Alltagswörter</li>
+              <li>Hörspiele mit einfachen Instrumenten</li>
+              <li>Klanggeschichten: Du liest — Kinder machen die Geräusche</li>
+            </ul>
+            <div class="tag-tipp">Warum Montag? Sprachtraining erdet und fokussiert die Kinder — und gibt dir einen ruhigen Wochenstart.</div>
+          </div>
         </div>
 
-        <div class="feature-card">
-          <div class="feature-card-icon">📝</div>
-          <h3>Digitale Dokumentation</h3>
-          <p>Beobachtungen, Notizen, Gedanken für später — direkt im Moment erfassen. Alles wird gespeichert und ist jederzeit wieder verfügbar.</p>
-          <ul>
-            <li>Direkt im Moment dokumentieren</li>
-            <li>Kurz und verständlich halten</li>
-            <li>Transparent im Team arbeiten</li>
-          </ul>
+        <div class="tag-card tag-di">
+          <div class="tag-header">
+            <div>
+              <div class="tag-name">Dienstag</div>
+              <div class="tag-thema">Feinmotorik · 20–30 Min.</div>
+            </div>
+          </div>
+          <div class="tag-body">
+            <p class="tag-sub">Stifthaltung · Schneiden · Fingerspitzengefühl</p>
+            <p>Dienstag ist Finger-Tag. Ohne stabile Handmuskulatur gibt's keinen sicheren Stiftgriff und keinen sicheren Umgang mit Schere &amp; Co.</p>
+            <ul>
+              <li>Knetfiguren herstellen</li>
+              <li>Scherenübungen mit geraden, runden und gezackten Linien</li>
+              <li>Muster nachspuren (Zickzack, Wellen, Spiralen)</li>
+              <li>Sandtablett für Buchstabenformen</li>
+              <li>Steckperlen &amp; Mosaikbilder</li>
+            </ul>
+            <div class="tag-tipp">Ritual: „Dienstag ist Schneidetag." — Kinder lieben es, wenn sie wissen, was kommt.</div>
+          </div>
         </div>
 
-        <div class="feature-card">
-          <div class="feature-card-icon">💬</div>
-          <h3>Digitale Kommunikation</h3>
-          <p>Informationen zentral bündeln, klar weitergeben und für alle sichtbar machen — so entstehen weniger Missverständnisse und mehr Klarheit im Team und mit Eltern.</p>
-          <ul>
-            <li>Wichtige Hinweise teilen</li>
-            <li>Absprachen festhalten</li>
-            <li>Infos zentral bündeln</li>
-          </ul>
+        <div class="tag-card tag-mi">
+          <div class="tag-header">
+            <div>
+              <div class="tag-name">Mittwoch</div>
+              <div class="tag-thema">Zahlen &amp; Mengenverständnis · 20–30 Min.</div>
+            </div>
+          </div>
+          <div class="tag-body">
+            <p class="tag-sub">Mathematische Grundlagen spielerisch erleben</p>
+            <p>Jetzt wird's mathematisch — aber bitte ohne Druck! Kinder sollen Zahlen fühlen, nicht auswendig aufsagen.</p>
+            <ul>
+              <li>Würfeln → entsprechende Menge legen</li>
+              <li>Zahlenweg im Flur: Hüpfen, rückwärts gehen, zählen</li>
+              <li>Naturmaterialien sortieren (Steine, Stöcke, Kastanien)</li>
+              <li>Schätzaufgaben: „Wie viele Perlen sind im Glas?"</li>
+              <li>Mengen vergleichen: „Wo sind mehr? Weniger? Gleich viele?"</li>
+            </ul>
+            <div class="tag-tipp">Wichtig: Bewegung dazu — dann bleibt es im Kopf.</div>
+          </div>
         </div>
 
-        <div class="feature-card">
-          <div class="feature-card-icon">🚗</div>
-          <h3>Abholorganisation</h3>
-          <p>Änderungen bei Abholzeiten oder neue Abholpersonen — mit der App habt ihr alle Infos sofort griffbereit. Ihr wisst genau, was gilt, und könnt sicher handeln.</p>
-          <ul>
-            <li>Abholinfos regelmäßig prüfen</li>
-            <li>App aktiv im Alltag nutzen</li>
-            <li>Zuständigkeiten im Team klären</li>
-          </ul>
+        <div class="tag-card tag-do">
+          <div class="tag-header">
+            <div>
+              <div class="tag-name">Donnerstag</div>
+              <div class="tag-thema">Sozialkompetenz &amp; Selbstständigkeit · 20–30 Min.</div>
+            </div>
+          </div>
+          <div class="tag-body">
+            <p class="tag-sub">Mut · Konfliktlösung · Regelverständnis</p>
+            <p>Donnerstag gehört dem Miteinander. Kinder können fachlich top sein — aber ohne Sozialkompetenz wird der Schulstart holprig.</p>
+            <ul>
+              <li>Rollenspiele zu typischen Situationen: „Der Streit um den Stift"</li>
+              <li>Gefühle erkennen: Bildkarten zeigen, Gefühlsampel nutzen</li>
+              <li>Gesprächsrunden mit Redegegenstand</li>
+              <li>Kooperationsspiele</li>
+              <li>Mini-Aufgaben zur Selbstständigkeit (Anziehen, Tisch decken, Material holen)</li>
+            </ul>
+            <div class="tag-tipp">Ziel: Starke Kinder, die sich selbst einschätzen können.</div>
+          </div>
+        </div>
+
+        <div class="tag-card tag-fr">
+          <div class="tag-header">
+            <div>
+              <div class="tag-name">Freitag</div>
+              <div class="tag-thema">Kreativtag &amp; Wochenabschluss · 30 Min.</div>
+            </div>
+          </div>
+          <div class="tag-body">
+            <p class="tag-sub">Freude · Projekte · Selbstwirksamkeit</p>
+            <p>Freitags darf's frei, kreativ und offen sein. Hier erleben Kinder Selbstwirksamkeit — „Ich kann das!"</p>
+            <ul>
+              <li>Bastelprojekte passend zur Jahreszeit</li>
+              <li>Portfolio-Arbeiten</li>
+              <li>Freies Malen mit Themenimpuls</li>
+              <li>Kleine Bauprojekte mit Naturmaterial</li>
+              <li>Vorschulbücher ergänzen (Fotos, Namen schreiben, Wochenaufgabe festhalten)</li>
+            </ul>
+            <div class="tag-tipp">Plus: Wochenreflexion — „Was habe ich diese Woche gelernt?" Du wirst überrascht sein, wie klar Kinder kommunizieren.</div>
+          </div>
         </div>
 
       </div>
 
-      <img src="../assets/blog/digitale-kita/kommunikation.png" alt="Kitaversum App auf dem Smartphone: Elternkommunikation leicht gemacht" class="blog-img">
+      <img src="../assets/blog/vorschule-wochenplan/wochenplan.png" alt="Vorschule in der Kita — Kinder erkunden mit Naturmaterialien" class="blog-img">
 
       <hr class="blog-divider">
 
-      <h2>Vorteile digitaler Medien in der Kita — weniger Stress, mehr Klarheit</h2>
+      <img src="../assets/blog/vorschule-wochenplan/schulreife.png" alt="Schulreife — Kind spielt konzentriert mit Holzklötzen" class="blog-img">
 
-      <p>Digitale Medien können euch wirklich entlasten — wenn sie sinnvoll eingesetzt werden. Sie helfen euch dabei:</p>
-      <ul>
-        <li>Informationen schneller zu finden</li>
-        <li>Abläufe klar zu strukturieren</li>
-        <li>Fehler zu vermeiden</li>
-        <li>Euch im Team besser abzustimmen</li>
-      </ul>
+      <h2>Wie du Vorschule entspannt integrierst — ohne dein Team zu überfordern</h2>
 
-      <div class="pull-quote">
-        Ihr gewinnt Zeit zurück. Zeit, die ihr nicht mehr mit Suchen oder Chaos verbringt, sondern bewusst nutzen könnt.
-      </div>
+      <p>Die 4 größten Hebel für eine gelingende Vorschularbeit:</p>
 
-      <hr class="blog-divider">
-
-      <img src="../assets/blog/digitale-kita/einfuehren.png" alt="Digitale Medien in der Kita einführen — Team bespricht gemeinsam die App" class="blog-img">
-
-      <h2>Digitale Medien in der Kita einführen — so gelingt euch der Start</h2>
-
-      <p>Der Einstieg muss nicht perfekt sein. Viel wichtiger ist, dass ihr überhaupt beginnt. Geht Schritt für Schritt und nehmt euch den Druck raus.</p>
-
-      <div class="start-steps">
-        <div class="start-step">
-          <div class="step-nr">1</div>
-          <p><strong>Beginnt mit einem Bereich</strong> — zum Beispiel der Anwesenheit. Einen Bereich einführen ist besser als nichts zu tun.</p>
+      <div class="hebel-grid">
+        <div class="hebel-item">
+          <div class="hebel-nr">1</div>
+          <p><strong>Immer zur gleichen Tageszeit starten</strong> — Routine beruhigt das System. Bei Kindern und Erwachsenen.</p>
         </div>
-        <div class="start-step">
-          <div class="step-nr">2</div>
-          <p><strong>Legt klare Abläufe fest</strong> — wer erfasst die Anwesenheit, wer schreibt Beobachtungen? Klare Zuständigkeiten helfen.</p>
+        <div class="hebel-item">
+          <div class="hebel-nr">2</div>
+          <p><strong>Kurze, klare Einheiten</strong> — 20–30 Minuten reichen. Wirklich.</p>
         </div>
-        <div class="start-step">
-          <div class="step-nr">3</div>
-          <p><strong>Besprecht Unsicherheiten offen im Team</strong> — ihr dürft lernen, ausprobieren und auch Fehler machen.</p>
+        <div class="hebel-item">
+          <div class="hebel-nr">3</div>
+          <p><strong>Wiederholung statt ständig Neues</strong> — Kinder brauchen Sicherheit, keine Abwechslung.</p>
         </div>
-        <div class="start-step">
-          <div class="step-nr">4</div>
-          <p><strong>Klärt Datenschutzfragen frühzeitig</strong> — Kitaversum ist DSGVO-konform, aber besprecht es trotzdem mit eurem Träger.</p>
+        <div class="hebel-item">
+          <div class="hebel-nr">4</div>
+          <p><strong>Aufgaben im Team verteilen</strong> — Nicht eine Person „macht Vorschule". Das Team trägt es gemeinsam.</p>
         </div>
       </div>
 
       <div class="blog-cta-banner">
-        <h3>Tagesfortbildung: Digitale Medien in der Kita — sicher und praxisnah starten</h3>
-        <p>In unserer Tagesfortbildung in Kooperation mit Kitaversum zeigen wir dir ganz konkret, wie du digitale Medien in deinen Alltag integrierst. Du bekommst nicht nur Wissen, sondern echte Lösungen.</p>
-        <ul>
-          <li>Wie du deine Geräte sicher nutzt</li>
-          <li>Worauf du beim Datenschutz achten musst</li>
-          <li>Wie du die Kitaversum App gezielt einsetzt</li>
-          <li>Wie du dein Team sicher mitnimmst</li>
-        </ul>
+        <h3>Bereit, Vorschule in deiner Kita professionell aufzubauen?</h3>
+        <p>Bei der EDULEO Akademie bekommst du alles, was du brauchst — für dich als Einzelperson oder für dein ganzes Team:</p>
         <div class="blog-cta-banner-links">
-          <a href="../fortbildungen/tagesfortbildungen/digitale-kita-kitaversum/">Zur Fortbildung</a>
+          <a href="../fortbildungen/leitung-vorschule/">3 Monate: Leitung der Vorschule</a>
+          <a href="../fortbildungen/tagesfortbildungen/schule-in-sicht/">Tagesfobi: Schule in Sicht</a>
+          <a href="../fortbildungen/tagesfortbildungen/vorschulkonzept-gestalten/">Tagesfobi: Vorschulkonzept</a>
           <a href="../bring-a-friend/">Bring a Friend</a>
         </div>
       </div>
 
-      <p style="font-size:0.8rem;color:#aaa;margin-top:2rem;">¹ Quelle: Befragung pädagogischer Fachkräfte, Kitaversum 2024</p>
       <p style="margin-top:2rem;"><a href="https://www.instagram.com/eduleo_akademie/" target="_blank" rel="noopener" class="instagram-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> @eduleo_akademie folgen</a></p>
 
     </article>
@@ -412,27 +405,28 @@
       <div class="blog-sidebar-inner">
 
         <div class="blog-cta-sidebar">
-          <h4>Digitale Kita Fortbildung</h4>
-          <p>Tagesfortbildung in Kooperation mit Kitaversum — praxisnah, sicher, direkt umsetzbar.</p>
-          <a href="../fortbildungen/tagesfortbildungen/digitale-kita-kitaversum/" class="btn">Zur Fortbildung →</a>
+          <h4>Leitung der Vorschule</h4>
+          <p>3-Monats-Fortbildung — Vorschularbeit ganzheitlich, klar und professionell gestalten.</p>
+          <a href="../fortbildungen/leitung-vorschule/" class="btn">Zur Fortbildung →</a>
         </div>
 
         <div class="blog-sidebar-card">
-          <h4>Inhaltsverzeichnis</h4>
+          <h4>Wochenplan</h4>
           <ul>
-            <li><a href="#analog-vs-digital">Analog vs. Digital im Vergleich</a></li>
-            <li><a href="#vier-bereiche">4 Bereiche, die sofort entlasten</a></li>
-            <li><a href="#vorteile">Vorteile digitaler Medien</a></li>
-            <li><a href="#start">So gelingt der Einstieg</a></li>
+            <li><a href="#montag">Montag: Sprache</a></li>
+            <li><a href="#dienstag">Dienstag: Feinmotorik</a></li>
+            <li><a href="#mittwoch">Mittwoch: Zahlen</a></li>
+            <li><a href="#donnerstag">Donnerstag: Soziales</a></li>
+            <li><a href="#freitag">Freitag: Kreativität</a></li>
           </ul>
         </div>
 
         <div class="blog-sidebar-card">
           <h4>Passende Artikel</h4>
           <ul>
-            <li><a href="../kita-software-vergleich-2026/">Kita-Apps im Vergleich 2026</a></li>
-            <li><a href="../übergänge-in-der-kita/">Übergänge in der Kita</a></li>
             <li><a href="../vorschulkonzept-für-die-kita/">Vorschulkonzept für die Kita</a></li>
+            <li><a href="../2024/05/03/ideen-für-projekte-im-kindergarten/">Projekte im Kindergarten</a></li>
+            <li><a href="../2021/11/04/10-vorschulideen-für-die-kita/">10 Vorschulideen</a></li>
           </ul>
         </div>
 
