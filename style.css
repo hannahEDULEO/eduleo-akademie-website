@@ -2042,3 +2042,20 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 }
 #back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
 #back-to-top:hover { background: #7A5240; }
+
+/* ── Instagram Gradient Button ── */
+.instagram-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(to right, #833AB4, #E1306C, #F77737);
+  color: #fff !important;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.6rem 1.4rem;
+  border-radius: 50px;
+  text-decoration: none !important;
+  transition: opacity 0.2s, transform 0.15s;
+  margin-top: 0.25rem;
+}
+.instagram-btn:hover { opacity: 0.88; transform: translateY(-1px); }
