@@ -144,6 +144,36 @@
       background: #E5DDD9;
     }
 
+    /* ── Kategorie-Filter ── */
+    .blog-filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .blog-filter-btn {
+      background: #fff;
+      border: 1.5px solid var(--border);
+      color: var(--text);
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 0.45rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 0.18s, color 0.18s, border-color 0.18s;
+      font-family: inherit;
+    }
+    .blog-filter-btn:hover {
+      border-color: var(--green-dark);
+      color: var(--green-dark);
+    }
+    .blog-filter-btn.active {
+      background: var(--green-dark);
+      border-color: var(--green-dark);
+      color: #fff;
+    }
+    .blog-card[hidden] { display: none; }
+
     @media (max-width: 900px) {
       .blog-grid { grid-template-columns: repeat(2, 1fr); }
     }
@@ -210,10 +240,21 @@
 <!-- ── ARTIKEL-ÜBERSICHT ── -->
 <section class="blog-grid-section">
   <div class="container">
+
+    <div class="blog-filter" role="group" aria-label="Nach Kategorie filtern">
+      <button class="blog-filter-btn active" data-cat="all">Alle</button>
+      <button class="blog-filter-btn" data-cat="vorschularbeit">Vorschularbeit</button>
+      <button class="blog-filter-btn" data-cat="digitale-kita">Digitale Kita</button>
+      <button class="blog-filter-btn" data-cat="kita-alltag">Kita-Alltag</button>
+      <button class="blog-filter-btn" data-cat="adhs-autismus">ADHS &amp; Autismus</button>
+      <button class="blog-filter-btn" data-cat="kinderyoga">Kinderyoga</button>
+      <button class="blog-filter-btn" data-cat="gastartikel">Gastartikel</button>
+    </div>
+
     <div class="blog-grid">
 
       <!-- Kitaversum Gastartikel -->
-      <a href="../kita-software-vergleich-2026/" class="blog-card">
+      <a href="../kita-software-vergleich-2026/" class="blog-card" data-category="digitale-kita gastartikel">
         <img src="../assets/blog/kitaversum/vorschau.png" alt="Kita-Software-Vergleich 2026" class="blog-card-img">
         <div class="blog-card-body">
           <p class="blog-card-date">Juni 2026</p>
@@ -231,7 +272,7 @@
       </a>
 
       <!-- Vorschulideen -->
-      <a href="../2021/11/04/10-vorschulideen-für-die-kita/" class="blog-card">
+      <a href="../2021/11/04/10-vorschulideen-für-die-kita/" class="blog-card" data-category="vorschularbeit kita-alltag">
         <img src="../assets/fobi-bilder/leitung-vorschule.png" alt="10 Vorschulideen für die Kita" class="blog-card-img">
         <div class="blog-card-body">
           <p class="blog-card-date">November 2021</p>
@@ -320,6 +361,23 @@
   function acceptCookies() { localStorage.setItem('cookieConsent','accepted'); document.getElementById('cookie-banner').style.display='none'; }
   function rejectCookies() { localStorage.setItem('cookieConsent','rejected'); document.getElementById('cookie-banner').style.display='none'; }
   if (!localStorage.getItem('cookieConsent')) { document.getElementById('cookie-banner').style.display='flex'; }
+
+  // Kategorie-Filter
+  document.querySelectorAll('.blog-filter-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.blog-filter-btn').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var cat = btn.dataset.cat;
+      document.querySelectorAll('.blog-card').forEach(function(card) {
+        if (cat === 'all') {
+          card.hidden = false;
+        } else {
+          var cats = (card.dataset.category || '').split(' ');
+          card.hidden = !cats.includes(cat);
+        }
+      });
+    });
+  });
 </script>
 </body>
 </html>
