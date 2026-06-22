@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Autismus und TEACCH in der Kita: Leitfaden für pädagogische Fachkräfte – EDULEO Akademie</title>
-  <meta name="description" content="Autismus und TEACCH in der Kita: Was ist der TEACCH-Ansatz, welche Prinzipien stecken dahinter und wie setzt du ihn im Kita-Alltag um? Praktischer Leitfaden für ErzieherInnen.">
+  <title>Übergänge in der Kita: Warum es beim Anziehen immer wieder eskaliert – EDULEO Akademie</title>
+  <meta name="description" content="Übergänge in der Kita: Warum Anziehen, Aufräumen und Situationswechsel eskalieren – und wie du diese Momente ruhig, bindungsorientiert und stärkend gestaltest.">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="EDULEO Akademie">
   <meta property="og:locale" content="de_DE">
-  <meta property="og:url" content="https://www.eduleo-akademie.de/autismus-und-teacch/">
-  <meta property="og:title" content="Autismus und TEACCH in der Kita: Leitfaden für pädagogische Fachkräfte">
-  <meta property="og:description" content="TEACCH-Ansatz verstehen und anwenden: 4 Grundprinzipien, 4 Vorteile, praktische Checkliste für den Kita-Alltag.">
-  <meta property="og:image" content="https://www.eduleo-akademie.de/assets/fobi-bilder/autismus-kita.png">
+  <meta property="og:url" content="https://www.eduleo-akademie.de/%C3%BCberg%C3%A4nge-in-der-kita/">
+  <meta property="og:title" content="Übergänge in der Kita: Warum es beim Anziehen immer wieder eskaliert">
+  <meta property="og:description" content="Übergänge sind kein Randthema — sie sind der Schlüssel zu einem ruhigeren Alltag oder zu täglicher Überforderung. Ein ehrlicher Leitfaden für pädagogische Fachkräfte.">
+  <meta property="og:image" content="https://www.eduleo-akademie.de/assets/fobi-bilder/stressbewaltigung-kita.png">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://www.eduleo-akademie.de/autismus-und-teacch/">
+  <link rel="canonical" href="https://www.eduleo-akademie.de/%C3%BCberg%C3%A4nge-in-der-kita/">
   <link rel="icon" href="../favicon-32x32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" sizes="180x180" href="../favicon-6/apple-touch-icon-180x180.png">
   <link rel="stylesheet" href="../style.css">
@@ -28,7 +28,7 @@
     .blog-hero-bg {
       position: absolute;
       inset: 0;
-      background-image: url('../assets/fobi-bilder/autismus-kita.png');
+      background-image: url('../assets/fobi-bilder/stressbewaltigung-kita.png');
       background-size: cover;
       background-position: center;
     }
@@ -63,61 +63,64 @@
     .fact-num { font-size: 1.7rem; font-weight: 900; color: var(--green-dark); line-height: 1; }
     .fact-label { font-size: 0.78rem; color: #666; margin-top: 0.3rem; line-height: 1.4; }
 
-    /* ── Autismus 3 Merkmale ── */
-    .merkmal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.25rem 0; }
-    .merkmal-card { background: var(--beige); border-radius: var(--radius-lg); padding: 1.25rem 1.4rem; text-align: center; }
-    .merkmal-icon { font-size: 2rem; margin-bottom: 0.6rem; }
-    .merkmal-title { font-weight: 800; font-size: 0.9rem; color: var(--dark); margin-bottom: 0.5rem; }
-    .merkmal-card p { font-size: 0.84rem; color: #555; line-height: 1.6; margin: 0; }
+    /* ── Pull-Quote ── */
+    .pull-quote {
+      border-left: 4px solid var(--green-dark);
+      padding: 1.1rem 1.5rem;
+      margin: 1.75rem 0;
+      background: var(--beige);
+      border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.7;
+      font-style: italic;
+    }
 
-    /* ── TEACCH-Ziel-Box ── */
-    .teacch-ziel {
+    /* ── Highlight-Box ── */
+    .highlight-box {
+      background: var(--beige);
+      border-radius: var(--radius-xl);
+      padding: 1.5rem 1.75rem;
+      margin: 1.5rem 0;
+    }
+    .highlight-box h3 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--green-dark);
+      margin: 0 0 0.85rem;
+    }
+    .highlight-box ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+    .highlight-box ul li { font-size: 0.92rem; color: #444; padding-left: 1.3rem; position: relative; line-height: 1.65; }
+    .highlight-box ul li::before { content: '›'; position: absolute; left: 0; color: var(--green-dark); font-weight: 900; font-size: 1.1rem; line-height: 1.4; }
+    .highlight-box p { font-size: 0.92rem; color: #444; line-height: 1.75; margin: 0; }
+
+    /* ── Team-Box ── */
+    .team-box {
       background: var(--dark);
       color: #fff;
       border-radius: var(--radius-xl);
-      padding: 1.5rem 2rem;
+      padding: 1.5rem 1.75rem;
       margin: 1.5rem 0;
-      text-align: center;
     }
-    .teacch-ziel p { color: rgba(255,255,255,0.9); font-size: 1rem; font-weight: 600; line-height: 1.7; margin: 0; font-style: italic; }
+    .team-box h3 { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.6); margin: 0 0 0.75rem; }
+    .team-box p { font-size: 0.92rem; color: rgba(255,255,255,0.85); line-height: 1.75; margin: 0; }
 
-    /* ── Vergleichstabelle ── */
-    .compare-table-wrap { overflow-x: auto; margin: 1.5rem 0 2rem; }
-    .compare-table { width: 100%; border-collapse: collapse; font-size: 0.87rem; }
-    .compare-table thead tr { background: var(--dark); color: #fff; }
-    .compare-table th { padding: 0.75rem 1rem; text-align: left; font-weight: 700; }
-    .compare-table th:first-child { border-radius: 10px 0 0 0; }
-    .compare-table th:last-child  { border-radius: 0 10px 0 0; }
-    .compare-table tbody tr:nth-child(odd)  { background: #fff; }
-    .compare-table tbody tr:nth-child(even) { background: #FAFAF8; }
-    .compare-table td { padding: 0.75rem 1rem; color: #444; border-bottom: 1px solid #F0EBE8; vertical-align: top; }
-    .compare-table td:first-child { font-weight: 700; color: var(--dark); white-space: nowrap; }
-    .compare-table tbody tr:last-child td { border-bottom: none; }
-
-    /* ── Vorteile ── */
-    .vorteile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.25rem 0; }
-    .vorteil-card { background: var(--beige); border-radius: var(--radius-lg); padding: 1.25rem 1.4rem; display: flex; align-items: flex-start; gap: 0.85rem; }
-    .vorteil-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 0.1rem; }
-    .vorteil-title { font-weight: 800; font-size: 0.9rem; color: var(--dark); margin-bottom: 0.3rem; }
-    .vorteil-card p { font-size: 0.84rem; color: #555; line-height: 1.6; margin: 0; }
-
-    /* ── Praxis-Tipps / Checkliste ── */
-    .tipp-list { list-style: none; padding: 0; margin: 1rem 0 1.5rem; display: flex; flex-direction: column; gap: 0.65rem; }
-    .tipp-list li { position: relative; padding-left: 2rem; font-size: 0.92rem; color: #444; line-height: 1.65; }
-    .tipp-list li::before { content: '✓'; position: absolute; left: 0; top: 0.15rem; background: var(--green-dark); color: #fff; font-weight: 800; font-size: 0.72rem; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-
-    /* ── Raumgestaltung-Checkliste ── */
-    .raum-box { background: var(--beige); border-radius: var(--radius-xl); padding: 1.5rem 1.75rem; margin: 1.5rem 0; }
-    .raum-box h3 { font-size: 1rem; font-weight: 800; color: var(--dark); margin: 0 0 1rem; }
-    .raum-box ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; }
-    .raum-box ul li { font-size: 0.88rem; color: #555; padding-left: 1.4rem; position: relative; line-height: 1.6; }
-    .raum-box ul li::before { content: '□'; position: absolute; left: 0; color: var(--green-dark); font-weight: 900; font-size: 0.95rem; }
-
-    /* ── Quellen ── */
-    .quellen-box { background: #F8F6F4; border-radius: var(--radius-lg); padding: 1.25rem 1.5rem; margin-top: 2rem; }
-    .quellen-box h4 { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #888; margin: 0 0 0.75rem; }
-    .quellen-box ol { padding-left: 1.2rem; margin: 0; }
-    .quellen-box li { font-size: 0.78rem; color: #777; line-height: 1.6; margin-bottom: 0.3rem; font-style: italic; }
+    /* ── Beispiel-Satz ── */
+    .beispiel-satz {
+      text-align: center;
+      background: #fff;
+      border: 2px solid var(--green-dark);
+      border-radius: var(--radius-xl);
+      padding: 1.25rem 1.75rem;
+      margin: 1.25rem 0;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--dark);
+      font-style: italic;
+    }
 
     /* ── CTA-Banner ── */
     .blog-cta-banner { background: var(--dark); border-radius: var(--radius-xl); padding: 2rem; margin: 2.5rem 0; color: #fff; }
@@ -148,8 +151,6 @@
     @media (max-width: 768px) {
       .blog-layout { grid-template-columns: 1fr; padding: 0 1rem; }
       .blog-sidebar { display: none; }
-      .merkmal-grid { grid-template-columns: 1fr; }
-      .vorteile-grid { grid-template-columns: 1fr; }
       .facts-row { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
@@ -211,15 +212,14 @@
         <span>›</span>
         <a href="../blog-1/">Blog</a>
         <span>›</span>
-        <span>Autismus und TEACCH in der Kita</span>
+        <span>Übergänge in der Kita</span>
       </nav>
-      <span class="blog-tag">ADHS &amp; Autismus</span>
       <span class="blog-tag">Kita-Alltag</span>
-      <h1 class="blog-hero-title">Autismus und TEACCH in der Kita: Ein Leitfaden für pädagogische Fachkräfte</h1>
+      <h1 class="blog-hero-title">Übergänge in der Kita: Warum es beim Anziehen immer wieder eskaliert</h1>
       <div class="blog-meta">
         <div class="blog-meta-item">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          22. Juni 2026
+          26. Januar 2026
         </div>
         <div class="blog-meta-item">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -240,178 +240,139 @@
 
     <article class="blog-content">
 
-      <p class="blog-intro">Autismus ist eine neurologische Entwicklungsstörung, die sich in den Bereichen soziale Interaktion, Kommunikation und Verhalten zeigt. Eine Methode, die sich in der Arbeit mit autistischen Kindern bewährt hat, ist der TEACCH-Ansatz — ein strukturiertes pädagogisches Konzept, das Sicherheit, Selbstständigkeit und Teilhabe fördert.</p>
+      <p class="blog-intro">Übergänge sind die Momente im Kita-Alltag, die auf den ersten Blick harmlos wirken — und trotzdem regelmäßig eskalieren. Gerade eben waren die Kinder noch tief in ihrem Spiel. Dann heißt es: anziehen. Innerhalb weniger Minuten wird es laut, hektisch und emotional. Dieser Artikel zeigt, warum das so ist — und was wirklich hilft.</p>
 
       <div class="facts-row">
         <div>
-          <div class="fact-num">4</div>
-          <div class="fact-label">Grundprinzipien<br>des TEACCH-Ansatzes</div>
+          <div class="fact-num">mehrmals</div>
+          <div class="fact-label">täglich passieren<br>Übergänge in der Kita</div>
         </div>
         <div>
-          <div class="fact-num">4</div>
-          <div class="fact-label">nachgewiesene Vorteile<br>im Kita-Alltag</div>
+          <div class="fact-num">1</div>
+          <div class="fact-label">bewusster Atemzug<br>kann einen Übergang verändern</div>
         </div>
         <div>
-          <div class="fact-num">5</div>
-          <div class="fact-label">Praxis-Tipps für<br>sofortige Umsetzung</div>
+          <div class="fact-num">Ritual</div>
+          <div class="fact-label">gibt mehr Sicherheit<br>als jedes Konzept</div>
         </div>
         <div>
-          <div class="fact-num">1 %</div>
-          <div class="fact-label">der Bevölkerung<br>ist von ASS betroffen</div>
+          <div class="fact-num">heute</div>
+          <div class="fact-label">kannst du etwas<br>verändern — nicht morgen</div>
         </div>
       </div>
 
-      <h2>Was ist Autismus?</h2>
+      <h2>Übergänge sind keine Nebensache — sondern emotionale Hochmomente</h2>
 
-      <p>Autismus, auch als Autismusspektrumstörung (ASS) bekannt, umfasst verschiedene Ausprägungen und Schweregrade. Es gibt drei Hauptmerkmale, die bei allen Autismusformen mehr oder weniger stark ausgeprägt sind:</p>
+      <p>Was für uns Erwachsene wie ein kleiner organisatorischer Wechsel wirkt, ist für Kinder ein großer innerer Prozess. Ein Spiel loszulassen bedeutet Abschied zu nehmen — von einer Idee, von Kontrolle, von einem sicheren inneren Zustand. Das kindliche Gehirn braucht Zeit, um umzuschalten.</p>
 
-      <div class="merkmal-grid">
-        <div class="merkmal-card">
-          <div class="merkmal-icon">🤝</div>
-          <div class="merkmal-title">Soziale Interaktion</div>
-          <p>Schwierigkeiten, nonverbale und verbale Signale zu verstehen und auf diese zu reagieren.</p>
-        </div>
-        <div class="merkmal-card">
-          <div class="merkmal-icon">💬</div>
-          <div class="merkmal-title">Kommunikation</div>
-          <p>Manche Kinder sprechen wenig oder gar nicht; andere sprechen, haben aber Schwierigkeiten, Gespräche zu führen.</p>
-        </div>
-        <div class="merkmal-card">
-          <div class="merkmal-icon">🔄</div>
-          <div class="merkmal-title">Stereotypes Verhalten</div>
-          <p>Kinder mit Autismus neigen zu wiederholten Verhaltensmustern, festen Routinen und eingeschränkten Interessen.</p>
-        </div>
+      <p>Besonders junge Kinder, sensible Kinder oder Kinder mit hohem Autonomiebedürfnis erleben Übergänge als massiven Stress. Wenn dieser Stress nicht begleitet wird, sucht er sich seinen Weg. Durch Tränen. Durch Lautstärke. Durch Widerstand.</p>
+
+      <div class="pull-quote">
+        Kinder reagieren nicht übertrieben. Sie reagieren ehrlich. Ihr Nervensystem zeigt, dass es zu viel ist.
       </div>
+
+      <p>Wenn wir Übergänge beschleunigen, überfordern wir. Wenn wir sie bewusst gestalten, entsteht Halt. Und genau das ist bindungsorientierte Pädagogik im Alltag.</p>
 
       <hr class="blog-divider">
 
-      <h2>Der TEACCH-Ansatz: Strukturen schaffen für autistische Kinder</h2>
+      <h2>Anziehen ist kein Zeitproblem — sondern ein Beziehungsmoment</h2>
 
-      <p>Der TEACCH-Ansatz (<em>Treatment and Education of Autistic and related Communication-handicapped Children</em>) ist ein in den USA entwickeltes pädagogisches Konzept, das sich speziell an die Bedürfnisse von Menschen mit Autismus richtet. In der Kita hilft TEACCH, eine strukturierte Umgebung zu schaffen, in der autistische Kinder besser lernen und sich sicherer fühlen können.</p>
+      <p>Kaum ein Übergang bringt so viel Unruhe wie das Anziehen. Es ist laut, eng, zeitlich getaktet und voller Erwartungen. Kinder sollen etwas tun, das sie oft noch nicht sicher können, während um sie herum viele Reize gleichzeitig wirken. Gleichzeitig tragen wir Erwachsenen den inneren Druck, pünktlich raus zu müssen.</p>
 
-      <div class="teacch-ziel">
-        <p>Ziel von TEACCH: Größtmögliche Selbstständigkeit und Maximierung der Lebensqualität von Menschen im Autismus-Spektrum.</p>
-      </div>
+      <p>Wenn wir ehrlich sind, geht es beim Anziehen selten um Kleidung. Es geht um Autonomie, Selbstwirksamkeit und Beziehung. Kinder, die sich gesehen fühlen, kooperieren eher. Kinder, die sich gedrängt fühlen, verlieren sich im Widerstand oder ziehen sich zurück. Je mehr Druck entsteht, desto schwerer wird es.</p>
 
-      <h3>Die 4 Grundprinzipien im Überblick</h3>
-
-      <div class="compare-table-wrap">
-        <table class="compare-table">
-          <thead>
-            <tr>
-              <th>Prinzip</th>
-              <th>Was bedeutet das konkret?</th>
-              <th>Umsetzung in der Kita</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Strukturierter Tagesablauf</td>
-              <td>Klar vorhersehbare Abfolge von Aktivitäten</td>
-              <td>Visuelle Tagespläne mit Bildern oder Piktogrammen</td>
-            </tr>
-            <tr>
-              <td>Visuelle Unterstützung</td>
-              <td>Bilder statt Worte — viele Kinder verstehen Visualisierungen besser</td>
-              <td>Symbole, Fotos, farbige Markierungen im Raum</td>
-            </tr>
-            <tr>
-              <td>Individuelle Förderung</td>
-              <td>Jedes Kind hat eigene Stärken und Bedarfe</td>
-              <td>Individuelle Aufgabensets, angepasstes Tempo</td>
-            </tr>
-            <tr>
-              <td>Räumliche Strukturierung</td>
-              <td>Klare Aufteilung von Lern- und Spielbereichen</td>
-              <td>Spielecke, Ruhezone, Essbereich klar trennen</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <hr class="blog-divider">
-
-      <h2>Vorteile des TEACCH-Ansatzes in der Kita</h2>
-
-      <div class="vorteile-grid">
-        <div class="vorteil-card">
-          <div class="vorteil-icon">💪</div>
-          <div>
-            <div class="vorteil-title">Fördert die Selbstständigkeit</div>
-            <p>Durch klar strukturierte Aufgaben und Routinen können Kinder viele Dinge selbstständig bewältigen.</p>
-          </div>
-        </div>
-        <div class="vorteil-card">
-          <div class="vorteil-icon">😌</div>
-          <div>
-            <div class="vorteil-title">Reduziert Stress und Ängste</div>
-            <p>Autistische Kinder fühlen sich in einer geordneten und vorhersehbaren Umgebung deutlich sicherer.</p>
-          </div>
-        </div>
-        <div class="vorteil-card">
-          <div class="vorteil-icon">💬</div>
-          <div>
-            <div class="vorteil-title">Verbesserte Kommunikation</div>
-            <p>Der Einsatz visueller Hilfen erleichtert den Kindern die Kommunikation und Interaktion erheblich.</p>
-          </div>
-        </div>
-        <div class="vorteil-card">
-          <div class="vorteil-icon">🌍</div>
-          <div>
-            <div class="vorteil-title">Stärkere Teilhabe</div>
-            <p>Kinder mit Autismus können besser am Gruppenalltag teilnehmen und ihre Fähigkeiten entwickeln.</p>
-          </div>
-        </div>
-      </div>
-
-      <hr class="blog-divider">
-
-      <h2>TEACCH in der Praxis: 5 Tipps für den Kita-Alltag</h2>
-
-      <ul class="tipp-list">
-        <li><strong>Visuelle Stundenpläne verwenden:</strong> Erstelle für jedes Kind einen individuellen Stundenplan mit Bildern oder Symbolen — das macht den Tag vorhersehbarer.</li>
-        <li><strong>Strukturierte Aufgabenbereiche schaffen:</strong> Bestimme klar, welche Raumbereiche für welche Tätigkeiten genutzt werden (Spielecke, Ruhezone, Essbereich).</li>
-        <li><strong>Rituale und Routinen einführen:</strong> Wiederkehrende Abläufe — wie der Morgenkreis oder das gemeinsame Aufräumen — geben Sicherheit und Orientierung.</li>
-        <li><strong>Einfache, klare Anweisungen geben:</strong> Autistische Kinder profitieren von kurzen, prägnanten Anweisungen. Visuelle Unterstützung hilft zusätzlich.</li>
-        <li><strong>Geduld und Flexibilität zeigen:</strong> Jedes Kind entwickelt sich in seinem eigenen Tempo. Geduld und echtes Verständnis sind der Schlüssel zum Vertrauen.</li>
-      </ul>
-
-      <div class="raum-box">
-        <h3>Checkliste: Raumgestaltung nach TEACCH</h3>
+      <div class="highlight-box">
+        <h3>Was das Anziehen wirklich entspannter macht</h3>
         <ul>
-          <li>Möglichst wenig offene Regale — Materialien in beschrifteten Kisten verpacken</li>
-          <li>Raumbereiche klar unterteilen, z.&nbsp;B. durch Regale oder Teppiche</li>
-          <li>Materialien und Orte beschildern: „Was finde ich wo?"</li>
-          <li>Handlungsroutinen visualisieren: Händewaschen, Toilette, Essen, Malsituationen</li>
-          <li>Tages- oder Ablaufplan mit „Fertig"-Option bereitstellen (zum Abhaken)</li>
-          <li>Rückzugsort vorhanden: Höhle, Nebenraum oder ähnliches</li>
+          <li>Übergänge früh ankündigen — nicht aus dem Nichts kommen</li>
+          <li>Einem Kind zugewandt sein, statt viele gleichzeitig anzutreiben</li>
+          <li>Ruhige Stimme — sie wirkt regulierender als jede Aufforderung</li>
+          <li>Hilfe anbieten, ohne dass ein Kind sich klein fühlen muss</li>
+          <li>Unterschiedliche Tempi akzeptieren — sie sind Ausdruck von Entwicklung</li>
+        </ul>
+      </div>
+
+      <p>Ein Kind, das sich sicher fühlt, wird langfristig selbstständiger als ein Kind, das unter Druck funktionieren muss.</p>
+
+      <hr class="blog-divider">
+
+      <h2>Situationswechsel brauchen Vorhersagbarkeit</h2>
+
+      <p>Kinder brauchen Klarheit, um sich sicher zu fühlen. Wenn Übergänge jeden Tag anders laufen, kostet das enorm viel Energie. Wenn sie ähnlich ablaufen, entsteht Orientierung. Ein bekannter Satz, ein wiederkehrendes Lied 🎶 oder ein kleines Ritual geben Halt — ohne viele Worte.</p>
+
+      <div class="pull-quote">
+        Rituale engen nicht ein. Sie entlasten. Sie sagen dem Kind, was als Nächstes kommt — und nehmen Unsicherheit aus der Situation.
+      </div>
+
+      <div class="highlight-box">
+        <h3>Kleine Rituale mit großer Wirkung</h3>
+        <ul>
+          <li>Ein Aufräumlied vor dem Wechsel</li>
+          <li>Ein kurzes Fingerspiel vor dem Morgenkreis</li>
+          <li>Ein fester Platz beim Anziehen</li>
+          <li>Visuelle Unterstützung — Bilder oder Symbole als Orientierung</li>
+          <li>Protest bedeutet oft nicht Ablehnung, sondern Überforderung — Ritualen trotzdem treu bleiben</li>
         </ul>
       </div>
 
       <hr class="blog-divider">
 
-      <div class="blog-cta-banner">
-        <h3>Fortbildungen zu Autismus &amp; ADHS in der Kita</h3>
-        <p>Mit dem richtigen Wissen und passenden Methoden lässt sich viel erreichen. Die EDULEO Akademie bietet praxisorientierte Fortbildungen — von der kompakten Tagesfortbildung bis zur intensiven 3-Monats-Weiterbildung.</p>
-        <div class="blog-cta-banner-links">
-          <a href="../fortbildungen/tagesfortbildungen/autismus-kita-alltag/">Tagesfortbildung: Autismus in der Kita</a>
-          <a href="../fortbildungen/kita-expertin-adhs-autismus/">3 Monate: ExpertIn für ADHS &amp; Autismus</a>
-        </div>
+      <h2>Wenn Kinder nicht mitgehen — ist das ein Signal</h2>
+
+      <p>Widerstand ist keine Provokation. Er ist Kommunikation. Ein Kind, das nicht mitgeht, ist vielleicht müde, überreizt, unsicher oder emotional noch ganz im vorherigen Moment gefangen. Unser erster Impuls ist häufig Kontrolle. Doch echte pädagogische Qualität zeigt sich im Innehalten.</p>
+
+      <p>Wenn du dich fragst, <em>was dieses Kind gerade braucht</em>, verändert sich dein Blick. Und mit diesem Blick verändert sich dein Handeln.</p>
+
+      <div class="highlight-box">
+        <h3>Beziehung geht vor Ablauf</h3>
+        <p>Geh auf Augenhöhe. Sprich ruhig. Benenne Gefühle. Kleine Wahlmöglichkeiten geben Autonomie zurück, ohne den Rahmen zu verlieren:</p>
       </div>
 
-      <div class="quellen-box">
-        <h4>Quellen</h4>
-        <ol>
-          <li>Frith, U. (2008). <em>Autism: Explaining the Enigma</em> (2nd ed.). Wiley-Blackwell.</li>
-          <li>Mesibov, G. B., Shea, V., &amp; Schopler, E. (2005). <em>The TEACCH Approach to Autism Spectrum Disorders</em>. Springer.</li>
-          <li>Schopler, E., Mesibov, G. B., &amp; Hearsey, K. (1995). Structured Teaching in the TEACCH System. In E. Schopler &amp; G. B. Mesibov (Eds.), <em>Learning and Cognition in Autism</em> (pp. 243–268). Springer.</li>
-        </ol>
+      <div class="beispiel-satz">„Willst du zuerst die Schuhe oder die Jacke anziehen?"</div>
+
+      <p>Solche Sätze sind keine Schwäche. Sie sind professionelle Beziehungsarbeit.</p>
+
+      <hr class="blog-divider">
+
+      <h2>Übergänge gelingen nur im Team</h2>
+
+      <p>Viele Übergänge scheitern nicht an den Kindern, sondern an fehlender Klarheit unter Erwachsenen. Wenn nicht abgesprochen ist, wer begleitet, wer aufräumt, wer vorausgeht und wer bei den Kindern bleibt, entsteht Unruhe. Kinder spüren diese Unsicherheit sofort.</p>
+
+      <div class="team-box">
+        <h3>Einheitliches Handeln gibt Sicherheit</h3>
+        <p>Übergänge brauchen Teamabsprachen, klare Rollen und ehrliche Reflexion: Was lief gut? Wo wurde es stressig? Warum? Diese Gespräche sparen langfristig Kraft. Kinder brauchen keine perfekten Konzepte — sondern verlässliche Erwachsene. Wenn alle Fachkräfte ähnlich handeln, entsteht Orientierung.</p>
+      </div>
+
+      <h2>Dein innerer Zustand entscheidet mit</h2>
+
+      <p>So ehrlich müssen wir sein: Dein Stress überträgt sich. Deine Ruhe auch. Das ist keine Schuldfrage, sondern Biologie. Kinder regulieren sich über uns. Selbstfürsorge ist deshalb kein privates Thema — sie ist pädagogische Qualität.</p>
+
+      <p>Ein bewusster Atemzug, langsamere Bewegungen oder eine weichere Stimme können einen gesamten Übergang verändern.</p>
+
+      <div class="pull-quote">
+        Übergänge sind Lernräume: Kinder lernen Emotionsregulation, Selbstständigkeit, soziale Orientierung und Vertrauen. Wenn wir diese Momente bewusst gestalten, verändert sich der gesamte Kita-Alltag. ✨
+      </div>
+
+      <hr class="blog-divider">
+
+      <h2>Du kannst heute etwas verändern</h2>
+
+      <p>Nicht morgen. Nicht mit dem nächsten Konzept. Heute. Du kannst Übergänge früher ankündigen, langsamer gestalten, klarer begleiten. Du kannst Kinder ernst nehmen in dem, was sie zeigen. Und du kannst dein Team mitnehmen auf diesen Weg.</p>
+
+      <div class="blog-cta-banner">
+        <h3>Übergänge bindungsorientiert gestalten</h3>
+        <p>In den Online-Fortbildungen der EDULEO Akademie lernst du, Übergänge bindungsorientiert, praxisnah und alltagstauglich zu gestalten. Du stärkst dein pädagogisches Verständnis, reduzierst Stress im Alltag und gewinnst Sicherheit im Umgang mit herausfordernden Situationen.</p>
+        <div class="blog-cta-banner-links">
+          <a href="../fortbildungen/tagesfortbildungen/stressbewaltigung-kita-alltag/">Stressbewältigung im Kita-Alltag</a>
+          <a href="../fortbildungen/tagesfortbildungen/fuehrungsrolle-kita-leitung/">Führungsrolle Kita-Leitung</a>
+          <a href="../fortbildungen/">Alle Fortbildungen</a>
+        </div>
       </div>
 
       <div style="display:flex;align-items:center;gap:1rem;background:var(--beige);border-radius:var(--radius-xl);padding:1.25rem 1.5rem;margin-top:1.5rem;">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="var(--green-dark)" width="28" height="28" style="flex-shrink:0;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
         <div>
-          <div style="font-weight:800;font-size:0.9rem;color:var(--dark);margin-bottom:0.2rem;">Mehr auf Instagram</div>
+          <div style="font-weight:800;font-size:0.9rem;color:var(--dark);margin-bottom:0.2rem;">Mehr Inspiration auf Instagram</div>
           <a href="https://www.instagram.com/eduleo_akademie" target="_blank" rel="noopener" style="font-size:0.85rem;color:var(--green-dark);font-weight:700;text-decoration:none;">@eduleo_akademie folgen →</a>
         </div>
       </div>
@@ -425,27 +386,27 @@
         <div class="blog-sidebar-card">
           <h4>Inhalt</h4>
           <ul>
-            <li><a href="#autismus">Was ist Autismus?</a></li>
-            <li><a href="#teacch">Der TEACCH-Ansatz</a></li>
-            <li><a href="#prinzipien">4 Grundprinzipien</a></li>
-            <li><a href="#vorteile">Vorteile in der Kita</a></li>
-            <li><a href="#tipps">5 Praxis-Tipps</a></li>
-            <li><a href="#raumgestaltung">Raumgestaltungs-Checkliste</a></li>
+            <li><a href="#hochmomente">Emotionale Hochmomente</a></li>
+            <li><a href="#anziehen">Anziehen als Beziehungsmoment</a></li>
+            <li><a href="#rituale">Rituale &amp; Vorhersagbarkeit</a></li>
+            <li><a href="#widerstand">Wenn Kinder nicht mitgehen</a></li>
+            <li><a href="#team">Übergänge im Team</a></li>
+            <li><a href="#innerer-zustand">Dein innerer Zustand</a></li>
           </ul>
         </div>
 
         <div class="blog-cta-sidebar">
-          <h4>ExpertIn für ADHS &amp; Autismus</h4>
-          <p>3-Monats-Fortbildung: Vertieftes Wissen und praxisnahe Methoden für die optimale Begleitung in der Kita.</p>
-          <a href="../fortbildungen/kita-expertin-adhs-autismus/" class="btn">Zur Fortbildung →</a>
+          <h4>Stressbewältigung im Kita-Alltag</h4>
+          <p>Tagesfortbildung: Strategien für mehr Ruhe im Alltag — auch in herausfordernden Übergangssituationen.</p>
+          <a href="../fortbildungen/tagesfortbildungen/stressbewaltigung-kita-alltag/" class="btn">Zur Fortbildung →</a>
         </div>
 
         <div class="blog-sidebar-card" style="margin-top:0;">
           <h4>Mehr lesen</h4>
           <ul>
             <li><a href="../blog-1/">Alle Blogartikel</a></li>
-            <li><a href="../fortbildungen/tagesfortbildungen/autismus-kita-alltag/">Tagesfortbildung Autismus</a></li>
-            <li><a href="../welche-fortbildung/">Welche Fortbildung passt?</a></li>
+            <li><a href="../autismus-und-teacch/">Autismus &amp; TEACCH</a></li>
+            <li><a href="../vorschulkonzept-für-die-kita/">Vorschulkonzept</a></li>
           </ul>
         </div>
 
