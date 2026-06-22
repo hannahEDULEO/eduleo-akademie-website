@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autismus und TEACCH in der Kita: Leitfaden für pädagogische Fachkräfte – EDULEO Akademie</title>
+  <meta name="description" content="Autismus und TEACCH in der Kita: Was ist der TEACCH-Ansatz, welche Prinzipien stecken dahinter und wie setzt du ihn im Kita-Alltag um? Praktischer Leitfaden für ErzieherInnen.">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="EDULEO Akademie">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:url" content="https://www.eduleo-akademie.de/autismus-und-teacch/">
+  <meta property="og:title" content="Autismus und TEACCH in der Kita: Leitfaden für pädagogische Fachkräfte">
+  <meta property="og:description" content="TEACCH-Ansatz verstehen und anwenden: 4 Grundprinzipien, 4 Vorteile, praktische Checkliste für den Kita-Alltag.">
+  <meta property="og:image" content="https://www.eduleo-akademie.de/assets/fobi-bilder/autismus-kita.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://www.eduleo-akademie.de/autismus-und-teacch/">
+  <link rel="icon" href="../favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon-6/apple-touch-icon-180x180.png">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .blog-hero {
+      position: relative;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .blog-hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('../assets/fobi-bilder/autismus-kita.png');
+      background-size: cover;
+      background-position: center;
+    }
+    .blog-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(38,29,24,0.45) 0%, rgba(38,29,24,0.82) 100%);
+    }
+    .blog-hero-content { position: relative; z-index: 2; padding: 3rem 0 3.5rem; color: #fff; width: 100%; }
+    .blog-breadcrumb { font-size: 0.85rem; color: rgba(255,255,255,0.75); margin-bottom: 1rem; }
+    .blog-breadcrumb a { color: rgba(255,255,255,0.75); text-decoration: none; }
+    .blog-breadcrumb a:hover { color: #fff; }
+    .blog-breadcrumb span { margin: 0 0.4rem; }
+    .blog-tag { display: inline-block; color: #fff; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 20px; margin-bottom: 1rem; margin-right: 0.4rem; background: var(--green-dark); }
+    .blog-hero-title { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800; line-height: 1.2; margin: 0 0 1rem; color: #fff; }
+    .blog-meta { display: flex; align-items: center; gap: 1rem; font-size: 0.85rem; color: rgba(255,255,255,0.8); flex-wrap: wrap; }
+    .blog-meta-item { display: flex; align-items: center; gap: 0.35rem; }
+
+    /* ── Layout ── */
+    .blog-body { padding: 3.5rem 0 5rem; }
+    .blog-layout { display: grid; grid-template-columns: 1fr 280px; gap: 3rem; max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; }
+    .blog-content { min-width: 0; }
+    .blog-content h2 { font-size: 1.3rem; font-weight: 800; color: var(--dark); margin: 2.5rem 0 0.9rem; }
+    .blog-content h2:first-child { margin-top: 0; }
+    .blog-content h3 { font-size: 1.05rem; font-weight: 800; color: var(--dark); margin: 1.75rem 0 0.6rem; }
+    .blog-content p { color: #444; line-height: 1.8; margin-bottom: 1rem; }
+    .blog-intro { font-size: 1.08rem; color: #333; line-height: 1.8; border-left: 4px solid var(--green-dark); padding-left: 1.25rem; margin-bottom: 2rem; font-style: italic; }
+    .blog-divider { border: none; border-top: 2px solid var(--beige); margin: 2.5rem 0; }
+
+    /* ── Fakten-Box ── */
+    .facts-row { background: var(--beige); border-radius: var(--radius-xl); padding: 1.5rem 2rem; margin-bottom: 2rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; text-align: center; }
+    .fact-num { font-size: 1.7rem; font-weight: 900; color: var(--green-dark); line-height: 1; }
+    .fact-label { font-size: 0.78rem; color: #666; margin-top: 0.3rem; line-height: 1.4; }
+
+    /* ── Autismus 3 Merkmale ── */
+    .merkmal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.25rem 0; }
+    .merkmal-card { background: var(--beige); border-radius: var(--radius-lg); padding: 1.25rem 1.4rem; text-align: center; }
+    .merkmal-icon { font-size: 2rem; margin-bottom: 0.6rem; }
+    .merkmal-title { font-weight: 800; font-size: 0.9rem; color: var(--dark); margin-bottom: 0.5rem; }
+    .merkmal-card p { font-size: 0.84rem; color: #555; line-height: 1.6; margin: 0; }
+
+    /* ── TEACCH-Ziel-Box ── */
+    .teacch-ziel {
+      background: var(--dark);
+      color: #fff;
+      border-radius: var(--radius-xl);
+      padding: 1.5rem 2rem;
+      margin: 1.5rem 0;
+      text-align: center;
+    }
+    .teacch-ziel p { color: rgba(255,255,255,0.9); font-size: 1rem; font-weight: 600; line-height: 1.7; margin: 0; font-style: italic; }
+
+    /* ── Vergleichstabelle ── */
+    .compare-table-wrap { overflow-x: auto; margin: 1.5rem 0 2rem; }
+    .compare-table { width: 100%; border-collapse: collapse; font-size: 0.87rem; }
+    .compare-table thead tr { background: var(--dark); color: #fff; }
+    .compare-table th { padding: 0.75rem 1rem; text-align: left; font-weight: 700; }
+    .compare-table th:first-child { border-radius: 10px 0 0 0; }
+    .compare-table th:last-child  { border-radius: 0 10px 0 0; }
+    .compare-table tbody tr:nth-child(odd)  { background: #fff; }
+    .compare-table tbody tr:nth-child(even) { background: #FAFAF8; }
+    .compare-table td { padding: 0.75rem 1rem; color: #444; border-bottom: 1px solid #F0EBE8; vertical-align: top; }
+    .compare-table td:first-child { font-weight: 700; color: var(--dark); white-space: nowrap; }
+    .compare-table tbody tr:last-child td { border-bottom: none; }
+
+    /* ── Vorteile ── */
+    .vorteile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.25rem 0; }
+    .vorteil-card { background: var(--beige); border-radius: var(--radius-lg); padding: 1.25rem 1.4rem; display: flex; align-items: flex-start; gap: 0.85rem; }
+    .vorteil-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .vorteil-title { font-weight: 800; font-size: 0.9rem; color: var(--dark); margin-bottom: 0.3rem; }
+    .vorteil-card p { font-size: 0.84rem; color: #555; line-height: 1.6; margin: 0; }
+
+    /* ── Praxis-Tipps / Checkliste ── */
+    .tipp-list { list-style: none; padding: 0; margin: 1rem 0 1.5rem; display: flex; flex-direction: column; gap: 0.65rem; }
+    .tipp-list li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.92rem; color: #444; line-height: 1.65; }
+    .tipp-list li::before { content: '✓'; background: var(--green-dark); color: #fff; font-weight: 800; font-size: 0.72rem; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.15rem; }
+
+    /* ── Raumgestaltung-Checkliste ── */
+    .raum-box { background: var(--beige); border-radius: var(--radius-xl); padding: 1.5rem 1.75rem; margin: 1.5rem 0; }
+    .raum-box h3 { font-size: 1rem; font-weight: 800; color: var(--dark); margin: 0 0 1rem; }
+    .raum-box ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+    .raum-box ul li { font-size: 0.88rem; color: #555; padding-left: 1.4rem; position: relative; line-height: 1.6; }
+    .raum-box ul li::before { content: '□'; position: absolute; left: 0; color: var(--green-dark); font-weight: 900; font-size: 0.95rem; }
+
+    /* ── Quellen ── */
+    .quellen-box { background: #F8F6F4; border-radius: var(--radius-lg); padding: 1.25rem 1.5rem; margin-top: 2rem; }
+    .quellen-box h4 { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #888; margin: 0 0 0.75rem; }
+    .quellen-box ol { padding-left: 1.2rem; margin: 0; }
+    .quellen-box li { font-size: 0.78rem; color: #777; line-height: 1.6; margin-bottom: 0.3rem; font-style: italic; }
+
+    /* ── CTA-Banner ── */
+    .blog-cta-banner { background: var(--dark); border-radius: var(--radius-xl); padding: 2rem; margin: 2.5rem 0; color: #fff; }
+    .blog-cta-banner h3 { font-size: 1.1rem; font-weight: 800; margin: 0 0 0.6rem; color: #fff; }
+    .blog-cta-banner p { color: rgba(255,255,255,0.8); font-size: 0.92rem; margin-bottom: 1.25rem; }
+    .blog-cta-banner-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .blog-cta-banner-links a { background: var(--green-dark); color: #fff; font-weight: 700; font-size: 0.85rem; padding: 0.6rem 1.1rem; border-radius: 8px; text-decoration: none; transition: background 0.2s; }
+    .blog-cta-banner-links a:hover { background: var(--green-deeper); }
+
+    /* ── Sidebar ── */
+    .blog-sidebar { position: relative; }
+    .blog-sidebar-inner { position: sticky; top: 100px; }
+    .blog-sidebar-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 1.5rem; margin-bottom: 1.25rem; }
+    .blog-sidebar-card h4 { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-light); margin: 0 0 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
+    .blog-sidebar-card ul { list-style: none; padding: 0; margin: 0; }
+    .blog-sidebar-card ul li { border-bottom: 1px solid #F0EBE8; }
+    .blog-sidebar-card ul li:last-child { border-bottom: none; }
+    .blog-sidebar-card ul li a { font-size: 0.87rem; font-weight: 600; color: var(--dark); text-decoration: none; display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 0; line-height: 1.4; transition: color 0.15s; }
+    .blog-sidebar-card ul li a:hover { color: var(--green-dark); }
+    .blog-sidebar-card ul li a::after { content: '→'; color: var(--beige-dark); font-size: 0.8rem; }
+    .blog-sidebar-card ul li a:hover::after { color: var(--green-dark); }
+    .blog-cta-sidebar { background: var(--dark); border-radius: var(--radius-xl); padding: 1.5rem; margin-bottom: 1.25rem; }
+    .blog-cta-sidebar h4 { font-size: 1rem; font-weight: 800; margin: 0 0 0.6rem; color: #fff; }
+    .blog-cta-sidebar p { font-size: 0.86rem; color: rgba(255,255,255,0.75); line-height: 1.6; margin-bottom: 1.1rem; }
+    .blog-cta-sidebar a.btn { background: var(--green-dark); color: #fff; font-weight: 700; font-size: 0.85rem; padding: 0.65rem 1.2rem; border-radius: 8px; text-decoration: none; display: block; text-align: center; transition: background 0.2s; }
+    .blog-cta-sidebar a.btn:hover { background: var(--green-deeper); }
+
+    @media (max-width: 768px) {
+      .blog-layout { grid-template-columns: 1fr; padding: 0 1rem; }
+      .blog-sidebar { display: none; }
+      .merkmal-grid { grid-template-columns: 1fr; }
+      .vorteile-grid { grid-template-columns: 1fr; }
+      .facts-row { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Cookie Banner -->
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#261D18;color:#fff;padding:1rem 1.5rem;z-index:9999;display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;">
+  <p style="margin:0;font-size:0.85rem;flex:1;min-width:200px;">Diese Website verwendet Cookies. <a href="../datenschutz.html" style="color:#D2EADA;">Datenschutz</a></p>
+  <div style="display:flex;gap:0.75rem;flex-shrink:0;">
+    <button onclick="acceptCookies()" style="background:#5A9E7A;color:#fff;border:none;padding:0.5rem 1.25rem;border-radius:6px;cursor:pointer;font-weight:700;">Akzeptieren</button>
+    <button onclick="rejectCookies()" style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.4);padding:0.5rem 1.25rem;border-radius:6px;cursor:pointer;">Ablehnen</button>
+  </div>
+</div>
+
+<!-- Navigation -->
+<nav class="nav" id="nav" role="navigation" aria-label="Hauptnavigation">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="EDULEO Akademie, Startseite">
+        <img src="../assets/images/logo.png" alt="EDULEO Akademie" style="height:48px;width:auto;">
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="../fortbildungen/">Fortbildungen</a></li>
+        <li><a href="../ueber-uns/">Über uns</a></li>
+        <li><a href="../bring-a-friend/">Bring a Friend</a></li>
+        <li><a href="/#kontakt">Kontakt</a></li>
+        <li><a href="../anmeldebedingungen.html">Anmeldebedingungen</a></li>
+        <li><a href="../blog-1/">Blog</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="../fortbildungen/" class="btn btn-primary btn-sm">Alle Fortbildungen</a>
+      </div>
+      <button class="hamburger" aria-label="Menü öffnen" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" role="navigation" aria-label="Mobile Navigation">
+  <a href="../fortbildungen/">Fortbildungen</a>
+  <a href="../ueber-uns/">Über uns</a>
+  <a href="../bring-a-friend/">Bring a Friend</a>
+  <a href="/#kontakt">Kontakt</a>
+  <a href="../anmeldebedingungen.html">Anmeldebedingungen</a>
+  <a href="../blog-1/">Blog</a>
+  <a href="../fortbildungen/" class="btn btn-primary">Alle Fortbildungen</a>
+</div>
+
+<!-- Hero -->
+<header class="blog-hero">
+  <div class="blog-hero-bg"></div>
+  <div class="blog-hero-overlay"></div>
+  <div class="blog-hero-content">
+    <div class="container" style="max-width:820px;">
+      <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Startseite</a>
+        <span>›</span>
+        <a href="../blog-1/">Blog</a>
+        <span>›</span>
+        <span>Autismus und TEACCH in der Kita</span>
+      </nav>
+      <span class="blog-tag">ADHS &amp; Autismus</span>
+      <span class="blog-tag">Kita-Alltag</span>
+      <h1 class="blog-hero-title">Autismus und TEACCH in der Kita: Ein Leitfaden für pädagogische Fachkräfte</h1>
+      <div class="blog-meta">
+        <div class="blog-meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          22. Juni 2026
+        </div>
+        <div class="blog-meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          ca. 6 Min. Lesezeit
+        </div>
+        <div class="blog-meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Janine Klumper &amp; Hannah Flunkert
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Artikel -->
+<main class="blog-body">
+  <div class="blog-layout">
+
+    <article class="blog-content">
+
+      <p class="blog-intro">Autismus ist eine neurologische Entwicklungsstörung, die sich in den Bereichen soziale Interaktion, Kommunikation und Verhalten zeigt. Eine Methode, die sich in der Arbeit mit autistischen Kindern bewährt hat, ist der TEACCH-Ansatz — ein strukturiertes pädagogisches Konzept, das Sicherheit, Selbstständigkeit und Teilhabe fördert.</p>
+
+      <div class="facts-row">
+        <div>
+          <div class="fact-num">4</div>
+          <div class="fact-label">Grundprinzipien<br>des TEACCH-Ansatzes</div>
+        </div>
+        <div>
+          <div class="fact-num">4</div>
+          <div class="fact-label">nachgewiesene Vorteile<br>im Kita-Alltag</div>
+        </div>
+        <div>
+          <div class="fact-num">5</div>
+          <div class="fact-label">Praxis-Tipps für<br>sofortige Umsetzung</div>
+        </div>
+        <div>
+          <div class="fact-num">1 %</div>
+          <div class="fact-label">der Bevölkerung<br>ist von ASS betroffen</div>
+        </div>
+      </div>
+
+      <h2>Was ist Autismus?</h2>
+
+      <p>Autismus, auch als Autismusspektrumstörung (ASS) bekannt, umfasst verschiedene Ausprägungen und Schweregrade. Es gibt drei Hauptmerkmale, die bei allen Autismusformen mehr oder weniger stark ausgeprägt sind:</p>
+
+      <div class="merkmal-grid">
+        <div class="merkmal-card">
+          <div class="merkmal-icon">🤝</div>
+          <div class="merkmal-title">Soziale Interaktion</div>
+          <p>Schwierigkeiten, nonverbale und verbale Signale zu verstehen und auf diese zu reagieren.</p>
+        </div>
+        <div class="merkmal-card">
+          <div class="merkmal-icon">💬</div>
+          <div class="merkmal-title">Kommunikation</div>
+          <p>Manche Kinder sprechen wenig oder gar nicht; andere sprechen, haben aber Schwierigkeiten, Gespräche zu führen.</p>
+        </div>
+        <div class="merkmal-card">
+          <div class="merkmal-icon">🔄</div>
+          <div class="merkmal-title">Stereotypes Verhalten</div>
+          <p>Kinder mit Autismus neigen zu wiederholten Verhaltensmustern, festen Routinen und eingeschränkten Interessen.</p>
+        </div>
+      </div>
+
+      <hr class="blog-divider">
+
+      <h2>Der TEACCH-Ansatz: Strukturen schaffen für autistische Kinder</h2>
+
+      <p>Der TEACCH-Ansatz (<em>Treatment and Education of Autistic and related Communication-handicapped Children</em>) ist ein in den USA entwickeltes pädagogisches Konzept, das sich speziell an die Bedürfnisse von Menschen mit Autismus richtet. In der Kita hilft TEACCH, eine strukturierte Umgebung zu schaffen, in der autistische Kinder besser lernen und sich sicherer fühlen können.</p>
+
+      <div class="teacch-ziel">
+        <p>Ziel von TEACCH: Größtmögliche Selbstständigkeit und Maximierung der Lebensqualität von Menschen im Autismus-Spektrum.</p>
+      </div>
+
+      <h3>Die 4 Grundprinzipien im Überblick</h3>
+
+      <div class="compare-table-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Prinzip</th>
+              <th>Was bedeutet das konkret?</th>
+              <th>Umsetzung in der Kita</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Strukturierter Tagesablauf</td>
+              <td>Klar vorhersehbare Abfolge von Aktivitäten</td>
+              <td>Visuelle Tagespläne mit Bildern oder Piktogrammen</td>
+            </tr>
+            <tr>
+              <td>Visuelle Unterstützung</td>
+              <td>Bilder statt Worte — viele Kinder verstehen Visualisierungen besser</td>
+              <td>Symbole, Fotos, farbige Markierungen im Raum</td>
+            </tr>
+            <tr>
+              <td>Individuelle Förderung</td>
+              <td>Jedes Kind hat eigene Stärken und Bedarfe</td>
+              <td>Individuelle Aufgabensets, angepasstes Tempo</td>
+            </tr>
+            <tr>
+              <td>Räumliche Strukturierung</td>
+              <td>Klare Aufteilung von Lern- und Spielbereichen</td>
+              <td>Spielecke, Ruhezone, Essbereich klar trennen</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr class="blog-divider">
+
+      <h2>Vorteile des TEACCH-Ansatzes in der Kita</h2>
+
+      <div class="vorteile-grid">
+        <div class="vorteil-card">
+          <div class="vorteil-icon">💪</div>
+          <div>
+            <div class="vorteil-title">Fördert die Selbstständigkeit</div>
+            <p>Durch klar strukturierte Aufgaben und Routinen können Kinder viele Dinge selbstständig bewältigen.</p>
+          </div>
+        </div>
+        <div class="vorteil-card">
+          <div class="vorteil-icon">😌</div>
+          <div>
+            <div class="vorteil-title">Reduziert Stress und Ängste</div>
+            <p>Autistische Kinder fühlen sich in einer geordneten und vorhersehbaren Umgebung deutlich sicherer.</p>
+          </div>
+        </div>
+        <div class="vorteil-card">
+          <div class="vorteil-icon">💬</div>
+          <div>
+            <div class="vorteil-title">Verbesserte Kommunikation</div>
+            <p>Der Einsatz visueller Hilfen erleichtert den Kindern die Kommunikation und Interaktion erheblich.</p>
+          </div>
+        </div>
+        <div class="vorteil-card">
+          <div class="vorteil-icon">🌍</div>
+          <div>
+            <div class="vorteil-title">Stärkere Teilhabe</div>
+            <p>Kinder mit Autismus können besser am Gruppenalltag teilnehmen und ihre Fähigkeiten entwickeln.</p>
+          </div>
+        </div>
+      </div>
+
+      <hr class="blog-divider">
+
+      <h2>TEACCH in der Praxis: 5 Tipps für den Kita-Alltag</h2>
+
+      <ul class="tipp-list">
+        <li><strong>Visuelle Stundenpläne verwenden:</strong> Erstelle für jedes Kind einen individuellen Stundenplan mit Bildern oder Symbolen — das macht den Tag vorhersehbarer.</li>
+        <li><strong>Strukturierte Aufgabenbereiche schaffen:</strong> Bestimme klar, welche Raumbereiche für welche Tätigkeiten genutzt werden (Spielecke, Ruhezone, Essbereich).</li>
+        <li><strong>Rituale und Routinen einführen:</strong> Wiederkehrende Abläufe — wie der Morgenkreis oder das gemeinsame Aufräumen — geben Sicherheit und Orientierung.</li>
+        <li><strong>Einfache, klare Anweisungen geben:</strong> Autistische Kinder profitieren von kurzen, prägnanten Anweisungen. Visuelle Unterstützung hilft zusätzlich.</li>
+        <li><strong>Geduld und Flexibilität zeigen:</strong> Jedes Kind entwickelt sich in seinem eigenen Tempo. Geduld und echtes Verständnis sind der Schlüssel zum Vertrauen.</li>
+      </ul>
+
+      <div class="raum-box">
+        <h3>Checkliste: Raumgestaltung nach TEACCH</h3>
+        <ul>
+          <li>Möglichst wenig offene Regale — Materialien in beschrifteten Kisten verpacken</li>
+          <li>Raumbereiche klar unterteilen, z.&nbsp;B. durch Regale oder Teppiche</li>
+          <li>Materialien und Orte beschildern: „Was finde ich wo?"</li>
+          <li>Handlungsroutinen visualisieren: Händewaschen, Toilette, Essen, Malsituationen</li>
+          <li>Tages- oder Ablaufplan mit „Fertig"-Option bereitstellen (zum Abhaken)</li>
+          <li>Rückzugsort vorhanden: Höhle, Nebenraum oder ähnliches</li>
+        </ul>
+      </div>
+
+      <hr class="blog-divider">
+
+      <div class="blog-cta-banner">
+        <h3>Fortbildungen zu Autismus &amp; ADHS in der Kita</h3>
+        <p>Mit dem richtigen Wissen und passenden Methoden lässt sich viel erreichen. Die EDULEO Akademie bietet praxisorientierte Fortbildungen — von der kompakten Tagesfortbildung bis zur intensiven 3-Monats-Weiterbildung.</p>
+        <div class="blog-cta-banner-links">
+          <a href="../fortbildungen/tagesfortbildungen/autismus-kita-alltag/">Tagesfortbildung: Autismus in der Kita</a>
+          <a href="../fortbildungen/kita-expertin-adhs-autismus/">3 Monate: ExpertIn für ADHS &amp; Autismus</a>
+        </div>
+      </div>
+
+      <div class="quellen-box">
+        <h4>Quellen</h4>
+        <ol>
+          <li>Frith, U. (2008). <em>Autism: Explaining the Enigma</em> (2nd ed.). Wiley-Blackwell.</li>
+          <li>Mesibov, G. B., Shea, V., &amp; Schopler, E. (2005). <em>The TEACCH Approach to Autism Spectrum Disorders</em>. Springer.</li>
+          <li>Schopler, E., Mesibov, G. B., &amp; Hearsey, K. (1995). Structured Teaching in the TEACCH System. In E. Schopler &amp; G. B. Mesibov (Eds.), <em>Learning and Cognition in Autism</em> (pp. 243–268). Springer.</li>
+        </ol>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:1rem;background:var(--beige);border-radius:var(--radius-xl);padding:1.25rem 1.5rem;margin-top:1.5rem;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="var(--green-dark)" width="28" height="28" style="flex-shrink:0;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        <div>
+          <div style="font-weight:800;font-size:0.9rem;color:var(--dark);margin-bottom:0.2rem;">Mehr auf Instagram</div>
+          <a href="https://www.instagram.com/eduleo_akademie" target="_blank" rel="noopener" style="font-size:0.85rem;color:var(--green-dark);font-weight:700;text-decoration:none;">@eduleo_akademie folgen →</a>
+        </div>
+      </div>
+
+    </article>
+
+    <!-- Sidebar -->
+    <aside class="blog-sidebar" aria-label="Artikel-Sidebar">
+      <div class="blog-sidebar-inner">
+
+        <div class="blog-sidebar-card">
+          <h4>Inhalt</h4>
+          <ul>
+            <li><a href="#autismus">Was ist Autismus?</a></li>
+            <li><a href="#teacch">Der TEACCH-Ansatz</a></li>
+            <li><a href="#prinzipien">4 Grundprinzipien</a></li>
+            <li><a href="#vorteile">Vorteile in der Kita</a></li>
+            <li><a href="#tipps">5 Praxis-Tipps</a></li>
+            <li><a href="#raumgestaltung">Raumgestaltungs-Checkliste</a></li>
+          </ul>
+        </div>
+
+        <div class="blog-cta-sidebar">
+          <h4>ExpertIn für ADHS &amp; Autismus</h4>
+          <p>3-Monats-Fortbildung: Vertieftes Wissen und praxisnahe Methoden für die optimale Begleitung in der Kita.</p>
+          <a href="../fortbildungen/kita-expertin-adhs-autismus/" class="btn">Zur Fortbildung →</a>
+        </div>
+
+        <div class="blog-sidebar-card" style="margin-top:0;">
+          <h4>Mehr lesen</h4>
+          <ul>
+            <li><a href="../blog-1/">Alle Blogartikel</a></li>
+            <li><a href="../fortbildungen/tagesfortbildungen/autismus-kita-alltag/">Tagesfortbildung Autismus</a></li>
+            <li><a href="../welche-fortbildung/">Welche Fortbildung passt?</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </aside>
+
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="footer-logo-text">EDULEO <span>Akademie</span></span>
+        <p>Online-Fortbildungen für pädagogische Fachkräfte, ErzieherInnen und Kita-Leitungen. Praxisnah. Zertifiziert. Sofort anwendbar.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Fortbildungen</h4>
+        <ul>
+          <li><a href="../fortbildungen/">Alle Fortbildungen</a></li>
+          <li><a href="../fortbildungen/#tagesfortbildungen">Tagesfortbildungen</a></li>
+          <li><a href="../fortbildungen/#3-monate">3-Monats-Fortbildungen</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Über uns</h4>
+        <ul>
+          <li><a href="../ueber-uns/">Das Team</a></li>
+          <li><a href="../blog-1/">Blog</a></li>
+          <li><a href="/#kontakt">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Rechtliches</h4>
+        <ul>
+          <li><a href="../impressum.html">Impressum</a></li>
+          <li><a href="../datenschutz.html">Datenschutz</a></li>
+          <li><a href="../agb.html">AGB</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-mini-impressum">
+      <p><strong>Klumper &amp; Flunkert EDULEO GbR</strong> &nbsp;·&nbsp; Janine Klumper &amp; Hannah Flunkert &nbsp;·&nbsp; Tel.: 0160 50 59 620 &nbsp;·&nbsp; <a href="mailto:kontakt@eduleo-akademie.de">kontakt@eduleo-akademie.de</a></p>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 EDULEO Akademie. Alle Rechte vorbehalten.</p>
+      <div class="footer-legal">
+        <a href="../impressum.html">Impressum</a>
+        <a href="../datenschutz.html">Datenschutz</a>
+        <a href="../agb.html">AGB</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Zurück nach oben" style="display:none;">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script src="../main.js"></script>
+<script>
+  function acceptCookies() { localStorage.setItem('cookieConsent','accepted'); document.getElementById('cookie-banner').style.display='none'; }
+  function rejectCookies() { localStorage.setItem('cookieConsent','rejected'); document.getElementById('cookie-banner').style.display='none'; }
+  if (!localStorage.getItem('cookieConsent')) { document.getElementById('cookie-banner').style.display='flex'; }
+</script>
+</body>
+</html>
