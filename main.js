@@ -107,9 +107,9 @@
   var firstId = eventIds ? eventIds.split(',')[0].trim() : eventId;
   var portalUrl = catId
     ? 'https://eduleo-akademie.simplyorg-seminare.de/event-list?page=1&categoryId=' + catId
-    : firstId
-      ? 'https://eduleo-akademie.simplyorg-seminare.de/event-details?event_id=' + firstId
-      : 'https://eduleo-akademie.simplyorg-seminare.de/qualification-details?qualification_id=' + qualId;
+    : qualId
+      ? 'https://eduleo-akademie.simplyorg-seminare.de/event-list?page=1&qualificationId=' + qualId
+      : 'https://eduleo-akademie.simplyorg-seminare.de/event-details?event_id=' + firstId;
 
   var MONATE = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
   function fmtDate(d) {
@@ -131,8 +131,8 @@
       allDates.sort(function(a, b) { return a.dateISO < b.dateISO ? -1 : 1; });
     } else {
       var param = catId    ? 'category_id=' + catId
-                : eventId  ? 'event_id=' + eventId
-                :            'qualification_id=' + qualId;
+                : qualId   ? 'qualification_id=' + qualId
+                :            'event_id=' + eventId;
       var resp = await fetch('/api/termine?' + param);
       var data = await resp.json();
       allDates = data.dates || [];

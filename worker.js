@@ -34,11 +34,11 @@ async function handleTermine(url) {
     return new Response(JSON.stringify({ dates: [] }), { headers });
   }
 
-  const simplyUrl = catId
-    ? `https://eduleo-akademie.simplyorg-seminare.de/event-list?page=1&categoryId=${catId}`
-    : eventId
-      ? `https://eduleo-akademie.simplyorg-seminare.de/event-details?event_id=${eventId}`
-      : `https://eduleo-akademie.simplyorg-seminare.de/qualification-details?qualification_id=${qualId}`;
+  const simplyUrl = (catId || qualId)
+    ? catId
+      ? `https://eduleo-akademie.simplyorg-seminare.de/event-list?page=1&categoryId=${catId}`
+      : `https://eduleo-akademie.simplyorg-seminare.de/event-list?page=1&qualificationId=${qualId}`
+    : `https://eduleo-akademie.simplyorg-seminare.de/event-details?event_id=${eventId}`;
 
   try {
     const resp = await fetch(simplyUrl, {
@@ -57,7 +57,7 @@ async function handleTermine(url) {
     const dates = [];
     const seen = new Set();
 
-    if (catId) {
+    if (catId || qualId) {
       // Kategorie-Seiten: event-Links sammeln
       const eventIdLinks = [];
       const linkRe = /event-details\?event_id=(\d+)/g;
