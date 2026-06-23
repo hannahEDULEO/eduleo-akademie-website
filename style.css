@@ -805,11 +805,11 @@ p   { font-size: 1.05rem; line-height: 1.75; }
   z-index: 0;
 }
 .kurs-hero-inner { display: grid; grid-template-columns: 1fr auto; gap: 60px; align-items: center; position: relative; z-index: 1; }
-.kurs-hero-content {}
+.kurs-hero-content { min-width: 0; }
 .kurs-hero-eyecatcher {
   display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap;
 }
-.kurs-hero h1 { margin-bottom: 16px; }
+.kurs-hero h1 { margin-bottom: 16px; overflow-wrap: break-word; }
 .kurs-hero-lead { font-size: 1.15rem; color: var(--text-light); max-width: 540px; line-height: 1.75; margin-bottom: 30px; }
 .kurs-hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
