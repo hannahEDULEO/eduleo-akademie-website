@@ -1257,8 +1257,9 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 #cookie-banner.cookie-floating {
   position: fixed;
   bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
   background: var(--white);
   border: 2px solid var(--green);
   border-radius: var(--radius-xl);
@@ -1292,14 +1293,14 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 }
 #cookie-btn:hover { background: var(--dark); }
 @keyframes cookie-up {
-  from { opacity: 0; transform: translateX(-50%) translateY(24px); }
-  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes cookie-down {
-  to { opacity: 0; transform: translateX(-50%) translateY(24px); }
+  to { opacity: 0; transform: translateY(24px); }
 }
 @media (max-width: 480px) {
-  #cookie-banner.cookie-floating { flex-wrap: wrap; bottom: 16px; left: 16px; right: 16px; width: auto; transform: none; }
+  #cookie-banner.cookie-floating { flex-wrap: wrap; bottom: 16px; left: 16px; right: 16px; width: auto; }
   .cookie-icon { display: none; }
   #cookie-btn { width: 100%; text-align: center; }
 }

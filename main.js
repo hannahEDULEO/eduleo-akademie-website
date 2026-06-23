@@ -168,6 +168,16 @@
   }
 })();
 
+/* ── Kurzimpressum im Footer ─────────────────── */
+(function () {
+  var fb = document.querySelector('.footer-bottom');
+  if (!fb || document.querySelector('.footer-mini-impressum')) return;
+  var mi = document.createElement('div');
+  mi.className = 'footer-mini-impressum';
+  mi.innerHTML = '<p>Klumper &amp; Flunkert EDULEO GbR &middot; Janine Klumper &amp; Hannah Flunkert &middot; Ortlerweg 39, 12207 Berlin &middot; <a href="mailto:kontakt@eduleo-akademie.de">kontakt@eduleo-akademie.de</a></p>';
+  fb.parentNode.insertBefore(mi, fb);
+})();
+
 /* ── Cookie-Banner ──────────────────────────── */
 (function () {
   if (localStorage.getItem('eduleo-cookies-ok')) return;
