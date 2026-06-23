@@ -145,7 +145,7 @@
       widget.innerHTML = allDates.map(function (d) {
         return '<a class="termin-card" href="' + (d.url || portalUrl) + '" target="_blank" rel="noopener">'
           + '<div class="termin-card-info">'
-          + '<span class="termin-datum">' + fmtDate(d.date) + '</span>'
+          + '<span class="termin-datum">' + fmtDate(d.date) + (d.label || '') + '</span>'
           + (d.time ? '<span class="termin-zeit">' + d.time + '</span>' : '')
           + '</div><span class="termin-arrow">→</span></a>';
       }).join('');
@@ -153,8 +153,8 @@
       if (select && select.tagName === 'SELECT') {
         allDates.forEach(function (d) {
           var opt = document.createElement('option');
-          opt.value = d.date;
-          opt.textContent = fmtDate(d.date) + (d.time ? ' · ' + d.time : '');
+          opt.value = d.date + (d.label ? ' ' + d.label : '') + (d.time ? ' · ' + d.time : '');
+          opt.textContent = fmtDate(d.date) + (d.label || '') + (d.time ? ' · ' + d.time : '');
           select.appendChild(opt);
         });
       }

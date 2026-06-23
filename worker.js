@@ -77,15 +77,18 @@ async function handleTermine(url) {
         const moNum = +mo, dNum = +d;
         if (moNum < 1 || moNum > 12 || dNum < 1 || dNum > 31) continue;
         const iso = `20${y}-${mo}-${d}`;
-        if (seen.has(iso)) continue;
+        const timeVal = times[ti] || '';
+        const seenKey = iso + '|' + timeVal;
+        if (seen.has(seenKey)) continue;
         const dt = new Date(+`20${y}`, moNum - 1, dNum);
         if (dt.getMonth() !== moNum - 1) continue;
         if (dt >= today) {
-          seen.add(iso);
+          seen.add(seenKey);
           const eventUrl = eventIdLinks[ti]
             ? `https://eduleo-akademie.simplyorg-seminare.de/event-details?event_id=${eventIdLinks[ti]}`
             : simplyUrl;
-          dates.push({ date: `${d}.${mo}.${y}`, dateISO: iso, time: times[ti] || '', url: eventUrl });
+          const label = timeVal ? (parseInt(timeVal) < 12 ? ' (Vormittagstermine)' : ' (Abendtermine)') : '';
+          dates.push({ date: `${d}.${mo}.${y}`, dateISO: iso, time: timeVal, label, url: eventUrl });
           ti++;
         }
       }
