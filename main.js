@@ -171,6 +171,7 @@
   if (document.getElementById('cookie-banner')) return;
   var b = document.createElement('div');
   b.id = 'cookie-banner';
+  b.className = 'cookie-floating';
   b.innerHTML =
     '<span class="cookie-icon">🍪</span>' +
     '<p>Diese Website nutzt technisch notwendige Cookies (z. B. für sicheres Hosting über Cloudflare). ' +
