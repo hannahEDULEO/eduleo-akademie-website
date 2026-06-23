@@ -168,6 +168,7 @@
 /* ── Cookie-Banner ──────────────────────────── */
 (function () {
   if (localStorage.getItem('eduleo-cookies-ok')) return;
+  if (document.getElementById('cookie-banner')) return;
   var b = document.createElement('div');
   b.id = 'cookie-banner';
   b.innerHTML =
