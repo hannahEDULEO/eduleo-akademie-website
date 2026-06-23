@@ -102,6 +102,7 @@
   var eventIds = widget.dataset.eventIds;
   var qualId   = widget.dataset.qualificationId;
   var catId    = widget.dataset.categoryId;
+  var catType  = widget.dataset.categoryType;
   if (!eventId && !eventIds && !qualId && !catId) return;
 
   var firstId = eventIds ? eventIds.split(',')[0].trim() : eventId;
@@ -130,7 +131,7 @@
       });
       allDates.sort(function(a, b) { return a.dateISO < b.dateISO ? -1 : 1; });
     } else {
-      var param = catId    ? 'category_id=' + catId
+      var param = catId    ? 'category_id=' + catId + (catType ? '&category_type=' + catType : '')
                 : qualId   ? 'qualification_id=' + qualId
                 :            'event_id=' + eventId;
       var resp = await fetch('/api/termine?' + param);

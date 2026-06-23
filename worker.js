@@ -30,15 +30,17 @@ async function handleTermine(url) {
   const eventId  = url.searchParams.get('event_id');
   const qualId   = url.searchParams.get('qualification_id');
   const catId    = url.searchParams.get('category_id');
+  const catType  = url.searchParams.get('category_type');
   if (!eventId && !qualId && !catId) {
     return new Response(JSON.stringify({ dates: [] }), { headers });
   }
 
-  const simplyUrl = (catId || qualId)
-    ? catId
-      ? `https://eduleo-akademie.simplyorg-seminare.de/event-list?page=1&categoryId=${catId}`
-      : `https://eduleo-akademie.simplyorg-seminare.de/event-list?page=1&qualificationId=${qualId}`
-    : `https://eduleo-akademie.simplyorg-seminare.de/event-details?event_id=${eventId}`;
+  const typeParam = catType ? `type=${catType}&` : '';
+  const simplyUrl = catId
+    ? `https://eduleo-akademie.simplyorg-seminare.de/event-list?${typeParam}categoryId=${catId}&page=1`
+    : eventId
+      ? `https://eduleo-akademie.simplyorg-seminare.de/event-details?event_id=${eventId}`
+      : `https://eduleo-akademie.simplyorg-seminare.de/event-list?page=1&qualificationId=${qualId}`;
 
   try {
     const resp = await fetch(simplyUrl, {
@@ -57,7 +59,7 @@ async function handleTermine(url) {
     const dates = [];
     const seen = new Set();
 
-    if (catId || qualId) {
+    if (catId) {
       // Kategorie-Seiten: event-Links sammeln
       const eventIdLinks = [];
       const linkRe = /event-details\?event_id=(\d+)/g;
