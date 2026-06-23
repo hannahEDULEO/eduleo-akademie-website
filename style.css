@@ -723,7 +723,7 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 /* ============================================
    FOOTER
    ============================================ */
-.footer { background: var(--dark); color: var(--white); padding: 64px 0 36px; }
+.footer { background: var(--dark); color: var(--white); padding: 64px 0 36px; overflow: hidden; }
 .footer-grid {
   display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr; gap: 40px;
   margin-bottom: 48px;
@@ -752,11 +752,13 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 .footer-col a:hover { color: var(--white); }
 
 .footer-mini-impressum {
-  border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; margin-bottom: 16px;
+  margin: 32px -9999px 0;
+  padding: 20px 9999px;
+  background: var(--beige);
   text-align: center;
 }
-.footer-mini-impressum p { font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.7; }
-.footer-mini-impressum a { color: rgba(255,255,255,0.55); text-decoration: underline; }
+.footer-mini-impressum p { font-size: 0.82rem; color: var(--text); line-height: 1.7; }
+.footer-mini-impressum a { color: var(--green-dark); text-decoration: underline; }
 .footer-bottom {
   border-top: 1px solid rgba(255,255,255,0.08); padding-top: 28px;
   display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
