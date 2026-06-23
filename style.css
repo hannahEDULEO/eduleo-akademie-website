@@ -952,7 +952,7 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 .booking-box {
   background: var(--white); border-radius: var(--radius-xl); padding: 32px;
   box-shadow: var(--shadow-md); border: 1.5px solid var(--border);
-  position: sticky; top: calc(var(--nav-h) + 24px);
+  position: sticky; top: calc(var(--nav-h) + 24px); z-index: 10;
 }
 .booking-box-title { font-size: 1.1rem; margin-bottom: 20px; }
 .booking-facts { display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
