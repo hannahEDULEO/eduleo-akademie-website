@@ -147,7 +147,7 @@
         return '<a class="termin-card" href="' + (d.url || portalUrl) + '" target="_blank" rel="noopener">'
           + '<div class="termin-card-info">'
           + '<span class="termin-datum">' + fmtDate(d.date) + (showLabels && d.label ? d.label : '') + '</span>'
-          + (showLabels && d.time ? '<span class="termin-zeit">' + d.time + '</span>' : '')
+          + (d.time ? '<span class="termin-zeit">' + d.time + '</span>' : '')
           + '</div><span class="termin-arrow">→</span></a>';
       }).join('');
 
@@ -155,9 +155,8 @@
         allDates.forEach(function (d) {
           var opt = document.createElement('option');
           var lbl = showLabels && d.label ? d.label : '';
-          var timeStr = showLabels && d.time ? ' · ' + d.time : '';
-          opt.value = d.date + (lbl ? ' ' + lbl : '') + timeStr;
-          opt.textContent = fmtDate(d.date) + lbl + timeStr;
+          opt.value = d.date + (lbl ? ' ' + lbl : '') + (d.time ? ' · ' + d.time : '');
+          opt.textContent = fmtDate(d.date) + lbl + (d.time ? ' · ' + d.time : '');
           select.appendChild(opt);
         });
       }
