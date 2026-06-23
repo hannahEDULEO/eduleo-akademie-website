@@ -102,7 +102,8 @@
   var eventIds = widget.dataset.eventIds;
   var qualId   = widget.dataset.qualificationId;
   var catId    = widget.dataset.categoryId;
-  var catType  = widget.dataset.categoryType;
+  var catType    = widget.dataset.categoryType;
+  var showLabels = widget.dataset.showLabels === 'true';
   if (!eventId && !eventIds && !qualId && !catId) return;
 
   var firstId = eventIds ? eventIds.split(',')[0].trim() : eventId;
@@ -145,7 +146,7 @@
       widget.innerHTML = allDates.map(function (d) {
         return '<a class="termin-card" href="' + (d.url || portalUrl) + '" target="_blank" rel="noopener">'
           + '<div class="termin-card-info">'
-          + '<span class="termin-datum">' + fmtDate(d.date) + (d.label || '') + '</span>'
+          + '<span class="termin-datum">' + fmtDate(d.date) + (showLabels && d.label ? d.label : '') + '</span>'
           + (d.time ? '<span class="termin-zeit">' + d.time + '</span>' : '')
           + '</div><span class="termin-arrow">→</span></a>';
       }).join('');
@@ -153,8 +154,9 @@
       if (select && select.tagName === 'SELECT') {
         allDates.forEach(function (d) {
           var opt = document.createElement('option');
-          opt.value = d.date + (d.label ? ' ' + d.label : '') + (d.time ? ' · ' + d.time : '');
-          opt.textContent = fmtDate(d.date) + (d.label || '') + (d.time ? ' · ' + d.time : '');
+          var lbl = showLabels && d.label ? d.label : '';
+          opt.value = d.date + (lbl ? ' ' + lbl : '') + (d.time ? ' · ' + d.time : '');
+          opt.textContent = fmtDate(d.date) + lbl + (d.time ? ' · ' + d.time : '');
           select.appendChild(opt);
         });
       }
