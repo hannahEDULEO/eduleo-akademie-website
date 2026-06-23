@@ -48,8 +48,8 @@ async function handleTermine(url) {
     });
     const html = await resp.text();
 
-    // Uhrzeiten extrahieren
-    const timeRe = /(\d{1,2}:\d{2})\s*Uhr\s*[–\-]\s*(\d{1,2}:\d{2})\s*Uhr/g;
+    // Uhrzeiten extrahieren (mit oder ohne "Uhr")
+    const timeRe = /(\d{1,2}:\d{2})(?:\s*Uhr)?\s*[-–]\s*(\d{1,2}:\d{2})(?:\s*Uhr)?/g;
     const times = [];
     let tm;
     while ((tm = timeRe.exec(html)) !== null) times.push(`${tm[1]}–${tm[2]} Uhr`);
@@ -78,16 +78,18 @@ async function handleTermine(url) {
         if (moNum < 1 || moNum > 12 || dNum < 1 || dNum > 31) continue;
         const iso = `20${y}-${mo}-${d}`;
         const timeVal = times[ti] || '';
-        const seenKey = iso + '|' + timeVal;
+        const eventId = eventIdLinks[ti] || '';
+        const seenKey = eventId ? `ev_${eventId}` : `${iso}|${timeVal}`;
         if (seen.has(seenKey)) continue;
         const dt = new Date(+`20${y}`, moNum - 1, dNum);
         if (dt.getMonth() !== moNum - 1) continue;
         if (dt >= today) {
           seen.add(seenKey);
-          const eventUrl = eventIdLinks[ti]
-            ? `https://eduleo-akademie.simplyorg-seminare.de/event-details?event_id=${eventIdLinks[ti]}`
+          const eventUrl = eventId
+            ? `https://eduleo-akademie.simplyorg-seminare.de/event-details?event_id=${eventId}`
             : simplyUrl;
-          const label = timeVal ? (parseInt(timeVal) < 12 ? ' (Vormittagstermine)' : ' (Abendtermine)') : '';
+          const hour = timeVal ? parseInt(timeVal.split(':')[0]) : -1;
+          const label = hour >= 0 ? (hour < 12 ? ' (Vormittagstermine)' : ' (Abendtermine)') : '';
           dates.push({ date: `${d}.${mo}.${y}`, dateISO: iso, time: timeVal, label, url: eventUrl });
           ti++;
         }
