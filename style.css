@@ -645,33 +645,6 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 .about-home-content p  { color: var(--text-light); margin-bottom: 16px; }
 .about-home-content p:last-of-type { margin-bottom: 28px; }
 
-/* ============================================
-   NEWSLETTER
-   ============================================ */
-.newsletter {
-  background: linear-gradient(rgba(38,29,24,0.58), rgba(38,29,24,0.58)),
-              url('assets/newsletter-bg.png') center/cover no-repeat;
-  padding: 72px 0;
-}
-.newsletter-inner { display: grid; grid-template-columns: 1fr; gap: 0; align-items: center; max-width: 680px; margin: 0 auto; }
-.newsletter-visual { display: none; }
-.newsletter-content { text-align: center; }
-@media (max-width: 700px) {
-  .newsletter-inner { grid-template-columns: 1fr; gap: 32px; }
-  .newsletter-visual { display: none; }
-}
-.newsletter h2 { color: var(--white); margin-bottom: 14px; }
-.newsletter p  { color: rgba(255,255,255,0.7); margin-bottom: 32px; }
-.newsletter-form { display: flex; gap: 10px; max-width: 440px; margin: 0 auto; }
-.newsletter-input {
-  flex: 1; padding: 14px 20px; border-radius: var(--radius-full);
-  border: 2px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.08);
-  color: var(--white); font-family: var(--font); font-size: 1rem; font-weight: 600;
-  outline: none; transition: border-color var(--transition);
-}
-.newsletter-input::placeholder { color: rgba(255,255,255,0.4); }
-.newsletter-input:focus { border-color: var(--green); }
-.newsletter-note { font-size: 0.8rem; color: rgba(255,255,255,0.4); margin-top: 12px; }
 
 /* ============================================
    KONTAKT
@@ -1235,8 +1208,6 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 
   .hero-actions { flex-direction: column; }
   .hero-actions .btn { width: 100%; text-align: center; }
-
-  .newsletter-form { flex-direction: column; }
 
   .kurs-fakten-row { grid-template-columns: 1fr 1fr; }
   .kurs-main div[style*="1fr 1fr"] { grid-template-columns: 1fr !important; }
