@@ -1,0 +1,11 @@
+.git
+.git/**
+.gitignore
+.claude
+.claude/**
+.wrangler
+.wrangler/**
+node_modules
+node_modules/**
+.wranglerignore
+.assetsignore

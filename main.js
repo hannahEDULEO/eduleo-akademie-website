@@ -168,6 +168,40 @@
   }
 })();
 
+/* ── Footer-Grid nachrüsten (Seiten mit Mini-Footer) ── */
+(function () {
+  var footer = document.querySelector('footer.footer .container');
+  if (!footer || footer.querySelector('.footer-grid')) return;
+  var grid = document.createElement('div');
+  grid.className = 'footer-grid';
+  grid.innerHTML =
+    '<div class="footer-brand">' +
+      '<span class="footer-logo-text">EDULEO <span>Akademie</span></span>' +
+      '<p>Online-Fortbildungen für pädagogische Fachkräfte, ErzieherInnen und Kita-Leitungen. Praxisnah. Zertifiziert. Sofort anwendbar.</p>' +
+      '<div class="footer-social">' +
+        '<a href="https://www.instagram.com/eduleo_akademie" target="_blank" rel="noopener" class="footer-social-link" aria-label="Instagram">📷</a>' +
+      '</div>' +
+    '</div>' +
+    '<div class="footer-col"><h4>Fortbildungen</h4><ul>' +
+      '<li><a href="/fortbildungen/">Alle Fortbildungen</a></li>' +
+      '<li><a href="/fortbildungen/#3-monate">3-Monats-Fortbildungen</a></li>' +
+      '<li><a href="/fortbildungen/#tagesfortbildungen">Tagesfortbildungen</a></li>' +
+      '<li><a href="/fortbildungen/teamfortbildungen/">Teamfortbildungen</a></li>' +
+    '</ul></div>' +
+    '<div class="footer-col"><h4>Über uns</h4><ul>' +
+      '<li><a href="/ueber-uns/">Das Team</a></li>' +
+      '<li><a href="/ueber-uns/#dozentinnen">DozentInnen</a></li>' +
+      '<li><a href="/#kontakt">Kontakt</a></li>' +
+    '</ul></div>' +
+    '<div class="footer-col"><h4>Rechtliches</h4><ul>' +
+      '<li><a href="/impressum.html">Impressum</a></li>' +
+      '<li><a href="/datenschutz.html">Datenschutz</a></li>' +
+      '<li><a href="/agb.html">AGB</a></li>' +
+      '<li><a href="/widerruf.html">Widerruf</a></li>' +
+    '</ul></div>';
+  footer.insertBefore(grid, footer.firstChild);
+})();
+
 /* ── Pinterest im Footer ─────────────────────── */
 (function () {
   if (document.querySelector('a[href*="pinterest"]')) return;
