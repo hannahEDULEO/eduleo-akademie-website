@@ -8,6 +8,12 @@ export default {
       return handleTermine(url);
     }
 
+    // Redirects für alte QR-Code-URLs (Broschüre & Postkarte)
+    const decodedPath = decodeURIComponent(path).replace(/\/?$/, '/');
+    if (decodedPath === '/3-monats-fortbildungen/' || decodedPath === '/überblick-fortbildungen/') {
+      return Response.redirect(new URL('/fortbildungen/', url).toString(), 301);
+    }
+
     // Statische Assets
     let response = await env.ASSETS.fetch(request);
     if (response.status === 404) {

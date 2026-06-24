@@ -3,3 +3,7 @@
 
 # Alte Jimdo-URLs können hier als Redirects eingetragen werden
 # Beispiel: /blog/alter-beitrag /blog/neuer-beitrag 301
+
+# QR-Code-URLs (Broschüre & Postkarte im Umlauf)
+/3-monats-fortbildungen/ /fortbildungen/ 301
+/überblick-fortbildungen/ /fortbildungen/ 301
