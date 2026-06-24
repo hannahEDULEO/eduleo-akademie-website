@@ -2062,3 +2062,7 @@ p   { font-size: 1.05rem; line-height: 1.75; }
   margin-top: 0.25rem;
 }
 .instagram-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+
+@media (max-width: 600px) {
+  #dozentinnen-cta { font-size: 1.05rem !important; padding: 16px 28px !important; }
+}
