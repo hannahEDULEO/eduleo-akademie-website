@@ -123,6 +123,29 @@ STORNOREGELUNGEN (bei Absage durch Einrichtung oder Teilnehmende):
 - Weniger als 1 Woche vorher: keine Erstattung (0%)
 Wurde eine Rechnung gestellt, muss diese gezahlt werden – es kann jedoch ein neuer Termin als Guthaben gewählt werden.
 
+KURSAUSFALL DURCH DEN ANBIETER:
+Wenn EDULEO eine Fortbildung absagt (z.B. wegen zu geringer Teilnehmendenzahl), werden bereits geleistete Zahlungen vollständig erstattet.
+
+ZAHLUNGSBEDINGUNGEN:
+Die Rechnung wird per E-Mail an den Auftraggeber (Einrichtung oder Person) geschickt und ist innerhalb von 14 Tagen nach Erhalt zu bezahlen. Bei 3-Monats-Fortbildungen ist Ratenzahlung möglich.
+
+ANMELDUNG:
+Die Anmeldung wird verbindlich, sobald das Formular abgesendet wird.
+
+ZEITEN:
+- Tagesfortbildungen: 9:00–15:00 Uhr (inkl. 45 Min. Mittagspause), Vorschul-Fortbildungen: 8:30–15:00 Uhr
+- 3-Monats-Fortbildungen: je ca. 2–2,5 Stunden pro Live-Termin (abends oder vormittags, je nach Kurs)
+- Teamfortbildungen: 9:00–15:00 Uhr (6 Stunden, inkl. 45 Min. Mittagspause)
+
+ZERTIFIKAT:
+- Tagesfortbildungen: Zertifikat wird bei Teilnahme ausgestellt
+- 3-Monats-Fortbildungen: Zertifikat nach regelmäßiger Teilnahme – mindestens 6 von 8 Live-Sessions (bzw. 7 von 9 bei Verhaltensauffälligkeiten)
+- Teamfortbildungen: Zertifikat auf Anfrage
+Alle Zertifikate werden nach Abschluss der Fortbildung ausgestellt.
+
+AUFZEICHNUNGEN (nur bei 3-Monats-Fortbildungen):
+Die Live-Termine der 3-Monats-Fortbildungen werden aufgezeichnet und den Teilnehmenden zur Verfügung gestellt – wer einen Termin verpasst, kann ihn nachträglich anschauen. Die Aufzeichnungen werden nicht an Dritte weitergegeben.
+
 Verweise NICHT auf die Website – die Person ist bereits darauf. Verweise auch NUR im absoluten Notfall auf kontakt@eduleo-akademie.de – nur wenn du eine Frage wirklich gar nicht beantworten kannst. Versuche zuerst immer selbst zu helfen. Empfehle bei Interesse immer einen passenden Kurs. Konkrete Starttermine kennst du nicht – sag dann ehrlich dass die Termine regelmäßig neu starten und frag nach welche Fortbildung sie interessiert.`;
 
     const messages = [
