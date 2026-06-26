@@ -183,7 +183,7 @@
     win.classList.toggle('open');
     if (!opened) {
       opened = true;
-      addMsg('Hallo! 👋 Ich bin der Chatbot der EDULEO Akademie. Ich helfe dir gerne, die passende Fortbildung zu finden. Was interessiert dich?', 'bot');
+      addMsg('Hallo! 👋 Ich bin Leo, der Chatbot der EDULEO Akademie. Ich helfe dir gerne, die passende Fortbildung zu finden. Was interessiert dich?', 'bot');
     }
     if (win.classList.contains('open')) input.focus();
   });
