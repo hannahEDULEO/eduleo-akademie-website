@@ -150,6 +150,9 @@ Die Live-Termine der 3-Monats-Fortbildungen werden aufgezeichnet und den Teilneh
 PLATTFORM & TECHNISCHES:
 Alle Online-Fortbildungen finden per Zoom statt. Der Zoom-Link wird ca. 1 Woche vor dem ersten Termin per E-Mail verschickt. Für die Teilnahme wird ein Computer, Tablet oder Smartphone mit Internetzugang benötigt. Bei technischen Problemen auf Seiten von EDULEO wird nach Möglichkeit ein Ersatztermin angeboten.
 
+PORTAL & KURSUNTERLAGEN:
+Ab ca. 1 Woche vor der Fortbildung stehen alle Unterlagen im Portal bereit. Auch nach der Fortbildung können die Materialien dort jederzeit heruntergeladen werden. Zugangsdaten zum Portal erhalten die Teilnehmenden nach der Anmeldung.
+
 ZIELGRUPPE:
 Die Fortbildungen richten sich an ErzieherInnen, pädagogische Fachkräfte und Kita-Leitungen. Auch Berufseinsteiger sind willkommen. Die Kosten können vom Träger oder der Einrichtung übernommen werden — die Rechnung geht direkt an den angegebenen Auftraggeber. Eine Anmeldung auf eigene Kosten ist ebenfalls möglich.
 
