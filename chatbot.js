@@ -1,14 +1,36 @@
 (function () {
   const STYLES = `
-    #eduleo-chat-btn {
+    #eduleo-chat-wrapper {
       position: fixed; bottom: 24px; right: 24px; z-index: 9999;
-      width: 60px; height: 60px; border-radius: 50%;
+      display: flex; align-items: center; gap: 10px;
+    }
+    #eduleo-chat-label {
+      background: #7A5240; color: #fff;
+      padding: 10px 16px; border-radius: 24px;
+      font-size: 14px; font-weight: 700; white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+      cursor: pointer; font-family: 'Nunito', sans-serif;
+      animation: eduleo-pulse-label 2.5s ease-in-out infinite;
+    }
+    #eduleo-chat-label:hover { background: #5C3D2E; }
+    #eduleo-chat-btn {
+      width: 68px; height: 68px; border-radius: 50%;
       background: #7A5240; color: #fff; border: none; cursor: pointer;
       box-shadow: 0 4px 16px rgba(0,0,0,0.18);
       display: flex; align-items: center; justify-content: center;
-      font-size: 26px; transition: transform 0.2s, background 0.2s;
+      font-size: 30px; transition: transform 0.2s, background 0.2s;
+      animation: eduleo-pulse 2.5s ease-in-out infinite;
+      position: relative;
     }
-    #eduleo-chat-btn:hover { background: #5C3D2E; transform: scale(1.08); }
+    #eduleo-chat-btn:hover { background: #5C3D2E; transform: scale(1.08); animation: none; }
+    @keyframes eduleo-pulse {
+      0%,100% { box-shadow: 0 4px 16px rgba(122,82,64,0.4); }
+      50% { box-shadow: 0 4px 28px rgba(122,82,64,0.7), 0 0 0 10px rgba(122,82,64,0.12); }
+    }
+    @keyframes eduleo-pulse-label {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
     #eduleo-chat-window {
       position: fixed; bottom: 96px; right: 24px; z-index: 9999;
       width: 340px; max-width: calc(100vw - 32px);
@@ -65,11 +87,21 @@
   style.textContent = STYLES;
   document.head.appendChild(style);
 
+  const wrapper = document.createElement('div');
+  wrapper.id = 'eduleo-chat-wrapper';
+
+  const label = document.createElement('div');
+  label.id = 'eduleo-chat-label';
+  label.textContent = '💬 Frag uns!';
+
   const btn = document.createElement('button');
   btn.id = 'eduleo-chat-btn';
   btn.setAttribute('aria-label', 'Chat öffnen');
   btn.innerHTML = '💬';
-  document.body.appendChild(btn);
+
+  wrapper.appendChild(label);
+  wrapper.appendChild(btn);
+  document.body.appendChild(wrapper);
 
   const win = document.createElement('div');
   win.id = 'eduleo-chat-window';
@@ -142,6 +174,10 @@
     sendBtn.disabled = false;
     input.focus();
   }
+
+  label.addEventListener('click', () => {
+    btn.click();
+  });
 
   btn.addEventListener('click', () => {
     win.classList.toggle('open');

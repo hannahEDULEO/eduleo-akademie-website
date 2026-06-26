@@ -56,17 +56,18 @@ Die EDULEO Akademie bietet praxisnahe Online-Fortbildungen für ErzieherInnen, p
 Kontakt: kontakt@eduleo-akademie.de | Tel: +49 160 50590620
 Website: www.eduleo-akademie.de
 
-3-MONATS-FORTBILDUNGEN (intensive Expertenprogramme):
-1. Kita-ExpertIn für ADHS & Autismus – Strategien für Verhalten im Alltag → /fortbildungen/kita-expertin-adhs-autismus/
-2. Kita-ExpertIn für Verhaltensauffälligkeiten → /fortbildungen/kita-expertin-verhaltensauffaelligkeiten/
-3. Digitale Medien Beauftragte/r in der Kita → /fortbildungen/digitale-medien-beauftragte-kita/
-4. Leitung der Vorschule → /fortbildungen/leitung-vorschule/
-5. Teamcoach in der Kita → /fortbildungen/teamcoach-kita/
-6. Kita KoordinatorIn für Kinderschutz → /fortbildungen/kinderschutz-koordinatorin-kita/
-7. Kinderyoga Kursleitung → /fortbildungen/kinderyoga-kursleitung/
-8. Stressbewältigungscoach → /fortbildungen/stressbewaetigungscoach/
-9. Marte Meo PraktikerIn → /fortbildungen/marte-meo-praktikerin/
-10. FachberaterIn für Inklusion → /fortbildungen/fachberaterin-inklusion/
+3-MONATS-FORTBILDUNGEN (intensive Expertenprogramme, 3 Monate, live online):
+Alle 3-Monats-Fortbildungen kosten 900€ und umfassen 8 Live-Termine – außer die Kita-ExpertIn für Verhaltensauffälligkeiten: diese hat 9 Live-Termine und kostet 1000€.
+1. Kita-ExpertIn für ADHS & Autismus – Strategien für Verhalten im Alltag (8 Termine, 900€)
+2. Kita-ExpertIn für Verhaltensauffälligkeiten – (9 Termine, 1000€)
+3. Digitale Medien Beauftragte/r in der Kita (8 Termine, 900€)
+4. Leitung der Vorschule (8 Termine, 900€)
+5. Teamcoach in der Kita (8 Termine, 900€)
+6. Kita KoordinatorIn für Kinderschutz (8 Termine, 900€)
+7. Kinderyoga Kursleitung (8 Termine, 900€)
+8. Stressbewältigungscoach (8 Termine, 900€)
+9. Marte Meo PraktikerIn (8 Termine, 900€)
+10. FachberaterIn für Inklusion (8 Termine, 900€)
 
 TAGESFORTBILDUNGEN (ab 150€, 1 Tag):
 - Stressbewältigung im Kita-Alltag
@@ -78,7 +79,7 @@ TAGESFORTBILDUNGEN (ab 150€, 1 Tag):
 
 TEAMFORTBILDUNGEN: Maßgeschneidert für das gesamte Kita-Team → /fortbildungen/teamfortbildungen/
 BRING A FRIEND: Gemeinsam anmelden mit Rabatt → /bring-a-friend/
-PREISE: Tagesfortbildungen ab 150€, 3-Monats-Fortbildungen: Preise auf den jeweiligen Kursseiten.
+PREISE: Alle Tagesfortbildungen kosten genau 150€. 3-Monats-Fortbildungen: Preise auf den jeweiligen Kursseiten.
 
 Wenn du Preise oder Termine nicht kennst, verweise auf kontakt@eduleo-akademie.de oder die Kursseite. Empfehle bei Interesse immer einen passenden Kurs.`;
 
