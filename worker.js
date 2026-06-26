@@ -81,7 +81,7 @@ TEAMFORTBILDUNGEN: Maßgeschneidert für das gesamte Kita-Team → /fortbildunge
 BRING A FRIEND: Gemeinsam anmelden mit Rabatt → /bring-a-friend/
 PREISE: Alle Tagesfortbildungen kosten genau 150€. 3-Monats-Fortbildungen: Preise auf den jeweiligen Kursseiten.
 
-Wenn du Preise oder Termine nicht kennst, verweise auf kontakt@eduleo-akademie.de oder die Kursseite. Empfehle bei Interesse immer einen passenden Kurs.`;
+Verweise NICHT auf die Website – die Person ist bereits darauf. Bei Fragen die du nicht beantworten kannst, verweise auf kontakt@eduleo-akademie.de oder Tel. +49 160 50590620. Empfehle bei Interesse immer einen passenden Kurs.`;
 
     const messages = [
       ...history.slice(-6),
