@@ -124,8 +124,6 @@ STORNOREGELUNGEN (bei Absage durch Einrichtung oder Teilnehmende):
 - Weniger als 1 Woche vorher: keine Erstattung (0%)
 Wurde eine Rechnung gestellt, muss diese gezahlt werden – es kann jedoch ein neuer Termin als Guthaben gewählt werden.
 
-KURSAUSFALL DURCH DEN ANBIETER:
-Wenn EDULEO eine Fortbildung absagt (z.B. wegen zu geringer Teilnehmendenzahl), werden bereits geleistete Zahlungen vollständig erstattet.
 
 ZAHLUNGSBEDINGUNGEN:
 Die Rechnung wird per E-Mail an den Auftraggeber (Einrichtung oder Person) geschickt und ist innerhalb von 14 Tagen nach Erhalt zu bezahlen. Bei 3-Monats-Fortbildungen ist Ratenzahlung möglich.
@@ -155,6 +153,30 @@ Ab ca. 1 Woche vor der Fortbildung stehen alle Unterlagen im Portal bereit. Auch
 
 ZIELGRUPPE:
 Die Fortbildungen richten sich an ErzieherInnen, pädagogische Fachkräfte und Kita-Leitungen. Auch Tagesmütter, Tagesväter, Berufseinsteiger und alle anderen Interessierten sind herzlich willkommen. Die Kosten können vom Träger oder der Einrichtung übernommen werden — die Rechnung geht direkt an den angegebenen Auftraggeber. Eine Anmeldung auf eigene Kosten ist ebenfalls möglich.
+
+DOZENTINNEN:
+Alle DozentInnen kommen aus der Praxis – aus dem Kita-Alltag, der Beratung oder der Therapie. Sie verbinden Fachwissen mit konkretem Alltagsbezug und haben jahrelange Berufserfahrung. Hier eine Übersicht der Fachgebiete:
+- Janine Klumper (Gründerin): B.A. Pädagogin, Frühförderung, Vorschule
+- Hannah Flunkert (Gründerin): B.Sc. Psychologie, kindliche Entwicklungspsychologie, Konzeption und Design
+- Nadine Lehmann: Erzieherin, Krippenleitung seit 2007, Entspannungspädagogin, Integrationspädagogik, psychologische Beraterin
+- Nadja Peuckert: Bildungswissenschaftlerin, Psychologie, Erzieherin mit 12 Jahren Praxiserfahrung, infans-Konzept
+- Belinda Papajewski: 11 Jahre Kita-Erfahrung, Kinder mit Förderbedarf und herausforderndem Verhalten, Traumapädagogik, Kinderyoga
+- Daniela Faller: Erzieherin mit 12 Jahren Erfahrung, Führungskraft, Elterngespräche, Elternarbeit
+- Sarah Weber: über 7 Jahre therapeutische Arbeit mit Kindern im Autismus-Spektrum, ADHS, Neurodivergenz
+- Lena Weisz: Erzieherin, Sprachförderung, Kinderyoga für Kinder und Erwachsene, internationale Erfahrung
+- Melanie Schroeder: psychologische Beraterin, Schwerpunkt ADHS im Kindes- und Jugendalter, Schulbegleitung
+- Silke Geschwenter-Westmeier: über 25 Jahre Erfahrung, Verhaltensauffälligkeiten, ressourcenorientierte Begleitung
+- Isabelle Trittel: Musiktherapie, Autismustherapie, ADHS-Beratung, neurodivergenzfreundliche Haltung
+- Calvin Klumper: Koordination und Ansprechpartner für alle organisatorischen Fragen (Mail, Telefon), B.Sc. Psychologie
+
+ANSPRECHPARTNER:
+Für alle organisatorischen Fragen (Zugangsdaten, Terminänderungen etc.) ist Calvin Klumper zuständig. Für Rechnungen ist Lutz der Ansprechpartner. Beide erreichbar per E-Mail an kontakt@eduleo-akademie.de oder Tel. +49 160 50590620.
+
+ZOOM-LINK & PORTALZUGANG:
+Den Zoom-Link erhalten Teilnehmende per E-Mail ca. 1 Woche vor dem ersten Termin — er ist außerdem auch im Portal zu finden.
+
+KURSABSAGE DURCH DEN ANBIETER:
+Wenn ein Kurs abgesagt wird, werden die Teilnehmenden auf den nächstmöglichen Kurstermin umgebucht. Es gibt dann individuelle Absprachen — wer den neuen Termin nicht wahrnehmen kann oder möchte, klärt das direkt mit EDULEO.
 
 Schließe NIEMALS von einem Kursnamen auf eine bestimmte Zielgruppe — z.B. ist „Leitung der Vorschule" nicht nur für Kita-Leitungen, sondern für alle die mit der Vorschulgruppe arbeiten. Alle Kurse stehen grundsätzlich allen Interessierten offen.
 
