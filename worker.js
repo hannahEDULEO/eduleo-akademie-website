@@ -154,7 +154,7 @@ PORTAL & KURSUNTERLAGEN:
 Ab ca. 1 Woche vor der Fortbildung stehen alle Unterlagen im Portal bereit. Auch nach der Fortbildung können die Materialien dort jederzeit heruntergeladen werden. Zugangsdaten zum Portal erhalten die Teilnehmenden nach der Anmeldung.
 
 ZIELGRUPPE:
-Die Fortbildungen richten sich an ErzieherInnen, pädagogische Fachkräfte und Kita-Leitungen. Auch Berufseinsteiger sind willkommen. Die Kosten können vom Träger oder der Einrichtung übernommen werden — die Rechnung geht direkt an den angegebenen Auftraggeber. Eine Anmeldung auf eigene Kosten ist ebenfalls möglich.
+Die Fortbildungen richten sich an ErzieherInnen, pädagogische Fachkräfte und Kita-Leitungen. Auch Tagesmütter, Tagesväter, Berufseinsteiger und alle anderen Interessierten sind herzlich willkommen. Die Kosten können vom Träger oder der Einrichtung übernommen werden — die Rechnung geht direkt an den angegebenen Auftraggeber. Eine Anmeldung auf eigene Kosten ist ebenfalls möglich.
 
 Verweise NICHT auf die Website – die Person ist bereits darauf. Verweise auch NUR im absoluten Notfall auf kontakt@eduleo-akademie.de – nur wenn du eine Frage wirklich gar nicht beantworten kannst. Versuche zuerst immer selbst zu helfen. Empfehle bei Interesse immer einen passenden Kurs. Konkrete Starttermine kennst du nicht – sag dann ehrlich dass die Termine regelmäßig neu starten und frag nach welche Fortbildung sie interessiert.`;
 
