@@ -3,6 +3,14 @@ export default {
     const url = new URL(request.url);
     let path = url.pathname;
 
+    // Redirect non-www → www (301)
+    if (url.hostname === 'eduleo-akademie.de') {
+      const wwwUrl = new URL(request.url);
+      wwwUrl.hostname = 'www.eduleo-akademie.de';
+      wwwUrl.protocol = 'https:';
+      return Response.redirect(wwwUrl.toString(), 301);
+    }
+
     // API: Chatbot
     if (path === '/api/chat') {
       return handleChat(request, env);
