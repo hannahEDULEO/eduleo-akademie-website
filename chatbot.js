@@ -40,6 +40,17 @@
       font-family: 'Nunito', sans-serif;
     }
     #eduleo-chat-window.open { display: flex; }
+    @media (max-width: 600px) {
+      #eduleo-chat-window {
+        top: 0; left: 0; right: 0; bottom: 0;
+        width: 100%; max-width: 100%;
+        border-radius: 0;
+        height: 100vh;
+        height: 100dvh;
+      }
+      #eduleo-chat-messages { max-height: none; }
+      #eduleo-chat-wrapper.chat-active { display: none; }
+    }
     #eduleo-chat-header {
       background: #7A5240; color: #fff;
       padding: 14px 18px; display: flex; align-items: center; gap: 10px;
@@ -179,18 +190,26 @@
     btn.click();
   });
 
-  btn.addEventListener('click', () => {
-    win.classList.toggle('open');
+  function openChat() {
+    win.classList.add('open');
+    wrapper.classList.add('chat-active');
     if (!opened) {
       opened = true;
       addMsg('Hallo! 👋 Ich bin Leo, der Chatbot der EDULEO Akademie. Ich helfe dir gerne, die passende Fortbildung zu finden. Was interessiert dich?', 'bot');
     }
-    if (win.classList.contains('open')) input.focus();
+    input.focus();
+  }
+
+  function closeChat() {
+    win.classList.remove('open');
+    wrapper.classList.remove('chat-active');
+  }
+
+  btn.addEventListener('click', () => {
+    if (win.classList.contains('open')) { closeChat(); } else { openChat(); }
   });
 
-  document.getElementById('eduleo-chat-close').addEventListener('click', () => {
-    win.classList.remove('open');
-  });
+  document.getElementById('eduleo-chat-close').addEventListener('click', closeChat);
 
   sendBtn.addEventListener('click', send);
 
