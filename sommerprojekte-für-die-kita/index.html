@@ -89,9 +89,11 @@
       font-style: italic;
     }
     .blog-divider { border: none; border-top: 2px solid var(--beige); margin: 2.5rem 0; }
+    .blog-img { width: 100%; border-radius: var(--radius-lg); margin: 1.5rem 0; display: block; object-fit: cover; max-height: 420px; }
 
+    /* ── Fakten-Box ── */
     .facts-row {
-      background: var(--beige);
+      background: var(--dark);
       border-radius: var(--radius-xl);
       padding: 1.5rem 2rem;
       margin-bottom: 2rem;
@@ -100,9 +102,10 @@
       gap: 1rem;
       text-align: center;
     }
-    .fact-num { font-size: 1.7rem; font-weight: 900; color: var(--green-dark); line-height: 1; }
-    .fact-label { font-size: 0.78rem; color: #666; margin-top: 0.3rem; line-height: 1.4; }
+    .fact-num { font-size: 1.7rem; font-weight: 900; color: var(--green); line-height: 1; }
+    .fact-label { font-size: 0.78rem; color: rgba(255,255,255,0.7); margin-top: 0.3rem; line-height: 1.4; }
 
+    /* ── Check-Liste ── */
     .check-list { list-style: none; padding: 0; margin: 1rem 0 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; }
     .check-list li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.95rem; color: #444; line-height: 1.6; }
     .check-list li::before {
@@ -121,8 +124,9 @@
       margin-top: 0.15rem;
     }
 
+    /* ── Zitat ── */
     .blog-quote {
-      background: var(--beige);
+      background: var(--green);
       border-radius: var(--radius-xl);
       padding: 1.5rem 2rem;
       margin: 1.5rem 0;
@@ -134,48 +138,112 @@
       border-left: 4px solid var(--green-dark);
     }
 
+    /* ── Kategorie-Header ── */
+    .kategorie-header {
+      border-radius: var(--radius-lg);
+      padding: 1rem 1.5rem;
+      margin: 0 0 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .kategorie-header.wasser  { background: #D2EADA; }
+    .kategorie-header.natur   { background: var(--mauve-light); }
+    .kategorie-header.kunst   { background: var(--beige); }
+    .kategorie-header-emoji { font-size: 1.6rem; }
+    .kategorie-header-text { font-size: 0.95rem; font-weight: 700; color: var(--dark); line-height: 1.4; }
+    .kategorie-header-text small { display: block; font-weight: 400; color: var(--text-light); font-size: 0.82rem; }
+
+    /* ── Ideen-Grid ── */
     .ideen-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1rem;
-      margin: 1.25rem 0;
+      margin: 0 0 1rem;
     }
-    .idee-card { background: var(--beige); border-radius: var(--radius-lg); padding: 1.25rem 1.4rem; }
+    .idee-card { border-radius: var(--radius-lg); padding: 1.25rem 1.4rem; }
+    .idee-card.gruen      { background: #D2EADA; }
+    .idee-card.rosa       { background: var(--mauve-light); }
+    .idee-card.beige      { background: var(--beige); }
+    .idee-card.dunkel     { background: var(--dark); }
+    .idee-card.dunkel .idee-title { color: #fff; }
+    .idee-card.dunkel p   { color: rgba(255,255,255,0.8); }
     .idee-card-header { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem; }
     .idee-emoji { font-size: 1.4rem; }
     .idee-title { font-weight: 800; font-size: 0.95rem; color: var(--dark); }
     .idee-card p { font-size: 0.88rem; color: #555; line-height: 1.65; margin: 0; }
 
-    .compare-table-wrap { overflow-x: auto; margin: 1.5rem 0 2rem; }
-    .compare-table { width: 100%; border-collapse: collapse; font-size: 0.87rem; }
-    .compare-table thead tr { background: var(--dark); color: #fff; }
-    .compare-table th { padding: 0.75rem 1rem; text-align: left; font-weight: 700; }
-    .compare-table th:first-child { border-radius: 10px 0 0 0; }
-    .compare-table th:last-child  { border-radius: 0 10px 0 0; }
-    .compare-table tbody tr:nth-child(odd)  { background: #fff; }
-    .compare-table tbody tr:nth-child(even) { background: #FAFAF8; }
-    .compare-table td { padding: 0.75rem 1rem; color: #444; border-bottom: 1px solid #F0EBE8; }
-    .compare-table td:first-child { font-weight: 700; color: var(--dark); }
-    .compare-table tbody tr:last-child td { border-bottom: none; }
+    /* ── Übersichts-Karten ── */
+    .uebersicht-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .uebersicht-kategorie-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.4rem 0.9rem;
+      border-radius: 20px;
+      margin: 0.5rem 0 0.25rem;
+      display: inline-block;
+    }
+    .uebersicht-kategorie-label.wasser { background: #D2EADA; color: var(--green-deeper); }
+    .uebersicht-kategorie-label.natur  { background: var(--mauve-light); color: var(--mauve-dark); }
+    .uebersicht-kategorie-label.kunst  { background: var(--beige); color: var(--text); }
+    .uebersicht-row {
+      display: grid;
+      grid-template-columns: 2.5rem 1fr auto;
+      align-items: center;
+      gap: 0.75rem;
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 0.75rem 1rem;
+    }
+    .uebersicht-row:hover { border-color: var(--green-dark); background: var(--off-white); }
+    .uebersicht-nr {
+      font-size: 1.3rem;
+      text-align: center;
+      line-height: 1;
+    }
+    .uebersicht-info { min-width: 0; }
+    .uebersicht-title { font-weight: 700; font-size: 0.9rem; color: var(--dark); }
+    .uebersicht-badges { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.3rem; }
+    .uebersicht-badge {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.18rem 0.55rem;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .uebersicht-badge.alter  { background: var(--green); color: var(--green-deeper); }
+    .uebersicht-badge.ort    { background: var(--beige); color: var(--text-light); }
+    .uebersicht-aufwand { font-size: 0.78rem; color: var(--text-light); text-align: right; white-space: nowrap; }
 
+    /* ── Tipps-Box ── */
     .tipp-section {
-      background: var(--beige);
+      background: var(--mauve-light);
       border-radius: var(--radius-xl);
       padding: 1.75rem 2rem;
       margin: 1.5rem 0;
+      border-left: 4px solid var(--mauve-dark);
     }
     .tipp-section h3 { font-size: 1rem; font-weight: 800; color: var(--dark); margin: 0 0 1rem; }
     .tipp-section ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; }
     .tipp-section ul li { font-size: 0.9rem; color: #555; padding-left: 1.2rem; position: relative; line-height: 1.6; }
-    .tipp-section ul li::before { content: '›'; position: absolute; left: 0; color: var(--green-dark); font-weight: 800; }
+    .tipp-section ul li::before { content: '›'; position: absolute; left: 0; color: var(--mauve-dark); font-weight: 800; }
 
-    .blog-cta-banner { background: var(--dark); border-radius: var(--radius-xl); padding: 2rem; margin: 2.5rem 0; color: #fff; }
+    /* ── CTA-Banner ── */
+    .blog-cta-banner { background: var(--green-deeper); border-radius: var(--radius-xl); padding: 2rem; margin: 2.5rem 0; color: #fff; }
     .blog-cta-banner h3 { font-size: 1.1rem; font-weight: 800; margin: 0 0 0.6rem; color: #fff; }
-    .blog-cta-banner p { color: rgba(255,255,255,0.8); font-size: 0.92rem; margin-bottom: 1.25rem; }
+    .blog-cta-banner p { color: rgba(255,255,255,0.85); font-size: 0.92rem; margin-bottom: 1.25rem; }
     .blog-cta-banner-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
     .blog-cta-banner-links a {
-      background: var(--green-dark);
-      color: #fff;
+      background: #fff;
+      color: var(--green-deeper);
       font-weight: 700;
       font-size: 0.85rem;
       padding: 0.6rem 1.1rem;
@@ -183,8 +251,9 @@
       text-decoration: none;
       transition: background 0.2s;
     }
-    .blog-cta-banner-links a:hover { background: var(--green-deeper); }
+    .blog-cta-banner-links a:hover { background: var(--green); }
 
+    /* ── Sidebar ── */
     .blog-sidebar { position: relative; }
     .blog-sidebar-inner { position: sticky; top: 100px; }
     .blog-sidebar-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 1.5rem; margin-bottom: 1.25rem; }
@@ -202,6 +271,7 @@
     .blog-cta-sidebar a.btn { background: var(--green-dark); color: #fff; font-weight: 700; font-size: 0.85rem; padding: 0.65rem 1.2rem; border-radius: 8px; text-decoration: none; display: block; text-align: center; transition: background 0.2s; }
     .blog-cta-sidebar a.btn:hover { background: var(--green-deeper); }
 
+    /* ── Instagram ── */
     .instagram-btn {
       display: inline-flex;
       align-items: center;
@@ -279,8 +349,7 @@
   <a href="../fortbildungen/" class="btn btn-primary">Alle Fortbildungen</a>
 </div>
 
-<!-- Hero -->
-<!-- HINWEIS: Bitte ein Foto unter assets/fobi-bilder/sommerprojekte-kita.png hochladen -->
+<!-- Hero — BILD FEHLT: assets/fobi-bilder/sommerprojekte-kita.png -->
 <header class="blog-hero">
   <div class="blog-hero-bg"></div>
   <div class="blog-hero-overlay"></div>
@@ -336,7 +405,7 @@
         </div>
         <div>
           <div class="fact-num">wenig</div>
-          <div class="fact-label">Budget nötig —<br>vieles kommt aus der Natur</div>
+          <div class="fact-label">Budget nötig —<br>vieles aus der Natur</div>
         </div>
       </div>
 
@@ -349,186 +418,315 @@
         <li>Sie fördern Neugier, Kreativität und Eigenständigkeit.</li>
         <li>Sie nutzen den Sommer als einzigartigen Lernraum — die Natur liefert alles.</li>
         <li>Sie stärken das Gemeinschaftsgefühl der Gruppe.</li>
-        <li>Sie machen Fachkräften Spaß und geben dem Tag Struktur.</li>
+        <li>Sie geben dem Tag Struktur und Fachkräften Freude an der Arbeit.</li>
       </ul>
 
       <div class="blog-quote">
         „Der Sommer ist kein Problem, das gelöst werden muss — er ist eine Einladung. Man muss sie nur annehmen."
       </div>
 
+      <img src="../assets/fobi-bilder/sommerprojekte-kita.png" alt="Kinder bei kreativen Sommerprojekten in der Kita" class="blog-img">
+
       <hr class="blog-divider">
 
-      <h2 id="wasser">Kategorie 1: Wasser &amp; Abkühlung (5 Ideen)</h2>
+      <h2 id="wasser">Kategorie 1: Wasser &amp; Abkühlung</h2>
 
-      <p>Wasser ist im Sommer das Lieblingselement der Kinder — und das aus gutem Grund. Diese fünf Projekte verbinden Abkühlung mit echtem Lerneffekt.</p>
+      <div class="kategorie-header wasser">
+        <span class="kategorie-header-emoji">💧</span>
+        <div class="kategorie-header-text">
+          5 Ideen rund ums Wasser
+          <small>Abkühlung und Lernerlebnis in einem — direkt draußen</small>
+        </div>
+      </div>
 
       <div class="ideen-grid">
-        <div class="idee-card">
+        <div class="idee-card gruen">
           <div class="idee-card-header">
             <span class="idee-emoji">🧊</span>
             <div class="idee-title">1. Eisskulpturen-Atelier</div>
           </div>
-          <p>Blumen, Blätter, Beeren und bunte Steine in Eiswürfel-Formen einfrieren — über Nacht. Am nächsten Morgen aus den Formen lösen und beim Schmelzen beobachten. Ein echtes Naturwunder zum Anfassen. Variante: mit Farbwasser einfärben für Farbeis-Skulpturen.</p>
+          <p>Blumen, Blätter, Beeren und bunte Steine in Eiswürfel-Formen einfrieren — über Nacht. Am nächsten Morgen aus den Formen lösen und beim Schmelzen beobachten. Ein echtes Naturwunder zum Anfassen. Variante: mit Farbwasser einfärben.</p>
         </div>
-        <div class="idee-card">
+        <div class="idee-card beige">
           <div class="idee-card-header">
             <span class="idee-emoji">🫧</span>
             <div class="idee-title">2. Seifenblasen-Werkstatt</div>
           </div>
-          <p>Eigene Seifenblasen-Mischungen herstellen (Spülmittel + Wasser + Glycerin) und verschiedene Blasstäbe aus Draht oder Strohhalmen ausprobieren. Wer baut den größten Stab? Welche Form macht die schönsten Blasen? Wissenschaft und Spaß in einem.</p>
+          <p>Eigene Seifenblasen-Mischungen herstellen (Spülmittel + Wasser + Glycerin) und verschiedene Blasstäbe aus Draht oder Strohhalmen ausprobieren. Wer baut den größten Stab? Wissenschaft und Spaß in einem.</p>
         </div>
-        <div class="idee-card">
+        <div class="idee-card rosa">
           <div class="idee-card-header">
             <span class="idee-emoji">🎨</span>
             <div class="idee-title">3. Wassermalerei auf Stein</div>
           </div>
-          <p>Heiße Steine mit einem nassen Pinsel bemalen — das Bild verdunstet innerhalb von Sekunden und verschwindet wieder. Kein Ergebnis bleibt, kein Druck entsteht. Ideal für Kinder die Angst vor „Fehlern" haben. Fördert Achtsamkeit und den Moment.</p>
+          <p>Heiße Steine mit einem nassen Pinsel bemalen — das Bild verdunstet innerhalb von Sekunden. Kein Druck, kein Ergebnis. Ideal für Kinder, die Angst vor „Fehlern" haben. Fördert Achtsamkeit und Loslassen.</p>
         </div>
-        <div class="idee-card">
+        <div class="idee-card gruen">
           <div class="idee-card-header">
             <span class="idee-emoji">🪣</span>
             <div class="idee-title">4. Matsch-Baustelle</div>
           </div>
-          <p>Erde, Sand und Wasser werden zur Matschküche: Kuchen backen, Tiere formen, Formen gießen. Matsch ist für Kinder mehr als Spielzeug — er fördert Feinmotorik, Fantasie und sensorische Integration. Unbedingt alte Klamotten anziehen lassen!</p>
+          <p>Erde, Sand und Wasser werden zur Matschküche: Kuchen backen, Tiere formen, Formen gießen. Matsch fördert Feinmotorik, Fantasie und sensorische Integration. Alte Klamotten nicht vergessen!</p>
         </div>
       </div>
-
-      <div class="ideen-grid" style="grid-template-columns: 1fr;">
-        <div class="idee-card">
+      <div class="ideen-grid" style="grid-template-columns:1fr;">
+        <div class="idee-card dunkel">
           <div class="idee-card-header">
             <span class="idee-emoji">🌊</span>
             <div class="idee-title">5. Wasser-Staffel-Parcours</div>
           </div>
-          <p>Teams befüllen einen Eimer auf der anderen Seite des Gartens — aber nur mit einem Schwamm, den sie über den Kopf tragen, quetschen oder unter dem Arm klemmen. Wer ist zuerst fertig? Eine Aktivität, die Teamgeist, Motorik und Abkühlung auf einmal liefert. Ideal für Gruppen ab 3 Jahren.</p>
+          <p>Teams befüllen einen Eimer auf der anderen Seite des Gartens — aber nur mit einem Schwamm, den sie über den Kopf tragen, quetschen oder unter dem Arm klemmen. Wer ist zuerst fertig? Teamgeist, Motorik und Abkühlung auf einmal. Ideal für Gruppen ab 3 Jahren.</p>
         </div>
       </div>
 
+      <!-- BILD: Kinder beim Wasserspielen / Eisskulpturen — assets/fobi-bilder/sommerprojekte-wasser.png -->
+      <img src="../assets/fobi-bilder/sommerprojekte-wasser.png" alt="Kinder spielen mit Wasser und Eis in der Kita" class="blog-img">
+
       <hr class="blog-divider">
 
-      <h2 id="natur">Kategorie 2: Natur entdecken (5 Ideen)</h2>
+      <h2 id="natur">Kategorie 2: Natur entdecken</h2>
 
-      <p>Der Sommer ist Hochsaison für alles, was draußen wächst, krabbelt und blüht. Diese Projekte machen Kinder zu echten Naturforschern.</p>
+      <div class="kategorie-header natur">
+        <span class="kategorie-header-emoji">🌿</span>
+        <div class="kategorie-header-text">
+          5 Ideen in der Natur
+          <small>Die Natur als Lernraum — kostenlos, immer verfügbar</small>
+        </div>
+      </div>
 
       <div class="ideen-grid">
-        <div class="idee-card">
+        <div class="idee-card rosa">
           <div class="idee-card-header">
             <span class="idee-emoji">🌿</span>
             <div class="idee-title">6. Kräutergarten anlegen</div>
           </div>
-          <p>Jedes Kind bekommt ein eigenes Pflanzgefäß (Joghurtbecher, Blumentopf) und wählt sein Kräutchen: Basilikum, Minze, Zitronenmelisse oder Schnittlauch. Gießen, beobachten, riechen — und am Ende in der Kita verkochen. Lernen über Monate hinweg.</p>
+          <p>Jedes Kind bekommt ein eigenes Gefäß und wählt sein Kräutchen: Basilikum, Minze, Zitronenmelisse. Gießen, beobachten, riechen — und am Ende in der Kita verkochen. Lernen über Monate hinweg.</p>
         </div>
-        <div class="idee-card">
+        <div class="idee-card beige">
           <div class="idee-card-header">
             <span class="idee-emoji">🌼</span>
             <div class="idee-title">7. Naturmandala legen</div>
           </div>
-          <p>Mit Blüten, Blättern, Steinen, Zweigen und Grasstreifen ein rundes Muster auf dem Boden legen. Die Symmetrie entsteht durch Ausprobieren. Am Ende fotografieren — und dann die Natur ihren Lauf lassen. Fördert Ästhetik, Konzentration und Geduld.</p>
+          <p>Mit Blüten, Blättern, Steinen und Zweigen ein rundes Muster auf dem Boden legen. Symmetrie entsteht durch Ausprobieren. Am Ende fotografieren — dann die Natur ihren Lauf lassen. Fördert Ästhetik und Geduld.</p>
         </div>
-        <div class="idee-card">
+        <div class="idee-card gruen">
           <div class="idee-card-header">
             <span class="idee-emoji">🐛</span>
             <div class="idee-title">8. Insektenhotel bauen</div>
           </div>
-          <p>Aus alten Holzresten, Tannenzapfen, Stroh, Bambusröhrchen und Rindenstücken ein Insektenhotel zusammenbauen. Wer wohnt darin? Mit der Lupe beobachten. Ein nachhaltiges Projekt, das über den Sommer hinaus bleibt und Kinder für Artenvielfalt sensibilisiert.</p>
+          <p>Aus alten Holzresten, Tannenzapfen, Stroh und Bambus ein Insektenhotel bauen. Wer wohnt darin? Mit der Lupe beobachten. Ein nachhaltiges Projekt, das den ganzen Sommer bleibt.</p>
         </div>
-        <div class="idee-card">
+        <div class="idee-card rosa">
           <div class="idee-card-header">
             <span class="idee-emoji">🔍</span>
             <div class="idee-title">9. Lupen-Forschertag</div>
           </div>
-          <p>Mit Lupen bewaffnet geht die Gruppe auf Entdeckungsreise: Wie sieht ein Blatt von unten aus? Wie schaut eine Ameise aus der Nähe aus? Was lebt unter dem Stein? Forscher-Hefte anlegen, Skizzen machen — Wissenschaft im Kleinen.</p>
+          <p>Mit Lupen auf Entdeckungsreise: Wie sieht ein Blatt von unten aus? Was lebt unter dem Stein? Forscher-Hefte anlegen, Skizzen machen — Wissenschaft im Kleinen, echte Begeisterung.</p>
         </div>
       </div>
-
-      <div class="ideen-grid" style="grid-template-columns: 1fr;">
-        <div class="idee-card">
+      <div class="ideen-grid" style="grid-template-columns:1fr;">
+        <div class="idee-card beige">
           <div class="idee-card-header">
             <span class="idee-emoji">🍓</span>
             <div class="idee-title">10. Ernten &amp; Kochen: Smoothie-Bar</div>
           </div>
-          <p>Was wächst im Kita-Garten oder auf dem Markt? Kinder ernten, waschen, schneiden und mixen ihren eigenen Sommer-Smoothie. Erdbeeren, Banane, Minze — alles erlaubt. Kochen mit Kindern fördert Ernährungswissen, Feinmotorik und das Verständnis dafür, wo Lebensmittel herkommen. Ein Erlebnis, das sie nach Hause tragen.</p>
+          <p>Was wächst im Kita-Garten? Kinder ernten, waschen, schneiden und mixen ihren eigenen Sommer-Smoothie. Erdbeeren, Banane, Minze — alles erlaubt. Fördert Ernährungswissen, Feinmotorik und das Verständnis dafür, wo Lebensmittel herkommen.</p>
         </div>
       </div>
 
+      <!-- BILD: Kinder im Garten, Naturmandala oder Kräutergarten — assets/fobi-bilder/sommerprojekte-natur.png -->
+      <img src="../assets/fobi-bilder/sommerprojekte-natur.png" alt="Kinder entdecken die Natur beim Sommerprojekt in der Kita" class="blog-img">
+
       <hr class="blog-divider">
 
-      <h2 id="kunst">Kategorie 3: Kreativ &amp; Kunst (5 Ideen)</h2>
+      <h2 id="kunst">Kategorie 3: Kreativ &amp; Kunst</h2>
 
-      <p>Kreativprojekte machen auch bei Hitze Spaß — besonders wenn sie den Sommer selbst zum Thema machen.</p>
+      <div class="kategorie-header kunst">
+        <span class="kategorie-header-emoji">🎨</span>
+        <div class="kategorie-header-text">
+          5 kreative Kunstprojekte
+          <small>Der Sommer selbst wird zum Thema — Pinterest-tauglich!</small>
+        </div>
+      </div>
 
       <div class="ideen-grid">
-        <div class="idee-card">
+        <div class="idee-card beige">
           <div class="idee-card-header">
             <span class="idee-emoji">☀️</span>
             <div class="idee-title">11. Schattenbilder mit Kreide</div>
           </div>
-          <p>Kinder legen sich auf den Asphalt oder eine große Pappe, die Erzieherin zeichnet ihren Schatten nach. Am Mittag nochmal — der Schatten hat sich verschoben! Einstieg in Physik und Astronomie auf Kinderniveau. Variante: Schattenprojekte von Gegenständen.</p>
+          <p>Kinder legen sich auf Asphalt oder Pappe, der Schatten wird nachgezeichnet. Am Mittag nochmal — der Schatten hat sich verschoben! Einstieg in Physik und Astronomie auf Kinderniveau.</p>
         </div>
-        <div class="idee-card">
+        <div class="idee-card gruen">
           <div class="idee-card-header">
             <span class="idee-emoji">🪨</span>
             <div class="idee-title">12. Steine bemalen &amp; verstecken</div>
           </div>
-          <p>Steine mit Acrylfarbe bunt bemalen, trocknen lassen und dann im Kita-Garten oder im Viertel verstecken — für andere Kinder zu finden. Die Freude, wenn jemand einen findet (oder man selbst einen entdeckt), ist riesig. Gemeinschaft und Kreativität zugleich.</p>
+          <p>Steine mit Acrylfarbe bunt bemalen, trocknen lassen und im Kita-Garten oder im Viertel verstecken. Die Freude, wenn jemand einen findet, ist riesig. Gemeinschaft und Kreativität zugleich.</p>
         </div>
-        <div class="idee-card">
+        <div class="idee-card rosa">
           <div class="idee-card-header">
             <span class="idee-emoji">🌈</span>
             <div class="idee-title">13. Sonnenfänger basteln</div>
           </div>
-          <p>Transparentpapier, Klebefolie und gesammelte Blüten und Blätter — zusammen kleben und ans Fenster hängen. Wenn die Sonne scheint, leuchtet der Sonnenfänger durch den ganzen Raum. Einfach herzustellen, wunderschön anzuschauen und lange haltbar.</p>
+          <p>Transparentpapier, Klebefolie und gesammelte Blüten und Blätter — zusammen kleben und ans Fenster hängen. Wenn die Sonne scheint, leuchtet der Sonnenfänger durch den ganzen Raum.</p>
         </div>
-        <div class="idee-card">
+        <div class="idee-card beige">
           <div class="idee-card-header">
-            <span class="idee-emoji">🎨</span>
+            <span class="idee-emoji">🍃</span>
             <div class="idee-title">14. Naturfarben herstellen</div>
           </div>
-          <p>Aus Brombeeren (lila), Rote Beete (pink), Kurkuma (gelb) und Spinat (grün) eigene Farben herstellen und damit malen. Kein Industrieprodukt — alles aus der Natur. Funktioniert auf Papier und auf Stoff (als Batik). Ein echtes Aha-Erlebnis für Kinder.</p>
+          <p>Aus Brombeeren (lila), Rote Beete (pink), Kurkuma (gelb) und Spinat (grün) eigene Farben herstellen und damit malen. Alles aus der Natur — ein echtes Aha-Erlebnis für Kinder und Erwachsene.</p>
         </div>
       </div>
-
-      <div class="ideen-grid" style="grid-template-columns: 1fr;">
-        <div class="idee-card">
+      <div class="ideen-grid" style="grid-template-columns:1fr;">
+        <div class="idee-card gruen">
           <div class="idee-card-header">
             <span class="idee-emoji">📷</span>
             <div class="idee-title">15. Sommer-Fotosafari</div>
           </div>
-          <p>Mit einer Kita-Kamera (oder einem alten Smartphone) gehen Kinder in Zweierteams auf Safari: Sie fotografieren alles, was ihnen am Sommer gefällt — eine Blume, eine Wolke, einen Käfer, einen Freund beim Lachen. Am Ende eine Ausstellung gestalten: Fotos ausdrucken, Bildunterschriften schreiben (oder diktieren) und im Eingangsbereich aufhängen. Eltern sind begeistert.</p>
+          <p>Mit einer Kita-Kamera gehen Kinder in Zweierteams auf Safari: Sie fotografieren alles, was ihnen am Sommer gefällt — eine Blume, eine Wolke, einen Käfer, einen Freund beim Lachen. Ergebnis: eine kleine Ausstellung im Eingangsbereich. Eltern sind begeistert.</p>
         </div>
       </div>
+
+      <!-- BILD: Kunstprojekt, Sonnenfänger, Steine bemalen — assets/fobi-bilder/sommerprojekte-kunst.png -->
+      <img src="../assets/fobi-bilder/sommerprojekte-kunst.png" alt="Kinder beim kreativen Basteln und Malen im Sommer" class="blog-img">
 
       <hr class="blog-divider">
 
       <h2 id="uebersicht">Alle 15 Ideen auf einen Blick</h2>
 
-      <div class="compare-table-wrap">
-        <table class="compare-table">
-          <thead>
-            <tr>
-              <th>Projekt</th>
-              <th>Ab Alter</th>
-              <th>Aufwand</th>
-              <th>Drinnen / Draußen</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>🧊 Eisskulpturen-Atelier</td><td>ab 2</td><td>gering (Vorbereitung am Vortag)</td><td>Draußen</td></tr>
-            <tr><td>🫧 Seifenblasen-Werkstatt</td><td>ab 2</td><td>gering</td><td>Draußen</td></tr>
-            <tr><td>🎨 Wassermalerei auf Stein</td><td>ab 3</td><td>minimal</td><td>Draußen</td></tr>
-            <tr><td>🪣 Matsch-Baustelle</td><td>ab 2</td><td>gering</td><td>Draußen</td></tr>
-            <tr><td>🌊 Wasser-Staffel-Parcours</td><td>ab 3</td><td>gering</td><td>Draußen</td></tr>
-            <tr><td>🌿 Kräutergarten anlegen</td><td>ab 3</td><td>mittel (Pflanzgefäße besorgen)</td><td>Beides</td></tr>
-            <tr><td>🌼 Naturmandala legen</td><td>ab 3</td><td>minimal</td><td>Draußen</td></tr>
-            <tr><td>🐛 Insektenhotel bauen</td><td>ab 4</td><td>mittel (Material sammeln)</td><td>Beides</td></tr>
-            <tr><td>🔍 Lupen-Forschertag</td><td>ab 3</td><td>minimal</td><td>Draußen</td></tr>
-            <tr><td>🍓 Smoothie-Bar</td><td>ab 3</td><td>mittel (Einkauf nötig)</td><td>Beides</td></tr>
-            <tr><td>☀️ Schattenbilder mit Kreide</td><td>ab 3</td><td>minimal</td><td>Draußen</td></tr>
-            <tr><td>🪨 Steine bemalen &amp; verstecken</td><td>ab 3</td><td>gering</td><td>Beides</td></tr>
-            <tr><td>🌈 Sonnenfänger basteln</td><td>ab 3</td><td>gering</td><td>Drinnen</td></tr>
-            <tr><td>🎨 Naturfarben herstellen</td><td>ab 4</td><td>mittel (Zutaten besorgen)</td><td>Beides</td></tr>
-            <tr><td>📷 Sommer-Fotosafari</td><td>ab 4</td><td>mittel (Kamera benötigt)</td><td>Draußen</td></tr>
-          </tbody>
-        </table>
+      <div class="uebersicht-grid">
+
+        <span class="uebersicht-kategorie-label wasser">💧 Wasser &amp; Abkühlung</span>
+
+        <div class="uebersicht-row">
+          <div class="uebersicht-nr">🧊</div>
+          <div class="uebersicht-info">
+            <div class="uebersicht-title">1. Eisskulpturen-Atelier</div>
+            <div class="uebersicht-badges"><span class="uebersicht-badge alter">ab 2 J.</span><span class="uebersicht-badge ort">☀️ Draußen</span></div>
+          </div>
+          <div class="uebersicht-aufwand">gering</div>
+        </div>
+        <div class="uebersicht-row">
+          <div class="uebersicht-nr">🫧</div>
+          <div class="uebersicht-info">
+            <div class="uebersicht-title">2. Seifenblasen-Werkstatt</div>
+            <div class="uebersicht-badges"><span class="uebersicht-badge alter">ab 2 J.</span><span class="uebersicht-badge ort">☀️ Draußen</span></div>
+          </div>
+          <div class="uebersicht-aufwand">gering</div>
+        </div>
+        <div class="uebersicht-row">
+          <div class="uebersicht-nr">🎨</div>
+          <div class="uebersicht-info">
+            <div class="uebersicht-title">3. Wassermalerei auf Stein</div>
+            <div class="uebersicht-badges"><span class="uebersicht-badge alter">ab 3 J.</span><span class="uebersicht-badge ort">☀️ Draußen</span></div>
+          </div>
+          <div class="uebersicht-aufwand">minimal</div>
+        </div>
+        <div class="uebersicht-row">
+          <div class="uebersicht-nr">🪣</div>
+          <div class="uebersicht-info">
+            <div class="uebersicht-title">4. Matsch-Baustelle</div>
+            <div class="uebersicht-badges"><span class="uebersicht-badge alter">ab 2 J.</span><span class="uebersicht-badge ort">☀️ Draußen</span></div>
+          </div>
+          <div class="uebersicht-aufwand">gering</div>
+        </div>
+        <div class="uebersicht-row">
+          <div class="uebersicht-nr">🌊</div>
+          <div class="uebersicht-info">
+            <div class="uebersicht-title">5. Wasser-Staffel-Parcours</div>
+            <div class="uebersicht-badges"><span class="uebersicht-badge alter">ab 3 J.</span><span class="uebersicht-badge ort">☀️ Draußen</span></div>
+          </div>
+          <div class="uebersicht-aufwand">gering</div>
+        </div>
+
+        <span class="uebersicht-kategorie-label natur">🌿 Natur entdecken</span>
+
+        <div class="uebersicht-row">
+          <div class="uebersicht-nr">🌿</div>
+          <div class="uebersicht-info">
+            <div class="uebersicht-title">6. Kräutergarten anlegen</div>
+            <div class="uebersicht-badges"><span class="uebersicht-badge alter">ab 3 J.</span><span class="uebersicht-badge ort">🏠 Beides</span></div>
+          </div>
+          <div class="uebersicht-aufwand">mittel</div>
+        </div>
+        <div class="uebersicht-row">
+          <div class="uebersicht-nr">🌼</div>
+          <div class="uebersicht-info">
+            <div class="uebersicht-title">7. Naturmandala legen</div>
+            <div class="uebersicht-badges"><span class="uebersicht-badge alter">ab 3 J.</span><span class="uebersicht-badge ort">☀️ Draußen</span></div>
+          </div>
+          <div class="uebersicht-aufwand">minimal</div>
+        </div>
+        <div class="uebersicht-row">
+          <div class="uebersicht-nr">🐛</div>
+          <div class="uebersicht-info">
+            <div class="uebersicht-title">8. Insektenhotel bauen</div>
+            <div class="uebersicht-badges"><span class="uebersicht-badge alter">ab 4 J.</span><span class="uebersicht-badge ort">🏠 Beides</span></div>
+          </div>
+          <div class="uebersicht-aufwand">mittel</div>
+        </div>
+        <div class="uebersicht-row">
+          <div class="uebersicht-nr">🔍</div>
+          <div class="uebersicht-info">
+            <div class="uebersicht-title">9. Lupen-Forschertag</div>
+            <div class="uebersicht-badges"><span class="uebersicht-badge alter">ab 3 J.</span><span class="uebersicht-badge ort">☀️ Draußen</span></div>
+          </div>
+          <div class="uebersicht-aufwand">minimal</div>
+        </div>
+        <div class="uebersicht-row">
+          <div class="uebersicht-nr">🍓</div>
+          <div class="uebersicht-info">
+            <div class="uebersicht-title">10. Ernten &amp; Kochen: Smoothie-Bar</div>
+            <div class="uebersicht-badges"><span class="uebersicht-badge alter">ab 3 J.</span><span class="uebersicht-badge ort">🏠 Beides</span></div>
+          </div>
+          <div class="uebersicht-aufwand">mittel</div>
+        </div>
+
+        <span class="uebersicht-kategorie-label kunst">🎨 Kreativ &amp; Kunst</span>
+
+        <div class="uebersicht-row">
+          <div class="uebersicht-nr">☀️</div>
+          <div class="uebersicht-info">
+            <div class="uebersicht-title">11. Schattenbilder mit Kreide</div>
+            <div class="uebersicht-badges"><span class="uebersicht-badge alter">ab 3 J.</span><span class="uebersicht-badge ort">☀️ Draußen</span></div>
+          </div>
+          <div class="uebersicht-aufwand">minimal</div>
+        </div>
+        <div class="uebersicht-row">
+          <div class="uebersicht-nr">🪨</div>
+          <div class="uebersicht-info">
+            <div class="uebersicht-title">12. Steine bemalen &amp; verstecken</div>
+            <div class="uebersicht-badges"><span class="uebersicht-badge alter">ab 3 J.</span><span class="uebersicht-badge ort">🏠 Beides</span></div>
+          </div>
+          <div class="uebersicht-aufwand">gering</div>
+        </div>
+        <div class="uebersicht-row">
+          <div class="uebersicht-nr">🌈</div>
+          <div class="uebersicht-info">
+            <div class="uebersicht-title">13. Sonnenfänger basteln</div>
+            <div class="uebersicht-badges"><span class="uebersicht-badge alter">ab 3 J.</span><span class="uebersicht-badge ort">🏠 Drinnen</span></div>
+          </div>
+          <div class="uebersicht-aufwand">gering</div>
+        </div>
+        <div class="uebersicht-row">
+          <div class="uebersicht-nr">🍃</div>
+          <div class="uebersicht-info">
+            <div class="uebersicht-title">14. Naturfarben herstellen</div>
+            <div class="uebersicht-badges"><span class="uebersicht-badge alter">ab 4 J.</span><span class="uebersicht-badge ort">🏠 Beides</span></div>
+          </div>
+          <div class="uebersicht-aufwand">mittel</div>
+        </div>
+        <div class="uebersicht-row">
+          <div class="uebersicht-nr">📷</div>
+          <div class="uebersicht-info">
+            <div class="uebersicht-title">15. Sommer-Fotosafari</div>
+            <div class="uebersicht-badges"><span class="uebersicht-badge alter">ab 4 J.</span><span class="uebersicht-badge ort">☀️ Draußen</span></div>
+          </div>
+          <div class="uebersicht-aufwand">mittel</div>
+        </div>
+
       </div>
 
       <hr class="blog-divider">
@@ -543,13 +741,13 @@
           <li>Kinder in die Planung einbeziehen: „Was wollt ihr diese Woche ausprobieren?"</li>
           <li>Material sammeln lassen — Steine, Blätter, Zweige kommen gratis aus der Natur.</li>
           <li>Ergebnisse dokumentieren: Fotos machen, Forscher-Bücher anlegen, Ausstellungen gestalten.</li>
-          <li>Eltern einbinden: Projektabschluss mit kleiner Präsentation oder Ausstellung im Eingang.</li>
-          <li>Bei Wasserprojekten: immer Wechselkleidung bereithalten und Eltern vorab informieren.</li>
+          <li>Eltern einbinden: Projektabschluss mit kleiner Präsentation im Eingangsbereich.</li>
+          <li>Bei Wasserprojekten: Wechselkleidung bereithalten und Eltern vorab informieren.</li>
         </ul>
       </div>
 
       <div class="blog-cta-banner" id="fortbildung">
-        <h3>Kita-Alltag gestalten — mit den richtigen Fortbildungen</h3>
+        <h3>Kita-Alltag professionell gestalten</h3>
         <p>In unseren Fortbildungen lernst du, wie du pädagogische Projekte sinnvoll planst, umsetzt und dokumentierst — praxisnah, zertifiziert und direkt anwendbar.</p>
         <div class="blog-cta-banner-links">
           <a href="../fortbildungen/">Alle Fortbildungen ansehen →</a>
@@ -557,9 +755,8 @@
         </div>
       </div>
 
-      <p>Hast du eine dieser Ideen schon ausprobiert oder hast du eine eigene Lieblings-Sommeraktivität für die Kita? Folge uns auf Instagram für noch mehr Praxisideen für den Kita-Alltag:</p>
-
-      <p style="margin-top:2rem;"><a href="https://www.instagram.com/eduleo_akademie/" target="_blank" rel="noopener" class="instagram-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> @eduleo_akademie folgen</a></p>
+      <p>Hast du eine dieser Ideen schon ausprobiert? Folge uns auf Instagram für noch mehr Praxisideen für den Kita-Alltag:</p>
+      <p style="margin-top:1rem;"><a href="https://www.instagram.com/eduleo_akademie/" target="_blank" rel="noopener" class="instagram-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> @eduleo_akademie folgen</a></p>
 
     </article>
 
@@ -571,12 +768,11 @@
           <h4>Inhalt</h4>
           <ul>
             <li><a href="#warum">Warum Sommerprojekte?</a></li>
-            <li><a href="#wasser">Wasser &amp; Abkühlung</a></li>
-            <li><a href="#natur">Natur entdecken</a></li>
-            <li><a href="#kunst">Kreativ &amp; Kunst</a></li>
+            <li><a href="#wasser">💧 Wasser &amp; Abkühlung</a></li>
+            <li><a href="#natur">🌿 Natur entdecken</a></li>
+            <li><a href="#kunst">🎨 Kreativ &amp; Kunst</a></li>
             <li><a href="#uebersicht">Alle 15 im Überblick</a></li>
             <li><a href="#tipps">Tipps für die Praxis</a></li>
-            <li><a href="#fortbildung">Zur Fortbildung</a></li>
           </ul>
         </div>
 
