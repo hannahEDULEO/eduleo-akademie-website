@@ -41,12 +41,14 @@
     }
     #eduleo-chat-window.open { display: flex; }
     @media (max-width: 600px) {
+      #eduleo-chat-wrapper {
+        bottom: 20px;
+      }
       #eduleo-chat-window {
-        top: 0; left: 0; right: 0; bottom: 0;
+        top: 80px; left: 0; right: 0; bottom: 0;
         width: 100%; max-width: 100%;
         border-radius: 0;
-        height: 100vh;
-        height: 100dvh;
+        height: auto;
       }
       #eduleo-chat-messages { max-height: none; }
       #eduleo-chat-wrapper.chat-active { display: none; }
