@@ -1,7 +1,7 @@
 (function () {
   const STYLES = `
     #eduleo-chat-wrapper {
-      position: fixed; bottom: 90px; right: 24px; z-index: 9999;
+      position: fixed; bottom: 28px; right: 24px; z-index: 9999;
       display: flex; align-items: center; gap: 10px;
     }
     #eduleo-chat-label {

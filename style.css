@@ -2004,7 +2004,7 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 
 /* ── Back-to-top Button ─────────────────────── */
 #back-to-top {
-  position: fixed; bottom: 28px; right: 24px; z-index: 999;
+  position: fixed; bottom: 96px; right: 24px; z-index: 999;
   width: 44px; height: 44px; border-radius: 50%;
   background: var(--dark); color: #fff;
   border: none; cursor: pointer; font-size: 1.2rem;
