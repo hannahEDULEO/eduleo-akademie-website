@@ -382,3 +382,216 @@ if (filterTabs.length) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 })();
+
+/* ── Sitesuche ──────────────────────────────── */
+(function () {
+  var IDX = [
+    // ── Kursseiten / Themenartikel ──
+    { t: 'ADHS in der Kita', s: 'Verstehen und begleiten', u: '/adhs-in-der-kita-verstehen-und-begleiten/', c: 'fortbildung', k: 'aufmerksamkeit hyperaktivität verhaltensauffälligkeit konzentration adhs' },
+    { t: 'Autismus in der Kita', s: 'Grundlagenwissen für Fachkräfte', u: '/autismus-in-der-kita/', c: 'fortbildung', k: 'asd asperger inklusion neurodiversität verhalten autismus' },
+    { t: 'Autismus & Kita-Eingewöhnung', s: 'Fahrplan durch die Eingewöhnung', u: '/autismus-in-der-kita-eingewöhnung/', c: 'fortbildung', k: 'eingewöhnung start übergang autismus konflikt' },
+    { t: 'Autismus und TEACCH', s: 'Leitfaden für pädagogische Fachkräfte', u: '/autismus-und-teacch/', c: 'fortbildung', k: 'teacch methode strukturierung autismus' },
+    { t: 'AuDHS – ADHS & Autismus zusammen', s: 'Wenn beides zusammenkommt', u: '/wenn-adhs-und-autismus-zusammenkommen/', c: 'fortbildung', k: 'adhs autismus audhs komorbidität doppeldiagnose' },
+    { t: 'Inklusion in der Kita', s: 'Vielfalt gestalten & leben', u: '/inklusion-in-der-kita/', c: 'fortbildung', k: 'inklusion behinderung teilhabe diversität förderung integration' },
+    { t: 'Selbstfürsorge für ErzieherInnen', s: 'Burnout vorbeugen', u: '/selbstfuersorge-fuer-erzieherinnen/', c: 'fortbildung', k: 'burnout stress erschöpfung fürsorge wohlbefinden erholung' },
+    { t: 'Selbstständigkeit im Kita-Alltag', s: 'Warum du loslassen musst', u: '/selbstständigkeit-im-kita-alltag-fördern/', c: 'fortbildung', k: 'selbstständigkeit eigenständigkeit autonomie förderung kinder' },
+    { t: 'Doktorspiele & Sexualentwicklung', s: 'Sexualentwicklung 0–6 Jahren begleiten', u: '/doktorspiele-sexualentwicklung-in-der-kita/', c: 'fortbildung', k: 'sexualentwicklung doktorspiele körper kinder prävention' },
+    { t: 'Übergänge in der Kita', s: 'Eingewöhnung und Übergangsgestaltung', u: '/übergänge-in-der-kita/', c: 'fortbildung', k: 'übergang transition eingewöhnung schule wechsel' },
+    { t: 'Vorschule leicht gemacht', s: 'Wochenplan für die Kita', u: '/vorschule-leicht-gemacht/', c: 'fortbildung', k: 'vorschule schulvorbereitung wochenplan planung' },
+    { t: 'Vorschulkonzept für die Kita', s: 'Ein starkes Konzept entwickeln', u: '/vorschulkonzept-für-die-kita/', c: 'fortbildung', k: 'vorschulkonzept konzept entwickeln schulvorbereitung' },
+    { t: 'Waldpädagogik in der Kita', s: 'Natur als Lernraum', u: '/waldpädagogik-in-der-kita/', c: 'fortbildung', k: 'waldpädagogik natur draußen wald naturkindergarten outdoor' },
+    { t: 'Welche Fortbildung passt zu mir?', s: 'Entscheidungshilfe', u: '/welche-fortbildung/', c: 'info', k: 'beratung auswahl fortbildung wahl empfehlung' },
+    // ── Alle Fortbildungen ──
+    { t: 'Alle Fortbildungen', s: 'Übersicht unserer Kurse', u: '/fortbildungen/', c: 'fortbildung', k: 'kurs seminar weiterbildung zertifikat übersicht' },
+    // ── 3-Monats-Fortbildungen ──
+    { t: 'Leitung der Vorschule', s: '3-Monats-Fortbildung', u: '/fortbildungen/leitung-vorschule/', c: 'fortbildung', k: 'vorschule leitung 3 monate zertifikat schulkind' },
+    { t: 'Stressbewältigungscoach', s: '3-Monats-Fortbildung', u: '/fortbildungen/stressbewaetigungscoach/', c: 'fortbildung', k: 'stress coach burnout belastung entspannung 3 monate' },
+    { t: 'FachberaterIn für Inklusion', s: '3-Monats-Fortbildung', u: '/fortbildungen/fachberaterin-inklusion/', c: 'fortbildung', k: 'inklusion fachberatung behinderung integration 3 monate' },
+    { t: 'Marte Meo PraktikerIn', s: '3-Monats-Fortbildung', u: '/fortbildungen/marte-meo-praktikerin/', c: 'fortbildung', k: 'marte meo video beratung interaktion entwicklung 3 monate' },
+    { t: 'Digitale Medien Beauftragte in der Kita', s: '3-Monats-Fortbildung', u: '/fortbildungen/digitale-medien-beauftragte-kita/', c: 'fortbildung', k: 'digital medien tablet ipad technologie 3 monate' },
+    { t: 'Kinderyoga Kursleitung', s: '3-Monats-Fortbildung', u: '/fortbildungen/kinderyoga-kursleitung/', c: 'fortbildung', k: 'yoga kinder bewegung entspannung achtsamkeit 3 monate kursleitung' },
+    { t: 'Kita-ExpertIn für Verhaltensauffälligkeiten', s: '3-Monats-Fortbildung', u: '/fortbildungen/kita-expertin-verhaltensauffaelligkeiten/', c: 'fortbildung', k: 'verhalten auffälligkeit experte expertise adhs autismus 3 monate' },
+    { t: 'Teamcoach in der Kita', s: '3-Monats-Fortbildung', u: '/fortbildungen/teamcoach-kita/', c: 'fortbildung', k: 'team coaching führung leitung kommunikation 3 monate' },
+    { t: 'Kita KoordinatorIn für Kinderschutz', s: '3-Monats-Fortbildung', u: '/fortbildungen/kinderschutz-koordinatorin-kita/', c: 'fortbildung', k: 'kinderschutz schutz gewalt missbrauch koordination 3 monate' },
+    { t: 'Kita-ExpertIn für ADHS & Autismus', s: '3-Monats-Fortbildung', u: '/fortbildungen/kita-expertin-adhs-autismus/', c: 'fortbildung', k: 'adhs autismus experte expertise fachkraft 3 monate' },
+    // ── Tagesfortbildungen ──
+    { t: 'Stressbewältigung im Kita-Alltag', s: 'Tagesfortbildung', u: '/fortbildungen/tagesfortbildungen/stressbewaltigung-kita-alltag/', c: 'fortbildung', k: 'stress alltag bewältigung entspannung tagesfortbildung' },
+    { t: 'Vorschulkonzept entwickeln und gestalten', s: 'Tagesfortbildung', u: '/fortbildungen/tagesfortbildungen/vorschulkonzept-gestalten/', c: 'fortbildung', k: 'vorschule konzept entwickeln gestalten tagesfortbildung' },
+    { t: 'Autismus im Kita-Alltag', s: 'Tagesfortbildung', u: '/fortbildungen/tagesfortbildungen/autismus-kita-alltag/', c: 'fortbildung', k: 'autismus alltag fachkraft tagesfortbildung' },
+    { t: 'Musik, Tanz und Bewegung mit „Bodo"', s: 'Tagesfortbildung', u: '/fortbildungen/tagesfortbildungen/musik-tanz-bodo/', c: 'fortbildung', k: 'musik tanz bewegung bodo rhythmus singen tagesfortbildung' },
+    { t: 'Forschen und Entdecken mit „Fred"', s: 'Tagesfortbildung', u: '/fortbildungen/tagesfortbildungen/forschen-entdecken-fred/', c: 'fortbildung', k: 'forschen entdecken naturwissenschaft experiment fred tagesfortbildung' },
+    { t: 'ADHS in der Kita – Struktur & Flexibilität', s: 'Tagesfortbildung', u: '/fortbildungen/tagesfortbildungen/adhs-kita/', c: 'fortbildung', k: 'adhs struktur flexibilität alltag tagesfortbildung' },
+    { t: 'Kita Teams leiten und stärken', s: 'Tagesfortbildung', u: '/fortbildungen/tagesfortbildungen/teams-leiten-staerken/', c: 'fortbildung', k: 'team leiten stärken führung leitung tagesfortbildung' },
+    { t: 'Meine Führungsrolle als Kita-Leitung', s: 'Tagesfortbildung', u: '/fortbildungen/tagesfortbildungen/fuehrungsrolle-kita-leitung/', c: 'fortbildung', k: 'führung leitung rolle management tagesfortbildung' },
+    { t: 'Umgang mit Personalmangel', s: 'Tagesfortbildung', u: '/fortbildungen/tagesfortbildungen/umgang-mit-personalmangel/', c: 'fortbildung', k: 'personalmangel fachkräftemangel personal alltag tagesfortbildung' },
+    { t: 'Kinderyoga für deine Kita', s: 'Tagesfortbildung', u: '/fortbildungen/tagesfortbildungen/kinderyoga-kita/', c: 'fortbildung', k: 'yoga kinder bewegung entspannung achtsamkeit tagesfortbildung' },
+    { t: 'Sprache erforschen mit „Wuppi"', s: 'Tagesfortbildung', u: '/fortbildungen/tagesfortbildungen/sprache-wuppi/', c: 'fortbildung', k: 'sprache sprachförderung wuppi tagesfortbildung' },
+    { t: 'Elterngespräche führen', s: 'Tagesfortbildung', u: '/fortbildungen/tagesfortbildungen/elterngespraeche-fuehren/', c: 'fortbildung', k: 'eltern gespräch kommunikation konflikt tagesfortbildung' },
+    { t: 'Sexualentwicklung 0–6 Jahre', s: 'Tagesfortbildung', u: '/fortbildungen/tagesfortbildungen/sexualentwicklung-0-6-jahre/', c: 'fortbildung', k: 'sexualentwicklung doktorspiele körper schutz tagesfortbildung' },
+    { t: 'Gewaltfreie Kommunikation', s: 'Tagesfortbildung', u: '/fortbildungen/tagesfortbildungen/gewaltfreie-kommunikation/', c: 'fortbildung', k: 'gfk kommunikation gewaltfrei empathie konflikt tagesfortbildung' },
+    { t: 'Schule in Sicht', s: 'Tagesfortbildung', u: '/fortbildungen/tagesfortbildungen/schule-in-sicht/', c: 'fortbildung', k: 'schule übergang schulkind vorschule tagesfortbildung' },
+    { t: 'Kinderyoga Praxisübungen', s: 'Tagesfortbildung', u: '/fortbildungen/tagesfortbildungen/kinderyoga-praxisuebungen/', c: 'fortbildung', k: 'yoga praxis übung kinder bewegung tagesfortbildung' },
+    { t: 'Kinderschutz in der Kita', s: 'Tagesfortbildung', u: '/fortbildungen/tagesfortbildungen/kinderschutz-kita/', c: 'fortbildung', k: 'kinderschutz schutz gewalt missbrauch prävention tagesfortbildung' },
+    { t: 'Digitale Kita mit Kitaversum', s: 'Tagesfortbildung', u: '/fortbildungen/tagesfortbildungen/digitale-kita-kitaversum/', c: 'fortbildung', k: 'digital kita kitaversum software app tagesfortbildung' },
+    { t: 'Teamfortbildungen für Kita-Teams', s: 'Inhouse-Seminare', u: '/fortbildungen/teamfortbildungen/', c: 'fortbildung', k: 'team inhouse teamfortbildung seminar einrichtung' },
+    // ── Blogartikel ──
+    { t: 'Blog', s: 'Alle Artikel', u: '/blog-1/', c: 'blog', k: 'artikel lesen tipps wissen blog' },
+    { t: 'Sommerprojekte für die Kita', s: 'Ideen für den Sommer', u: '/sommerprojekte-für-die-kita/', c: 'blog', k: 'sommer projekte ideen aktivitäten draußen' },
+    { t: 'Halloween in der Kita', s: 'Basteln und Gemeinschaft', u: '/halloween-in-der-kita/', c: 'blog', k: 'halloween herbst basteln kostüm feiern' },
+    { t: 'Weihnachten in der Kita', s: 'Advent stressfrei gestalten', u: '/weihnachten-in-der-kita/', c: 'blog', k: 'weihnachten advent basteln feiern winter' },
+    { t: 'Kinderyoga im Sommer', s: 'Ideen für heiße Kita-Tage', u: '/kinderyoga-im-sommer/', c: 'blog', k: 'yoga sommer hitze bewegung entspannung kinder' },
+    { t: 'Kinderyoga: Atemübungen für Kinder', s: 'Praxisübungen', u: '/kinderyoga-atmung/', c: 'blog', k: 'yoga atmung atemübungen entspannung kinder' },
+    { t: 'Diese Art von Führung macht deine Kita kaputt', s: 'Führungsfehler erkennen', u: '/diese-art-von-führung-macht-deine-kita-kaputt/', c: 'blog', k: 'führung fehler leitung management burnout' },
+    { t: 'Haltung statt Hamsterrad', s: 'Stress im Kita-Alltag meistern', u: '/haltung-statt-hamsterrad-wie-du-stress-im-kita-alltag-meisterst/', c: 'blog', k: 'stress haltung hamsterrad alltag burnout entspannung' },
+    { t: 'Kita-Software-Vergleich 2026', s: 'Welche Lösung passt?', u: '/kita-software-vergleich-2026/', c: 'blog', k: 'software app digital kita verwaltung vergleich' },
+    { t: 'Digitale Kita mit Kitaversum', s: 'Erfahrungsbericht', u: '/digitale-kita-mit-kitaversum/', c: 'blog', k: 'kitaversum digital software kita app' },
+    { t: 'Selbstfürsorge & Burnout vorbeugen', s: 'Schlüssel zur Vorbeugung', u: '/2024/08/21/selbstfürsorge-für-erzieherinnen-der-schlüssel-zur-vorbeugung-von-burnout-in-der-kita/', c: 'blog', k: 'selbstfürsorge burnout stress erschöpfung erzieherin' },
+    { t: 'Gewaltfreie Kommunikation in der Kita', s: 'GFK einfach erklärt', u: '/2025/06/09/gewaltfreie-kommunikation-in-der-kita/', c: 'blog', k: 'gfk kommunikation gewaltfrei empathie konflikt' },
+    { t: '10 Vorschulideen für die Kita', s: 'Ideen und Aktivitäten', u: '/2021/11/04/10-vorschulideen-für-die-kita/', c: 'blog', k: 'vorschule ideen aktivitäten schulvorbereitung kinder' },
+    { t: 'Ideen für Projekte im Kindergarten', s: 'Projektarbeit in der Kita', u: '/2024/05/03/ideen-für-projekte-im-kindergarten/', c: 'blog', k: 'projekte kindergarten ideen thema gestaltung' },
+    { t: 'Experiment: Der magische Pfeffertrick', s: 'Für Vorschulkinder', u: '/2025/04/28/spannendes-experiment-für-vorschulkinder-der-magische-pfeffertrick/', c: 'blog', k: 'experiment vorschule pfeffer trick naturwissenschaft kinder' },
+    { t: 'Kinderyoga im Frühling', s: 'Bewegung, Achtsamkeit & Entspannung', u: '/2025/02/17/kinderyoga-im-frühling-bewegung-achtsamkeit-und-entspannung-in-der-kita/', c: 'blog', k: 'yoga frühling bewegung achtsamkeit entspannung kinder' },
+    { t: 'Herausforderung Elterngespräch', s: 'Ruhig, klar und wertschätzend bleiben', u: '/2025/07/28/herausforderung-elterngespräch-so-bleibst-du-ruhig-klar-und-wertschätzend-auch-wenn-s-brenzlig-wird/', c: 'blog', k: 'eltern gespräch kommunikation konflikt schwierig' },
+    { t: 'Teamarbeit und Kommunikation stärken', s: 'Ressourcen im Kita-Alltag', u: '/2025/01/13/ressourcen-stärken-teamarbeit-und-kommunikation-im-kita-alltag/', c: 'blog', k: 'team kommunikation ressourcen zusammenarbeit alltag' },
+    // ── Infoseiten ──
+    { t: 'Über uns', s: 'Das Team der EDULEO Akademie', u: '/ueber-uns/', c: 'info', k: 'team über uns gründerin leitung portrait' },
+    { t: 'DozentInnen', s: 'Referentinnen und Referenten', u: '/dozentinnen/', c: 'info', k: 'dozentin dozent referent lehrer trainer' },
+    { t: 'Bring a Friend', s: 'Empfehlen und sparen', u: '/bring-a-friend/', c: 'info', k: 'freund empfehlen rabatt bringen angebot' },
+    { t: 'Anmeldebedingungen', s: 'Informationen zur Anmeldung', u: '/anmeldebedingungen.html', c: 'info', k: 'anmeldung bedingungen buchen zahlung' },
+    { t: 'AGB', s: 'Allgemeine Geschäftsbedingungen', u: '/agb.html', c: 'info', k: 'agb geschäftsbedingungen vertrag regelungen' },
+    { t: 'Datenschutz', s: 'Datenschutzerklärung', u: '/datenschutz.html', c: 'info', k: 'datenschutz daten privat gdpr dsgvo' },
+    { t: 'Impressum', s: 'Rechtliche Angaben', u: '/impressum.html', c: 'info', k: 'impressum kontakt adresse rechtlich' },
+    { t: 'Widerruf', s: 'Widerrufsbelehrung', u: '/widerruf.html', c: 'info', k: 'widerruf rücktritt stornierung kündigung' },
+  ];
+
+  var LUPE_SVG = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path stroke-linecap="round" d="m21 21-4.35-4.35"/></svg>';
+
+  function norm(s) {
+    return (s || '').toLowerCase()
+      .replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss')
+      .replace(/[^a-z0-9\s]/g, ' ');
+  }
+
+  function search(q) {
+    if (!q || q.trim().length < 2) return [];
+    var terms = norm(q).trim().split(/\s+/).filter(Boolean);
+    var out = [];
+    IDX.forEach(function (p) {
+      var tn = norm(p.t), sn = norm(p.s), kn = norm(p.k);
+      var score = 0;
+      var match = terms.every(function (term) {
+        if (tn.includes(term)) { score += 10; return true; }
+        if (sn.includes(term)) { score += 5;  return true; }
+        if (kn.includes(term)) { score += 2;  return true; }
+        return false;
+      });
+      if (match) out.push({ p: p, s: score });
+    });
+    out.sort(function (a, b) { return b.s - a.s; });
+    return out.slice(0, 8).map(function (r) { return r.p; });
+  }
+
+  function badge(c) {
+    var m = { fortbildung: ['badge-fortbildung', 'Fortbildung'], blog: ['badge-blog', 'Blog'], info: ['badge-info', 'Info'] };
+    var d = m[c] || ['badge-info', c];
+    return '<span class="search-result-badge ' + d[0] + '">' + d[1] + '</span>';
+  }
+
+  // ── Elemente injizieren ──
+  var navCta = document.querySelector('.nav-cta');
+  if (!navCta) return;
+
+  var btn = document.createElement('button');
+  btn.className = 'search-btn';
+  btn.setAttribute('aria-label', 'Suche');
+  btn.innerHTML = LUPE_SVG;
+  navCta.insertBefore(btn, navCta.firstChild);
+
+  var overlay = document.createElement('div');
+  overlay.className = 'search-overlay';
+  overlay.setAttribute('role', 'dialog');
+  overlay.setAttribute('aria-modal', 'true');
+  overlay.setAttribute('aria-label', 'Suche');
+  overlay.innerHTML =
+    '<div class="search-modal">' +
+      '<div class="search-input-wrap">' +
+        LUPE_SVG +
+        '<input class="search-input" type="text" placeholder="Was suchst du? z. B. Autismus, Yoga, Stress …" autocomplete="off" spellcheck="false">' +
+        '<button class="search-close" aria-label="Suche schließen">✕</button>' +
+      '</div>' +
+      '<div class="search-results"></div>' +
+    '</div>';
+  document.body.appendChild(overlay);
+
+  var input     = overlay.querySelector('.search-input');
+  var resultsEl = overlay.querySelector('.search-results');
+  var closeBtn  = overlay.querySelector('.search-close');
+  var focused   = -1;
+
+  function render(results) {
+    focused = -1;
+    if (!input.value.trim()) {
+      resultsEl.innerHTML = '<p class="search-hint">Tippe einen Begriff ein – z. B. <em>Autismus</em>, <em>Yoga</em> oder <em>Elterngespräch</em>.</p>';
+      return;
+    }
+    if (!results.length) {
+      resultsEl.innerHTML = '<p class="search-empty">Keine Treffer für „' + input.value + '“.<br>Versuch es mit einem anderen Stichwort.</p>';
+      return;
+    }
+    resultsEl.innerHTML = results.map(function (p, i) {
+      return '<a class="search-result-item" href="' + p.u + '" data-i="' + i + '">' +
+        badge(p.c) +
+        '<div><div class="search-result-title">' + p.t + '</div>' +
+        (p.s ? '<div class="search-result-subtitle">' + p.s + '</div>' : '') +
+        '</div></a>';
+    }).join('');
+  }
+
+  function open() {
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    render([]);
+    setTimeout(function () { input.focus(); }, 40);
+  }
+
+  function close() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+    input.value = '';
+  }
+
+  btn.addEventListener('click', open);
+  closeBtn.addEventListener('click', close);
+  overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
+
+  input.addEventListener('input', function () { render(search(input.value)); });
+
+  document.addEventListener('keydown', function (e) {
+    if (!overlay.classList.contains('open')) return;
+    if (e.key === 'Escape') { close(); return; }
+    var items = resultsEl.querySelectorAll('.search-result-item');
+    if (!items.length) return;
+    if (e.key === 'ArrowDown') { e.preventDefault(); focused = Math.min(focused + 1, items.length - 1); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); focused = Math.max(focused - 1, -1); }
+    else if (e.key === 'Enter') {
+      var target = focused >= 0 ? items[focused] : items[0];
+      if (target) { target.click(); return; }
+    }
+    items.forEach(function (el, i) { el.classList.toggle('focused', i === focused); });
+    if (focused >= 0 && items[focused]) items[focused].scrollIntoView({ block: 'nearest' });
+  });
+
+  // ── Mobilmenü: Suche-Eintrag ──
+  var mobileMenu = document.querySelector('.mobile-menu');
+  if (mobileMenu) {
+    var mobileBtn = document.createElement('button');
+    mobileBtn.className = 'mobile-search-btn';
+    mobileBtn.innerHTML = LUPE_SVG + '<span>Suche</span>';
+    mobileBtn.addEventListener('click', function () {
+      var hamburger = document.querySelector('.hamburger');
+      if (hamburger && hamburger.classList.contains('active')) hamburger.click();
+      open();
+    });
+    mobileMenu.insertBefore(mobileBtn, mobileMenu.firstChild);
+  }
+})();

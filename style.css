@@ -1197,6 +1197,158 @@ p   { font-size: 1.05rem; line-height: 1.75; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 
+/* ── Suche ────────────────────────────────────── */
+.search-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  transition: color var(--transition), background var(--transition);
+}
+.search-btn:hover { color: var(--green-dark); background: var(--green); }
+.search-btn svg { width: 20px; height: 20px; }
+
+.search-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(38, 29, 24, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 9vh;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.22s ease, visibility 0.22s ease;
+}
+.search-overlay.open { opacity: 1; visibility: visible; }
+
+.search-modal {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  padding: 28px 28px 20px;
+  width: 100%;
+  max-width: 660px;
+  margin: 0 20px;
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-16px);
+  transition: transform 0.22s ease;
+}
+.search-overlay.open .search-modal { transform: translateY(0); }
+
+.search-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-full);
+  padding: 11px 16px;
+  transition: border-color var(--transition);
+}
+.search-input-wrap:focus-within { border-color: var(--green-dark); }
+.search-input-wrap > svg { width: 20px; height: 20px; color: var(--text-light); flex-shrink: 0; }
+
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-family: var(--font);
+  font-size: 1rem;
+  color: var(--dark);
+  background: none;
+  min-width: 0;
+}
+.search-input::placeholder { color: var(--text-light); }
+
+.search-close {
+  background: var(--beige);
+  border: none;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  transition: background var(--transition);
+}
+.search-close:hover { background: var(--beige-dark); }
+
+.search-results { margin-top: 12px; max-height: 56vh; overflow-y: auto; }
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 14px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--text);
+  transition: background var(--transition);
+}
+.search-result-item:hover,
+.search-result-item.focused { background: var(--off-white); }
+
+.search-result-badge {
+  padding: 3px 9px;
+  border-radius: var(--radius-full);
+  font-size: 0.68rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+.badge-fortbildung { background: var(--green); color: var(--green-deeper); }
+.badge-blog        { background: var(--mauve-light); color: var(--mauve-dark); }
+.badge-info        { background: var(--beige); color: var(--text-light); }
+
+.search-result-title    { font-weight: 700; color: var(--dark); font-size: 0.92rem; }
+.search-result-subtitle { font-size: 0.78rem; color: var(--text-light); margin-top: 1px; }
+
+.search-hint,
+.search-empty {
+  text-align: center;
+  padding: 28px 16px;
+  color: var(--text-light);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.mobile-search-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  padding: 16px 28px;
+  font-family: var(--font);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+}
+.mobile-search-btn:hover { color: var(--green-dark); }
+
+@media (max-width: 900px) {
+  .search-modal { padding: 20px 18px 16px; margin: 0 12px; }
+  .search-results { max-height: 50vh; }
+}
+
 @media (max-width: 600px) {
   .section { padding: 64px 0; }
   .section-header { margin-bottom: 36px; }
