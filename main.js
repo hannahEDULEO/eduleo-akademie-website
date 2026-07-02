@@ -487,7 +487,11 @@ if (filterTabs.length) {
       });
       if (match) out.push({ p: p, s: score });
     });
-    out.sort(function (a, b) { return b.s - a.s; });
+    var catOrder = { fortbildung: 0, blog: 1, info: 2 };
+    out.sort(function (a, b) {
+      var co = (catOrder[a.p.c] || 1) - (catOrder[b.p.c] || 1);
+      return co !== 0 ? co : b.s - a.s;
+    });
     return out.slice(0, 8).map(function (r) { return r.p; });
   }
 
