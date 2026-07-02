@@ -386,21 +386,21 @@ if (filterTabs.length) {
 /* ── Sitesuche ──────────────────────────────── */
 (function () {
   var IDX = [
-    // ── Kursseiten / Themenartikel ──
-    { t: 'ADHS in der Kita', s: 'Verstehen und begleiten', u: '/adhs-in-der-kita-verstehen-und-begleiten/', c: 'fortbildung', k: 'aufmerksamkeit hyperaktivität verhaltensauffälligkeit konzentration adhs' },
-    { t: 'Autismus in der Kita', s: 'Grundlagenwissen für Fachkräfte', u: '/autismus-in-der-kita/', c: 'fortbildung', k: 'asd asperger inklusion neurodiversität verhalten autismus' },
-    { t: 'Autismus & Kita-Eingewöhnung', s: 'Fahrplan durch die Eingewöhnung', u: '/autismus-in-der-kita-eingewöhnung/', c: 'fortbildung', k: 'eingewöhnung start übergang autismus konflikt' },
-    { t: 'Autismus und TEACCH', s: 'Leitfaden für pädagogische Fachkräfte', u: '/autismus-und-teacch/', c: 'fortbildung', k: 'teacch methode strukturierung autismus' },
-    { t: 'AuDHS – ADHS & Autismus zusammen', s: 'Wenn beides zusammenkommt', u: '/wenn-adhs-und-autismus-zusammenkommen/', c: 'fortbildung', k: 'adhs autismus audhs komorbidität doppeldiagnose' },
-    { t: 'Inklusion in der Kita', s: 'Vielfalt gestalten & leben', u: '/inklusion-in-der-kita/', c: 'fortbildung', k: 'inklusion behinderung teilhabe diversität förderung integration' },
-    { t: 'Selbstfürsorge für ErzieherInnen', s: 'Burnout vorbeugen', u: '/selbstfuersorge-fuer-erzieherinnen/', c: 'fortbildung', k: 'burnout stress erschöpfung fürsorge wohlbefinden erholung' },
-    { t: 'Selbstständigkeit im Kita-Alltag', s: 'Warum du loslassen musst', u: '/selbstständigkeit-im-kita-alltag-fördern/', c: 'fortbildung', k: 'selbstständigkeit eigenständigkeit autonomie förderung kinder' },
-    { t: 'Doktorspiele & Sexualentwicklung', s: 'Sexualentwicklung 0–6 Jahren begleiten', u: '/doktorspiele-sexualentwicklung-in-der-kita/', c: 'fortbildung', k: 'sexualentwicklung doktorspiele körper kinder prävention' },
-    { t: 'Übergänge in der Kita', s: 'Eingewöhnung und Übergangsgestaltung', u: '/übergänge-in-der-kita/', c: 'fortbildung', k: 'übergang transition eingewöhnung schule wechsel' },
-    { t: 'Vorschule leicht gemacht', s: 'Wochenplan für die Kita', u: '/vorschule-leicht-gemacht/', c: 'fortbildung', k: 'vorschule schulvorbereitung wochenplan planung' },
-    { t: 'Vorschulkonzept für die Kita', s: 'Ein starkes Konzept entwickeln', u: '/vorschulkonzept-für-die-kita/', c: 'fortbildung', k: 'vorschulkonzept konzept entwickeln schulvorbereitung' },
-    { t: 'Waldpädagogik in der Kita', s: 'Natur als Lernraum', u: '/waldpädagogik-in-der-kita/', c: 'fortbildung', k: 'waldpädagogik natur draußen wald naturkindergarten outdoor' },
-    { t: 'Welche Fortbildung passt zu mir?', s: 'Entscheidungshilfe', u: '/welche-fortbildung/', c: 'info', k: 'beratung auswahl fortbildung wahl empfehlung' },
+    // ── Blogartikel (Top-Level) ──
+    { t: 'ADHS in der Kita', s: 'Verstehen und begleiten', u: '/adhs-in-der-kita-verstehen-und-begleiten/', c: 'blog', k: 'aufmerksamkeit hyperaktivität verhaltensauffälligkeit konzentration adhs' },
+    { t: 'Autismus in der Kita', s: 'Grundlagenwissen für Fachkräfte', u: '/autismus-in-der-kita/', c: 'blog', k: 'asd asperger inklusion neurodiversität verhalten autismus' },
+    { t: 'Autismus & Kita-Eingewöhnung', s: 'Fahrplan durch die Eingewöhnung', u: '/autismus-in-der-kita-eingewöhnung/', c: 'blog', k: 'eingewöhnung start übergang autismus konflikt' },
+    { t: 'Autismus und TEACCH', s: 'Leitfaden für pädagogische Fachkräfte', u: '/autismus-und-teacch/', c: 'blog', k: 'teacch methode strukturierung autismus' },
+    { t: 'AuDHS – ADHS & Autismus zusammen', s: 'Wenn beides zusammenkommt', u: '/wenn-adhs-und-autismus-zusammenkommen/', c: 'blog', k: 'adhs autismus audhs komorbidität doppeldiagnose' },
+    { t: 'Inklusion in der Kita', s: 'Vielfalt gestalten & leben', u: '/inklusion-in-der-kita/', c: 'blog', k: 'inklusion behinderung teilhabe diversität förderung integration' },
+    { t: 'Selbstfürsorge für ErzieherInnen', s: 'Burnout vorbeugen', u: '/selbstfuersorge-fuer-erzieherinnen/', c: 'blog', k: 'burnout stress erschöpfung fürsorge wohlbefinden erholung' },
+    { t: 'Selbstständigkeit im Kita-Alltag', s: 'Warum du loslassen musst', u: '/selbstständigkeit-im-kita-alltag-fördern/', c: 'blog', k: 'selbstständigkeit eigenständigkeit autonomie förderung kinder' },
+    { t: 'Doktorspiele & Sexualentwicklung', s: 'Sexualentwicklung 0–6 Jahren begleiten', u: '/doktorspiele-sexualentwicklung-in-der-kita/', c: 'blog', k: 'sexualentwicklung doktorspiele körper kinder prävention' },
+    { t: 'Übergänge in der Kita', s: 'Eingewöhnung und Übergangsgestaltung', u: '/übergänge-in-der-kita/', c: 'blog', k: 'übergang transition eingewöhnung schule wechsel' },
+    { t: 'Vorschule leicht gemacht', s: 'Wochenplan für die Kita', u: '/vorschule-leicht-gemacht/', c: 'blog', k: 'vorschule schulvorbereitung wochenplan planung' },
+    { t: 'Vorschulkonzept für die Kita', s: 'Ein starkes Konzept entwickeln', u: '/vorschulkonzept-für-die-kita/', c: 'blog', k: 'vorschulkonzept konzept entwickeln schulvorbereitung' },
+    { t: 'Waldpädagogik in der Kita', s: 'Natur als Lernraum', u: '/waldpädagogik-in-der-kita/', c: 'blog', k: 'waldpädagogik natur draußen wald naturkindergarten outdoor' },
+    { t: 'Welche Fortbildung passt zu mir?', s: 'Entscheidungshilfe', u: '/welche-fortbildung/', c: 'blog', k: 'beratung auswahl fortbildung wahl empfehlung' },
     // ── Alle Fortbildungen ──
     { t: 'Alle Fortbildungen', s: 'Übersicht unserer Kurse', u: '/fortbildungen/', c: 'fortbildung', k: 'kurs seminar weiterbildung zertifikat übersicht' },
     // ── 3-Monats-Fortbildungen ──
