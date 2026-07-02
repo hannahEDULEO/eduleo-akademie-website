@@ -1343,6 +1343,7 @@ p   { font-size: 1.05rem; line-height: 1.75; }
   text-align: left;
 }
 .mobile-search-btn:hover { color: var(--green-dark); }
+.mobile-search-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
 
 @media (max-width: 900px) {
   .search-modal { padding: 20px 18px 16px; margin: 0 12px; }
