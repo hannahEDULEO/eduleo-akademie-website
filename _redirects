@@ -8,3 +8,24 @@
 /3-monats-fortbildungen/ /fortbildungen/ 301
 /überblick-fortbildungen/ /fortbildungen/ 301
 /fortbildungskalender/ https://eduleo-akademie.simplyorg-seminare.de 301
+
+# 404-URLs aus Google Search Console (Juli 2026)
+/bring-a-friend-aktion/ /bring-a-friend/ 301
+/aktion/ /bring-a-friend/ 301
+/aktion /bring-a-friend/ 301
+/selbstlern-fobis/ /fortbildungen/ 301
+/teilnahme-am-zoom-meeting/ /fortbildungen/ 301
+/tag-der-offenen-tür/ / 301
+/fortbildungskalender/fortbildungskalender-2026/ /fortbildungen/ 301
+/fortbildungskalender/2025/ /fortbildungen/ 301
+/3-monats-fortbildungen/* /fortbildungen/ 301
+/app/download/* /fortbildungen/ 301
+/2025/11/24/krisen-personalmentor-in-für-die-kita-zusatzqualifikation-für-leitung-teamqualitätsentwicklung/ /fortbildungen/ 301
+
+# Alte Wix-Pfade unter /eduleo-akademie-de/ (spezifisch zuerst)
+/eduleo-akademie-de/kinderyoga-bewegungsangebot-kita-alltag-gestalten/ /fortbildungen/kinderyoga-kursleitung/ 301
+/eduleo-akademie-de/kita-fortbildungen-fuer-erzieher-berlin-online/ideenkiste-zur-sprachfoerderung-in-der-kita/lernen-3/ /fortbildungen/tagesfortbildungen/sprache-wuppi/ 301
+/eduleo-akademie-de/digitale-medien-im-kindergarten-beispiele-kita-fortbildung/lernen-4/ /fortbildungen/digitale-medien-beauftragte-kita/ 301
+/eduleo-akademie-de/online-fortbildung-kita-vorschule-im-kindergarten/ /fortbildungen/leitung-vorschule/ 301
+/eduleo-akademie-de/erzieherin-weiterbildung-viel-spass-beim-lernen-durch-spielen/ /fortbildungen/ 301
+/eduleo-akademie-de/* /fortbildungen/ 301
