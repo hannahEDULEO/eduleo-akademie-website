@@ -433,6 +433,7 @@ if (filterTabs.length) {
     { t: 'Kinderyoga Praxisübungen', s: 'Tagesfortbildung', u: '/fortbildungen/tagesfortbildungen/kinderyoga-praxisuebungen/', c: 'fortbildung', k: 'yoga praxis übung kinder bewegung tagesfortbildung' },
     { t: 'Kinderschutz in der Kita', s: 'Tagesfortbildung', u: '/fortbildungen/tagesfortbildungen/kinderschutz-kita/', c: 'fortbildung', k: 'kinderschutz schutz gewalt missbrauch prävention tagesfortbildung' },
     { t: 'Digitale Kita mit Kitaversum', s: 'Tagesfortbildung', u: '/fortbildungen/tagesfortbildungen/digitale-kita-kitaversum/', c: 'fortbildung', k: 'digital kita kitaversum software app tagesfortbildung' },
+    { t: 'Zahlen und Mengen spielerisch vermitteln mit „Baldur"', s: 'Tagesfortbildung', u: '/fortbildungen/tagesfortbildungen/zahlen-mengen-baldur/', c: 'fortbildung', k: 'mathematik zahlen mengen formen muster baldur zahlendrache frühförderung vorschule tagesfortbildung' },
     { t: 'Teamfortbildungen für Kita-Teams', s: 'Inhouse-Seminare', u: '/fortbildungen/teamfortbildungen/', c: 'fortbildung', k: 'team inhouse teamfortbildung seminar einrichtung' },
     // ── Blogartikel ──
     { t: 'Blog', s: 'Alle Artikel', u: '/blog-1/', c: 'blog', k: 'artikel lesen tipps wissen blog' },
