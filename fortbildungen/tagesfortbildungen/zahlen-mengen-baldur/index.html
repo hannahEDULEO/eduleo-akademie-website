@@ -246,6 +246,38 @@
         <img src="../../../Finken-Logo-Header.png" alt="Finken Verlag" style="height:28px;width:auto;">
       </div>
     </div>
+
+    <!-- Einblicke-Slider -->
+    <div style="margin-top:24px;">
+      <h3 style="font-size:1rem;font-weight:700;margin-bottom:12px;color:var(--dark);">Einblicke in die Fortbildung</h3>
+      <div class="adhs-slider-wrap" style="margin-bottom:0;">
+        <div class="adhs-slider-viewport">
+          <div class="adhs-slider-track" id="baldurTrack">
+            <div class="adhs-slide"><img src="../../../assets/images/tages-slider/baldur/einblick.png" alt="Einblick in die Fortbildung Zahlen und Mengen mit Baldur" loading="lazy"></div>
+          </div>
+        </div>
+        <div class="adhs-slider-controls">
+          <button class="adhs-arr" id="baldurPrev" aria-label="Vorheriges Bild">&#8592;</button>
+          <div class="adhs-dots" id="baldurDots"></div>
+          <button class="adhs-arr" id="baldurNext" aria-label="Nächstes Bild">&#8594;</button>
+        </div>
+      </div>
+      <script>
+      (function(){
+        var track=document.getElementById('baldurTrack');
+        var dotsWrap=document.getElementById('baldurDots');
+        if(!track)return;
+        var slides=track.querySelectorAll('.adhs-slide');
+        var total=slides.length,cur=0,timer;
+        function goTo(n){cur=(n+total)%total;track.style.transform='translateX(-'+(cur*100)+'%)';buildDots();}
+        function buildDots(){dotsWrap.innerHTML='';for(var i=0;i<total;i++){var d=document.createElement('button');d.className='adhs-dot'+(i===cur?' active':'');d.setAttribute('aria-label','Bild '+(i+1));(function(idx){d.addEventListener('click',function(){goTo(idx);reset();});})(i);dotsWrap.appendChild(d);}}
+        function reset(){clearInterval(timer);timer=setInterval(function(){goTo(cur+1);},5000);}
+        document.getElementById('baldurPrev').addEventListener('click',function(){goTo(cur-1);reset();});
+        document.getElementById('baldurNext').addEventListener('click',function(){goTo(cur+1);reset();});
+        buildDots();reset();
+      })();
+      </script>
+    </div>
   </div>
 
 </div></div></section>
