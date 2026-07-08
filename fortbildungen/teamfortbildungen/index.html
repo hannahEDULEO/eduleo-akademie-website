@@ -507,6 +507,7 @@
       .then(function(r) { return r.json(); })
       .then(function(d) {
         if (d.success) {
+          gtag('event','generate_lead');
           form.style.display = 'none';
           success.classList.add('visible');
           success.scrollIntoView({ behavior: 'smooth', block: 'center' });

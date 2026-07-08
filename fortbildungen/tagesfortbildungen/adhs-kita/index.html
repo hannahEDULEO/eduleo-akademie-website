@@ -321,7 +321,7 @@ if(!ok)return;
 var data=new FormData(form);
 fetch('https://api.web3forms.com/submit',{method:'POST',body:data})
 .then(function(r){return r.json();})
-.then(function(d){if(d.success){form.style.display='none';succ.style.display='block';}})
+.then(function(d){if(d.success){gtag('event','generate_lead');form.style.display='none';succ.style.display='block';}})
 .catch(function(){alert('Es ist ein Fehler aufgetreten. Bitte versuche es erneut oder schreibe uns direkt an kontakt@eduleo-akademie.de');});
 });}
 </script>
