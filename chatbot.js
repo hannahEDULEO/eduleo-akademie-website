@@ -1,7 +1,7 @@
 (function () {
   const STYLES = `
     #eduleo-chat-wrapper {
-      position: fixed; bottom: 28px; right: 24px; z-index: 9999;
+      position: fixed; bottom: 90px; right: 24px; z-index: 9999;
       display: flex; align-items: center; gap: 10px;
     }
     #eduleo-chat-label {
@@ -23,7 +23,7 @@
     #eduleo-chat-window.open { display: flex; }
     @media (max-width: 600px) {
       #eduleo-chat-wrapper {
-        bottom: 20px;
+        bottom: 90px;
       }
       #eduleo-chat-window {
         top: 80px; left: 0; right: 0; bottom: 0;
