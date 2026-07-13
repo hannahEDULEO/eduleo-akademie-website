@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eingewöhnung ohne Tränendrama: Was wirklich hilft – EDULEO Akademie</title>
+  <meta name="description" content="Warum 'Das wird schon' in der Eingewöhnung selten hilft, und was stattdessen wirklich wirkt: konkrete Formulierungen, Rituale und der Umgang mit schwierigen Elterngesprächen.">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="EDULEO Akademie">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:url" content="https://www.eduleo-akademie.de/eingewoehnung-ohne-traenendrama/">
+  <meta property="og:title" content="Eingewöhnung ohne Tränendrama: Was wirklich hilft">
+  <meta property="og:description" content="Konkrete Formulierungen, Rituale und Haltung für eine Eingewöhnung, die Kindern und Team wirklich Sicherheit gibt.">
+  <meta property="og:image" content="https://www.eduleo-akademie.de/assets/blog/eingewoehnung/hero.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://www.eduleo-akademie.de/eingewoehnung-ohne-traenendrama/">
+  <link rel="icon" href="../favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon-6/apple-touch-icon-180x180.png">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .blog-hero { position: relative; min-height: 520px; display: flex; align-items: center; overflow: hidden; }
+    .blog-hero-bg { position: absolute; inset: 0; background-image: url('../assets/blog/eingewoehnung/hero.png'); background-size: cover; background-position: center; }
+    .blog-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(38,29,24,0.45) 0%, rgba(38,29,24,0.85) 100%); }
+    .blog-hero-content { position: relative; z-index: 2; padding: 3rem 0 3.5rem; color: #fff; width: 100%; }
+    .blog-breadcrumb { font-size: 0.85rem; color: rgba(255,255,255,0.75); margin-bottom: 1rem; }
+    .blog-breadcrumb a { color: rgba(255,255,255,0.75); text-decoration: none; }
+    .blog-breadcrumb a:hover { color: #fff; }
+    .blog-breadcrumb span { margin: 0 0.4rem; }
+    .blog-tag { display: inline-block; color: #fff; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 20px; margin-bottom: 1rem; margin-right: 0.4rem; background: var(--green-dark); }
+    .blog-hero-title { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800; line-height: 1.2; margin: 0 0 1rem; color: #fff; }
+    .blog-meta { display: flex; align-items: center; gap: 1rem; font-size: 0.85rem; color: rgba(255,255,255,0.8); flex-wrap: wrap; }
+    .blog-meta-item { display: flex; align-items: center; gap: 0.35rem; }
+
+    .blog-body { padding: 3.5rem 0 5rem; }
+    .blog-layout { display: grid; grid-template-columns: 1fr 280px; gap: 3rem; max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; }
+    .blog-content { min-width: 0; }
+    .blog-content h2 { font-size: 1.3rem; font-weight: 800; color: var(--dark); margin: 2.5rem 0 0.9rem; }
+    .blog-content h2:first-child { margin-top: 0; }
+    .blog-content p { color: #444; line-height: 1.8; margin-bottom: 1rem; }
+    .blog-content ul { padding-left: 1.4rem; margin-bottom: 1rem; }
+    .blog-content ul li { color: #444; line-height: 1.8; margin-bottom: 0.3rem; }
+    .blog-intro { font-size: 1.08rem; color: #333; line-height: 1.8; border-left: 4px solid var(--green-dark); padding-left: 1.25rem; margin-bottom: 2rem; font-style: italic; }
+    .blog-divider { border: none; border-top: 2px solid var(--beige); margin: 2.5rem 0; }
+    .blog-img { width: 100%; border-radius: var(--radius-xl); margin: 1.75rem 0; display: block; }
+
+    .facts-row { background: var(--beige); border-radius: var(--radius-xl); padding: 1.5rem 2rem; margin-bottom: 2rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; text-align: center; }
+    .fact-num { font-size: 1.7rem; font-weight: 900; color: var(--green-dark); line-height: 1; }
+    .fact-label { font-size: 0.78rem; color: #666; margin-top: 0.3rem; line-height: 1.4; }
+
+    .pull-quote { border-left: 4px solid var(--green-dark); padding: 1.1rem 1.5rem; margin: 1.75rem 0; background: var(--beige); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; font-size: 1rem; font-weight: 700; color: var(--dark); line-height: 1.7; font-style: italic; }
+
+    .fuers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin: 1.25rem 0; }
+    .fuers-item { background: var(--beige); border-radius: var(--radius-lg); padding: 0.9rem 1.1rem; }
+    .fuers-item p { font-size: 0.87rem; color: #555; line-height: 1.65; margin: 0; }
+    .fuers-item strong { color: var(--dark); }
+
+    .tools-cards { display: flex; flex-direction: column; gap: 0.9rem; margin: 1.25rem 0; }
+    .tool-card { background: var(--beige); border-radius: var(--radius-lg); padding: 1.25rem 1.5rem; border-left: 4px solid var(--green-dark); display: flex; gap: 1rem; align-items: flex-start; }
+    .tool-nr { background: var(--green-dark); color: #fff; font-weight: 900; font-size: 0.85rem; min-width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .tool-body h4 { font-weight: 800; color: var(--dark); margin: 0 0 0.4rem; text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.78rem; }
+    .tool-body p { font-size: 0.92rem; color: #555; line-height: 1.7; margin: 0; }
+
+    .fobi-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+    .fobi-card { background: var(--beige); border-radius: var(--radius-xl); padding: 1.4rem; }
+    .fobi-card h4 { font-size: 0.92rem; font-weight: 800; color: var(--dark); margin: 0 0 0.5rem; line-height: 1.4; }
+    .fobi-card p { font-size: 0.85rem; color: #555; line-height: 1.65; margin-bottom: 1rem; }
+    .fobi-card a { background: var(--green-dark); color: #fff; font-weight: 700; font-size: 0.82rem; padding: 0.55rem 1rem; border-radius: 8px; text-decoration: none; display: inline-block; transition: background 0.2s; }
+    .fobi-card a:hover { background: var(--green-deeper); }
+
+    .fazit-box { background: var(--dark); color: #fff; border-radius: var(--radius-xl); padding: 1.75rem; margin: 2rem 0; }
+    .fazit-box h3 { font-size: 1.1rem; font-weight: 800; margin: 0 0 0.75rem; color: #fff; }
+    .fazit-box p { color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin: 0; }
+
+    .poster-download { background: var(--beige); border-radius: var(--radius-xl); padding: 1.75rem; margin: 2rem 0; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
+    .poster-download h4 { font-size: 1.05rem; font-weight: 800; color: var(--dark); margin: 0 0 0.5rem; }
+    .poster-download p { font-size: 0.9rem; color: #555; line-height: 1.6; margin: 0 0 1rem; max-width: 480px; }
+    .poster-download a.btn { background: var(--green-dark); color: #fff; font-weight: 700; font-size: 0.88rem; padding: 0.75rem 1.4rem; border-radius: 8px; text-decoration: none; display: inline-block; white-space: nowrap; transition: background 0.2s; }
+    .poster-download a.btn:hover { background: var(--green-deeper); }
+
+    .blog-sidebar { position: relative; }
+    .blog-sidebar-inner { position: sticky; top: 100px; }
+    .blog-sidebar-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 1.5rem; margin-bottom: 1.25rem; }
+    .blog-sidebar-card h4 { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-light); margin: 0 0 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
+    .blog-sidebar-card ul { list-style: none; padding: 0; margin: 0; }
+    .blog-sidebar-card ul li { border-bottom: 1px solid #F0EBE8; }
+    .blog-sidebar-card ul li:last-child { border-bottom: none; }
+    .blog-sidebar-card ul li a { font-size: 0.87rem; font-weight: 600; color: var(--dark); text-decoration: none; display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 0; line-height: 1.4; transition: color 0.15s; }
+    .blog-sidebar-card ul li a:hover { color: var(--green-dark); }
+    .blog-sidebar-card ul li a::after { content: '→'; color: var(--beige-dark); font-size: 0.8rem; }
+    .blog-cta-sidebar { background: var(--dark); border-radius: var(--radius-xl); padding: 1.5rem; margin-bottom: 1.25rem; }
+    .blog-cta-sidebar h4 { font-size: 1rem; font-weight: 800; margin: 0 0 0.6rem; color: #fff; }
+    .blog-cta-sidebar p { font-size: 0.86rem; color: rgba(255,255,255,0.75); line-height: 1.6; margin-bottom: 1.1rem; }
+    .blog-cta-sidebar a.btn { background: var(--green-dark); color: #fff; font-weight: 700; font-size: 0.85rem; padding: 0.65rem 1.2rem; border-radius: 8px; text-decoration: none; display: block; text-align: center; transition: background 0.2s; }
+    .blog-cta-sidebar a.btn:hover { background: var(--green-deeper); }
+
+    @media (max-width: 768px) {
+      .blog-layout { grid-template-columns: 1fr; padding: 0 1rem; }
+      .blog-sidebar { display: none; }
+      .facts-row { grid-template-columns: 1fr; gap: 0.75rem; }
+      .fuers-grid { grid-template-columns: 1fr; }
+      .fobi-cards { grid-template-columns: 1fr; }
+    }
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6R6TGSJM8P"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-6R6TGSJM8P");
+  </script>
+</head>
+<body>
+
+<!-- Cookie Banner -->
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#261D18;color:#fff;padding:1rem 1.5rem;z-index:9999;display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;">
+  <p style="margin:0;font-size:0.85rem;flex:1;min-width:200px;">Diese Website verwendet Cookies. <a href="../datenschutz.html" style="color:#D2EADA;">Datenschutz</a></p>
+  <div style="display:flex;gap:0.75rem;flex-shrink:0;">
+    <button onclick="acceptCookies()" style="background:#5A9E7A;color:#fff;border:none;padding:0.5rem 1.25rem;border-radius:6px;cursor:pointer;font-weight:700;">Akzeptieren</button>
+    <button onclick="rejectCookies()" style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.4);padding:0.5rem 1.25rem;border-radius:6px;cursor:pointer;">Ablehnen</button>
+  </div>
+</div>
+
+<!-- Navigation -->
+<nav class="nav" id="nav" role="navigation" aria-label="Hauptnavigation">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="EDULEO Akademie, Startseite">
+        <img src="../assets/images/logo.png" alt="EDULEO Akademie" style="height:48px;width:auto;">
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="../fortbildungen/">Fortbildungen</a></li>
+        <li><a href="../ueber-uns/">Über uns</a></li>
+        <li><a href="../bring-a-friend/">Bring a Friend</a></li>
+        <li><a href="/#kontakt">Kontakt</a></li>
+        <li><a href="../anmeldebedingungen.html">Anmeldebedingungen</a></li>
+        <li><a href="../blog-1/">Blog</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="../fortbildungen/" class="btn btn-primary btn-sm">Alle Fortbildungen</a>
+      </div>
+      <button class="hamburger" aria-label="Menü öffnen" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" role="navigation" aria-label="Mobile Navigation">
+  <a href="../fortbildungen/">Fortbildungen</a>
+  <a href="../ueber-uns/">Über uns</a>
+  <a href="../bring-a-friend/">Bring a Friend</a>
+  <a href="/#kontakt">Kontakt</a>
+  <a href="../anmeldebedingungen.html">Anmeldebedingungen</a>
+  <a href="../blog-1/">Blog</a>
+  <a href="../fortbildungen/" class="btn btn-primary">Alle Fortbildungen</a>
+</div>
+
+<!-- Hero -->
+<header class="blog-hero">
+  <div class="blog-hero-bg"></div>
+  <div class="blog-hero-overlay"></div>
+  <div class="blog-hero-content">
+    <div class="container" style="max-width:820px;">
+      <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Startseite</a>
+        <span>›</span>
+        <a href="../blog-1/">Blog</a>
+        <span>›</span>
+        <span>Eingewöhnung</span>
+      </nav>
+      <span class="blog-tag">Eingewöhnung</span>
+      <span class="blog-tag">Elterngespräche</span>
+      <h1 class="blog-hero-title">Eingewöhnung ohne Tränendrama: Was wirklich hilft</h1>
+      <div class="blog-meta">
+        <div class="blog-meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          2026
+        </div>
+        <div class="blog-meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          ca. 6 Min. Lesezeit
+        </div>
+        <div class="blog-meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Hannah Flunkert
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Artikel -->
+<main class="blog-body">
+  <div class="blog-layout">
+
+    <article class="blog-content">
+
+      <p class="blog-intro">"Das wird schon." Diesen Satz hört man in der Eingewöhnung ständig, von Kolleginnen, von Eltern, manchmal auch von sich selbst. Gut gemeint. Aber er hilft in dem Moment fast nie. Was stattdessen wirklich wirkt, zeigt dieser Artikel: konkrete Sätze, feste Rituale und ein Umgang mit Elterngesprächen, der Sicherheit gibt statt Druck aufzubauen.</p>
+
+      <div class="facts-row">
+        <div>
+          <div class="fact-num">4</div>
+          <div class="fact-label">Sätze, die sofort<br>mehr Sicherheit geben</div>
+        </div>
+        <div>
+          <div class="fact-num">4</div>
+          <div class="fact-label">Rituale für eine<br>ruhigere Eingewöhnung</div>
+        </div>
+        <div>
+          <div class="fact-num">1</div>
+          <div class="fact-label">Haltung, die den<br>Unterschied macht</div>
+        </div>
+      </div>
+
+      <h2 id="das-wird-schon">Warum "Das wird schon" oft nicht hilft</h2>
+
+      <p>Für das Kind ist die Eingewöhnung in diesem Moment nicht "schon gut". Es ist gerade wirklich schwer. Ein fremder Raum, fremde Gesichter, und die vertraute Person geht. Wenn wir das Gefühl kleinreden, auch wenn wir es gut meinen, fühlt sich das Kind damit oft allein.</p>
+
+      <p>Das gilt genauso für die Eltern. Auch sie sind in dieser Phase unsicher, auch wenn sie es selten offen zeigen. Ein Satz wie "Das wird schon" nimmt ihre Sorge nicht ernst, er schiebt sie beiseite.</p>
+
+      <div class="pull-quote">
+        Ein Gefühl zu benennen, nimmt ihm nichts von seiner Schwere. Es zeigt dem Kind: Ich sehe dich, und ich bleibe trotzdem da.
+      </div>
+
+      <hr class="blog-divider">
+
+      <h2 id="formulierungen">Sätze, die wirklich helfen</h2>
+
+      <p>Statt das Gefühl zu übergehen, hilft es, genau zu beschreiben, was gerade passiert. Das gibt dem Kind das Gefühl, verstanden zu werden, ohne dass die Situation dramatischer wird.</p>
+
+      <div class="tools-cards">
+        <div class="tool-card">
+          <div class="tool-nr">1</div>
+          <div class="tool-body">
+            <h4>Das Gefühl benennen</h4>
+            <p>"Ich sehe, dass du traurig bist, weil Mama gerade gegangen ist." Das Kind merkt, sein Gefühl wird wahrgenommen, nicht wegdiskutiert.</p>
+          </div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-nr">2</div>
+          <div class="tool-body">
+            <h4>Präsenz zusagen</h4>
+            <p>"Ich bleibe bei dir, bis es dir besser geht." Kein Versprechen auf sofortige Besserung, sondern auf Begleitung.</p>
+          </div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-nr">3</div>
+          <div class="tool-body">
+            <h4>Weinen erlauben</h4>
+            <p>"Du darfst weinen. Ich bin da." Nimmt dem Kind den Druck, sich zusammenreißen zu müssen.</p>
+          </div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-nr">4</div>
+          <div class="tool-body">
+            <h4>Schwere anerkennen</h4>
+            <p>"Es ist okay, dass das gerade schwer ist." Macht deutlich, dass die Reaktion des Kindes angemessen ist, nicht übertrieben.</p>
+          </div>
+        </div>
+      </div>
+
+      <hr class="blog-divider">
+
+      <img src="../assets/blog/eingewoehnung/ritual.png" alt="Erzieherin begrüßt ein Kind an der Kita-Tür, festes Begrüßungsritual während der Eingewöhnung" class="blog-img">
+
+      <h2 id="rituale">Rituale, die Sicherheit geben</h2>
+
+      <p>Wenn im Moment fast alles neu ist, wird jedes gleichbleibende Element zum Anker. Rituale müssen nicht aufwendig sein, sie müssen vor allem eines: verlässlich.</p>
+
+      <div class="fuers-grid">
+        <div class="fuers-item"><p><strong>Festes Begrüßungsritual an der Tür,</strong> jeden Tag dieselbe Geste oder derselbe Satz.</p></div>
+        <div class="fuers-item"><p><strong>Übergangsobjekt von zuhause,</strong> zum Beispiel Kuscheltier, Tuch oder Foto.</p></div>
+        <div class="fuers-item"><p><strong>Fester Abschiedssatz der Eltern,</strong> immer derselbe, nie schleichend.</p></div>
+        <div class="fuers-item"><p><strong>Ruhiger Rückzugsort im Raum,</strong> ein Platz, der dem Kind ganz allein gehört.</p></div>
+      </div>
+
+      <div class="poster-download">
+        <div>
+          <h4>Eingewöhnungs-Poster zum Ausdrucken</h4>
+          <p>Die vier Sätze und die vier Rituale aus diesem Artikel als A4-Poster für den Gruppenraum, kostenlos zum Herunterladen und Aufhängen.</p>
+        </div>
+        <a href="../assets/blog/eingewoehnung/eingewoehnungs-poster.pdf" download class="btn">Poster herunterladen (PDF) →</a>
+      </div>
+
+      <hr class="blog-divider">
+
+      <h2 id="elterngespraeche">Wenn Elterngespräche in der Eingewöhnung schwierig werden</h2>
+
+      <p>Nicht nur Kinder brauchen in dieser Zeit Sicherheit, Eltern genauso. Viele Konflikte in der Eingewöhnung entstehen nicht aus mangelndem Vertrauen, sondern aus fehlender Kommunikation: Eltern wissen nicht genau, was im Tagesablauf passiert, und Fachkräfte haben in der Hektik oft zu wenig Zeit für ein ruhiges Gespräch.</p>
+
+      <p>Hier hilft es, Elterngespräche bewusst zu planen statt sie zwischen Tür und Angel zu führen. Ein kurzer, aber fester Austausch am Ende des Tages gibt beiden Seiten Orientierung, den Eltern und dem Team.</p>
+
+      <div class="pull-quote">
+        Eltern, die verstehen, was in der Eingewöhnung passiert, vertrauen dem Prozess leichter, auch wenn ihr Kind gerade weint.
+      </div>
+
+      <hr class="blog-divider">
+
+      <h2>Fazit: Eingewöhnung ist Beziehungsarbeit</h2>
+
+      <div class="fazit-box">
+        <h3>Was am Ende zählt</h3>
+        <p>Eingewöhnung sieht von außen oft ruhig aus. Von innen ist sie hochkonzentrierte Beziehungsarbeit, für das Kind und für die Eltern gleichermaßen. Klare Sprache, verlässliche Rituale und geplante Elterngespräche machen aus dieser Zeit kein Tränendrama, sondern einen Start, der trägt.</p>
+      </div>
+
+      <p>Du willst dein Team in genau diesen Situationen sicherer machen? EDULEO unterstützt dich mit zwei passenden Formaten:</p>
+
+      <div class="fobi-cards">
+        <div class="fobi-card">
+          <h4>Tagesfortbildung: Elterngespräche führen</h4>
+          <p>Ein Tag, praxisnah, mit konkreten Gesprächsstrukturen für schwierige und alltägliche Situationen.</p>
+          <a href="../fortbildungen/tagesfortbildungen/elterngespraeche-fuehren/">Zur Tagesfortbildung →</a>
+        </div>
+        <div class="fobi-card">
+          <h4>3-Monats-Fortbildung: Marte Meo PraktikerIn</h4>
+          <p>Video-gestützte Beziehungsarbeit lernen und im Team nachhaltig etablieren.</p>
+          <a href="../fortbildungen/marte-meo-praktikerin/">Zur 3-Monats-Fortbildung →</a>
+        </div>
+      </div>
+
+      <p style="margin-top:2rem;">Für mehr Impulse aus dem Kita-Alltag findest du EDULEO auch auf Instagram. <a href="https://www.instagram.com/eduleo_akademie/" target="_blank" rel="noopener" class="instagram-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> @eduleo_akademie folgen</a></p>
+
+    </article>
+
+    <!-- Sidebar -->
+    <aside class="blog-sidebar" aria-label="Weitere Artikel">
+      <div class="blog-sidebar-inner">
+
+        <div class="blog-cta-sidebar">
+          <h4>Elterngespräche führen</h4>
+          <p>Tagesfortbildung, praxisnah, mit konkreten Gesprächsstrukturen.</p>
+          <a href="../fortbildungen/tagesfortbildungen/elterngespraeche-fuehren/" class="btn">Zur Fortbildung →</a>
+        </div>
+
+        <div class="blog-sidebar-card">
+          <h4>Kostenloses Poster</h4>
+          <p><a href="../assets/blog/eingewoehnung/eingewoehnungs-poster.pdf" download>Eingewöhnungs-Poster herunterladen (PDF) →</a></p>
+        </div>
+
+        <div class="blog-sidebar-card">
+          <h4>Inhaltsverzeichnis</h4>
+          <ul>
+            <li><a href="#das-wird-schon">Warum "Das wird schon" nicht hilft</a></li>
+            <li><a href="#formulierungen">Sätze, die wirklich helfen</a></li>
+            <li><a href="#rituale">Rituale, die Sicherheit geben</a></li>
+            <li><a href="#elterngespraeche">Elterngespräche in der Eingewöhnung</a></li>
+          </ul>
+        </div>
+
+        <div class="blog-sidebar-card">
+          <h4>Passende Artikel</h4>
+          <ul>
+            <li><a href="../autismus-in-der-kita-eingewöhnung/">Eingewöhnung bei Autismus</a></li>
+            <li><a href="../übergänge-in-der-kita/">Übergänge in der Kita</a></li>
+            <li><a href="../haltung-statt-hamsterrad-wie-du-stress-im-kita-alltag-meisterst/">Stress im Kita-Alltag meistern</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </aside>
+
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="../assets/images/logo.png" alt="EDULEO Akademie" style="height:40px;width:auto;margin-bottom:1rem;filter:brightness(0) invert(1);">
+        <p style="font-size:0.85rem;color:rgba(255,255,255,0.6);line-height:1.7;">Online-Fortbildungen für Kita-Fachkräfte. Praxisnah, fundiert, flexibel.</p>
+        <p style="font-size:0.8rem;color:rgba(255,255,255,0.4);margin-top:0.5rem;">Klumper &amp; Flunkert EDULEO GbR · kontakt@eduleo-akademie.de · 0160 50 59 620</p>
+      </div>
+      <div>
+        <h4 style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.5);margin:0 0 1rem;">Fortbildungen</h4>
+        <ul style="list-style:none;padding:0;margin:0;">
+          <li style="margin-bottom:0.5rem;"><a href="../fortbildungen/" style="font-size:0.87rem;color:rgba(255,255,255,0.75);text-decoration:none;">Alle Fortbildungen</a></li>
+          <li style="margin-bottom:0.5rem;"><a href="../fortbildungen/#3-monate" style="font-size:0.87rem;color:rgba(255,255,255,0.75);text-decoration:none;">3-Monats-Fortbildungen</a></li>
+          <li style="margin-bottom:0.5rem;"><a href="../fortbildungen/#tagesfortbildungen" style="font-size:0.87rem;color:rgba(255,255,255,0.75);text-decoration:none;">Tagesfortbildungen</a></li>
+          <li><a href="/#kontakt" style="font-size:0.87rem;color:rgba(255,255,255,0.75);text-decoration:none;">Teamfortbildungen</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.5);margin:0 0 1rem;">Über uns</h4>
+        <ul style="list-style:none;padding:0;margin:0;">
+          <li style="margin-bottom:0.5rem;"><a href="../ueber-uns/" style="font-size:0.87rem;color:rgba(255,255,255,0.75);text-decoration:none;">Das Team</a></li>
+          <li style="margin-bottom:0.5rem;"><a href="../dozentinnen/" style="font-size:0.87rem;color:rgba(255,255,255,0.75);text-decoration:none;">DozentInnen</a></li>
+          <li><a href="/#kontakt" style="font-size:0.87rem;color:rgba(255,255,255,0.75);text-decoration:none;">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.5);margin:0 0 1rem;">Rechtliches</h4>
+        <ul style="list-style:none;padding:0;margin:0;">
+          <li style="margin-bottom:0.5rem;"><a href="../impressum.html" style="font-size:0.87rem;color:rgba(255,255,255,0.75);text-decoration:none;">Impressum</a></li>
+          <li style="margin-bottom:0.5rem;"><a href="../datenschutz.html" style="font-size:0.87rem;color:rgba(255,255,255,0.75);text-decoration:none;">Datenschutz</a></li>
+          <li style="margin-bottom:0.5rem;"><a href="../agb.html" style="font-size:0.87rem;color:rgba(255,255,255,0.75);text-decoration:none;">AGB</a></li>
+          <li><a href="../anmeldebedingungen.html" style="font-size:0.87rem;color:rgba(255,255,255,0.75);text-decoration:none;">Anmeldebedingungen</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Klumper &amp; Flunkert EDULEO GbR · Alle Rechte vorbehalten</p>
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="back-to-top" aria-label="Nach oben scrollen" style="position:fixed;bottom:2rem;right:2rem;background:var(--dark);color:#fff;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;opacity:0;transition:opacity 0.3s;z-index:999;font-size:1.1rem;">↑</a>
+
+<script src="../main.js"></script>
+<script>
+  window.addEventListener('scroll', () => {
+    const btn = document.querySelector('.back-to-top');
+    if (btn) btn.style.opacity = window.scrollY > 400 ? '1' : '0';
+  });
+</script>
+<script src="/chatbot.js"></script>
+</body>
+</html>
