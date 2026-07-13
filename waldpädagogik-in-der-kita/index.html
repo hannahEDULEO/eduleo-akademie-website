@@ -10,7 +10,7 @@
   <meta property="og:locale" content="de_DE">
   <meta property="og:url" content="https://www.eduleo-akademie.de/waldpädagogik-in-der-kita/">
   <meta property="og:title" content="Waldpädagogik in der Kita: Die Natur als Lernraum nutzen">
-  <meta property="og:description" content="Warum Naturerfahrungen Kinder stärken und wie du Waldpädagogik in den Kita-Alltag integrierst — auch ohne eigenen Wald.">
+  <meta property="og:description" content="Warum Naturerfahrungen Kinder stärken und wie du Waldpädagogik in den Kita-Alltag integrierst. Auch ohne eigenen Wald.">
   <meta property="og:image" content="https://www.eduleo-akademie.de/assets/fobi-bilder/waldpaedagogik-kita.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://www.eduleo-akademie.de/waldpädagogik-in-der-kita/">
@@ -64,9 +64,11 @@
     .fact-label { font-size: 0.78rem; color: rgba(255,255,255,0.7); margin-top: 0.3rem; line-height: 1.4; }
 
     /* Check-Liste */
-    .check-list { list-style: none; padding: 0; margin: 1rem 0 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; }
-    .check-list li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.95rem; color: #444; line-height: 1.6; }
-    .check-list li::before { content: '✓'; background: var(--green-dark); color: #fff; font-weight: 800; font-size: 0.75rem; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.15rem; }
+    .check-list { list-style: none; padding: 0; margin: 1rem 0 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+    .check-list li { display: grid; grid-template-columns: 26px 1fr; column-gap: 0.75rem; row-gap: 0.15rem; }
+    .check-list li::before { content: '✓'; background: var(--green-dark); color: #fff; font-weight: 800; font-size: 0.75rem; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; grid-column: 1; grid-row: 1 / span 2; margin-top: 0.2rem; }
+    .check-list li strong { display: block; grid-column: 2; grid-row: 1; font-size: 0.95rem; color: var(--dark); }
+    .check-list li span { display: block; grid-column: 2; grid-row: 2; font-size: 0.95rem; color: #555; line-height: 1.6; }
 
     /* Zitat */
     .blog-quote { background: var(--green); border-radius: var(--radius-xl); padding: 1.5rem 2rem; margin: 1.5rem 0; font-size: 1rem; color: var(--dark); font-style: italic; font-weight: 600; line-height: 1.7; border-left: 4px solid var(--green-dark); }
@@ -247,7 +249,7 @@
 
     <article class="blog-content">
 
-      <p class="blog-intro">Kinder gehören nach draußen — das ist keine romantische Idee, sondern wissenschaftlich belegt. Waldpädagogik bringt Kinder dorthin zurück, wo echtes Lernen passiert: in die Natur. Und das Beste: Dafür braucht es weder einen eigenen Wald noch eine Sonderausrüstung.</p>
+      <p class="blog-intro">Kinder gehören nach draußen. Das ist keine romantische Idee, sondern wissenschaftlich belegt. Waldpädagogik bringt Kinder dorthin zurück, wo echtes Lernen passiert: in die Natur. Und das Beste: Dafür braucht es weder einen eigenen Wald noch eine Sonderausrüstung.</p>
 
       <div class="facts-row">
         <div>
@@ -264,15 +266,15 @@
         </div>
         <div>
           <div class="fact-num">0 €</div>
-          <div class="fact-label">Materialkosten —<br>die Natur liefert alles</div>
+          <div class="fact-label">Materialkosten:<br>die Natur liefert alles</div>
         </div>
       </div>
 
       <p style="font-size:0.78rem;color:#999;margin-top:-1rem;margin-bottom:1.5rem;">* Quelle: Studien zur Naturtherapie und Stressregulation bei Kindern (u.a. University of Exeter, 2019)</p>
 
-      <h2 id="was-ist">Was ist Waldpädagogik — und was ist sie nicht?</h2>
+      <h2 id="was-ist">Was ist Waldpädagogik und was ist sie nicht?</h2>
 
-      <p>Waldpädagogik bedeutet nicht, jeden Tag stundenlang durch den Wald zu wandern. Es geht um eine Haltung: Die Natur wird als Lernraum anerkannt und bewusst genutzt. Das kann der Stadtpark sein, der Kita-Garten, eine Wiese — oder eben der Wald.</p>
+      <p>Waldpädagogik bedeutet nicht, jeden Tag stundenlang durch den Wald zu wandern. Es geht um eine Haltung: Die Natur wird als Lernraum anerkannt und bewusst genutzt. Das kann der Stadtpark sein, der Kita-Garten, eine Wiese oder eben der Wald.</p>
 
       <div class="ideen-grid">
         <div class="idee-card gruen">
@@ -292,7 +294,7 @@
       </div>
 
       <div class="blog-quote">
-        „Kinder, die Zeit in der Natur verbringen, sind konzentrierter, ausgeglichener und kreativer — das zeigt die Forschung eindeutig."
+        „Kinder, die Zeit in der Natur verbringen, sind konzentrierter, ausgeglichener und kreativer. Das zeigt die Forschung eindeutig."
       </div>
 
       <!-- BILD FEHLT: assets/fobi-bilder/waldpaedagogik-kita.png — Kinder im Wald oder Park -->
@@ -305,12 +307,12 @@
       <p>Die Forschung ist eindeutig: Kinder, die regelmäßig Zeit in der Natur verbringen, entwickeln sich in vielen Bereichen besser. Hier sind die wichtigsten Wirkungen:</p>
 
       <ul class="check-list">
-        <li><strong>Konzentration &amp; Aufmerksamkeit:</strong> Natur senkt das Stresslevel und ermöglicht echte Erholung des Gehirns — danach können Kinder besser fokussieren.</li>
-        <li><strong>Motorik &amp; Koordination:</strong> Unebener Boden, Klettern, Balancieren — der Wald bietet Bewegungsreize, die kein Spielplatz bieten kann.</li>
-        <li><strong>Risikokompetenz:</strong> Kinder lernen, eigene Grenzen einzuschätzen — ein unverzichtbarer Baustein für Selbstvertrauen.</li>
-        <li><strong>Kreativität:</strong> Ein Ast ist ein Zauberstab, ein Stein ein Schatz, eine Pfütze ein Ozean. In der Natur wird Fantasie nicht begrenzt.</li>
-        <li><strong>Soziales Miteinander:</strong> Gemeinsam ein Lager bauen, Tiere beobachten, Pflanzen bestimmen — Natur verbindet.</li>
-        <li><strong>Umweltbewusstsein:</strong> Kinder, die Natur kennen und lieben, schützen sie später auch.</li>
+        <li><strong>Konzentration &amp; Aufmerksamkeit</strong><span>Natur senkt das Stresslevel und ermöglicht echte Erholung des Gehirns. Danach können Kinder besser fokussieren.</span></li>
+        <li><strong>Motorik &amp; Koordination</strong><span>Unebener Boden, Klettern, Balancieren: Der Wald bietet Bewegungsreize, die kein Spielplatz bieten kann.</span></li>
+        <li><strong>Risikokompetenz</strong><span>Kinder lernen, eigene Grenzen einzuschätzen. Ein unverzichtbarer Baustein für Selbstvertrauen.</span></li>
+        <li><strong>Kreativität</strong><span>Ein Ast ist ein Zauberstab, ein Stein ein Schatz, eine Pfütze ein Ozean. In der Natur wird Fantasie nicht begrenzt.</span></li>
+        <li><strong>Soziales Miteinander</strong><span>Gemeinsam ein Lager bauen, Tiere beobachten, Pflanzen bestimmen: Natur verbindet.</span></li>
+        <li><strong>Umweltbewusstsein</strong><span>Kinder, die Natur kennen und lieben, schützen sie später auch.</span></li>
       </ul>
 
       <hr class="blog-divider">
@@ -322,23 +324,23 @@
       <div class="stufen-grid">
         <div class="stufe">
           <div class="stufe-nr">1</div>
-          <div class="stufe-text"><strong>Einen Naturort finden</strong> — Das muss kein Wald sein. Park, Wiese, Kita-Garten oder Brachfläche reichen. Hauptsache: regelmäßig und verlässlich.</div>
+          <div class="stufe-text"><strong>Einen Naturort finden:</strong> Das muss kein Wald sein. Park, Wiese, Kita-Garten oder Brachfläche reichen. Hauptsache: regelmäßig und verlässlich.</div>
         </div>
         <div class="stufe">
           <div class="stufe-nr">2</div>
-          <div class="stufe-text"><strong>Festes Ritual einführen</strong> — Einmal pro Woche „Naturtag". Kinder mögen Verlässlichkeit. Ein fester Tag gibt dem Ausflug Gewicht und Vorfreude.</div>
+          <div class="stufe-text"><strong>Festes Ritual einführen:</strong> Einmal pro Woche „Naturtag". Kinder mögen Verlässlichkeit. Ein fester Tag gibt dem Ausflug Gewicht und Vorfreude.</div>
         </div>
         <div class="stufe">
           <div class="stufe-nr">3</div>
-          <div class="stufe-text"><strong>Ohne Agenda losziehen</strong> — Kein strukturierter Plan, kein Bastelziel. Was passiert, passiert. Die Kinder bestimmen was sie entdecken wollen.</div>
+          <div class="stufe-text"><strong>Ohne Agenda losziehen:</strong> Kein strukturierter Plan, kein Bastelziel. Was passiert, passiert. Die Kinder bestimmen was sie entdecken wollen.</div>
         </div>
         <div class="stufe">
           <div class="stufe-nr">4</div>
-          <div class="stufe-text"><strong>Beobachten statt lenken</strong> — Deine Rolle ist Begleiterin, nicht Lehrerin. Fragen stellen statt erklären: „Was denkst du, warum das so ist?"</div>
+          <div class="stufe-text"><strong>Beobachten statt lenken:</strong> Deine Rolle ist Begleiterin, nicht Lehrerin. Fragen stellen statt erklären: „Was denkst du, warum das so ist?"</div>
         </div>
         <div class="stufe">
           <div class="stufe-nr">5</div>
-          <div class="stufe-text"><strong>Dokumentieren &amp; reflektieren</strong> — Fotos, Forscher-Hefte, Naturtagebücher. Was haben die Kinder entdeckt? Was hat sie überrascht? Das gibt dem Erlebnis Tiefe.</div>
+          <div class="stufe-text"><strong>Dokumentieren &amp; reflektieren:</strong> Fotos, Forscher-Hefte, Naturtagebücher. Was haben die Kinder entdeckt? Was hat sie überrascht? Das gibt dem Erlebnis Tiefe.</div>
         </div>
       </div>
 
@@ -349,7 +351,7 @@
 
       <h2 id="aktivitaeten">10 konkrete Aktivitäten für die Praxis</h2>
 
-      <p>Hier sind bewährte Ideen, die sofort funktionieren — für Gruppen jeder Altersstufe:</p>
+      <p>Hier sind bewährte Ideen, die sofort funktionieren, für Gruppen jeder Altersstufe:</p>
 
       <div class="ideen-grid">
         <div class="idee-card gruen">
@@ -364,7 +366,7 @@
             <span class="idee-emoji">🪵</span>
             <div class="idee-title">2. Hüttenbau</div>
           </div>
-          <p>Aus Ästen, Blättern und Steinen eine Hütte bauen. Kinder planen, bauen, lösen Probleme — und haben am Ende einen eigenen Rückzugsort. Teamarbeit pur.</p>
+          <p>Aus Ästen, Blättern und Steinen eine Hütte bauen. Kinder planen, bauen, lösen Probleme und haben am Ende einen eigenen Rückzugsort. Teamarbeit pur.</p>
         </div>
         <div class="idee-card rosa">
           <div class="idee-card-header">
@@ -385,7 +387,7 @@
             <span class="idee-emoji">🌧️</span>
             <div class="idee-title">5. Regentag nutzen</div>
           </div>
-          <p>Regen ist kein Grund zu bleiben! Pfützen, Rinnsale, das Geräusch von Tropfen — Regentage bieten einmalige Erlebnisse. Gummistiefel an und los.</p>
+          <p>Regen ist kein Grund zu bleiben! Pfützen, Rinnsale, das Geräusch von Tropfen: Regentage bieten einmalige Erlebnisse. Gummistiefel an und los.</p>
         </div>
         <div class="idee-card rosa">
           <div class="idee-card-header">
@@ -399,7 +401,7 @@
             <span class="idee-emoji">🐞</span>
             <div class="idee-title">7. Tierspuren suchen</div>
           </div>
-          <p>Spuren im Matsch, Federn, Haare, Fraßspuren an Blättern — die Natur ist voller Hinweise auf ihre Bewohner. Kinder werden zu Naturdetektiven.</p>
+          <p>Spuren im Matsch, Federn, Haare, Fraßspuren an Blättern: Die Natur ist voller Hinweise auf ihre Bewohner. Kinder werden zu Naturdetektiven.</p>
         </div>
         <div class="idee-card beige">
           <div class="idee-card-header">
@@ -413,7 +415,7 @@
             <span class="idee-emoji">🎨</span>
             <div class="idee-title">9. Naturfarben malen</div>
           </div>
-          <p>Mit Beeren, Erde, Gras und Blüten auf Papier oder Steine malen. Farben aus der Natur herstellen — ein Erlebnis, das Kinder nie vergessen.</p>
+          <p>Mit Beeren, Erde, Gras und Blüten auf Papier oder Steine malen. Farben aus der Natur herstellen, ein Erlebnis, das Kinder nie vergessen.</p>
         </div>
         <div class="idee-card dunkel">
           <div class="idee-card-header">
@@ -426,9 +428,9 @@
 
       <hr class="blog-divider">
 
-      <h2 id="ohne-wald">Waldpädagogik ohne Wald — geht das?</h2>
+      <h2 id="ohne-wald">Waldpädagogik ohne Wald: Geht das?</h2>
 
-      <p>Ja — unbedingt! Viele Kitas haben keinen Wald in der Nähe. Das ist kein Hindernis. Jeder Outdoor-Raum bietet Naturerlebnisse, wenn man genau hinschaut:</p>
+      <p>Ja, unbedingt! Viele Kitas haben keinen Wald in der Nähe. Das ist kein Hindernis. Jeder Outdoor-Raum bietet Naturerlebnisse, wenn man genau hinschaut:</p>
 
       <div class="compare-table-wrap">
         <table class="compare-table">
@@ -457,7 +459,7 @@
             </tr>
             <tr>
               <td>🪨 Straßenrand / Pflaster</td>
-              <td>Moose, Flechten, Ameisen — auch hier lebt die Natur</td>
+              <td>Moose, Flechten, Ameisen: Auch hier lebt die Natur</td>
               <td>Städtische Kitas</td>
             </tr>
             <tr>
@@ -471,7 +473,7 @@
 
       <div class="info-banner">
         <h3>💡 Tipp: Der Blick nach unten lohnt sich</h3>
-        <p>Kinder schauen von Natur aus nach unten — und sehen dabei Dinge, die Erwachsene übersehen. Ermutige sie, Steine umzudrehen, in Ritzen zu schauen und Baumrinden zu befühlen. Natur ist überall.</p>
+        <p>Kinder schauen von Natur aus nach unten und sehen dabei Dinge, die Erwachsene übersehen. Ermutige sie, Steine umzudrehen, in Ritzen zu schauen und Baumrinden zu befühlen. Natur ist überall.</p>
       </div>
 
       <hr class="blog-divider">
@@ -481,13 +483,13 @@
       <div class="tipp-section">
         <h3>So wird Waldpädagogik zum festen Bestandteil</h3>
         <ul>
-          <li>Festen Naturtag einführen — einmal pro Woche, Wetter spielt keine Rolle.</li>
+          <li>Festen Naturtag einführen, einmal pro Woche. Wetter spielt keine Rolle.</li>
           <li>Eltern informieren und einbinden: Was haben die Kinder heute entdeckt?</li>
           <li>Forscher-Kiste packen: Lupen, Bestimmungsbücher, Skizzenpapier, Pinzette.</li>
-          <li>Wetterfeste Kleidung als Grundausstattung — Gummistiefel und Regenjacke gehören dazu.</li>
-          <li>Keine Agenda — das Ziel ist das Erleben, nicht das Ergebnis.</li>
+          <li>Wetterfeste Kleidung als Grundausstattung: Gummistiefel und Regenjacke gehören dazu.</li>
+          <li>Keine Agenda. Das Ziel ist das Erleben, nicht das Ergebnis.</li>
           <li>Eigenes Naturtagebuch für jedes Kind: Zeichnungen, eingeklebte Blätter, Stempel aus Naturmaterialien.</li>
-          <li>Jahreszeitenrundgang: Denselben Ort im Winter, Frühling, Sommer und Herbst besuchen — und Veränderungen dokumentieren.</li>
+          <li>Jahreszeitenrundgang: Denselben Ort im Winter, Frühling, Sommer und Herbst besuchen und die Veränderungen dokumentieren.</li>
         </ul>
       </div>
 
@@ -496,14 +498,14 @@
 
       <div class="blog-cta-banner" id="fortbildung">
         <h3>Natur in der Kita professionell begleiten</h3>
-        <p>In unseren Fortbildungen lernst du, wie du pädagogische Konzepte wie Waldpädagogik und Naturerfahrung sinnvoll in den Kita-Alltag integrierst — praxisnah, zertifiziert, sofort anwendbar.</p>
+        <p>In unseren Fortbildungen lernst du, wie du Waldpädagogik und Naturerfahrung sinnvoll in den Kita-Alltag integrierst. Praxisnah, zertifiziert und sofort anwendbar.</p>
         <div class="blog-cta-banner-links">
           <a href="../fortbildungen/">Alle Fortbildungen ansehen →</a>
           <a href="../welche-fortbildung/">Welche Fortbildung passt zu mir?</a>
         </div>
       </div>
 
-      <p>Waldpädagogik ist keine Methode — sie ist eine Einladung, die Welt mit Kinderaugen zu sehen. Fang einfach an. Ein Stein, eine Lupe, eine Wiese. Das reicht.</p>
+      <p>Waldpädagogik ist keine Methode, sie ist eine Einladung, die Welt mit Kinderaugen zu sehen. Fang einfach an. Ein Stein, eine Lupe, eine Wiese. Das reicht.</p>
 
       <p>Folge uns auf Instagram für mehr Praxisideen rund um Naturpädagogik und Kita-Alltag:</p>
       <p style="margin-top:1rem;"><a href="https://www.instagram.com/eduleo_akademie/" target="_blank" rel="noopener" class="instagram-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> @eduleo_akademie folgen</a></p>
@@ -528,7 +530,7 @@
 
         <div class="blog-cta-sidebar">
           <h4>Fortbildungen für Kita-Fachkräfte</h4>
-          <p>Praxisnahe Online-Fortbildungen — zertifiziert, sofort anwendbar, für ErzieherInnen und Kita-Leitungen.</p>
+          <p>Praxisnahe Online-Fortbildungen, zertifiziert und sofort anwendbar, für ErzieherInnen und Kita-Leitungen.</p>
           <a href="../fortbildungen/" class="btn">Alle Fortbildungen →</a>
         </div>
 
