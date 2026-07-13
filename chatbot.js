@@ -91,6 +91,11 @@
   wrapper.appendChild(label);
   document.body.appendChild(wrapper);
 
+  var cookieBanner = document.getElementById('cookie-banner');
+  if (cookieBanner && cookieBanner.style.display !== 'none') {
+    wrapper.style.bottom = '80px';
+  }
+
   const win = document.createElement('div');
   win.id = 'eduleo-chat-window';
   win.setAttribute('role', 'dialog');

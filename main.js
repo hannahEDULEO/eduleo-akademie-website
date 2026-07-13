@@ -238,9 +238,31 @@
 })();
 
 /* ── Cookie-Banner ──────────────────────────── */
+function acceptCookies() {
+  localStorage.setItem('eduleo-cookies-ok', '1');
+  var b = document.getElementById('cookie-banner');
+  if (b) b.style.display = 'none';
+  var w = document.getElementById('eduleo-chat-wrapper');
+  if (w) w.style.bottom = '28px';
+}
+function rejectCookies() {
+  localStorage.setItem('eduleo-cookies-rejected', '1');
+  var b = document.getElementById('cookie-banner');
+  if (b) b.style.display = 'none';
+  var w = document.getElementById('eduleo-chat-wrapper');
+  if (w) w.style.bottom = '28px';
+}
 (function () {
+  var existing = document.getElementById('cookie-banner');
+  if (existing) {
+    existing.style.display = 'none';
+    if (!localStorage.getItem('eduleo-cookies-ok') && !localStorage.getItem('eduleo-cookies-rejected')) {
+      existing.style.display = 'flex';
+      existing.style.zIndex = '10001';
+    }
+    return;
+  }
   if (localStorage.getItem('eduleo-cookies-ok')) return;
-  if (document.getElementById('cookie-banner')) return;
   var b = document.createElement('div');
   b.id = 'cookie-banner';
   b.className = 'cookie-floating';
