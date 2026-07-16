@@ -50,17 +50,27 @@ async function handleSubmit(request) {
   }
   try {
     const contentType = request.headers.get('Content-Type') || '';
+    const origin = request.headers.get('Origin') || 'https://www.eduleo-akademie.de';
+    const referer = request.headers.get('Referer') || 'https://www.eduleo-akademie.de/';
     const body = await request.arrayBuffer();
     const resp = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
-      headers: { 'Content-Type': contentType },
+      headers: { 'Content-Type': contentType, 'Origin': origin, 'Referer': referer },
       body,
     });
-    const data = await resp.json();
-    return new Response(JSON.stringify(data), {
-      status: resp.status,
-      headers: { 'Content-Type': 'application/json' },
-    });
+    const text = await resp.text();
+    try {
+      const data = JSON.parse(text);
+      return new Response(JSON.stringify(data), {
+        status: resp.status,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    } catch (_) {
+      return new Response(JSON.stringify({ success: false, message: 'Fehler: ' + text.substring(0, 200) }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
   } catch (e) {
     return new Response(JSON.stringify({ success: false, message: String(e) }), {
       status: 500,
