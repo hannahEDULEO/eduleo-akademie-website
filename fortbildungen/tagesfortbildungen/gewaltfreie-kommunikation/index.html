@@ -309,8 +309,8 @@ if(!ok)return;
 var data=new FormData(form);
 fetch('/submit',{method:'POST',body:data})
 .then(function(r){return r.json();})
-.then(function(d){if(d.success){gtag('event','generate_lead');form.style.display='none';succ.style.display='block';}else{alert('Die Anmeldung konnte nicht gesendet werden. Mögliche Ursache: Eine Firewall (z. B. im Behörden- oder Schulnetzwerk) blockiert die Übertragung. Bitte versuche es über ein anderes Netzwerk (z. B. mobiles Internet) oder schreibe direkt an kontakt@eduleo-akademie.de');}})
-.catch(function(){alert('Die Anmeldung konnte nicht gesendet werden. Mögliche Ursache: Eine Firewall (z. B. im Behörden- oder Schulnetzwerk) blockiert die Übertragung. Bitte versuche es über ein anderes Netzwerk (z. B. mobiles Internet) oder schreibe direkt an kontakt@eduleo-akademie.de');});
+.then(function(d){if(d.success){gtag('event','generate_lead');form.style.display='none';succ.style.display='block';}else{alert('DEBUG else: '+JSON.stringify(d));}})
+.catch(function(e){alert('DEBUG catch: '+String(e));});
 });}
 </script>
 <script src="/chatbot.js"></script>
