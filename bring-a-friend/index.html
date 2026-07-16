@@ -311,7 +311,7 @@
       if (!valid) return;
 
       var data = new FormData(form);
-      fetch('https://api.web3forms.com/submit', { method: 'POST', body: data })
+      fetch('/submit', { method: 'POST', body: data })
       .then(function(r) { return r.json(); })
       .then(function(d) {
         if (d.success) {
@@ -322,7 +322,7 @@
         }
       })
       .catch(function() {
-        alert('Es ist ein Fehler aufgetreten. Bitte versuche es erneut oder schreibe uns direkt an kontakt@eduleo-akademie.de');
+        alert('Die Anmeldung konnte nicht gesendet werden. Mögliche Ursache: Eine Firewall (z. B. im Behörden- oder Schulnetzwerk) blockiert die Übertragung. Bitte versuche es über ein anderes Netzwerk (z. B. mobiles Internet) oder schreibe direkt an kontakt@eduleo-akademie.de');
       });
     });
   }

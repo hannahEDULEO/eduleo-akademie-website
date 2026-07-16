@@ -16,6 +16,11 @@ export default {
       return handleChat(request, env);
     }
 
+    // API: Formular-Proxy (umgeht Firewalls in Behörden-/Schulnetzwerken)
+    if (path === '/submit') {
+      return handleSubmit(request);
+    }
+
     // API: Termine von SimplyOrg
     if (path === '/api/termine') {
       return handleTermine(url);
@@ -38,6 +43,29 @@ export default {
     return response;
   }
 };
+
+async function handleSubmit(request) {
+  if (request.method !== 'POST') {
+    return new Response('Method not allowed', { status: 405 });
+  }
+  try {
+    const body = await request.formData();
+    const resp = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body,
+    });
+    const data = await resp.json();
+    return new Response(JSON.stringify(data), {
+      status: resp.status,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  } catch (e) {
+    return new Response(JSON.stringify({ success: false, message: String(e) }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+}
 
 async function handleChat(request, env) {
   const corsHeaders = {
