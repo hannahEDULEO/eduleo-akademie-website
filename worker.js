@@ -49,9 +49,11 @@ async function handleSubmit(request) {
     return new Response('Method not allowed', { status: 405 });
   }
   try {
-    const body = await request.formData();
+    const contentType = request.headers.get('Content-Type') || '';
+    const body = await request.arrayBuffer();
     const resp = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
+      headers: { 'Content-Type': contentType },
       body,
     });
     const data = await resp.json();
