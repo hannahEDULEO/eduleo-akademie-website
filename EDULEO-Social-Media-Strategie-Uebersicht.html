@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EDULEO Social Media Strategie – Übersicht</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#D2EADA; --green-dark:#5A9E7A; --green-deeper:#2C6E4E;
+    --mauve:#C4A092; --beige:#EDE6E2; --beige-dark:#CEC5BF;
+    --dark:#261D18; --text-light:#7A6860; --white:#FFFFFF; --off-white:#FAF7F5; --border:#D8CEC8;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Nunito',system-ui,sans-serif;color:var(--dark);background:var(--off-white);line-height:1.6;}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 32px;}
+
+  .hero{background:var(--dark);color:#fff;padding:64px 0 56px;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:-80px;right:-80px;width:340px;height:340px;border-radius:50%;background:rgba(210,234,218,0.08);}
+  .hero::after{content:'';position:absolute;bottom:-60px;left:-60px;width:220px;height:220px;border-radius:50%;background:rgba(196,160,146,0.08);}
+  .hero-inner{position:relative;z-index:1;}
+  .eyebrow{display:inline-block;background:rgba(210,234,218,0.15);color:var(--green);border:1px solid rgba(210,234,218,0.35);border-radius:50px;padding:6px 18px;font-size:0.78rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:20px;}
+  .hero h1{font-size:2.6rem;font-weight:900;margin:0 0 12px;line-height:1.15;}
+  .hero p{color:rgba(255,255,255,0.65);font-size:1.05rem;margin:0;max-width:600px;}
+  .hero-line{width:56px;height:4px;background:var(--green-dark);border-radius:2px;margin-top:26px;}
+
+  section{padding:52px 0;}
+  section.alt{background:var(--white);}
+  h2.sec-title{font-size:1.6rem;font-weight:900;margin:0 0 8px;color:var(--dark);}
+  p.sec-sub{color:var(--text-light);font-size:0.95rem;margin:0 0 32px;max-width:640px;}
+
+  .saeulen-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .saeule-card{border-radius:24px;padding:28px 26px;color:#fff;}
+  .saeule-card.s1{background:var(--mauve);}
+  .saeule-card.s2{background:var(--green-dark);}
+  .saeule-card.s3{background:var(--dark);}
+  .saeule-num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.22);font-weight:900;font-size:0.95rem;margin-bottom:16px;}
+  .saeule-card h3{font-size:1.15rem;font-weight:900;margin:0 0 10px;}
+  .saeule-card p{font-size:0.88rem;color:rgba(255,255,255,0.85);margin:0 0 16px;line-height:1.65;}
+  .saeule-tags{display:flex;flex-wrap:wrap;gap:6px;}
+  .saeule-tags span{background:rgba(255,255,255,0.16);border-radius:20px;padding:4px 12px;font-size:0.74rem;font-weight:700;}
+
+  .funnel{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;}
+  .funnel-step{flex:1;min-width:150px;background:var(--white);border:1px solid var(--border);border-radius:18px;padding:20px 18px;text-align:center;position:relative;}
+  .funnel-step .fnum{width:30px;height:30px;border-radius:50%;background:var(--green-dark);color:#fff;font-weight:900;font-size:0.85rem;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;}
+  .funnel-step h4{font-size:0.92rem;font-weight:800;margin:0 0 6px;color:var(--dark);}
+  .funnel-step p{font-size:0.8rem;color:var(--text-light);margin:0;line-height:1.5;}
+  .funnel-arrow{display:flex;align-items:center;justify-content:center;width:32px;color:var(--beige-dark);font-size:1.4rem;font-weight:900;flex-shrink:0;}
+  .no-link{margin-top:22px;background:#FBEAEA;border:1px solid #EFC9C9;border-radius:14px;padding:14px 20px;font-size:0.86rem;color:#8B2E2E;font-weight:700;text-align:center;}
+
+  .rhythmus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .rhythmus-card{background:var(--beige);border-radius:20px;padding:24px 22px;}
+  .rhythmus-card .big{font-size:1.9rem;font-weight:900;color:var(--green-deeper);line-height:1;margin-bottom:8px;}
+  .rhythmus-card h4{font-size:0.95rem;font-weight:800;margin:0 0 6px;color:var(--dark);}
+  .rhythmus-card p{font-size:0.82rem;color:var(--text-light);margin:0;line-height:1.55;}
+
+  .kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .kpi-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:20px 16px;text-align:center;}
+  .kpi-card h4{font-size:0.82rem;font-weight:800;color:var(--green-deeper);text-transform:uppercase;letter-spacing:0.04em;margin:0 0 8px;}
+  .kpi-card p{font-size:0.78rem;color:var(--text-light);margin:0;line-height:1.5;}
+  .kpi-note{margin-top:20px;background:var(--white);border-left:4px solid var(--green-dark);border-radius:0 14px 14px 0;padding:14px 20px;font-size:0.86rem;color:var(--dark);}
+
+  .rules-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .rule-item{display:flex;gap:14px;background:var(--white);border:1px solid var(--border);border-radius:14px;padding:16px 18px;align-items:flex-start;}
+  .rule-check{width:26px;height:26px;border-radius:50%;background:var(--green);color:var(--green-deeper);font-weight:900;font-size:0.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .rule-item p{margin:0;font-size:0.85rem;color:var(--dark);line-height:1.55;}
+  .rule-item strong{color:var(--green-deeper);}
+
+  .baukasten{display:flex;flex-wrap:wrap;gap:10px;}
+  .baukasten span{background:var(--beige);color:var(--dark);border-radius:20px;padding:8px 16px;font-size:0.8rem;font-weight:700;}
+
+  footer{background:var(--dark);color:rgba(255,255,255,0.6);text-align:center;padding:28px 0;font-size:0.82rem;}
+  footer strong{color:#fff;}
+
+  @media (max-width:800px){
+    .saeulen-grid,.rhythmus-grid,.rules-grid{grid-template-columns:1fr;}
+    .kpi-grid{grid-template-columns:1fr 1fr;}
+    .funnel{flex-direction:column;}
+    .funnel-arrow{transform:rotate(90deg);width:auto;height:32px;}
+    .hero h1{font-size:1.9rem;}
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap hero-inner">
+    <span class="eyebrow">@eduleo_akademie</span>
+    <h1>Social Media Strategie</h1>
+    <p>3-Monats-Testphase · August – Oktober 2026 · Instagram &amp; Pinterest</p>
+    <div class="hero-line"></div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2 class="sec-title">Die 3 Säulen</h2>
+    <p class="sec-sub">Jeder Post gehört zu genau einer Säule. Zusammen bauen sie Vertrauen auf, liefern Mehrwert und führen gezielt zur Buchung.</p>
+    <div class="saeulen-grid">
+      <div class="saeule-card s1">
+        <div class="saeule-num">1</div>
+        <h3>Tägliches Chaos</h3>
+        <p>Persönliche, ehrliche Alltagsmomente aus der Kita. Baut Bindung und Vertrauen auf, aus Kindsicht oder eigener Erfahrung erzählt.</p>
+        <div class="saeule-tags"><span>Reels</span><span>Bindung</span><span>Realtalk</span></div>
+      </div>
+      <div class="saeule-card s2">
+        <div class="saeule-num">2</div>
+        <h3>Wissen</h3>
+        <p>Praktische, save-würdige Fachimpulse für den Kita-Alltag. Positioniert EDULEO als kompetente Wissensquelle.</p>
+        <div class="saeule-tags"><span>Karussells</span><span>Checklisten</span><span>Saves</span></div>
+      </div>
+      <div class="saeule-card s3">
+        <div class="saeule-num">3</div>
+        <h3>Brücke</h3>
+        <p>Führt gezielt zu Blogartikeln und Fortbildungen. Emotionale Hooks, Freebies und Keyword-CTA statt platter Werbung.</p>
+        <div class="saeule-tags"><span>Konversion</span><span>Freebies</span><span>Keyword-CTA</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2 class="sec-title">Der Funnel</h2>
+    <p class="sec-sub">Kein Link in Bio. Jede Konversion läuft über ein Kommentar-Keyword und ManyChat, automatisiert und nachvollziehbar.</p>
+    <div class="funnel">
+      <div class="funnel-step"><div class="fnum">1</div><h4>Feed-Post</h4><p>Reel, Karussell oder Pin mit klarem CTA</p></div>
+      <div class="funnel-arrow">→</div>
+      <div class="funnel-step"><div class="fnum">2</div><h4>Keyword-Kommentar</h4><p>z. B. "AUTISMUS", "INFO" oder ein Emoji</p></div>
+      <div class="funnel-arrow">→</div>
+      <div class="funnel-step"><div class="fnum">3</div><h4>ManyChat-Automation</h4><p>Automatische Antwort + Opening-DM</p></div>
+      <div class="funnel-arrow">→</div>
+      <div class="funnel-step"><div class="fnum">4</div><h4>Freebie / Link</h4><p>Checkliste, Poster oder Fortbildungs-Link</p></div>
+      <div class="funnel-arrow">→</div>
+      <div class="funnel-step"><div class="fnum">5</div><h4>Buchung</h4><p>Direkt über SimplyOrg, inkl. Bring-a-Friend</p></div>
+    </div>
+    <div class="no-link">Ausnahme: In Stories sind direkte Link-Sticker erlaubt, im Feed nie "Link in Bio"</div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="sec-title">Content-Rhythmus</h2>
+    <p class="sec-sub">Feste Taktung für Feed-Content, flexible Story-Begleitung an jedem Tag dazwischen.</p>
+    <div class="rhythmus-grid">
+      <div class="rhythmus-card">
+        <div class="big">~2 Tage</div>
+        <h4>Feed-Post-Takt</h4>
+        <p>Reel, Karussell oder Pin, abwechselnd über alle 3 Säulen verteilt</p>
+      </div>
+      <div class="rhythmus-card">
+        <div class="big">3–7x</div>
+        <h4>Stories pro Tag</h4>
+        <p>13 wiederkehrende Formate im Story-Baukasten, inkl. mind. 1 Bindungsmoment</p>
+      </div>
+      <div class="rhythmus-card">
+        <div class="big">1x / Monat</div>
+        <h4>Reel-Drehtag</h4>
+        <p>Freitags, mind. 5 Tage vor dem ersten Reel des Monats, automatisch eingeplant</p>
+      </div>
+    </div>
+    <p class="sec-sub" style="margin-top:28px;margin-bottom:12px;">Story-Baukasten (Auswahl):</p>
+    <div class="baukasten">
+      <span>Fortbildungs-Tag</span><span>Frag-mich-was</span><span>Umfrage</span><span>Countdown</span>
+      <span>Feedback-Repost</span><span>Persönlicher Moment</span><span>Behind-the-Scenes</span>
+      <span>Dozentinnen-Spotlight</span><span>Hündin-Moment</span><span>Feierabend-Realtalk</span>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2 class="sec-title">Erfolgsmessung</h2>
+    <p class="sec-sub">Montags 10 Minuten Zahlen eintragen, am 28.09. große Auswertung inkl. zweiter Konkurrenzanalyse.</p>
+    <div class="kpi-grid">
+      <div class="kpi-card"><h4>Reichweite</h4><p>Aus Instagram-Insights pro Post</p></div>
+      <div class="kpi-card"><h4>Saves</h4><p>Wichtigstes Signal bei Wissen-Posts</p></div>
+      <div class="kpi-card"><h4>Kommentare</h4><p>Vor-Conversion bei Brücke-Posts</p></div>
+      <div class="kpi-card"><h4>Keyword-Klicks</h4><p>Aus ManyChat-Automation-Analytics</p></div>
+    </div>
+    <div class="kpi-note">Auswertung zeigt, welche Säule und welches Format wirklich zieht, Grundlage für die Planung ab November.</div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="sec-title">Die wichtigsten Regeln</h2>
+    <div class="rules-grid">
+      <div class="rule-item"><div class="rule-check">✓</div><p><strong>Nie "Link in Bio"</strong> im Feed, immer Kommentar-Keyword oder Story-Link-Sticker.</p></div>
+      <div class="rule-item"><div class="rule-check">✓</div><p><strong>Vergleichstabellen</strong> in Blogartikeln einbauen, ranken nachweislich gut.</p></div>
+      <div class="rule-item"><div class="rule-check">✓</div><p><strong>Alltagssprache</strong> in Story-Skripten, so wie Hannah wirklich spricht.</p></div>
+      <div class="rule-item"><div class="rule-check">✓</div><p>Mind. <strong>1 Bindungsmoment</strong> pro Story-Sequenz, persönlich statt nur werblich.</p></div>
+      <div class="rule-item"><div class="rule-check">✓</div><p>Hooks bewusst <strong>provokant oder emotional</strong>, nie generisch-erklärend.</p></div>
+      <div class="rule-item"><div class="rule-check">✓</div><p>Immer <strong>5 Hashtags</strong> pro Post, direkt im Caption-Feld nach dem Text.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <strong>EDULEO Akademie</strong> · Social Media Strategie · Stand Juli 2026
+</footer>
+
+</body>
+</html>
