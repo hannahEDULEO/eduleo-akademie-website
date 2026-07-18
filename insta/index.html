@@ -31,7 +31,44 @@
     }
 
     .ip-logo { margin-bottom: 1.75rem; }
+    .ip-logo a {
+      display: inline-block;
+      background: #fff;
+      border-radius: 14px;
+      padding: 6px 10px;
+      box-shadow: 0 1px 6px rgba(38,29,24,0.10);
+    }
     .ip-logo img { height: 38px; width: auto; display: block; }
+
+    .ip-sub-buttons {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: -0.3rem;
+      padding-left: 0.75rem;
+    }
+    .ip-btn-sub {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 46px;
+      padding: 11px 18px;
+      border-radius: 100px;
+      font-family: var(--font);
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+      line-height: 1.3;
+      background: rgba(90,158,122,0.15);
+      color: var(--green-deeper);
+      border: 2px solid var(--green-dark);
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .ip-btn-sub:hover { background: rgba(90,158,122,0.25); transform: translateY(-1px); }
+    .ip-btn-sub:focus-visible { outline: 3px solid var(--green-dark); outline-offset: 3px; }
 
     /* PROFILFOTO – gleiche Datei wie Instagram-Profilfoto.
        Dateiname unten in src anpassen wenn nötig. */
@@ -139,6 +176,24 @@
       </a>
       <!-- ════════════════════════════════════════════ -->
 
+      <div class="ip-sub-buttons">
+        <a href="../fortbildungen/leitung-vorschule/?utm_source=instagram&utm_medium=bio&utm_campaign=linkseite&utm_content=aug-leitung"
+           class="ip-btn-sub"
+           onclick="gtag('event','insta_link_click',{link:'aug-leitung'})">
+          Leitung der Vorschule
+        </a>
+        <a href="../fortbildungen/digitale-medien-beauftragte-kita/?utm_source=instagram&utm_medium=bio&utm_campaign=linkseite&utm_content=aug-digital"
+           class="ip-btn-sub"
+           onclick="gtag('event','insta_link_click',{link:'aug-digital'})">
+          Digitale Medienbeauftragte
+        </a>
+        <a href="../fortbildungen/kinderschutz-koordinatorin-kita/?utm_source=instagram&utm_medium=bio&utm_campaign=linkseite&utm_content=aug-kinderschutz"
+           class="ip-btn-sub"
+           onclick="gtag('event','insta_link_click',{link:'aug-kinderschutz'})">
+          KinderschutzkoordinatorIn
+        </a>
+      </div>
+
       <a
         href="../fortbildungen/?utm_source=instagram&utm_medium=bio&utm_campaign=linkseite&utm_content=fortbildungen"
         class="ip-btn ip-btn-primary"
@@ -146,15 +201,12 @@
         🎓 Alle Fortbildungen & Termine
       </a>
 
-      <!-- FREEBIE – auskommentiert bis Freebie bereit ist.
-           href + Linktext eintragen und Kommentarklammern entfernen.
       <a
-        href="../freebie/?utm_source=instagram&utm_medium=bio&utm_campaign=linkseite&utm_content=freebie"
+        href="../freebies/?utm_source=instagram&utm_medium=bio&utm_campaign=linkseite&utm_content=freebies"
         class="ip-btn ip-btn-primary"
-        onclick="gtag('event','insta_link_click',{link:'freebie'})">
-        🎁 Gratis-Download: [Freebie-Titel]
+        onclick="gtag('event','insta_link_click',{link:'freebies'})">
+        🎁 Gratis-Downloads für dich
       </a>
-      -->
 
       <a
         href="../bring-a-friend/?utm_source=instagram&utm_medium=bio&utm_campaign=linkseite&utm_content=bring-a-friend"
@@ -179,7 +231,6 @@
   </footer>
 
   <script src="../main.js"></script>
-  <script src="../chatbot.js"></script>
 
 </body>
 </html>
