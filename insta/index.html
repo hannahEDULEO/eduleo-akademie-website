@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EDULEO Akademie – Alles auf einen Blick</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="../assets/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon-6/apple-touch-icon-180x180.png">
+  <link rel="stylesheet" href="../style.css">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6R6TGSJM8P"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-6R6TGSJM8P');
+  </script>
+
+  <style>
+    body { background: var(--beige); min-height: 100vh; }
+
+    .ip-wrap {
+      max-width: 460px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .ip-logo { margin-bottom: 1.75rem; }
+    .ip-logo img { height: 38px; width: auto; display: block; }
+
+    /* PROFILFOTO – gleiche Datei wie Instagram-Profilfoto.
+       Dateiname unten in src anpassen wenn nötig. */
+    .ip-avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 3px solid #fff;
+      box-shadow: 0 3px 14px rgba(38,29,24,0.13);
+      margin-bottom: 1rem;
+    }
+
+    .ip-greeting {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--dark);
+      text-align: center;
+      margin: 0 0 2rem;
+      line-height: 1.55;
+    }
+
+    .ip-buttons {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .ip-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 54px;
+      padding: 14px 20px;
+      border-radius: 100px;
+      font-family: var(--font);
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+      line-height: 1.3;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .ip-btn:hover  { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(38,29,24,0.15); }
+    .ip-btn:active { transform: translateY(0); }
+    .ip-btn:focus-visible { outline: 3px solid var(--green-dark); outline-offset: 3px; }
+
+    .ip-btn-seasonal {
+      background: var(--green-dark);
+      color: #fff;
+      box-shadow: 0 2px 10px rgba(90,158,122,0.28);
+    }
+
+    .ip-btn-primary {
+      background: var(--dark);
+      color: #fff;
+    }
+
+    .ip-footer {
+      margin-top: 2.5rem;
+      padding-bottom: 2rem;
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+    .ip-footer a {
+      font-size: 0.78rem;
+      color: rgba(38,29,24,0.45);
+      text-decoration: none;
+    }
+    .ip-footer a:hover { color: var(--dark); text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <div class="ip-wrap">
+
+    <div class="ip-logo">
+      <a href="../" aria-label="EDULEO Akademie – Startseite">
+        <img src="../assets/images/logo.png" alt="EDULEO Akademie">
+      </a>
+    </div>
+
+    <img
+      src="../assets/teaem.png"
+      alt="Janine und Hannah von EDULEO Akademie"
+      class="ip-avatar">
+
+    <p class="ip-greeting">Schön, dass du da bist!<br>Hier findest du alles auf einen Blick.</p>
+
+    <div class="ip-buttons">
+
+      <!-- ════════════════════════════════════════════
+           SAISONALER SLOT – Text + href hier anpassen.
+           Ausblenden: style="display:none" ergänzen.
+           ════════════════════════════════════════════ -->
+      <a
+        href="../fortbildungen/?utm_source=instagram&utm_medium=bio&utm_campaign=linkseite&utm_content=saison-august"
+        class="ip-btn ip-btn-seasonal"
+        onclick="gtag('event','insta_link_click',{link:'saison-august'})">
+        🚀 3 Fortbildungen starten im August
+      </a>
+      <!-- ════════════════════════════════════════════ -->
+
+      <a
+        href="../fortbildungen/?utm_source=instagram&utm_medium=bio&utm_campaign=linkseite&utm_content=fortbildungen"
+        class="ip-btn ip-btn-primary"
+        onclick="gtag('event','insta_link_click',{link:'fortbildungen'})">
+        🎓 Alle Fortbildungen & Termine
+      </a>
+
+      <!-- FREEBIE – auskommentiert bis Freebie bereit ist.
+           href + Linktext eintragen und Kommentarklammern entfernen.
+      <a
+        href="../freebie/?utm_source=instagram&utm_medium=bio&utm_campaign=linkseite&utm_content=freebie"
+        class="ip-btn ip-btn-primary"
+        onclick="gtag('event','insta_link_click',{link:'freebie'})">
+        🎁 Gratis-Download: [Freebie-Titel]
+      </a>
+      -->
+
+      <a
+        href="../bring-a-friend/?utm_source=instagram&utm_medium=bio&utm_campaign=linkseite&utm_content=bring-a-friend"
+        class="ip-btn ip-btn-primary"
+        onclick="gtag('event','insta_link_click',{link:'bring-a-friend'})">
+        👯 Zu zweit sparen – 2. Person gratis bei allen 3-Monats-Kursen
+      </a>
+
+      <a
+        href="../?utm_source=instagram&utm_medium=bio&utm_campaign=linkseite&utm_content=kontakt#kontakt"
+        class="ip-btn ip-btn-primary"
+        onclick="gtag('event','insta_link_click',{link:'kontakt'})">
+        📬 Fragen? Schreib uns
+      </a>
+
+    </div>
+  </div>
+
+  <footer class="ip-footer">
+    <a href="../impressum.html">Impressum</a>
+    <a href="../datenschutz.html">Datenschutz</a>
+  </footer>
+
+  <script src="../main.js"></script>
+  <script src="../chatbot.js"></script>
+
+</body>
+</html>
