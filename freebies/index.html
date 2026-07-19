@@ -301,7 +301,7 @@
             gtag('event', 'freebie_signup', { freebie: freebie });
           } else {
             msg.className = 'fp-msg error';
-            msg.textContent = 'Fehler: ' + (data.msg || 'Unbekannt');
+            msg.textContent = 'Etwas ist schiefgelaufen. Bitte versuch es noch einmal oder schreib uns: kontakt@eduleo-akademie.de';
           }
         } catch(err) {
           msg.className = 'fp-msg error';
