@@ -4,3 +4,11 @@ compatibility_date = "2024-09-23"
 
 [assets]
 directory = "."
+
+# Brevo Freebie-Anmeldung
+# Diese beiden IDs nach Brevo-Setup eintragen (nicht sensibel, kein Secret nötig):
+[vars]
+BREVO_FREEBIE_LIST_ID = "12"
+BREVO_DOI_TEMPLATE_ID = "15"
+# Den API-Key NICHT hier eintragen – stattdessen einmalig im Terminal ausführen:
+# npx wrangler secret put BREVO_API_KEY

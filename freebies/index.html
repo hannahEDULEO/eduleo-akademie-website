@@ -22,131 +22,126 @@
     body { background: var(--beige); min-height: 100vh; }
 
     .fp-wrap {
-      max-width: 520px;
+      max-width: 560px;
       margin: 0 auto;
       padding: 2.5rem 1.25rem 3rem;
     }
 
-    .fp-logo {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 2rem;
-    }
+    .fp-logo { display: flex; justify-content: center; margin-bottom: 2rem; }
     .fp-logo a {
-      display: inline-block;
-      background: #fff;
-      border-radius: 14px;
-      padding: 6px 10px;
-      box-shadow: 0 1px 6px rgba(38,29,24,0.10);
+      display: inline-block; background: #fff; border-radius: 14px;
+      padding: 6px 10px; box-shadow: 0 1px 6px rgba(38,29,24,0.10);
     }
     .fp-logo img { height: 38px; width: auto; display: block; }
 
-    .fp-header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    .fp-header h1 {
-      font-size: clamp(1.3rem, 5vw, 1.7rem);
-      font-weight: 800;
-      color: var(--dark);
-      margin: 0 0 0.6rem;
-    }
-    .fp-header p {
-      font-size: 0.95rem;
-      color: var(--text);
-      margin: 0;
-      line-height: 1.6;
-    }
+    .fp-header { text-align: center; margin-bottom: 2rem; }
+    .fp-header h1 { font-size: clamp(1.3rem, 5vw, 1.7rem); font-weight: 800; color: var(--dark); margin: 0 0 0.6rem; }
+    .fp-header p  { font-size: 0.95rem; color: var(--text); margin: 0; line-height: 1.6; }
 
-    .fp-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
+    .fp-grid { display: flex; flex-direction: column; gap: 1.25rem; }
 
+    /* ── Karte ── */
     .fp-card {
       background: #fff;
-      border-radius: 16px;
-      padding: 1.25rem 1.5rem;
+      border-radius: 18px;
+      padding: 1.25rem 1.5rem 1.4rem;
+      box-shadow: 0 2px 12px rgba(38,29,24,0.07);
+    }
+
+    .fp-card-top {
       display: flex;
       align-items: center;
-      gap: 1.1rem;
-      box-shadow: 0 2px 10px rgba(38,29,24,0.07);
-      text-decoration: none;
-      color: var(--dark);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      gap: 1rem;
+      margin-bottom: 1.1rem;
     }
-    .fp-card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(38,29,24,0.12); }
-    .fp-card:focus-visible { outline: 3px solid var(--green-dark); outline-offset: 3px; }
-
     .fp-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      background: var(--green);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      flex-shrink: 0;
+      width: 48px; height: 48px; border-radius: 12px; background: var(--green);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; flex-shrink: 0;
     }
-
     .fp-card-text { flex: 1; min-width: 0; }
-    .fp-card-title {
-      font-size: 0.95rem;
-      font-weight: 800;
-      color: var(--dark);
-      margin: 0 0 0.2rem;
-      line-height: 1.3;
-    }
-    .fp-card-desc {
-      font-size: 0.82rem;
-      color: rgba(38,29,24,0.6);
-      margin: 0;
-      line-height: 1.4;
+    .fp-card-title { font-size: 0.97rem; font-weight: 800; color: var(--dark); margin: 0 0 0.2rem; line-height: 1.3; }
+    .fp-card-desc  { font-size: 0.82rem; color: rgba(38,29,24,0.6); margin: 0; line-height: 1.4; }
+    .fp-badge {
+      font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em;
+      color: var(--green-deeper); background: var(--green); border-radius: 20px;
+      padding: 3px 9px; white-space: nowrap; flex-shrink: 0; align-self: flex-start;
     }
 
-    .fp-badge {
-      font-size: 0.72rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--green-deeper);
-      background: var(--green);
-      border-radius: 20px;
-      padding: 3px 9px;
+    /* ── Formular ── */
+    .fp-form { display: flex; flex-direction: column; gap: 0.65rem; }
+
+    .fp-form-row {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .fp-form-row input[type="email"] {
+      flex: 1;
+      padding: 11px 14px;
+      border: 2px solid var(--beige-dark);
+      border-radius: 100px;
+      font-family: var(--font);
+      font-size: 0.9rem;
+      color: var(--dark);
+      background: var(--beige);
+      outline: none;
+      transition: border-color 0.2s;
+      min-width: 0;
+    }
+    .fp-form-row input[type="email"]:focus { border-color: var(--green-dark); }
+    .fp-form-row button {
+      padding: 11px 18px;
+      border-radius: 100px;
+      border: none;
+      background: var(--green-dark);
+      color: #fff;
+      font-family: var(--font);
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
       white-space: nowrap;
+      transition: opacity 0.2s, transform 0.15s;
       flex-shrink: 0;
     }
+    .fp-form-row button:hover   { opacity: 0.88; transform: translateY(-1px); }
+    .fp-form-row button:active  { transform: scale(0.97); }
+    .fp-form-row button:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
 
-    /* NEU-Badge für frisch hinzugefügte Freebies */
-    .fp-badge-new {
-      background: var(--mauve-light);
-      color: var(--mauve-dark);
-    }
-
-    .fp-divider {
-      text-align: center;
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: rgba(38,29,24,0.35);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin: 0.5rem 0 0.25rem;
-    }
-
-    .fp-footer {
-      margin-top: 2.5rem;
-      padding-bottom: 1rem;
+    .fp-consent {
       display: flex;
-      gap: 1.5rem;
-      justify-content: center;
-    }
-    .fp-footer a {
+      align-items: flex-start;
+      gap: 0.6rem;
       font-size: 0.78rem;
-      color: rgba(38,29,24,0.40);
-      text-decoration: none;
+      color: rgba(38,29,24,0.65);
+      line-height: 1.5;
+      cursor: pointer;
     }
+    .fp-consent input[type="checkbox"] {
+      margin-top: 2px;
+      flex-shrink: 0;
+      width: 15px;
+      height: 15px;
+      accent-color: var(--green-dark);
+      cursor: pointer;
+    }
+    .fp-consent a { color: var(--green-dark); }
+
+    .fp-msg {
+      font-size: 0.85rem;
+      padding: 10px 14px;
+      border-radius: 10px;
+      line-height: 1.5;
+      display: none;
+    }
+    .fp-msg.success { background: var(--green); color: var(--green-deeper); display: block; }
+    .fp-msg.error   { background: #fde8e8; color: #8b2020; display: block; }
+
+    /* ── Footer ── */
+    .fp-footer {
+      margin-top: 2.5rem; padding-bottom: 1rem;
+      display: flex; gap: 1.5rem; justify-content: center;
+    }
+    .fp-footer a { font-size: 0.78rem; color: rgba(38,29,24,0.40); text-decoration: none; }
     .fp-footer a:hover { color: var(--dark); text-decoration: underline; }
   </style>
 </head>
@@ -161,73 +156,110 @@
     </div>
 
     <div class="fp-header">
-      <h1>🎁 Gratis-Downloads</h1>
-      <p>Alles kostenlos, direkt nutzbar. Kein Login, kein Schnickschnack.</p>
+      <h1>🎁 Freebies für dich</h1>
+      <p>Trag deine E-Mail ein und bekomme das Freebie direkt in dein Postfach.<br>Plus: Praxisimpulse und Fortbildungs-Infos aus der EDULEO Akademie.</p>
     </div>
 
     <div class="fp-grid">
 
-      <!-- ══════════════════════════════════════════
-           FREEBIES HIER EINTRAGEN:
-           fp-card-link = Pfad zur PDF-Datei
-           fp-icon = Emoji passend zum Thema
-           fp-card-title = Titel des Freebies
-           fp-card-desc = 1 Satz Beschreibung
-           fp-badge = Themen-Label (z.B. "Vorschule", "Kita Alltag")
-           Neue Einträge ganz oben einfügen.
-           ══════════════════════════════════════════ -->
+      <!-- ══════════════════════════════════════════════════
+           FREEBIE HINZUFÜGEN:
+           1. fp-card-top: Icon, Titel, Beschreibung, Badge anpassen
+           2. data-freebie: eindeutiger Slug (z.B. "mein-freebie")
+           3. Neue Karte ganz oben einfügen
+           ══════════════════════════════════════════════════ -->
 
-      <a href="../assets/downloads/checkliste-schulbereit.pdf"
-         class="fp-card"
-         download
-         onclick="gtag('event','freebie_download',{name:'checkliste-schulbereit'})">
-        <div class="fp-icon">✅</div>
-        <div class="fp-card-text">
-          <p class="fp-card-title">Checkliste: Ist mein Kind schulbereit?</p>
-          <p class="fp-card-desc">Übersichtliche Checkliste für Elterngespräche und Vorschularbeit</p>
+      <div class="fp-card">
+        <div class="fp-card-top">
+          <div class="fp-icon">✅</div>
+          <div class="fp-card-text">
+            <p class="fp-card-title">Checkliste: Ist mein Kind schulbereit?</p>
+            <p class="fp-card-desc">Übersichtliche Checkliste für Elterngespräche und Vorschularbeit</p>
+          </div>
+          <span class="fp-badge">Vorschule</span>
         </div>
-        <span class="fp-badge">Vorschule</span>
-      </a>
+        <form class="fp-form" data-freebie="checkliste-schulbereit">
+          <div class="fp-form-row">
+            <input type="email" placeholder="deine@email.de" required>
+            <button type="submit">Kostenlos erhalten</button>
+          </div>
+          <label class="fp-consent">
+            <input type="checkbox" required>
+            <span>Ja, ich möchte den EDULEO-Newsletter mit Praxisimpulsen und Fortbildungs-Infos erhalten und bekomme das PDF als Dankeschön direkt in mein Postfach. Abmeldung jederzeit mit einem Klick möglich. Hinweise zum Datenschutz findest du <a href="../datenschutz.html">hier</a>.</span>
+          </label>
+          <p class="fp-msg"></p>
+        </form>
+      </div>
 
-      <a href="../assets/blog/eingewoehnung/eingewoehnungs-poster.pdf"
-         class="fp-card"
-         download
-         onclick="gtag('event','freebie_download',{name:'eingewoehnungs-poster'})">
-        <div class="fp-icon">🤝</div>
-        <div class="fp-card-text">
-          <p class="fp-card-title">Eingewöhnungs-Poster</p>
-          <p class="fp-card-desc">Zum Aufhängen: Die Phasen der Eingewöhnung auf einen Blick</p>
+      <div class="fp-card">
+        <div class="fp-card-top">
+          <div class="fp-icon">🤝</div>
+          <div class="fp-card-text">
+            <p class="fp-card-title">Eingewöhnungs-Poster</p>
+            <p class="fp-card-desc">Zum Aufhängen: Die Phasen der Eingewöhnung auf einen Blick</p>
+          </div>
+          <span class="fp-badge">Kita Alltag</span>
         </div>
-        <span class="fp-badge">Kita Alltag</span>
-      </a>
+        <form class="fp-form" data-freebie="eingewoehnungs-poster">
+          <div class="fp-form-row">
+            <input type="email" placeholder="deine@email.de" required>
+            <button type="submit">Kostenlos erhalten</button>
+          </div>
+          <label class="fp-consent">
+            <input type="checkbox" required>
+            <span>Ja, ich möchte den EDULEO-Newsletter mit Praxisimpulsen und Fortbildungs-Infos erhalten und bekomme das PDF als Dankeschön direkt in mein Postfach. Abmeldung jederzeit mit einem Klick möglich. Hinweise zum Datenschutz findest du <a href="../datenschutz.html">hier</a>.</span>
+          </label>
+          <p class="fp-msg"></p>
+        </form>
+      </div>
+
+      <div class="fp-card">
+        <div class="fp-card-top">
+          <div class="fp-icon">🧪</div>
+          <div class="fp-card-text">
+            <p class="fp-card-title">Anleitung: Der magische Pfeffertrick</p>
+            <p class="fp-card-desc">Spannendes Experiment für Vorschulkinder, mit Schritt-für-Schritt-Anleitung</p>
+          </div>
+          <span class="fp-badge">Vorschule</span>
+        </div>
+        <form class="fp-form" data-freebie="pfeffertrick-anleitung">
+          <div class="fp-form-row">
+            <input type="email" placeholder="deine@email.de" required>
+            <button type="submit">Kostenlos erhalten</button>
+          </div>
+          <label class="fp-consent">
+            <input type="checkbox" required>
+            <span>Ja, ich möchte den EDULEO-Newsletter mit Praxisimpulsen und Fortbildungs-Infos erhalten und bekomme das PDF als Dankeschön direkt in mein Postfach. Abmeldung jederzeit mit einem Klick möglich. Hinweise zum Datenschutz findest du <a href="../datenschutz.html">hier</a>.</span>
+          </label>
+          <p class="fp-msg"></p>
+        </form>
+      </div>
 
       <!-- ADVENT (aktivieren ab ca. 1. November):
-      <a href="../assets/blog/weihnachten-kita/24-adventskalender-ideen.pdf"
-         class="fp-card"
-         download
-         onclick="gtag('event','freebie_download',{name:'adventskalender-ideen'})">
-        <div class="fp-icon">🎄</div>
-        <div class="fp-card-text">
-          <p class="fp-card-title">24 Adventskalender-Ideen für die Kita</p>
-          <p class="fp-card-desc">Kreative Ideen für den Gruppenraum, sofort umsetzbar</p>
+      <div class="fp-card">
+        <div class="fp-card-top">
+          <div class="fp-icon">🎄</div>
+          <div class="fp-card-text">
+            <p class="fp-card-title">24 Adventskalender-Ideen für die Kita</p>
+            <p class="fp-card-desc">Kreative Ideen für den Gruppenraum, sofort umsetzbar</p>
+          </div>
+          <span class="fp-badge">Kita Alltag</span>
         </div>
-        <span class="fp-badge">Kita Alltag</span>
-      </a>
+        <form class="fp-form" data-freebie="adventskalender-ideen">
+          <div class="fp-form-row">
+            <input type="email" placeholder="deine@email.de" required>
+            <button type="submit">Kostenlos erhalten</button>
+          </div>
+          <label class="fp-consent">
+            <input type="checkbox" required>
+            <span>Ja, ich möchte den EDULEO-Newsletter mit Praxisimpulsen und Fortbildungs-Infos erhalten und bekomme das PDF als Dankeschön direkt in mein Postfach. Abmeldung jederzeit mit einem Klick möglich. Hinweise zum Datenschutz findest du <a href="../datenschutz.html">hier</a>.</span>
+          </label>
+          <p class="fp-msg"></p>
+        </form>
+      </div>
       -->
 
-      <a href="../assets/blog/pfeffertrick/anleitung.pdf"
-         class="fp-card"
-         download
-         onclick="gtag('event','freebie_download',{name:'pfeffertrick-anleitung'})">
-        <div class="fp-icon">🧪</div>
-        <div class="fp-card-text">
-          <p class="fp-card-title">Anleitung: Der magische Pfeffertrick</p>
-          <p class="fp-card-desc">Spannendes Experiment für Vorschulkinder, mit Schritt-für-Schritt-Anleitung</p>
-        </div>
-        <span class="fp-badge">Vorschule</span>
-      </a>
-
-      <!-- ══════════════════════════════════════════ -->
+      <!-- ══════════════════════════════════════════════════ -->
 
     </div>
   </div>
@@ -238,7 +270,49 @@
   </footer>
 
   <script src="../main.js"></script>
-  <script src="../chatbot.js"></script>
+  <script>
+    document.querySelectorAll('.fp-form').forEach(function(form) {
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        var freebie  = form.dataset.freebie;
+        var email    = form.querySelector('input[type="email"]').value.trim();
+        var consent  = form.querySelector('input[type="checkbox"]').checked;
+        var btn      = form.querySelector('button');
+        var msg      = form.querySelector('.fp-msg');
+
+        btn.disabled = true;
+        btn.textContent = 'Wird gesendet…';
+        msg.className = 'fp-msg';
+        msg.textContent = '';
+
+        try {
+          var resp = await fetch('/freebie-signup', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email, freebie: freebie, consent: consent }),
+          });
+          var data = await resp.json();
+
+          if (data.ok) {
+            msg.className = 'fp-msg success';
+            msg.textContent = '✅ Fast geschafft! Bitte bestätige deine E-Mail-Adresse – das Freebie schicken wir dir sofort danach zu.';
+            form.querySelector('input[type="email"]').value = '';
+            form.querySelector('input[type="checkbox"]').checked = false;
+            gtag('event', 'freebie_signup', { freebie: freebie });
+          } else {
+            msg.className = 'fp-msg error';
+            msg.textContent = 'Etwas ist schiefgelaufen. Bitte versuch es noch einmal oder schreib uns: kontakt@eduleo-akademie.de';
+          }
+        } catch(err) {
+          msg.className = 'fp-msg error';
+          msg.textContent = 'Keine Verbindung. Bitte prüfe deine Internetverbindung und versuch es noch einmal.';
+        }
+
+        btn.disabled = false;
+        btn.textContent = 'Kostenlos erhalten';
+      });
+    });
+  </script>
 
 </body>
 </html>

@@ -21,6 +21,11 @@ export default {
       return handleSubmit(request);
     }
 
+    // API: Freebie-Anmeldung mit Brevo Double-Opt-In
+    if (path === '/freebie-signup') {
+      return handleFreebieSignup(request, env);
+    }
+
     // API: Termine von SimplyOrg
     if (path === '/api/termine') {
       return handleTermine(url);
@@ -43,6 +48,47 @@ export default {
     return response;
   }
 };
+
+async function handleFreebieSignup(request, env) {
+  const json = { 'Content-Type': 'application/json' };
+
+  if (request.method !== 'POST') {
+    return new Response(JSON.stringify({ ok: false, msg: 'Method not allowed' }), { status: 405, headers: json });
+  }
+
+  try {
+    const { email, freebie, consent } = await request.json();
+
+    if (!email || !freebie || !consent) {
+      return new Response(JSON.stringify({ ok: false, msg: 'Fehlende Angaben.' }), { status: 400, headers: json });
+    }
+
+    const resp = await fetch('https://api.brevo.com/v3/contacts/doubleOptinConfirmation', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': env.BREVO_API_KEY,
+      },
+      body: JSON.stringify({
+        email,
+        includeListIds: [Number(env.BREVO_FREEBIE_LIST_ID)],
+        templateId: Number(env.BREVO_DOI_TEMPLATE_ID),
+        redirectionUrl: 'https://www.eduleo-akademie.de/freebies/bestaetigt/',
+        attributes: { FREEBIE: freebie },
+      }),
+    });
+
+    // 204 = Kontakt existiert bereits und ist bestätigt, trotzdem Erfolg
+    if (resp.status === 204 || resp.ok) {
+      return new Response(JSON.stringify({ ok: true }), { headers: json });
+    }
+
+    const errText = await resp.text();
+    return new Response(JSON.stringify({ ok: false, msg: errText }), { status: 500, headers: json });
+  } catch (e) {
+    return new Response(JSON.stringify({ ok: false, msg: String(e) }), { status: 500, headers: json });
+  }
+}
 
 async function handleSubmit(request) {
   if (request.method !== 'POST') {
