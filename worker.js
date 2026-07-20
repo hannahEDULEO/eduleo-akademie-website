@@ -141,14 +141,16 @@ async function handleFreebieConfirm(request, env) {
 
     // Freebie-Download-E-Mail senden
     const freebieNames = {
-      'checkliste-schulbereit':  'Checkliste: Ist mein Kind schulbereit?',
-      'eingewoehnungs-poster':   'Eingewöhnungs-Poster',
-      'pfeffertrick-anleitung':  'Anleitung: Der magische Pfeffertrick',
+      'checkliste-schulbereit':      'Checkliste: Ist mein Kind schulbereit?',
+      'eingewoehnungs-poster':       'Eingewöhnungs-Poster',
+      'pfeffertrick-anleitung':      'Anleitung: Der magische Pfeffertrick',
+      'sprachentwicklung-im-blick':  'Sprachentwicklung im Blick',
     };
     const freebiePdfs = {
-      'checkliste-schulbereit':  'https://www.eduleo-akademie.de/assets/downloads/checkliste-schulbereit.pdf',
-      'eingewoehnungs-poster':   'https://www.eduleo-akademie.de/assets/blog/eingewoehnung/eingewoehnungs-poster.pdf',
-      'pfeffertrick-anleitung':  'https://www.eduleo-akademie.de/assets/blog/pfeffertrick/anleitung.pdf',
+      'checkliste-schulbereit':      'https://www.eduleo-akademie.de/assets/downloads/checkliste-schulbereit.pdf',
+      'eingewoehnungs-poster':       'https://www.eduleo-akademie.de/assets/blog/eingewoehnung/eingewoehnungs-poster.pdf',
+      'pfeffertrick-anleitung':      'https://www.eduleo-akademie.de/assets/blog/pfeffertrick/anleitung.pdf',
+      'sprachentwicklung-im-blick':  'https://www.eduleo-akademie.de/assets/blog/sprachentwicklung/sprachentwicklung-checkliste.pdf',
     };
     const freebieName = freebieNames[freebie] || 'dein Freebie';
     const pdfUrl = freebiePdfs[freebie];
