@@ -31,6 +31,16 @@ export default {
       return handleFreebieConfirm(request, env);
     }
 
+    // API: Newsletter-Anmeldung (DOI)
+    if (path === '/newsletter-signup') {
+      return handleNewsletterSignup(request, env);
+    }
+
+    // API: Newsletter-Bestätigung (DOI-Link aus E-Mail)
+    if (path === '/newsletter-confirm') {
+      return handleNewsletterConfirm(request, env);
+    }
+
     // API: Termine von SimplyOrg
     if (path === '/api/termine') {
       return handleTermine(url);
@@ -167,6 +177,82 @@ async function handleFreebieConfirm(request, env) {
         }),
       });
     }
+
+    return Response.redirect(success, 302);
+  } catch (e) {
+    return Response.redirect(success, 302);
+  }
+}
+
+async function handleNewsletterSignup(request, env) {
+  const json = { 'Content-Type': 'application/json' };
+  if (request.method !== 'POST') {
+    return new Response(JSON.stringify({ ok: false, msg: 'Method not allowed' }), { status: 405, headers: json });
+  }
+  try {
+    const { email, consent } = await request.json();
+    if (!email || !consent) {
+      return new Response(JSON.stringify({ ok: false, msg: 'Fehlende Angaben.' }), { status: 400, headers: json });
+    }
+    const timestamp = Date.now();
+    const data = `${email}|newsletter|${timestamp}`;
+    const sig = await signHmac(data, env.DOI_HMAC_SECRET);
+    const token = encodeURIComponent(btoa(data) + '.' + sig);
+    const confirmUrl = `https://www.eduleo-akademie.de/newsletter-confirm?t=${token}`;
+
+    const emailResp = await fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'api-key': env.BREVO_API_KEY },
+      body: JSON.stringify({
+        sender: { name: 'EDULEO Akademie', email: 'neuigkeiten@eduleo-akademie.de' },
+        to: [{ email }],
+        subject: 'Bitte bestätige deine Newsletter-Anmeldung',
+        htmlContent: `<!DOCTYPE html><html lang="de"><body style="margin:0;padding:0;background:#f5f0eb;font-family:sans-serif;"><div style="max-width:560px;margin:40px auto;background:#fff;border-radius:18px;padding:40px 32px;box-shadow:0 2px 12px rgba(38,29,24,0.08);"><p style="margin:0 0 16px;font-size:15px;color:#3d3026;line-height:1.6;">Hallo,</p><p style="margin:0 0 24px;font-size:15px;color:#3d3026;line-height:1.6;">du hast dich für den Newsletter der EDULEO Akademie angemeldet. Klick auf den Button um deine E-Mail-Adresse zu bestätigen:</p><a href="${confirmUrl}" style="display:inline-block;padding:14px 32px;background:#4a7c3f;color:#fff;text-decoration:none;border-radius:100px;font-weight:700;font-size:15px;">Jetzt bestätigen</a><p style="margin:32px 0 0;font-size:13px;color:rgba(61,48,38,0.45);line-height:1.5;">Der Link ist 48 Stunden gültig. Falls du dich nicht angemeldet hast, kannst du diese E-Mail einfach ignorieren.<br>Du kannst dich jederzeit wieder abmelden.</p></div></body></html>`,
+      }),
+    });
+
+    if (!emailResp.ok) {
+      const errText = await emailResp.text();
+      return new Response(JSON.stringify({ ok: false, msg: errText }), { status: 500, headers: json });
+    }
+    return new Response(JSON.stringify({ ok: true }), { headers: json });
+  } catch (e) {
+    return new Response(JSON.stringify({ ok: false, msg: String(e) }), { status: 500, headers: json });
+  }
+}
+
+async function handleNewsletterConfirm(request, env) {
+  const url = new URL(request.url);
+  const token = url.searchParams.get('t');
+  const success = 'https://www.eduleo-akademie.de/newsletter/bestaetigt/';
+  const error   = 'https://www.eduleo-akademie.de/?newsletter=fehler';
+
+  if (!token) return Response.redirect(success, 302);
+
+  try {
+    const dotIdx = token.lastIndexOf('.');
+    if (dotIdx === -1) return Response.redirect(error, 302);
+
+    const encoded = token.slice(0, dotIdx);
+    const sig     = token.slice(dotIdx + 1);
+    const data    = atob(encoded);
+
+    const expectedSig = await signHmac(data, env.DOI_HMAC_SECRET);
+    if (sig !== expectedSig) return Response.redirect(error, 302);
+
+    const parts = data.split('|');
+    if (parts.length !== 3 || parts[1] !== 'newsletter') return Response.redirect(error, 302);
+    const [email, , timestamp] = parts;
+
+    if (Date.now() - Number(timestamp) > 48 * 60 * 60 * 1000) {
+      return Response.redirect(error, 302);
+    }
+
+    await fetch('https://api.brevo.com/v3/contacts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'api-key': env.BREVO_API_KEY },
+      body: JSON.stringify({ email, listIds: [13], updateEnabled: true }),
+    });
 
     return Response.redirect(success, 302);
   } catch (e) {
