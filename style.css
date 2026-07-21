@@ -714,10 +714,10 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 .footer-social { display: flex; gap: 10px; }
 .footer-social-link {
   width: 38px; height: 38px; border-radius: var(--radius-full);
-  background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center;
+  background: var(--green-dark); display: flex; align-items: center; justify-content: center;
   font-size: 1rem; transition: background var(--transition);
 }
-.footer-social-link:hover { background: var(--green-dark); }
+.footer-social-link:hover { background: var(--green-deeper); }
 
 .footer-col h4 { font-size: 0.82rem; font-weight: 800; letter-spacing: 0.10em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 18px; }
 .footer-col ul { display: flex; flex-direction: column; gap: 10px; }
