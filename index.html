@@ -789,24 +789,39 @@
 </section>
 
 <!-- ── NEWSLETTER ─────────────────────────────── -->
-<section class="section" style="background:var(--beige,#f5f0eb);padding-top:56px;padding-bottom:56px;">
+<style>
+  @keyframes nl-wave {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .nl-section {
+    padding-top: 72px;
+    padding-bottom: 72px;
+    background: linear-gradient(-45deg, #1a6b64, #4aaa9c, #7a4f35, #2d8a7a, #a07248, #1a6b64);
+    background-size: 500% 500%;
+    animation: nl-wave 14s ease infinite;
+    position: relative;
+  }
+</style>
+<section class="nl-section">
   <div class="container">
     <div style="max-width:560px;margin:0 auto;text-align:center;">
-      <span class="section-label">Newsletter</span>
-      <h2 style="margin:0.75rem 0 0.75rem;">Bleib auf dem Laufenden</h2>
-      <p style="color:var(--text);line-height:1.7;margin:0 0 2rem;">Praxistipps für den Kita-Alltag, neue Fortbildungen und Infos rund um pädagogische Themen – direkt in dein Postfach. Kein Spam, jederzeit abmeldbar.</p>
+      <span class="section-label" style="background:rgba(255,255,255,0.18);color:#fff;border:1px solid rgba(255,255,255,0.3);">Newsletter</span>
+      <h2 style="margin:0.75rem 0 0.75rem;color:#fff;">Bleib auf dem Laufenden</h2>
+      <p style="color:rgba(255,255,255,0.88);line-height:1.7;margin:0 0 2rem;">Praxistipps für den Kita-Alltag, neue Fortbildungen und Infos rund um pädagogische Themen – direkt in dein Postfach. Kein Spam, jederzeit abmeldbar.</p>
       <form id="newsletter-form" style="display:flex;flex-direction:column;gap:0.75rem;text-align:left;">
         <input type="email" id="newsletter-email" placeholder="Deine E-Mail-Adresse" required
-          style="padding:14px 18px;border:1.5px solid rgba(61,48,38,0.2);border-radius:100px;font-size:1rem;font-family:inherit;background:#fff;color:var(--dark);outline:none;width:100%;box-sizing:border-box;">
-        <label style="display:flex;gap:10px;align-items:flex-start;font-size:0.875rem;color:var(--text);line-height:1.5;cursor:pointer;">
-          <input type="checkbox" id="newsletter-consent" required style="margin-top:3px;flex-shrink:0;accent-color:var(--green-dark,#4a7c3f);">
-          <span>Ich stimme zu, dass die EDULEO Akademie mir Newsletter per E-Mail sendet. Meine Daten werden via Brevo verarbeitet. Ich kann mich jederzeit abmelden. Weitere Infos in der <a href="datenschutz.html" style="color:inherit;">Datenschutzerklärung</a>.</span>
+          style="padding:14px 18px;border:none;border-radius:100px;font-size:1rem;font-family:inherit;background:rgba(255,255,255,0.95);color:#3d3026;outline:none;width:100%;box-sizing:border-box;">
+        <label style="display:flex;gap:10px;align-items:flex-start;font-size:0.875rem;color:rgba(255,255,255,0.88);line-height:1.5;cursor:pointer;">
+          <input type="checkbox" id="newsletter-consent" required style="margin-top:3px;flex-shrink:0;accent-color:#fff;">
+          <span>Ich stimme zu, dass die EDULEO Akademie mir Newsletter per E-Mail sendet. Meine Daten werden via Brevo verarbeitet. Ich kann mich jederzeit abmelden. Weitere Infos in der <a href="datenschutz.html" style="color:#fff;">Datenschutzerklärung</a>.</span>
         </label>
         <button type="submit" id="newsletter-btn"
-          style="padding:14px 32px;background:var(--green-dark,#4a7c3f);color:#fff;border:none;border-radius:100px;font-weight:700;font-size:1rem;cursor:pointer;font-family:inherit;transition:opacity 0.2s;align-self:center;">
+          style="padding:14px 32px;background:#fff;color:#1a6b64;border:none;border-radius:100px;font-weight:700;font-size:1rem;cursor:pointer;font-family:inherit;transition:opacity 0.2s;align-self:center;">
           Anmelden
         </button>
-        <p id="newsletter-msg" style="text-align:center;font-size:0.9rem;min-height:1.2em;margin:0;"></p>
+        <p id="newsletter-msg" style="text-align:center;font-size:0.9rem;min-height:1.2em;margin:0;color:#fff;"></p>
       </form>
     </div>
   </div>
