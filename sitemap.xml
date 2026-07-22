@@ -213,6 +213,12 @@
 
   <!-- Blogartikel – Slug-basiert -->
   <url>
+    <loc>https://www.eduleo-akademie.de/selbstfuersorge-fuer-erzieherinnen/</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.eduleo-akademie.de/sommerprojekte-f%C3%BCr-die-kita/</loc>
     <lastmod>2026-07-01</lastmod>
     <changefreq>yearly</changefreq>
