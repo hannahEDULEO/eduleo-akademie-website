@@ -18,7 +18,7 @@ export default {
 
     // API: Formular-Proxy (umgeht Firewalls in Behörden-/Schulnetzwerken)
     if (path === '/submit') {
-      return handleSubmit(request);
+      return handleSubmit(request, env);
     }
 
     // API: Freebie-Anmeldung (sendet DOI-Bestätigungs-E-Mail)
@@ -271,29 +271,44 @@ async function signHmac(data, secret) {
   return Array.from(new Uint8Array(sig)).map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
-async function handleSubmit(request) {
+async function handleSubmit(request, env) {
   if (request.method !== 'POST') {
     return new Response('Method not allowed', { status: 405 });
   }
   try {
-    const contentType = request.headers.get('Content-Type') || '';
-    const origin = request.headers.get('Origin') || 'https://www.eduleo-akademie.de';
-    const referer = request.headers.get('Referer') || 'https://www.eduleo-akademie.de/';
-    const body = await request.arrayBuffer();
-    const resp = await fetch('https://api.web3forms.com/submit', {
+    const formData = await request.formData();
+    const data = {};
+    for (const [key, value] of formData.entries()) {
+      data[key] = value;
+    }
+
+    // Alle Felder als lesbare HTML-Tabelle zusammenbauen
+    const rows = Object.entries(data)
+      .filter(([k]) => k !== 'access_key' && k !== 'botcheck')
+      .map(([k, v]) => `<tr><td style="padding:6px 12px;font-weight:600;color:#555;white-space:nowrap;vertical-align:top">${k}</td><td style="padding:6px 12px;color:#261D18">${v || '–'}</td></tr>`)
+      .join('');
+
+    const subject = data['subject'] || data['Subject'] || 'Neue Formularanmeldung';
+    const htmlContent = `<!DOCTYPE html><html><body style="font-family:sans-serif;background:#f5f0eb;padding:32px"><div style="max-width:600px;margin:0 auto;background:#fff;border-radius:14px;padding:32px"><h2 style="margin:0 0 20px;font-size:18px;color:#261D18">${subject}</h2><table style="width:100%;border-collapse:collapse;font-size:14px">${rows}</table></div></body></html>`;
+
+    const resp = await fetch('https://api.brevo.com/v3/smtp/email', {
       method: 'POST',
-      headers: { 'Content-Type': contentType, 'Origin': origin, 'Referer': referer },
-      body,
+      headers: { 'Content-Type': 'application/json', 'api-key': env.BREVO_API_KEY },
+      body: JSON.stringify({
+        sender: { name: 'EDULEO Website', email: 'neuigkeiten@eduleo-akademie.de' },
+        to: [{ email: 'kontakt@eduleo-akademie.de', name: 'EDULEO Akademie' }],
+        subject,
+        htmlContent,
+      }),
     });
-    const text = await resp.text();
-    try {
-      const result = JSON.parse(text);
-      return new Response(JSON.stringify(result), {
-        status: resp.status,
+
+    if (resp.ok) {
+      return new Response(JSON.stringify({ success: true, message: 'Anmeldung erfolgreich übermittelt.' }), {
         headers: { 'Content-Type': 'application/json' },
       });
-    } catch (_) {
-      return new Response(JSON.stringify({ success: false, message: 'Fehler: ' + text.substring(0, 200) }), {
+    } else {
+      const err = await resp.text();
+      return new Response(JSON.stringify({ success: false, message: 'E-Mail-Fehler: ' + err.substring(0, 200) }), {
         status: 500,
         headers: { 'Content-Type': 'application/json' },
       });
