@@ -291,23 +291,28 @@ async function handleSubmit(request, env) {
     const subject = data['subject'] || data['Subject'] || 'Neue Formularanmeldung';
     const htmlContent = `<!DOCTYPE html><html><body style="font-family:sans-serif;background:#f5f0eb;padding:32px"><div style="max-width:600px;margin:0 auto;background:#fff;border-radius:14px;padding:32px"><h2 style="margin:0 0 20px;font-size:18px;color:#261D18">${subject}</h2><table style="width:100%;border-collapse:collapse;font-size:14px">${rows}</table></div></body></html>`;
 
-    const resp = await fetch('https://api.brevo.com/v3/smtp/email', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'api-key': env.BREVO_API_KEY },
-      body: JSON.stringify({
-        sender: { name: 'EDULEO Website', email: 'neuigkeiten@eduleo-akademie.de' },
-        to: [{ email: 'kontakt@eduleo-akademie.de', name: 'EDULEO Akademie' }],
-        subject,
-        htmlContent,
+    // In KV speichern (Archiv) + per Brevo versenden — parallel
+    const key = new Date().toISOString() + '_' + Math.random().toString(36).slice(2, 8);
+    const [brevoResp] = await Promise.all([
+      fetch('https://api.brevo.com/v3/smtp/email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'api-key': env.BREVO_API_KEY },
+        body: JSON.stringify({
+          sender: { name: 'EDULEO Website', email: 'neuigkeiten@eduleo-akademie.de' },
+          to: [{ email: 'kontakt@eduleo-akademie.de', name: 'EDULEO Akademie' }],
+          subject,
+          htmlContent,
+        }),
       }),
-    });
+      env.FORM_SUBMISSIONS.put(key, JSON.stringify({ ...data, _receivedAt: key })),
+    ]);
 
-    if (resp.ok) {
+    if (brevoResp.ok) {
       return new Response(JSON.stringify({ success: true, message: 'Anmeldung erfolgreich übermittelt.' }), {
         headers: { 'Content-Type': 'application/json' },
       });
     } else {
-      const err = await resp.text();
+      const err = await brevoResp.text();
       return new Response(JSON.stringify({ success: false, message: 'E-Mail-Fehler: ' + err.substring(0, 200) }), {
         status: 500,
         headers: { 'Content-Type': 'application/json' },

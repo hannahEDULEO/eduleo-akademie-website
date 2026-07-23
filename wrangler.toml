@@ -12,3 +12,7 @@ BREVO_FREEBIE_LIST_ID = "12"
 BREVO_DOI_TEMPLATE_ID = "15"
 # Den API-Key NICHT hier eintragen – stattdessen einmalig im Terminal ausführen:
 # npx wrangler secret put BREVO_API_KEY
+
+[[kv_namespaces]]
+binding = "FORM_SUBMISSIONS"
+id = "4877ab3c0e18438caf02d0ad8a2773fd"
