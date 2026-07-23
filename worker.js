@@ -276,25 +276,20 @@ async function handleSubmit(request) {
     return new Response('Method not allowed', { status: 405 });
   }
   try {
-    const formData = await request.formData();
-    const data = {};
-    for (const [key, value] of formData.entries()) {
-      data[key] = value;
-    }
+    const contentType = request.headers.get('Content-Type') || '';
+    const origin = request.headers.get('Origin') || 'https://www.eduleo-akademie.de';
+    const referer = request.headers.get('Referer') || 'https://www.eduleo-akademie.de/';
+    const body = await request.arrayBuffer();
     const resp = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Origin': 'https://www.eduleo-akademie.de',
-        'Referer': 'https://www.eduleo-akademie.de/',
-      },
-      body: JSON.stringify(data),
+      headers: { 'Content-Type': contentType, 'Origin': origin, 'Referer': referer },
+      body,
     });
     const text = await resp.text();
     try {
       const result = JSON.parse(text);
       return new Response(JSON.stringify(result), {
+        status: resp.status,
         headers: { 'Content-Type': 'application/json' },
       });
     } catch (_) {
