@@ -283,7 +283,12 @@ async function handleSubmit(request) {
     }
     const resp = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Origin': 'https://www.eduleo-akademie.de',
+        'Referer': 'https://www.eduleo-akademie.de/',
+      },
       body: JSON.stringify(data),
     });
     const text = await resp.text();
