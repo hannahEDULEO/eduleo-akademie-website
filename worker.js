@@ -151,12 +151,14 @@ async function handleFreebieConfirm(request, env) {
 
     // Freebie-Download-E-Mail senden
     const freebieNames = {
+      'vorschulideen-10':            '10 Vorschulideen für die Kita',
       'checkliste-schulbereit':      'Checkliste: Ist mein Kind schulbereit?',
       'eingewoehnungs-poster':       'Eingewöhnungs-Poster',
       'pfeffertrick-anleitung':      'Anleitung: Der magische Pfeffertrick',
       'sprachentwicklung-im-blick':  'Sprachentwicklung im Blick',
     };
     const freebiePdfs = {
+      'vorschulideen-10':            'https://www.eduleo-akademie.de/assets/downloads/vorschulideen-10.pdf',
       'checkliste-schulbereit':      'https://www.eduleo-akademie.de/assets/downloads/checkliste-schulbereit.pdf',
       'eingewoehnungs-poster':       'https://www.eduleo-akademie.de/assets/blog/eingewoehnung/eingewoehnungs-poster.pdf',
       'pfeffertrick-anleitung':      'https://www.eduleo-akademie.de/assets/blog/pfeffertrick/anleitung.pdf',
