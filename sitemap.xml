@@ -213,6 +213,12 @@
 
   <!-- Blogartikel – Slug-basiert -->
   <url>
+    <loc>https://www.eduleo-akademie.de/eingewoehnung-ohne-traenendrama/</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.eduleo-akademie.de/selbstfuersorge-fuer-erzieherinnen/</loc>
     <lastmod>2026-07-22</lastmod>
     <changefreq>yearly</changefreq>
