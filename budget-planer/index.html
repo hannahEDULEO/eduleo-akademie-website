@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fortbildungsbudget-Planer für Kitas – EDULEO Akademie</title>
+  <meta name="description" content="Kita-Träger mit festem Fortbildungsbudget: Daten eingeben, passendes Fortbildungspaket sofort berechnen lassen und Wunschkurse direkt markieren. EDULEO Akademie.">
+  <link rel="canonical" href="https://www.eduleo-akademie.de/budget-planer/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="EDULEO Akademie">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:url" content="https://www.eduleo-akademie.de/budget-planer/">
+  <meta property="og:title" content="Fortbildungsbudget-Planer für Kitas – EDULEO Akademie">
+  <meta property="og:description" content="Kita-Träger mit festem Fortbildungsbudget: Daten eingeben, passendes Fortbildungspaket sofort berechnen lassen und Wunschkurse direkt markieren.">
+  <meta property="og:image" content="https://www.eduleo-akademie.de/assets/images/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../assets/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="../assets/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon-6/apple-touch-icon-180x180.png">
+  <link rel="stylesheet" href="../style.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6R6TGSJM8P"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-6R6TGSJM8P");
+  </script>
+  <style>
+    /* ── Budget-Planer Hero ──────────────────────── */
+    .planer-hero {
+      background: linear-gradient(135deg, var(--green) 0%, var(--beige) 100%);
+      padding: 80px 0 56px;
+    }
+    .planer-hero h1 { color: var(--dark); margin-bottom: 16px; }
+    .planer-hero p  { font-size: 1.1rem; color: var(--text); max-width: 600px; }
+    .planer-usp {
+      display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px;
+    }
+
+    /* ── Wizard Shell ────────────────────────────── */
+    .wizard-section { padding: 56px 0 100px; background: var(--off-white); }
+
+    .wizard-card {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      max-width: 820px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    /* ── Progress bar ────────────────────────────── */
+    .wizard-progress {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      background: var(--beige);
+      border-bottom: 2px solid var(--border);
+    }
+    .p-step {
+      padding: 14px 8px 12px;
+      text-align: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      color: var(--text-light);
+      border-right: 1px solid var(--border);
+      transition: background 0.2s, color 0.2s;
+    }
+    .p-step:last-child { border-right: none; }
+    .p-step .pn { display: block; font-size: 1rem; margin-bottom: 2px; }
+    .p-step.active { background: var(--white); color: var(--dark); }
+    .p-step.done   { background: var(--green);  color: var(--green-deeper); }
+
+    /* ── Wizard body ─────────────────────────────── */
+    .wizard-body { padding: 40px; }
+    @media (max-width: 560px) { .wizard-body { padding: 24px 18px; } }
+
+    .wiz-step { display: none; }
+    .wiz-step.active { display: block; }
+
+    .wiz-title { font-size: 1.45rem; font-weight: 800; color: var(--dark); margin-bottom: 6px; }
+    .wiz-sub   { font-size: 0.93rem; color: var(--text-light); margin-bottom: 28px; }
+
+    /* ── Form controls ───────────────────────────── */
+    .wiz-group { margin-bottom: 22px; }
+    .wiz-label {
+      display: block; font-weight: 700; font-size: 0.9rem;
+      color: var(--dark); margin-bottom: 7px;
+    }
+    .wiz-label .opt { font-weight: 400; color: var(--text-light); font-size: 0.8rem; }
+
+    .wiz-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 500px) { .wiz-row { grid-template-columns: 1fr; } }
+
+    .wiz-wrap { position: relative; }
+    .wiz-sym {
+      position: absolute; left: 14px; top: 50%;
+      transform: translateY(-50%);
+      font-weight: 700; font-size: 1.05rem; color: var(--text-light);
+      pointer-events: none;
+    }
+    .wiz-input, .wiz-select, .wiz-textarea {
+      width: 100%; border: 2px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 13px 14px; font-family: var(--font);
+      font-size: 1rem; color: var(--dark);
+      background: var(--white); outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+    }
+    .wiz-input.sym { padding-left: 32px; }
+    .wiz-input:focus, .wiz-select:focus, .wiz-textarea:focus { border-color: var(--green-dark); }
+    .wiz-input::placeholder, .wiz-textarea::placeholder { color: var(--text-light); }
+    .wiz-textarea { resize: vertical; min-height: 90px; }
+    .wiz-hint { font-size: 0.8rem; color: var(--text-light); margin-top: 5px; display: block; }
+
+    /* ── Live preview ────────────────────────────── */
+    .live-box {
+      background: var(--green);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin-top: 20px;
+      display: flex; align-items: flex-start; gap: 12px;
+      min-height: 58px;
+    }
+    .live-dot {
+      width: 10px; height: 10px;
+      background: var(--green-deeper);
+      border-radius: 50%; flex-shrink: 0; margin-top: 5px;
+    }
+    .live-text {
+      font-size: 0.92rem; font-weight: 600;
+      color: var(--green-deeper); line-height: 1.55;
+    }
+
+    /* ── Topic cards ─────────────────────────────── */
+    .topic-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px;
+    }
+    @media (max-width: 560px) { .topic-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 360px) { .topic-grid { grid-template-columns: 1fr; } }
+
+    .t-card {
+      border: 2px solid var(--border); border-radius: var(--radius-md);
+      padding: 13px 10px; text-align: center; cursor: pointer;
+      font-weight: 700; font-size: 0.84rem; color: var(--text);
+      background: var(--white); transition: all 0.18s; user-select: none;
+      line-height: 1.3;
+    }
+    .t-card:hover { border-color: var(--green-dark); background: var(--off-white); }
+    .t-card.sel   { border-color: var(--green-dark); background: var(--green); color: var(--green-deeper); }
+    .t-card.uns   { grid-column: 1 / -1; background: var(--beige); border-color: var(--beige-dark); color: var(--text-light); font-style: italic; font-weight: 600; }
+    .t-card.uns.sel { background: var(--mauve-light); border-color: var(--mauve-dark); color: var(--mauve-dark); }
+
+    /* ── Format buttons ──────────────────────────── */
+    .fmt-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+    .fmt-btn {
+      flex: 1; min-width: 130px;
+      border: 2px solid var(--border); border-radius: var(--radius-md);
+      padding: 15px 10px; text-align: center; cursor: pointer;
+      font-weight: 700; font-size: 0.88rem; color: var(--text);
+      background: var(--white); font-family: var(--font);
+      transition: all 0.18s; line-height: 1.3;
+    }
+    .fmt-btn:hover { border-color: var(--green-dark); }
+    .fmt-btn.sel   { border-color: var(--green-dark); background: var(--green); color: var(--green-deeper); }
+    .fmt-sub { display: block; font-weight: 400; font-size: 0.76rem; margin-top: 4px; opacity: 0.65; }
+
+    /* ── Navigation buttons ──────────────────────── */
+    .wiz-nav {
+      display: flex; justify-content: space-between;
+      align-items: center; margin-top: 30px; gap: 12px;
+    }
+    .btn-back {
+      background: transparent; border: 2px solid var(--border);
+      color: var(--text-light); padding: 11px 22px;
+      border-radius: var(--radius-full); font-family: var(--font);
+      font-size: 0.93rem; font-weight: 700; cursor: pointer;
+      transition: all 0.18s;
+    }
+    .btn-back:hover { border-color: var(--dark); color: var(--dark); }
+    .btn-next {
+      background: #7A5240; color: var(--white);
+      padding: 13px 30px; border-radius: var(--radius-full);
+      border: none; font-family: var(--font);
+      font-size: 0.97rem; font-weight: 700; cursor: pointer;
+      box-shadow: 0 4px 16px rgba(122,82,64,0.28);
+      transition: all 0.2s;
+    }
+    .btn-next:hover { background: #5C3D2E; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(92,61,46,0.35); }
+    .btn-next:disabled { opacity: 0.6; cursor: default; transform: none; }
+
+    /* ── Result summary ──────────────────────────── */
+    .res-summary {
+      background: linear-gradient(135deg, var(--green) 0%, #c5e8d0 100%);
+      border-radius: var(--radius-lg); padding: 26px 28px; margin-bottom: 24px;
+    }
+    .res-summary h3 { color: var(--green-deeper); margin-bottom: 14px; font-size: 1.1rem; }
+    .res-options {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px;
+    }
+    .res-opt {
+      background: var(--white); border-radius: var(--radius-md);
+      padding: 18px 14px; text-align: center;
+    }
+    .res-num {
+      font-size: 2.6rem; font-weight: 900;
+      color: var(--green-deeper); line-height: 1; margin-bottom: 6px;
+    }
+    .res-lbl { font-size: 0.82rem; color: var(--text-light); font-weight: 600; line-height: 1.4; }
+    .res-lbl small { font-weight: 400; opacity: 0.75; }
+
+    .disc-pill {
+      display: inline-block; background: var(--green-deeper); color: var(--white);
+      border-radius: var(--radius-full); padding: 4px 14px;
+      font-size: 0.8rem; font-weight: 700; margin-bottom: 14px;
+    }
+
+    .custom-box {
+      background: var(--mauve-light); border-radius: var(--radius-lg);
+      padding: 28px; text-align: center; margin-bottom: 24px;
+    }
+    .custom-box h3 { color: var(--mauve-dark); margin-bottom: 10px; }
+    .custom-box p  { color: var(--text); font-size: 0.95rem; }
+
+    /* ── Course cards ────────────────────────────── */
+    .courses-hl  { font-size: 1.15rem; font-weight: 800; color: var(--dark); margin: 28px 0 5px; }
+    .courses-sub { font-size: 0.88rem; color: var(--text-light); margin-bottom: 14px; }
+
+    .c-grid { display: grid; grid-template-columns: 1fr; gap: 8px; }
+
+    .c-card {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 14px; border: 2px solid var(--border); border-radius: var(--radius-md);
+      padding: 13px 16px; background: var(--white);
+      transition: border-color 0.18s, background 0.18s;
+    }
+    .c-card.fav { border-color: var(--green-dark); background: var(--green); }
+
+    .c-left  { flex: 1; min-width: 0; }
+    .c-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+
+    .c-type {
+      font-size: 0.73rem; font-weight: 700; padding: 3px 9px;
+      border-radius: var(--radius-full); display: inline-block; margin-bottom: 5px;
+    }
+    .ct-tages { background: var(--beige);       color: var(--text); }
+    .ct-3m    { background: var(--mauve-light); color: var(--mauve-dark); }
+    .c-name   { font-weight: 700; font-size: 0.92rem; color: var(--dark); margin-bottom: 3px; }
+    .c-price  { font-size: 0.82rem; color: var(--text-light); }
+
+    .c-link   { font-size: 0.8rem; color: var(--green-dark); font-weight: 700; white-space: nowrap; }
+    .c-link:hover { text-decoration: underline; }
+
+    .heart {
+      width: 38px; height: 38px; border-radius: 50%;
+      border: 2px solid var(--border); background: var(--white);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: all 0.18s; flex-shrink: 0;
+    }
+    .heart:hover { border-color: #e8756a; background: #fff2f0; }
+    .heart.on    { border-color: #e8756a; background: #fff2f0; }
+    .heart svg { width: 17px; height: 17px; }
+    .heart svg path { stroke: #ccc; fill: none; stroke-width: 2.2; transition: all 0.18s; }
+    .heart.on svg path { fill: #e8756a; stroke: #e8756a; }
+
+    /* ── Contact form ────────────────────────────── */
+    .contact-divider { border: none; border-top: 2px solid var(--beige); margin: 30px 0 24px; }
+    .contact-hl  { font-size: 1.15rem; font-weight: 800; color: var(--dark); margin-bottom: 5px; }
+    .contact-sub { font-size: 0.88rem; color: var(--text-light); margin-bottom: 22px; }
+
+    .chk-row { display: flex; gap: 11px; align-items: flex-start; margin-bottom: 14px; }
+    .chk-row input[type="checkbox"] {
+      width: 17px; height: 17px; flex-shrink: 0; margin-top: 2px;
+      accent-color: var(--green-dark); cursor: pointer;
+    }
+    .chk-label { font-size: 0.86rem; color: var(--text); line-height: 1.5; }
+    .chk-label a { color: var(--green-dark); text-decoration: underline; }
+
+    .form-err { color: #c0392b; font-size: 0.86rem; margin-bottom: 10px; display: none; }
+    .req { color: #c0392b; }
+
+    /* ── Success ─────────────────────────────────── */
+    .success-wrap { text-align: center; padding: 48px 20px; }
+    .success-icon {
+      width: 72px; height: 72px; background: var(--green);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 22px;
+    }
+    .success-icon svg { width: 36px; height: 36px; }
+    .success-wrap h2 { color: var(--dark); margin-bottom: 10px; }
+    .success-wrap p  { color: var(--text-light); max-width: 440px; margin: 0 auto; }
+
+    /* ── Info strip ──────────────────────────────── */
+    .info-strip {
+      background: var(--white); border-top: 2px solid var(--border);
+      padding: 40px 0;
+    }
+    .info-strip-inner {
+      max-width: 820px; margin: 0 auto; padding: 0 28px;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; text-align: center;
+    }
+    @media (max-width: 560px) { .info-strip-inner { grid-template-columns: 1fr; gap: 16px; } }
+    .info-num { font-size: 1.9rem; font-weight: 900; color: var(--green-deeper); margin-bottom: 3px; }
+    .info-lbl { font-size: 0.84rem; color: var(--text-light); font-weight: 600; line-height: 1.45; }
+  </style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="../" class="nav-logo" aria-label="EDULEO Akademie, Startseite">
+        <img src="../assets/images/logo.png" alt="EDULEO Akademie" style="height:48px;width:auto;">
+      </a>
+      <ul class="nav-links">
+        <li><a href="../fortbildungen/">Fortbildungen</a></li>
+        <li><a href="../bring-a-friend/">Bring a Friend</a></li>
+        <li><a href="../anmeldebedingungen.html">Anmeldebedingungen</a></li>
+        <li><a href="../blog-1/">Blog</a></li>
+        <li><a href="../ueber-uns/">Über uns</a></li>
+        <li><a href="../#kontakt">Kontakt</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="../fortbildungen/" class="btn btn-primary btn-sm">Alle Fortbildungen</a>
+      </div>
+      <button class="hamburger" aria-label="Menü öffnen" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu">
+  <a href="../fortbildungen/">Fortbildungen</a>
+  <a href="../bring-a-friend/">Bring a Friend</a>
+  <a href="../anmeldebedingungen.html">Anmeldebedingungen</a>
+  <a href="../blog-1/">Blog</a>
+  <a href="../ueber-uns/">Über uns</a>
+  <a href="../#kontakt">Kontakt</a>
+  <a href="../fortbildungen/" class="btn btn-primary">Alle Fortbildungen</a>
+</div>
+
+<!-- HERO -->
+<section class="planer-hero">
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label">Für Kita-Träger &amp; Verbände</span>
+      <h1>Fortbildungsbudget-<wbr>Planer</h1>
+      <p>Sie haben ein festes Fortbildungsbudget für Ihr Team? Tragen Sie Ihre Eckdaten ein – und sehen Sie sofort, welches Paket möglich ist. Kein Suchen, kein Rechnen, kein Einzelanfragen.</p>
+      <div class="planer-usp">
+        <span class="badge badge-dark">Sofortberechnung</span>
+        <span class="badge badge-green">Mengenvorteil ab 6 Personen</span>
+        <span class="badge badge-mauve">Persönliches Angebot in 2 Werktagen</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WIZARD -->
+<section class="wizard-section">
+  <div class="container">
+    <div class="wizard-card" id="wizard-card">
+
+      <!-- Progress -->
+      <div class="wizard-progress">
+        <div class="p-step active" id="ps-1"><span class="pn">1</span>Budget &amp; Team</div>
+        <div class="p-step"       id="ps-2"><span class="pn">2</span>Themen</div>
+        <div class="p-step"       id="ps-3"><span class="pn">3</span>Format</div>
+        <div class="p-step"       id="ps-4"><span class="pn">4</span>Ihr Paket</div>
+      </div>
+
+      <div class="wizard-body">
+
+        <!-- ── SCHRITT 1 ──────────────────────────── -->
+        <div class="wiz-step active" id="step-1">
+          <div class="wiz-title">Budget &amp; Team</div>
+          <div class="wiz-sub">Wie viel Budget haben Sie, und für wie viele Mitarbeitende?</div>
+
+          <div class="wiz-row">
+            <div class="wiz-group">
+              <label class="wiz-label" for="inp-budget">Verfügbares Budget <span class="req">*</span></label>
+              <div class="wiz-wrap">
+                <span class="wiz-sym">€</span>
+                <input class="wiz-input sym" type="number" id="inp-budget" min="0" step="50" placeholder="z. B. 3000">
+              </div>
+            </div>
+            <div class="wiz-group">
+              <label class="wiz-label" for="inp-ma">Anzahl Mitarbeitende <span class="req">*</span></label>
+              <input class="wiz-input" type="number" id="inp-ma" min="1" placeholder="z. B. 8">
+            </div>
+          </div>
+
+          <div class="wiz-row">
+            <div class="wiz-group">
+              <label class="wiz-label" for="inp-von">Zeitraum: von <span class="req">*</span></label>
+              <input class="wiz-input" type="text" id="inp-von" placeholder="z. B. Oktober 2025">
+            </div>
+            <div class="wiz-group">
+              <label class="wiz-label" for="inp-bis">bis <span class="req">*</span></label>
+              <input class="wiz-input" type="text" id="inp-bis" placeholder="z. B. März 2026">
+            </div>
+          </div>
+
+          <div class="live-box">
+            <div class="live-dot"></div>
+            <div class="live-text" id="live-text">Budget und Mitarbeitende-Anzahl eintragen, um eine erste Einschätzung zu erhalten.</div>
+          </div>
+
+          <div class="wiz-nav">
+            <span></span>
+            <button class="btn-next" onclick="toStep(2)">Weiter: Themeninteressen &rarr;</button>
+          </div>
+        </div>
+
+        <!-- ── SCHRITT 2 ──────────────────────────── -->
+        <div class="wiz-step" id="step-2">
+          <div class="wiz-title">Themeninteressen</div>
+          <div class="wiz-sub">Welche Themen sind für Ihr Team besonders relevant? Mehrfachauswahl möglich.</div>
+
+          <div class="topic-grid" id="topic-grid"></div>
+
+          <div class="wiz-nav">
+            <button class="btn-back" onclick="toStep(1)">&larr; Zurück</button>
+            <button class="btn-next" onclick="toStep(3)">Weiter: Format &rarr;</button>
+          </div>
+        </div>
+
+        <!-- ── SCHRITT 3 ──────────────────────────── -->
+        <div class="wiz-step" id="step-3">
+          <div class="wiz-title">Format &amp; Details</div>
+          <div class="wiz-sub">Wie soll die Fortbildung stattfinden?</div>
+
+          <div class="wiz-group">
+            <label class="wiz-label">Gewünschtes Format <span class="req">*</span></label>
+            <div class="fmt-btns" id="fmt-btns">
+              <button class="fmt-btn" data-fmt="einzel" onclick="pickFmt(this)">
+                Einzelfortbildungen<span class="fmt-sub">Jede/r Mitarbeitende bucht einzeln</span>
+              </button>
+              <button class="fmt-btn" data-fmt="team" onclick="pickFmt(this)">
+                Teamfortbildung<span class="fmt-sub">Das ganze Team gemeinsam</span>
+              </button>
+              <button class="fmt-btn" data-fmt="beides" onclick="pickFmt(this)">
+                Beides möglich<span class="fmt-sub">Kombination aus beidem</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="wiz-group">
+            <label class="wiz-label" for="inp-anzahl">Gewünschte Anzahl Fortbildungen <span class="opt">(optional)</span></label>
+            <input class="wiz-input" type="number" id="inp-anzahl" min="1" placeholder="Falls schon bekannt">
+          </div>
+
+          <div class="wiz-group">
+            <label class="wiz-label" for="inp-notiz">Anmerkungen <span class="opt">(optional)</span></label>
+            <textarea class="wiz-textarea" id="inp-notiz" rows="3" placeholder="Besondere Wünsche, Fragen oder Rahmenbedingungen …"></textarea>
+          </div>
+
+          <div class="wiz-nav">
+            <button class="btn-back" onclick="toStep(2)">&larr; Zurück</button>
+            <button class="btn-next" onclick="buildResult()">Paket berechnen &rarr;</button>
+          </div>
+        </div>
+
+        <!-- ── SCHRITT 4 (dynamisch) ──────────────── -->
+        <div class="wiz-step" id="step-4">
+          <div id="result-area"></div>
+        </div>
+
+      </div><!-- /wizard-body -->
+    </div><!-- /wizard-card -->
+  </div>
+</section>
+
+<!-- Info strip -->
+<div class="info-strip">
+  <div class="info-strip-inner">
+    <div>
+      <div class="info-num">150 €</div>
+      <div class="info-lbl">pro Tagesfortbildung<br>(6 Stunden, live online)</div>
+    </div>
+    <div>
+      <div class="info-num">900 €</div>
+      <div class="info-lbl">pro 3-Monats-Fortbildung<br>(8 Live-Termine)</div>
+    </div>
+    <div>
+      <div class="info-num">– 10 %</div>
+      <div class="info-lbl">Mengenrabatt<br>ab 6 Personen</div>
+    </div>
+  </div>
+</div>
+
+<section class="section-sm" style="text-align:center;">
+  <div class="container">
+    <a href="../fortbildungen/" class="btn btn-outline">Alle Fortbildungen im Überblick</a>
+  </div>
+</section>
+
+<script src="../main.js"></script>
+<script>
+// ─── Daten ─────────────────────────────────────────
+
+const TOPICS = [
+  { id:'adhs-autismus',       lbl:'ADHS & Autismus' },
+  { id:'verhaltensauff',      lbl:'Verhaltensauffälligkeiten' },
+  { id:'kinderschutz',        lbl:'Kinderschutz' },
+  { id:'inklusion',           lbl:'Inklusion' },
+  { id:'vorschule',           lbl:'Vorschule' },
+  { id:'digitale-medien',     lbl:'Digitale Medien' },
+  { id:'stress',              lbl:'Stressbewältigung' },
+  { id:'teamfuehrung',        lbl:'Teamführung & Kommunikation' },
+  { id:'sprache-bewegung',    lbl:'Sprache & Bewegung' },
+  { id:'elternarbeit',        lbl:'Elternarbeit' },
+  { id:'kinderyoga',          lbl:'Kinderyoga' },
+  { id:'marte-meo',           lbl:'Marte Meo' },
+  { id:'unsicher',            lbl:'Noch nicht sicher – bitte beraten', uns:true },
+];
+
+const COURSES = [
+  // 3-Monats-Fortbildungen
+  { n:'Kita-ExpertIn für ADHS & Autismus',           t:'3m', p:900,  tp:['adhs-autismus'],     u:'/fortbildungen/kita-expertin-adhs-autismus/' },
+  { n:'Kita-ExpertIn für Verhaltensauffälligkeiten',  t:'3m', p:1000, tp:['verhaltensauff'],    u:'/fortbildungen/kita-expertin-verhaltensauffaelligkeiten/' },
+  { n:'FachberaterIn für Inklusion',                  t:'3m', p:900,  tp:['inklusion'],         u:'/fortbildungen/fachberaterin-inklusion/' },
+  { n:'Kita KoordinatorIn für Kinderschutz',          t:'3m', p:900,  tp:['kinderschutz'],      u:'/fortbildungen/kinderschutz-koordinatorin-kita/' },
+  { n:'Leitung der Vorschule',                        t:'3m', p:900,  tp:['vorschule'],         u:'/fortbildungen/leitung-vorschule/' },
+  { n:'Digitale Medien Beauftragte/r in der Kita',    t:'3m', p:900,  tp:['digitale-medien'],   u:'/fortbildungen/digitale-medien-beauftragte-kita/' },
+  { n:'Teamcoach in der Kita',                        t:'3m', p:900,  tp:['teamfuehrung'],      u:'/fortbildungen/teamcoach-kita/' },
+  { n:'Stressbewältigungscoach',                      t:'3m', p:900,  tp:['stress'],            u:'/fortbildungen/stressbewaetigungscoach/' },
+  { n:'Kinderyoga Kursleitung',                       t:'3m', p:900,  tp:['kinderyoga'],        u:'/fortbildungen/kinderyoga-kursleitung/' },
+  { n:'Marte Meo PraktikerIn',                        t:'3m', p:900,  tp:['marte-meo'],         u:'/fortbildungen/marte-meo-praktikerin/' },
+  // Tagesfortbildungen
+  { n:'ADHS in der Kita',                             t:'tag', p:150, tp:['adhs-autismus'],     u:'/fortbildungen/tagesfortbildungen/adhs-kita/' },
+  { n:'Autismus im Kita-Alltag',                      t:'tag', p:150, tp:['adhs-autismus'],     u:'/fortbildungen/tagesfortbildungen/autismus-kita-alltag/' },
+  { n:'Kinderschutz in der Kita',                     t:'tag', p:150, tp:['kinderschutz'],      u:'/fortbildungen/tagesfortbildungen/kinderschutz-kita/' },
+  { n:'Sexualentwicklung 0–6 Jahre',                  t:'tag', p:150, tp:['kinderschutz'],      u:'/fortbildungen/tagesfortbildungen/sexualentwicklung-0-6-jahre/' },
+  { n:'Kinderyoga in der Kita',                       t:'tag', p:150, tp:['kinderyoga','sprache-bewegung'], u:'/fortbildungen/tagesfortbildungen/kinderyoga-kita/' },
+  { n:'Kinderyoga Praxisübungen',                     t:'tag', p:150, tp:['kinderyoga','sprache-bewegung'], u:'/fortbildungen/tagesfortbildungen/kinderyoga-praxisuebungen/' },
+  { n:'Digitale Kita mit Kitaversum',                 t:'tag', p:150, tp:['digitale-medien'],   u:'/fortbildungen/tagesfortbildungen/digitale-kita-kitaversum/' },
+  { n:'Stressbewältigung im Kita-Alltag',             t:'tag', p:150, tp:['stress'],            u:'/fortbildungen/tagesfortbildungen/stressbewaltigung-kita-alltag/' },
+  { n:'Elterngespräche führen',                       t:'tag', p:150, tp:['elternarbeit'],      u:'/fortbildungen/tagesfortbildungen/elterngespraeche-fuehren/' },
+  { n:'Gewaltfreie Kommunikation',                    t:'tag', p:150, tp:['teamfuehrung','elternarbeit'], u:'/fortbildungen/tagesfortbildungen/gewaltfreie-kommunikation/' },
+  { n:'Führungsrolle Kita-Leitung',                   t:'tag', p:150, tp:['teamfuehrung'],      u:'/fortbildungen/tagesfortbildungen/fuehrungsrolle-kita-leitung/' },
+  { n:'Teams leiten & stärken',                       t:'tag', p:150, tp:['teamfuehrung'],      u:'/fortbildungen/tagesfortbildungen/teams-leiten-staerken/' },
+  { n:'Umgang mit Personalmangel',                    t:'tag', p:150, tp:['teamfuehrung'],      u:'/fortbildungen/tagesfortbildungen/umgang-mit-personalmangel/' },
+  { n:'Sprache fördern mit Wuppi',                    t:'tag', p:150, tp:['sprache-bewegung'],  u:'/fortbildungen/tagesfortbildungen/sprache-wuppi/' },
+  { n:'Forschen & Entdecken mit FRED',                t:'tag', p:150, tp:['sprache-bewegung'],  u:'/fortbildungen/tagesfortbildungen/forschen-entdecken-fred/' },
+  { n:'Musik, Tanz & Bewegung mit Bodo',              t:'tag', p:150, tp:['sprache-bewegung'],  u:'/fortbildungen/tagesfortbildungen/musik-tanz-bodo/' },
+  { n:'Schule in Sicht',                              t:'tag', p:150, tp:['vorschule'],         u:'/fortbildungen/tagesfortbildungen/schule-in-sicht/' },
+  { n:'Vorschulkonzept gestalten',                    t:'tag', p:150, tp:['vorschule'],         u:'/fortbildungen/tagesfortbildungen/vorschulkonzept-gestalten/' },
+  { n:'Zahlen, Mengen & Formen mit Baldur',           t:'tag', p:150, tp:['vorschule'],         u:'/fortbildungen/tagesfortbildungen/zahlen-mengen-baldur/' },
+];
+
+// ─── State ─────────────────────────────────────────
+let curStep = 1;
+let selTopics = new Set();
+let selFmt    = null;
+let favs      = new Set();
+
+// ─── Topic grid ─────────────────────────────────────
+(function buildTopicGrid() {
+  const g = document.getElementById('topic-grid');
+  g.innerHTML = TOPICS.map(t =>
+    `<div class="t-card${t.uns ? ' uns' : ''}" data-id="${t.id}" onclick="toggleTopic(this,'${t.id}')">${t.lbl}</div>`
+  ).join('');
+})();
+
+function toggleTopic(el, id) {
+  if (selTopics.has(id)) {
+    selTopics.delete(id);
+    el.classList.remove('sel');
+  } else {
+    if (id === 'unsicher') {
+      selTopics.clear();
+      document.querySelectorAll('.t-card').forEach(c => c.classList.remove('sel'));
+    } else if (selTopics.has('unsicher')) {
+      selTopics.delete('unsicher');
+      document.querySelector('[data-id="unsicher"]').classList.remove('sel');
+    }
+    selTopics.add(id);
+    el.classList.add('sel');
+  }
+}
+
+// ─── Format ─────────────────────────────────────────
+function pickFmt(btn) {
+  document.querySelectorAll('.fmt-btn').forEach(b => b.classList.remove('sel'));
+  btn.classList.add('sel');
+  selFmt = btn.dataset.fmt;
+}
+
+// ─── Live preview ────────────────────────────────────
+function updateLive() {
+  const budget = parseFloat(document.getElementById('inp-budget').value) || 0;
+  const ma     = parseInt(document.getElementById('inp-ma').value)        || 0;
+  const txt    = document.getElementById('live-text');
+  if (!budget || !ma) {
+    txt.textContent = 'Budget und Mitarbeitende-Anzahl eintragen, um eine erste Einschätzung zu erhalten.';
+    return;
+  }
+  if (ma >= 16) {
+    txt.innerHTML = `Bei <strong>${ma} Mitarbeitenden</strong> erstellen wir ein individuelles Angebot – einfach Paket berechnen und Kontaktdaten hinterlassen.`;
+    return;
+  }
+  const disc    = ma >= 6;
+  const f       = disc ? 0.9 : 1;
+  const pT      = 150 * f;
+  const p3m     = 900 * f;
+  const sT      = Math.floor(budget / pT);
+  const s3m     = Math.floor(budget / p3m);
+  const info    = disc ? ' (inkl. 10&nbsp;% Mengenrabatt)' : '';
+  txt.innerHTML = `Mit <strong>${fmt(budget)}&nbsp;€</strong> für <strong>${ma} Mitarbeitende</strong>: ca. <strong>${sT}&nbsp;Tagesfortbildungen</strong> oder <strong>${s3m}&nbsp;intensive 3-Monats-Kurse</strong> möglich${info}.`;
+}
+document.getElementById('inp-budget').addEventListener('input', updateLive);
+document.getElementById('inp-ma').addEventListener('input', updateLive);
+
+// ─── Navigation ──────────────────────────────────────
+function scrollToWizard() {
+  const top = document.getElementById('wizard-card').getBoundingClientRect().top + window.scrollY - 90;
+  window.scrollTo({ top, behavior: 'smooth' });
+}
+
+function setProgress(n) {
+  for (let i = 1; i <= 4; i++) {
+    const el = document.getElementById('ps-' + i);
+    el.classList.remove('active', 'done');
+    if (i < n)  el.classList.add('done');
+    if (i === n) el.classList.add('active');
+  }
+}
+
+function toStep(n) {
+  if (n === 2) {
+    const b = document.getElementById('inp-budget').value;
+    const m = document.getElementById('inp-ma').value;
+    const v = document.getElementById('inp-von').value.trim();
+    const bi= document.getElementById('inp-bis').value.trim();
+    if (!b || !m || !v || !bi) { alert('Bitte alle Pflichtfelder ausfüllen.'); return; }
+  }
+  document.getElementById('step-' + curStep).classList.remove('active');
+  curStep = n;
+  setProgress(n);
+  document.getElementById('step-' + curStep).classList.add('active');
+  scrollToWizard();
+}
+
+// ─── Build result ─────────────────────────────────────
+function buildResult() {
+  if (!selFmt) { alert('Bitte ein Format auswählen.'); return; }
+
+  const budget  = parseFloat(document.getElementById('inp-budget').value);
+  const ma      = parseInt(document.getElementById('inp-ma').value);
+  const von     = document.getElementById('inp-von').value.trim();
+  const bis     = document.getElementById('inp-bis').value.trim();
+  const anzahl  = document.getElementById('inp-anzahl').value;
+  const notiz   = document.getElementById('inp-notiz').value.trim();
+
+  // Switch to step 4
+  document.getElementById('step-3').classList.remove('active');
+  curStep = 4;
+  setProgress(4);
+  document.getElementById('step-4').classList.add('active');
+  scrollToWizard();
+
+  // Reset favorites
+  favs = new Set();
+
+  // Calculation
+  const disc    = ma >= 6;
+  const custom  = ma >= 16;
+  const f       = disc ? 0.9 : 1;
+  const pT      = 150 * f;
+  const p3m     = 900 * f;
+  const sT      = Math.floor(budget / pT);
+  const s3m     = Math.floor(budget / p3m);
+  const teamP   = ma <= 10 ? 1100 : ma <= 20 ? 1210 : ma <= 29 ? 2310 : 3500;
+  const teamN   = Math.floor(budget / teamP);
+
+  // Topic labels for hidden field
+  const topicLabels = Array.from(selTopics)
+    .map(id => TOPICS.find(t => t.id === id)?.lbl || id).join(', ');
+
+  const fmtLabel = { einzel:'Einzelfortbildungen', team:'Teamfortbildung', beides:'Beides möglich' }[selFmt];
+
+  let html = '';
+
+  // ── Package summary ──
+  if (custom) {
+    html += `
+      <div class="wiz-title">Ihr persönliches Paket</div>
+      <div class="custom-box">
+        <h3>Individuelles Angebot ab 16 Personen</h3>
+        <p>Bei <strong>${ma} Mitarbeitenden</strong> und einem Budget von <strong>${fmt(budget)}&nbsp;€</strong> erstellen wir Ihnen ein maßgeschneidertes Angebot – inklusive individuellem Mengenvorteil. Hinterlassen Sie Ihre Kontaktdaten und wir melden uns innerhalb von 2 Werktagen.</p>
+      </div>`;
+  } else {
+    html += `<div class="wiz-title">Ihr persönliches Paket</div>`;
+    if (disc) html += `<div class="disc-pill">10 % Mengenrabatt inklusive – ab 6 Personen</div>`;
+    html += `<div class="res-summary"><h3>Mit ${fmt(budget)}&nbsp;€ für ${ma} Mitarbeitende</h3><div class="res-options">`;
+
+    if (selFmt === 'einzel' || selFmt === 'beides') {
+      html += `
+        <div class="res-opt">
+          <div class="res-num">${sT}</div>
+          <div class="res-lbl">Tagesfortbildungen<br><small>à ${fmt(pT)}&nbsp;€ p.P.</small></div>
+        </div>
+        <div class="res-opt">
+          <div class="res-num">${s3m}</div>
+          <div class="res-lbl">3-Monats-Kurse<br><small>à ${fmt(p3m)}&nbsp;€ p.P.</small></div>
+        </div>`;
+    }
+    if (selFmt === 'team' || selFmt === 'beides') {
+      html += `
+        <div class="res-opt">
+          <div class="res-num">${teamN}</div>
+          <div class="res-lbl">Teamfortbildungen<br><small>Pauschale ${fmt(teamP)}&nbsp;€</small></div>
+        </div>`;
+    }
+    html += `</div></div>`; // /res-options, /res-summary
+  }
+
+  // ── Course cards ──
+  if (selFmt === 'einzel' || selFmt === 'beides') {
+    const active = Array.from(selTopics).filter(id => id !== 'unsicher');
+    const showAll = selTopics.has('unsicher') || active.length === 0;
+    const list = showAll ? COURSES : COURSES.filter(c => c.tp.some(t => active.includes(t)));
+
+    if (list.length > 0) {
+      html += `
+        <div class="courses-hl">Passende Fortbildungen für Ihr Team</div>
+        <div class="courses-sub">Markieren Sie Kurse, die Sie interessieren – wir nehmen diese in Ihren persönlichen Paketvorschlag auf.</div>
+        <div class="c-grid">`;
+
+      list.forEach((c, i) => {
+        const tl = c.t === '3m' ? '3-Monats-Fortbildung' : 'Tagesfortbildung';
+        const tc = c.t === '3m' ? 'ct-3m' : 'ct-tages';
+        const note = c.p === 1000 ? ' (9 Termine)' : '';
+        html += `
+          <div class="c-card" id="cc-${i}">
+            <div class="c-left">
+              <span class="c-type ${tc}">${tl}</span>
+              <div class="c-name">${c.n}</div>
+              <div class="c-price">${fmt(c.p)}&nbsp;€ pro Person${note}</div>
+            </div>
+            <div class="c-right">
+              <a href="${c.u}" target="_blank" class="c-link">Mehr&nbsp;&rarr;</a>
+              <button class="heart" id="hb-${i}" onclick="toggleFav(${i},'${c.n.replace(/'/g,"&#39;")}')" aria-label="Als Favorit markieren">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+              </button>
+            </div>
+          </div>`;
+      });
+      html += `</div>`; // /c-grid
+    }
+  }
+
+  // ── Contact form ──
+  html += `
+    <hr class="contact-divider">
+    <div class="contact-hl">Angebot anfordern</div>
+    <div class="contact-sub">Hinterlassen Sie Ihre Kontaktdaten – wir melden uns innerhalb von 2 Werktagen mit Ihrem persönlichen Paketvorschlag.</div>
+
+    <form id="budget-form" novalidate>
+      <input type="hidden" name="subject"             value="Fortbildungsbudget-Anfrage">
+      <input type="hidden" name="Formulartyp"         value="Fortbildungsbudget-Anfrage">
+      <input type="hidden" name="Budget"              value="${budget}">
+      <input type="hidden" name="Mitarbeitende"       value="${ma}">
+      <input type="hidden" name="Zeitraum"            value="${von} bis ${bis}">
+      <input type="hidden" name="Themeninteressen"    value="${topicLabels}">
+      <input type="hidden" name="Format"              value="${fmtLabel}">
+      ${anzahl ? `<input type="hidden" name="Gewuenschte Anzahl" value="${anzahl}">` : ''}
+      ${notiz  ? `<input type="hidden" name="Anmerkungen"        value="${notiz.replace(/"/g,'&quot;')}">` : ''}
+      <input type="hidden" name="Favorisierte Kurse"  id="hid-favs" value="">
+
+      <div class="wiz-row">
+        <div class="wiz-group">
+          <label class="wiz-label" for="f-einrichtung">Name der Einrichtung / Träger <span class="req">*</span></label>
+          <input class="wiz-input" type="text" id="f-einrichtung" name="Einrichtung" placeholder="z. B. AWO Kita Sonnenschein" required>
+        </div>
+        <div class="wiz-group">
+          <label class="wiz-label" for="f-ansprechperson">Ansprechperson <span class="req">*</span></label>
+          <input class="wiz-input" type="text" id="f-ansprechperson" name="Ansprechperson" placeholder="Vor- und Nachname" required>
+        </div>
+      </div>
+      <div class="wiz-row">
+        <div class="wiz-group">
+          <label class="wiz-label" for="f-email">E-Mail-Adresse <span class="req">*</span></label>
+          <input class="wiz-input" type="email" id="f-email" name="E-Mail" placeholder="ihre@einrichtung.de" required>
+        </div>
+        <div class="wiz-group">
+          <label class="wiz-label" for="f-tel">Telefonnummer <span class="req">*</span></label>
+          <input class="wiz-input" type="tel" id="f-tel" name="Telefon" placeholder="+49 …" required>
+        </div>
+      </div>
+
+      <div class="chk-row">
+        <input type="checkbox" id="chk-ds" required>
+        <label class="chk-label" for="chk-ds">
+          Ich habe die <a href="../datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zur Angebotserstellung zu. <span class="req">*</span>
+        </label>
+      </div>
+
+      <p class="form-err" id="form-err"></p>
+
+      <div class="wiz-nav">
+        <button class="btn-back" type="button" onclick="toStep(3)">&larr; Zurück</button>
+        <button class="btn-next" type="submit" id="submit-btn">Angebot anfordern &rarr;</button>
+      </div>
+    </form>`;
+
+  document.getElementById('result-area').innerHTML = html;
+  document.getElementById('budget-form').addEventListener('submit', handleSubmit);
+}
+
+// ─── Favorites ───────────────────────────────────────
+function toggleFav(i, name) {
+  const btn  = document.getElementById('hb-' + i);
+  const card = document.getElementById('cc-' + i);
+  if (favs.has(name)) {
+    favs.delete(name);
+    btn.classList.remove('on');
+    card.classList.remove('fav');
+  } else {
+    favs.add(name);
+    btn.classList.add('on');
+    card.classList.add('fav');
+  }
+  const hf = document.getElementById('hid-favs');
+  if (hf) hf.value = Array.from(favs).join('; ');
+}
+
+// ─── Submit ──────────────────────────────────────────
+async function handleSubmit(e) {
+  e.preventDefault();
+  const einr = document.getElementById('f-einrichtung').value.trim();
+  const ansp = document.getElementById('f-ansprechperson').value.trim();
+  const mail = document.getElementById('f-email').value.trim();
+  const tel  = document.getElementById('f-tel').value.trim();
+  const ds   = document.getElementById('chk-ds').checked;
+  const err  = document.getElementById('form-err');
+
+  if (!einr || !ansp || !mail || !tel) {
+    err.textContent = 'Bitte alle Pflichtfelder ausfüllen.';
+    err.style.display = 'block'; return;
+  }
+  if (!ds) {
+    err.textContent = 'Bitte der Datenschutzerklärung zustimmen.';
+    err.style.display = 'block'; return;
+  }
+  err.style.display = 'none';
+
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Wird übermittelt …';
+
+  const fd = new FormData(document.getElementById('budget-form'));
+  fd.set('Einrichtung',    einr);
+  fd.set('Ansprechperson', ansp);
+  fd.set('E-Mail',         mail);
+  fd.set('Telefon',        tel);
+
+  try {
+    const r = await fetch('/submit', { method:'POST', body: fd });
+    const j = await r.json();
+    if (j.success) {
+      document.getElementById('result-area').innerHTML = `
+        <div class="success-wrap">
+          <div class="success-icon">
+            <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 18l6 6 12-12" stroke="#2C6E4E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h2>Vielen Dank für Ihre Anfrage!</h2>
+          <p>Wir haben Ihre Budgetanfrage erhalten und melden uns innerhalb von 2 Werktagen mit einem persönlichen Paketvorschlag bei Ihnen.</p>
+          <p style="margin-top:20px;"><a href="../fortbildungen/" class="btn btn-green btn-sm" style="display:inline-flex;">Alle Fortbildungen ansehen</a></p>
+        </div>`;
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'generate_lead', { event_category:'Budget Planer', event_label:'Anfrage gesendet' });
+      }
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'Angebot anfordern →';
+      err.textContent = 'Übertragungsfehler – bitte erneut versuchen oder kontakt@eduleo-akademie.de schreiben.';
+      err.style.display = 'block';
+    }
+  } catch {
+    btn.disabled = false;
+    btn.textContent = 'Angebot anfordern →';
+    err.textContent = 'Netzwerkfehler – bitte erneut versuchen oder kontakt@eduleo-akademie.de schreiben.';
+    err.style.display = 'block';
+  }
+}
+
+// ─── Helpers ─────────────────────────────────────────
+function fmt(n) {
+  return Number.isInteger(n) ? n.toLocaleString('de-DE') : n.toLocaleString('de-DE', { maximumFractionDigits:0 });
+}
+</script>
+
+</body>
+</html>
