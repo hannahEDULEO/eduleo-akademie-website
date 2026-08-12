@@ -360,13 +360,20 @@ function renderList() {
 
   allEntries.sort((a, b) => (a.einrichtung || '').localeCompare(b.einrichtung || '', 'de'));
 
+  const fmtEur = n => n.toLocaleString('de-DE') + ' €';
+
   container.innerHTML = allEntries.map(e => {
-    const gesamt  = parseInt(e.gesamtPlaetze) || 0;
-    const gebucht = (e.buchungen || []).length;
-    const offen   = Math.max(0, gesamt - gebucht);
-    const cls     = offen === 0 ? 'full' : offen <= 2 ? 'warn' : 'ok';
-    const pillCls = offen === 0 ? 'pill-voll' : 'pill-offen';
-    const pillTxt = offen === 0 ? 'Voll' : `${offen} offen`;
+    const budget  = parseFloat(e.budgetGesamt) || 0;
+    const genutzt = (e.buchungen || []).reduce((s, x) => s + (parseFloat(x.preis) || 0), 0);
+    const offen   = Math.max(0, budget - genutzt);
+    const pct     = budget > 0 ? genutzt / budget : 0;
+
+    const cls     = pct >= 1 ? 'full' : pct >= 0.8 ? 'warn' : 'ok';
+    const pillCls = pct >= 1 ? 'pill-voll' : 'pill-offen';
+    const pillTxt = pct >= 1 ? 'Voll' : `${fmtEur(offen)} offen`;
+    const spotsTxt = budget > 0
+      ? `${fmtEur(genutzt)} / ${fmtEur(budget)}`
+      : `${(e.buchungen || []).length} Buchungen`;
 
     return `
       <div class="traeger-card">
@@ -379,7 +386,7 @@ function renderList() {
           </div>
         </div>
         <div class="tc-right">
-          <span class="tc-spots ${cls}">${gebucht}/${gesamt} Plätze</span>
+          <span class="tc-spots ${cls}">${spotsTxt}</span>
           <button class="btn-adm-ghost" onclick='openEdit(${JSON.stringify(e.code)})'>Bearbeiten</button>
         </div>
       </div>`;
