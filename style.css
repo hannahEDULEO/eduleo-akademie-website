@@ -227,6 +227,7 @@ p   { font-size: 1.05rem; line-height: 1.75; }
 .nav-links a {
   font-size: 0.95rem; font-weight: 700; color: var(--text);
   transition: color var(--transition); position: relative;
+  white-space: nowrap;
 }
 .nav-links a::after {
   content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
