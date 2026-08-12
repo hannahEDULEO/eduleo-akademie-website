@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guthaben-Verwaltung – EDULEO intern</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="../assets/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    body { background: var(--off-white); }
+
+    .adm-header {
+      background: var(--dark); color: var(--white);
+      padding: 18px 28px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .adm-header h1 { font-size: 1.1rem; color: var(--white); margin: 0; }
+    .adm-header small { font-size: 0.8rem; opacity: 0.5; }
+
+    .adm-main { max-width: 900px; margin: 0 auto; padding: 36px 24px 80px; }
+
+    /* ── Login ── */
+    .login-card {
+      background: var(--white); border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg); max-width: 420px; margin: 80px auto 0;
+      padding: 40px 36px;
+    }
+    .login-card h2 { font-size: 1.3rem; margin-bottom: 20px; }
+
+    /* ── Controls ── */
+    .adm-label { display: block; font-weight: 700; font-size: 0.88rem; color: var(--dark); margin-bottom: 6px; }
+    .adm-input, .adm-select, .adm-textarea {
+      width: 100%; border: 2px solid var(--border); border-radius: var(--radius-md);
+      padding: 10px 13px; font-family: var(--font); font-size: 0.95rem; color: var(--dark);
+      background: var(--white); outline: none; transition: border-color 0.2s; appearance: none;
+    }
+    .adm-input:focus, .adm-select:focus, .adm-textarea:focus { border-color: var(--green-dark); }
+    .adm-input::placeholder, .adm-textarea::placeholder { color: var(--text-light); }
+    .adm-textarea { resize: vertical; min-height: 70px; }
+    .adm-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 540px) { .adm-row { grid-template-columns: 1fr; } }
+    .adm-group { margin-bottom: 16px; }
+    .adm-hint { font-size: 0.78rem; color: var(--text-light); margin-top: 4px; }
+
+    /* ── Buttons ── */
+    .btn-adm-primary {
+      background: #7A5240; color: var(--white); padding: 11px 22px;
+      border-radius: var(--radius-full); border: none; font-family: var(--font);
+      font-size: 0.9rem; font-weight: 700; cursor: pointer; transition: all 0.18s;
+    }
+    .btn-adm-primary:hover { background: #5C3D2E; }
+    .btn-adm-primary:disabled { opacity: 0.5; cursor: default; }
+
+    .btn-adm-green {
+      background: var(--green); color: var(--green-deeper); padding: 11px 22px;
+      border-radius: var(--radius-full); border: none; font-family: var(--font);
+      font-size: 0.9rem; font-weight: 700; cursor: pointer; transition: all 0.18s;
+    }
+    .btn-adm-green:hover { background: #bde0c8; }
+
+    .btn-adm-ghost {
+      background: transparent; border: 2px solid var(--border); color: var(--text-light);
+      padding: 9px 18px; border-radius: var(--radius-full); font-family: var(--font);
+      font-size: 0.88rem; font-weight: 700; cursor: pointer; transition: all 0.18s;
+    }
+    .btn-adm-ghost:hover { border-color: var(--dark); color: var(--dark); }
+
+    .btn-adm-danger {
+      background: transparent; border: 2px solid #e87a6a; color: #c0392b;
+      padding: 7px 14px; border-radius: var(--radius-full); font-family: var(--font);
+      font-size: 0.82rem; font-weight: 700; cursor: pointer; transition: all 0.18s;
+    }
+    .btn-adm-danger:hover { background: #fff2f0; }
+
+    /* ── Träger list ── */
+    .traeger-list { display: grid; gap: 12px; margin-bottom: 28px; }
+
+    .traeger-card {
+      background: var(--white); border: 2px solid var(--border);
+      border-radius: var(--radius-lg); padding: 20px 24px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      transition: border-color 0.18s;
+    }
+    .traeger-card:hover { border-color: var(--green-dark); }
+
+    .tc-left { flex: 1; }
+    .tc-name { font-weight: 800; font-size: 1rem; color: var(--dark); margin-bottom: 3px; }
+    .tc-meta { font-size: 0.82rem; color: var(--text-light); }
+    .tc-code {
+      font-family: monospace; font-size: 0.85rem; background: var(--beige);
+      padding: 2px 8px; border-radius: 6px; color: var(--text); margin-right: 8px;
+    }
+    .tc-spots {
+      font-size: 0.82rem; font-weight: 700;
+    }
+    .tc-spots.ok   { color: var(--green-deeper); }
+    .tc-spots.warn { color: #e67e22; }
+    .tc-spots.full { color: #c0392b; }
+
+    .tc-right { display: flex; gap: 8px; align-items: center; }
+
+    /* ── Träger editor ── */
+    .editor-panel {
+      background: var(--white); border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg); padding: 32px 36px; margin-bottom: 24px;
+    }
+    @media (max-width: 520px) { .editor-panel { padding: 20px 16px; } }
+    .editor-panel h3 { font-size: 1.2rem; margin-bottom: 20px; color: var(--dark); }
+
+    /* ── Buchungen in editor ── */
+    .buch-list { display: grid; gap: 8px; margin-bottom: 14px; }
+    .buch-item {
+      display: flex; align-items: center; gap: 10px;
+      border: 1px solid var(--border); border-radius: var(--radius-md);
+      padding: 10px 14px; background: var(--off-white);
+    }
+    .buch-item .b-name { flex: 1; font-weight: 700; font-size: 0.88rem; }
+    .buch-item .b-kurs { flex: 2; font-size: 0.82rem; color: var(--text-light); }
+    .buch-item .b-datum { font-size: 0.8rem; color: var(--text-light); white-space: nowrap; }
+    .buch-remove {
+      background: none; border: none; cursor: pointer; color: #c0392b;
+      font-size: 1.1rem; line-height: 1; padding: 2px 6px;
+    }
+    .buch-remove:hover { background: #fff2f0; border-radius: 4px; }
+
+    .add-buch-area {
+      background: var(--beige); border-radius: var(--radius-md);
+      padding: 16px; margin-top: 8px;
+    }
+    .add-buch-area h4 { font-size: 0.9rem; margin-bottom: 12px; color: var(--dark); }
+
+    /* ── Top bar ── */
+    .adm-topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 24px; gap: 12px; flex-wrap: wrap;
+    }
+    .adm-topbar h2 { font-size: 1.3rem; margin: 0; }
+
+    .adm-err { color: #c0392b; font-size: 0.86rem; margin-top: 8px; display: none; }
+    .adm-ok  { color: var(--green-deeper); font-size: 0.86rem; margin-top: 8px; display: none; }
+
+    .pill-offen { background: var(--green); color: var(--green-deeper); padding: 2px 8px; border-radius: 99px; font-size: 0.75rem; font-weight: 700; }
+    .pill-voll  { background: #fde8e0; color: #c0392b; padding: 2px 8px; border-radius: 99px; font-size: 0.75rem; font-weight: 700; }
+
+    .logout-btn {
+      background: transparent; border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.7);
+      padding: 6px 14px; border-radius: 99px; font-family: var(--font);
+      font-size: 0.8rem; cursor: pointer;
+    }
+    .logout-btn:hover { border-color: white; color: white; }
+
+    .code-gen { font-size: 0.8rem; color: var(--green-dark); cursor: pointer; margin-left: 8px; font-weight: 700; }
+    .code-gen:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<div class="adm-header">
+  <div>
+    <h1>Guthaben-Verwaltung</h1>
+    <small>EDULEO intern – nicht teilen</small>
+  </div>
+  <button class="logout-btn" onclick="logout()">Abmelden</button>
+</div>
+
+<div class="adm-main">
+
+  <!-- LOGIN -->
+  <div id="login-view">
+    <div class="login-card">
+      <h2>Anmelden</h2>
+      <div class="adm-group">
+        <label class="adm-label" for="adm-pw">Passwort</label>
+        <input class="adm-input" type="password" id="adm-pw" placeholder="Passwort eingeben">
+      </div>
+      <p class="adm-err" id="pw-err">Falsches Passwort.</p>
+      <button class="btn-adm-primary" style="width:100%;padding:13px;" onclick="doLogin()">Anmelden</button>
+    </div>
+  </div>
+
+  <!-- MAIN APP -->
+  <div id="app-view" style="display:none;">
+
+    <!-- Träger-Liste -->
+    <div id="list-view">
+      <div class="adm-topbar">
+        <h2>Alle Träger</h2>
+        <button class="btn-adm-green" onclick="openNew()">+ Neuer Träger</button>
+      </div>
+      <div class="traeger-list" id="traeger-list">
+        <p style="color:var(--text-light);font-size:0.9rem;">Wird geladen …</p>
+      </div>
+    </div>
+
+    <!-- Editor -->
+    <div id="editor-view" style="display:none;">
+      <div class="adm-topbar">
+        <h2 id="editor-title">Neuer Träger</h2>
+        <button class="btn-adm-ghost" onclick="closeEditor()">← Zurück zur Liste</button>
+      </div>
+
+      <div class="editor-panel">
+        <h3>Trägerdaten</h3>
+
+        <div class="adm-row">
+          <div class="adm-group">
+            <label class="adm-label" for="e-code">
+              Zugangscode
+              <span class="code-gen" onclick="genCode()">Code generieren</span>
+            </label>
+            <input class="adm-input" type="text" id="e-code" placeholder="z. B. KT-2025-ABC" style="text-transform:uppercase;letter-spacing:0.05em;">
+            <span class="adm-hint">Wird dem Träger mitgeteilt. Groß-/Kleinschreibung egal.</span>
+          </div>
+          <div class="adm-group">
+            <label class="adm-label" for="e-plaetze">Gesamte Plätze</label>
+            <input class="adm-input" type="number" id="e-plaetze" min="1" placeholder="z. B. 10">
+          </div>
+        </div>
+
+        <div class="adm-row">
+          <div class="adm-group">
+            <label class="adm-label" for="e-einrichtung">Name der Einrichtung / Träger</label>
+            <input class="adm-input" type="text" id="e-einrichtung" placeholder="z. B. AWO Kita Sonnenschein">
+          </div>
+          <div class="adm-group">
+            <label class="adm-label" for="e-ansprechperson">Ansprechperson</label>
+            <input class="adm-input" type="text" id="e-ansprechperson" placeholder="Vor- und Nachname">
+          </div>
+        </div>
+
+        <div class="adm-row">
+          <div class="adm-group">
+            <label class="adm-label" for="e-email">E-Mail</label>
+            <input class="adm-input" type="email" id="e-email" placeholder="kontakt@einrichtung.de">
+          </div>
+          <div class="adm-group">
+            <label class="adm-label" for="e-zeitraum">Zeitraum</label>
+            <input class="adm-input" type="text" id="e-zeitraum" placeholder="z. B. Oktober 2025 – März 2026">
+          </div>
+        </div>
+
+        <div class="adm-group">
+          <label class="adm-label" for="e-notizen">Interne Notizen (nur für euch sichtbar)</label>
+          <textarea class="adm-textarea" id="e-notizen" placeholder="z. B. Mengenrabatt vereinbart, bevorzugt Tagesfortbildungen …" rows="2"></textarea>
+        </div>
+
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+          <button class="btn-adm-primary" onclick="saveTraeger()">Speichern</button>
+          <button class="btn-adm-danger" id="delete-btn" onclick="deleteTraeger()" style="display:none;">Träger löschen</button>
+          <span class="adm-err" id="save-err"></span>
+          <span class="adm-ok"  id="save-ok">Gespeichert.</span>
+        </div>
+      </div>
+
+      <!-- Buchungen -->
+      <div class="editor-panel">
+        <h3>Buchungen <span id="buch-count" style="font-weight:400;font-size:0.9rem;color:var(--text-light);"></span></h3>
+
+        <div class="buch-list" id="buch-list"></div>
+
+        <div class="add-buch-area">
+          <h4>Neue Buchung eintragen</h4>
+          <div class="adm-row">
+            <div class="adm-group">
+              <label class="adm-label" for="b-teilnehmer">Teilnehmerin / Teilnehmer</label>
+              <input class="adm-input" type="text" id="b-teilnehmer" placeholder="Vor- und Nachname">
+            </div>
+            <div class="adm-group">
+              <label class="adm-label" for="b-datum">Datum / Kursstart</label>
+              <input class="adm-input" type="text" id="b-datum" placeholder="z. B. 15.10.2025">
+            </div>
+          </div>
+          <div class="adm-group">
+            <label class="adm-label" for="b-kurs">Fortbildung</label>
+            <input class="adm-input" type="text" id="b-kurs" placeholder="z. B. Kinderschutz in der Kita – Tagesfortbildung">
+          </div>
+          <button class="btn-adm-green" onclick="addBuchung()">Buchung hinzufügen</button>
+          <span class="adm-err" id="buch-err" style="margin-left:10px;"></span>
+        </div>
+      </div>
+
+    </div><!-- /editor-view -->
+  </div><!-- /app-view -->
+</div>
+
+<script>
+let PW = '';
+let currentEntry = null;
+let allEntries = [];
+
+// ── Login ─────────────────────────────────────────
+document.getElementById('adm-pw').addEventListener('keydown', e => {
+  if (e.key === 'Enter') doLogin();
+});
+
+async function doLogin() {
+  PW = document.getElementById('adm-pw').value;
+  const err = document.getElementById('pw-err');
+  err.style.display = 'none';
+
+  const r = await api('list', {});
+  if (r.ok) {
+    allEntries = r.data || [];
+    document.getElementById('login-view').style.display = 'none';
+    document.getElementById('app-view').style.display = 'block';
+    renderList();
+  } else {
+    err.style.display = 'block';
+    PW = '';
+  }
+}
+
+function logout() {
+  PW = '';
+  document.getElementById('login-view').style.display = 'block';
+  document.getElementById('app-view').style.display = 'none';
+  document.getElementById('adm-pw').value = '';
+}
+
+// ── API ───────────────────────────────────────────
+async function api(action, extra) {
+  try {
+    const r = await fetch('/api/guthaben-admin', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: PW, action, ...extra }),
+    });
+    return await r.json();
+  } catch {
+    return { ok: false, msg: 'Verbindungsfehler.' };
+  }
+}
+
+// ── List ──────────────────────────────────────────
+function renderList() {
+  const container = document.getElementById('traeger-list');
+  if (allEntries.length === 0) {
+    container.innerHTML = '<p style="color:var(--text-light);font-size:0.9rem;">Noch keine Träger angelegt.</p>';
+    return;
+  }
+
+  allEntries.sort((a, b) => (a.einrichtung || '').localeCompare(b.einrichtung || '', 'de'));
+
+  container.innerHTML = allEntries.map(e => {
+    const gesamt  = parseInt(e.gesamtPlaetze) || 0;
+    const gebucht = (e.buchungen || []).length;
+    const offen   = Math.max(0, gesamt - gebucht);
+    const cls     = offen === 0 ? 'full' : offen <= 2 ? 'warn' : 'ok';
+    const pillCls = offen === 0 ? 'pill-voll' : 'pill-offen';
+    const pillTxt = offen === 0 ? 'Voll' : `${offen} offen`;
+
+    return `
+      <div class="traeger-card">
+        <div class="tc-left">
+          <div class="tc-name">${esc(e.einrichtung || '–')} <span class="${pillCls}">${pillTxt}</span></div>
+          <div class="tc-meta">
+            <span class="tc-code">${esc(e.code)}</span>
+            ${esc(e.ansprechperson || '')}
+            ${e.zeitraum ? ' · ' + esc(e.zeitraum) : ''}
+          </div>
+        </div>
+        <div class="tc-right">
+          <span class="tc-spots ${cls}">${gebucht}/${gesamt} Plätze</span>
+          <button class="btn-adm-ghost" onclick='openEdit(${JSON.stringify(e.code)})'>Bearbeiten</button>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+// ── Editor ────────────────────────────────────────
+function openNew() {
+  currentEntry = { code:'', einrichtung:'', ansprechperson:'', email:'', gesamtPlaetze:'', zeitraum:'', notizen:'', buchungen:[] };
+  fillEditor();
+  document.getElementById('editor-title').textContent = 'Neuer Träger';
+  document.getElementById('delete-btn').style.display = 'none';
+  document.getElementById('list-view').style.display = 'none';
+  document.getElementById('editor-view').style.display = 'block';
+}
+
+function openEdit(code) {
+  currentEntry = JSON.parse(JSON.stringify(allEntries.find(e => e.code === code) || {}));
+  if (!currentEntry.buchungen) currentEntry.buchungen = [];
+  fillEditor();
+  document.getElementById('editor-title').textContent = 'Träger bearbeiten';
+  document.getElementById('delete-btn').style.display = 'inline-flex';
+  document.getElementById('list-view').style.display = 'none';
+  document.getElementById('editor-view').style.display = 'block';
+}
+
+function closeEditor() {
+  document.getElementById('editor-view').style.display = 'none';
+  document.getElementById('list-view').style.display = 'block';
+}
+
+function fillEditor() {
+  const e = currentEntry;
+  document.getElementById('e-code').value           = e.code || '';
+  document.getElementById('e-einrichtung').value    = e.einrichtung || '';
+  document.getElementById('e-ansprechperson').value = e.ansprechperson || '';
+  document.getElementById('e-email').value          = e.email || '';
+  document.getElementById('e-plaetze').value        = e.gesamtPlaetze || '';
+  document.getElementById('e-zeitraum').value       = e.zeitraum || '';
+  document.getElementById('e-notizen').value        = e.notizen || '';
+  document.getElementById('save-err').style.display = 'none';
+  document.getElementById('save-ok').style.display  = 'none';
+  renderBuchungen();
+}
+
+function collectEntry() {
+  return {
+    ...currentEntry,
+    code:            document.getElementById('e-code').value.trim().toUpperCase(),
+    einrichtung:     document.getElementById('e-einrichtung').value.trim(),
+    ansprechperson:  document.getElementById('e-ansprechperson').value.trim(),
+    email:           document.getElementById('e-email').value.trim(),
+    gesamtPlaetze:   parseInt(document.getElementById('e-plaetze').value) || 0,
+    zeitraum:        document.getElementById('e-zeitraum').value.trim(),
+    notizen:         document.getElementById('e-notizen').value.trim(),
+    buchungen:       currentEntry.buchungen || [],
+  };
+}
+
+async function saveTraeger() {
+  const entry = collectEntry();
+  const errEl = document.getElementById('save-err');
+  const okEl  = document.getElementById('save-ok');
+
+  if (!entry.code) { errEl.textContent = 'Bitte Code eingeben.'; errEl.style.display = 'inline'; return; }
+  if (!entry.einrichtung) { errEl.textContent = 'Bitte Einrichtungsname eingeben.'; errEl.style.display = 'inline'; return; }
+
+  errEl.style.display = 'none'; okEl.style.display = 'none';
+
+  const r = await api('save', { entry });
+  if (r.ok) {
+    currentEntry = entry;
+    // Update local list
+    const idx = allEntries.findIndex(e => e.code === entry.code);
+    if (idx >= 0) allEntries[idx] = entry; else allEntries.push(entry);
+    okEl.style.display = 'inline';
+    setTimeout(() => okEl.style.display = 'none', 2500);
+  } else {
+    errEl.textContent = r.msg || 'Fehler beim Speichern.';
+    errEl.style.display = 'inline';
+  }
+}
+
+async function deleteTraeger() {
+  if (!confirm(`Träger "${currentEntry.einrichtung}" wirklich löschen?`)) return;
+  const r = await api('delete', { code: currentEntry.code });
+  if (r.ok) {
+    allEntries = allEntries.filter(e => e.code !== currentEntry.code);
+    renderList();
+    closeEditor();
+  }
+}
+
+// ── Buchungen ─────────────────────────────────────
+function renderBuchungen() {
+  const b = currentEntry.buchungen || [];
+  const gesamt = parseInt(document.getElementById('e-plaetze').value) || 0;
+  document.getElementById('buch-count').textContent = `(${b.length} von ${gesamt} Plätzen belegt)`;
+
+  const container = document.getElementById('buch-list');
+  if (b.length === 0) {
+    container.innerHTML = '<p style="color:var(--text-light);font-size:0.85rem;padding:4px 0;">Noch keine Buchungen.</p>';
+    return;
+  }
+  container.innerHTML = b.map((item, i) => `
+    <div class="buch-item">
+      <span class="b-name">${esc(item.teilnehmer || '–')}</span>
+      <span class="b-kurs">${esc(item.kurs || '–')}</span>
+      <span class="b-datum">${esc(item.datum || '')}</span>
+      <button class="buch-remove" onclick="removeBuchung(${i})" title="Entfernen">×</button>
+    </div>`).join('');
+}
+
+function addBuchung() {
+  const teilnehmer = document.getElementById('b-teilnehmer').value.trim();
+  const kurs       = document.getElementById('b-kurs').value.trim();
+  const datum      = document.getElementById('b-datum').value.trim();
+  const errEl      = document.getElementById('buch-err');
+
+  if (!teilnehmer || !kurs) {
+    errEl.textContent = 'Bitte Teilnehmerin und Fortbildung angeben.';
+    errEl.style.display = 'inline'; return;
+  }
+  errEl.style.display = 'none';
+
+  if (!currentEntry.buchungen) currentEntry.buchungen = [];
+  currentEntry.buchungen.push({ teilnehmer, kurs, datum, id: Date.now().toString(36) });
+
+  document.getElementById('b-teilnehmer').value = '';
+  document.getElementById('b-kurs').value = '';
+  document.getElementById('b-datum').value = '';
+
+  renderBuchungen();
+}
+
+function removeBuchung(idx) {
+  currentEntry.buchungen.splice(idx, 1);
+  renderBuchungen();
+}
+
+// ── Helpers ───────────────────────────────────────
+function genCode() {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let code = 'KT-';
+  for (let i = 0; i < 6; i++) code += chars[Math.floor(Math.random() * chars.length)];
+  document.getElementById('e-code').value = code;
+}
+
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// Update Buchungen-Zähler wenn Platzzahl sich ändert
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('e-plaetze')?.addEventListener('input', () => {
+    if (currentEntry) renderBuchungen();
+  });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mein Fortbildungsguthaben – EDULEO Akademie</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="../assets/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .g-hero { background: linear-gradient(135deg, var(--green) 0%, var(--beige) 100%); padding: 72px 0 48px; }
+    .g-hero h1 { color: var(--dark); margin-bottom: 10px; }
+    .g-hero p  { color: var(--text); font-size: 1.05rem; max-width: 520px; }
+
+    .g-section { padding: 56px 0 100px; background: var(--off-white); }
+
+    .g-card {
+      background: var(--white); border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg); max-width: 680px; margin: 0 auto; overflow: hidden;
+    }
+
+    .g-card-head { background: var(--beige); padding: 28px 36px; border-bottom: 2px solid var(--border); }
+    .g-card-head h2 { font-size: 1.2rem; color: var(--dark); margin: 0; }
+
+    .g-card-body { padding: 36px; }
+    @media (max-width: 520px) { .g-card-body { padding: 24px 18px; } .g-card-head { padding: 20px 18px; } }
+
+    .g-label { display: block; font-weight: 700; font-size: 0.9rem; color: var(--dark); margin-bottom: 8px; }
+    .g-input {
+      width: 100%; border: 2px solid var(--border); border-radius: var(--radius-md);
+      padding: 13px 16px; font-family: var(--font); font-size: 1.1rem;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--dark);
+      background: var(--white); outline: none; transition: border-color 0.2s;
+    }
+    .g-input:focus { border-color: var(--green-dark); }
+    .g-input::placeholder { text-transform: none; letter-spacing: 0; color: var(--text-light); font-size: 1rem; }
+
+    .g-btn {
+      width: 100%; margin-top: 16px;
+      background: #7A5240; color: var(--white);
+      padding: 14px; border-radius: var(--radius-full);
+      border: none; font-family: var(--font); font-size: 1rem; font-weight: 700;
+      cursor: pointer; box-shadow: 0 4px 16px rgba(122,82,64,0.28); transition: all 0.2s;
+    }
+    .g-btn:hover { background: #5C3D2E; transform: translateY(-2px); }
+    .g-btn:disabled { opacity: 0.6; cursor: default; transform: none; }
+
+    .g-err { color: #c0392b; font-size: 0.88rem; margin-top: 10px; display: none; }
+
+    /* ── Result ── */
+    .g-result { display: none; }
+
+    .g-einrichtung { font-size: 1.25rem; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
+    .g-meta { font-size: 0.88rem; color: var(--text-light); margin-bottom: 24px; }
+
+    .g-spots {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 12px; margin-bottom: 28px;
+    }
+    @media (max-width: 420px) { .g-spots { grid-template-columns: 1fr; } }
+
+    .g-spot {
+      background: var(--off-white); border-radius: var(--radius-md);
+      padding: 18px 14px; text-align: center;
+    }
+    .g-spot.highlight { background: var(--green); }
+    .g-spot-num { font-size: 2.4rem; font-weight: 900; color: var(--green-deeper); line-height: 1; margin-bottom: 4px; }
+    .g-spot-lbl { font-size: 0.8rem; color: var(--text-light); font-weight: 600; }
+
+    .g-buch-title { font-size: 1rem; font-weight: 800; color: var(--dark); margin-bottom: 12px; }
+    .g-buch-list { display: grid; gap: 8px; margin-bottom: 24px; }
+    .g-buch-item {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 12px; border: 2px solid var(--border); border-radius: var(--radius-md);
+      padding: 12px 16px; background: var(--white);
+    }
+    .g-buch-name { font-weight: 700; font-size: 0.9rem; color: var(--dark); }
+    .g-buch-kurs { font-size: 0.82rem; color: var(--text-light); }
+    .g-buch-datum { font-size: 0.8rem; color: var(--text-light); white-space: nowrap; }
+
+    .g-empty { text-align: center; color: var(--text-light); font-size: 0.9rem; padding: 20px 0; }
+
+    .g-contact {
+      background: var(--beige); border-radius: var(--radius-md);
+      padding: 18px 20px; font-size: 0.9rem; color: var(--text);
+    }
+    .g-contact a { color: var(--green-dark); font-weight: 700; }
+    .g-contact a:hover { text-decoration: underline; }
+
+    .g-notiz {
+      background: var(--mauve-light); border-radius: var(--radius-md);
+      padding: 14px 18px; font-size: 0.88rem; color: var(--text);
+      margin-bottom: 18px;
+    }
+
+    .g-zeitraum {
+      display: inline-block; background: var(--green); color: var(--green-deeper);
+      border-radius: var(--radius-full); padding: 4px 12px;
+      font-size: 0.8rem; font-weight: 700; margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="../" class="nav-logo">
+        <img src="../assets/images/logo.png" alt="EDULEO Akademie" style="height:48px;width:auto;">
+      </a>
+      <div class="nav-cta">
+        <a href="../fortbildungen/" class="btn btn-primary btn-sm">Alle Fortbildungen</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="g-hero">
+  <div class="container">
+    <span class="section-label">Trägerportal</span>
+    <h1>Mein Fortbildungsguthaben</h1>
+    <p>Geben Sie Ihren persönlichen Code ein, um Ihren aktuellen Guthaben-Stand und alle gebuchten Fortbildungen einzusehen.</p>
+  </div>
+</section>
+
+<section class="g-section">
+  <div class="container">
+    <div class="g-card">
+      <div class="g-card-head">
+        <h2>Code eingeben</h2>
+      </div>
+      <div class="g-card-body">
+
+        <!-- Login -->
+        <div id="login-area">
+          <label class="g-label" for="code-input">Ihr Zugangscode</label>
+          <input class="g-input" type="text" id="code-input" placeholder="z. B. KT-2025-ABC" maxlength="30" autocomplete="off" autocapitalize="characters">
+          <button class="g-btn" id="login-btn" onclick="loadGuthaben()">Guthaben abrufen</button>
+          <p class="g-err" id="login-err"></p>
+          <p style="font-size:0.82rem;color:var(--text-light);margin-top:14px;">Ihren Code haben Sie von EDULEO per E-Mail erhalten. Bei Fragen: <a href="mailto:kontakt@eduleo-akademie.de" style="color:var(--green-dark);font-weight:700;">kontakt@eduleo-akademie.de</a></p>
+        </div>
+
+        <!-- Result -->
+        <div id="result-area" class="g-result">
+          <div id="result-inner"></div>
+        </div>
+
+        <!-- Back button -->
+        <div id="back-area" style="display:none;margin-top:20px;">
+          <button class="btn btn-outline btn-sm" onclick="resetView()">Anderen Code eingeben</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="../main.js"></script>
+<script>
+document.getElementById('code-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') loadGuthaben();
+});
+
+async function loadGuthaben() {
+  const code = document.getElementById('code-input').value.trim();
+  const err  = document.getElementById('login-err');
+  if (!code) { err.textContent = 'Bitte geben Sie Ihren Code ein.'; err.style.display = 'block'; return; }
+
+  err.style.display = 'none';
+  const btn = document.getElementById('login-btn');
+  btn.disabled = true; btn.textContent = 'Wird geladen …';
+
+  try {
+    const r = await fetch('/api/guthaben?code=' + encodeURIComponent(code));
+    const j = await r.json();
+
+    if (!j.ok) {
+      err.textContent = j.msg || 'Code nicht gefunden.';
+      err.style.display = 'block';
+      btn.disabled = false; btn.textContent = 'Guthaben abrufen';
+      return;
+    }
+
+    showResult(j);
+    document.getElementById('login-area').style.display = 'none';
+    document.getElementById('result-area').style.display = 'block';
+    document.getElementById('back-area').style.display = 'block';
+
+  } catch {
+    err.textContent = 'Verbindungsfehler – bitte erneut versuchen.';
+    err.style.display = 'block';
+    btn.disabled = false; btn.textContent = 'Guthaben abrufen';
+  }
+}
+
+function showResult(j) {
+  const d = j;
+  const buchungen = d.buchungen || [];
+  const gesamt    = parseInt(d.gesamtPlaetze) || 0;
+  const gebucht   = buchungen.length;
+  const offen     = Math.max(0, gesamt - gebucht);
+
+  let html = `
+    <div class="g-einrichtung">${esc(d.einrichtung || '')}</div>
+    <div class="g-meta">Ansprechperson: ${esc(d.ansprechperson || '–')}</div>`;
+
+  if (d.zeitraum) html += `<div class="g-zeitraum">Zeitraum: ${esc(d.zeitraum)}</div>`;
+
+  html += `
+    <div class="g-spots">
+      <div class="g-spot"><div class="g-spot-num">${gesamt}</div><div class="g-spot-lbl">Plätze gesamt</div></div>
+      <div class="g-spot"><div class="g-spot-num">${gebucht}</div><div class="g-spot-lbl">Bereits gebucht</div></div>
+      <div class="g-spot highlight"><div class="g-spot-num">${offen}</div><div class="g-spot-lbl">Noch verfügbar</div></div>
+    </div>`;
+
+  html += `<div class="g-buch-title">Gebuchte Fortbildungen</div><div class="g-buch-list">`;
+  if (buchungen.length === 0) {
+    html += `<div class="g-empty">Noch keine Buchungen eingetragen.</div>`;
+  } else {
+    buchungen.forEach(b => {
+      html += `
+        <div class="g-buch-item">
+          <div>
+            <div class="g-buch-name">${esc(b.teilnehmer || '–')}</div>
+            <div class="g-buch-kurs">${esc(b.kurs || '–')}</div>
+          </div>
+          <div class="g-buch-datum">${esc(b.datum || '')}</div>
+        </div>`;
+    });
+  }
+  html += `</div>`;
+
+  if (d.notizen) html += `<div class="g-notiz">${esc(d.notizen)}</div>`;
+
+  html += `
+    <div class="g-contact">
+      Fragen zu Ihrem Paket? Schreiben Sie uns: <a href="mailto:kontakt@eduleo-akademie.de">kontakt@eduleo-akademie.de</a> oder rufen Sie an: <a href="tel:+4916050590620">+49 160 505 90620</a>
+    </div>`;
+
+  document.getElementById('result-inner').innerHTML = html;
+}
+
+function resetView() {
+  document.getElementById('login-area').style.display = 'block';
+  document.getElementById('result-area').style.display = 'none';
+  document.getElementById('back-area').style.display = 'none';
+  document.getElementById('login-btn').disabled = false;
+  document.getElementById('login-btn').textContent = 'Guthaben abrufen';
+  document.getElementById('code-input').value = '';
+  document.getElementById('login-err').style.display = 'none';
+}
+
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+</script>
+</body>
+</html>

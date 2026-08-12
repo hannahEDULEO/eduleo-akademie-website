@@ -46,6 +46,16 @@ export default {
       return handleTermine(url);
     }
 
+    // API: Guthaben abrufen (öffentlich, per Code)
+    if (path === '/api/guthaben') {
+      return handleGuthabenGet(request, env);
+    }
+
+    // API: Guthaben verwalten (Admin)
+    if (path === '/api/guthaben-admin') {
+      return handleGuthabenAdmin(request, env);
+    }
+
     // Redirects für alte QR-Code-URLs (Broschüre & Postkarte)
     const decodedPath = decodeURIComponent(path).replace(/\/?$/, '/');
     if (decodedPath === '/3-monats-fortbildungen/' || decodedPath === '/überblick-fortbildungen/') {
@@ -644,4 +654,58 @@ async function handleTermine(url) {
   } catch (e) {
     return new Response(JSON.stringify({ dates: [], error: String(e) }), { headers });
   }
+}
+
+// ── Guthaben: öffentliche Abfrage per Code ────────
+async function handleGuthabenGet(request, env) {
+  const json = { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' };
+  const code = new URL(request.url).searchParams.get('code')?.toUpperCase().trim();
+  if (!code) return new Response(JSON.stringify({ ok: false, msg: 'Code fehlt.' }), { status: 400, headers: json });
+
+  const raw = await env.FORM_SUBMISSIONS.get('guthaben_' + code);
+  if (!raw) return new Response(JSON.stringify({ ok: false, msg: 'Code nicht gefunden. Bitte prüfe die Schreibweise.' }), { status: 404, headers: json });
+
+  return new Response(raw, { headers: json });
+}
+
+// ── Guthaben: Admin (Passwort-geschützt) ─────────
+async function handleGuthabenAdmin(request, env) {
+  const json = { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' };
+  if (request.method === 'OPTIONS') return new Response(null, { status: 200, headers: json });
+  if (request.method !== 'POST') return new Response(JSON.stringify({ ok: false }), { status: 405, headers: json });
+
+  let body;
+  try { body = await request.json(); } catch { return new Response(JSON.stringify({ ok: false, msg: 'Ungültiges JSON.' }), { status: 400, headers: json }); }
+
+  const pw = env.GUTHABEN_PW || 'eduleo-admin';
+  if (body.password !== pw) return new Response(JSON.stringify({ ok: false, msg: 'Falsches Passwort.' }), { status: 401, headers: json });
+
+  if (body.action === 'list') {
+    const list = await env.FORM_SUBMISSIONS.list({ prefix: 'guthaben_' });
+    const entries = await Promise.all(list.keys.map(async k => {
+      const d = await env.FORM_SUBMISSIONS.get(k.name);
+      return d ? JSON.parse(d) : null;
+    }));
+    return new Response(JSON.stringify({ ok: true, data: entries.filter(Boolean) }), { headers: json });
+  }
+
+  if (body.action === 'save') {
+    const e = body.entry;
+    if (!e?.code) return new Response(JSON.stringify({ ok: false, msg: 'Code fehlt.' }), { status: 400, headers: json });
+    e.code = e.code.toUpperCase().replace(/\s/g, '');
+    e.aktualisiertAm = new Date().toISOString();
+    if (!e.erstelltAm) e.erstelltAm = e.aktualisiertAm;
+    if (!e.buchungen) e.buchungen = [];
+    await env.FORM_SUBMISSIONS.put('guthaben_' + e.code, JSON.stringify(e));
+    return new Response(JSON.stringify({ ok: true, code: e.code }), { headers: json });
+  }
+
+  if (body.action === 'delete') {
+    const code = body.code?.toUpperCase().trim();
+    if (!code) return new Response(JSON.stringify({ ok: false, msg: 'Code fehlt.' }), { status: 400, headers: json });
+    await env.FORM_SUBMISSIONS.delete('guthaben_' + code);
+    return new Response(JSON.stringify({ ok: true }), { headers: json });
+  }
+
+  return new Response(JSON.stringify({ ok: false, msg: 'Unbekannte Aktion.' }), { status: 400, headers: json });
 }
