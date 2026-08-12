@@ -212,8 +212,9 @@
             <span class="adm-hint">Wird dem Träger mitgeteilt. Groß-/Kleinschreibung egal.</span>
           </div>
           <div class="adm-group">
-            <label class="adm-label" for="e-plaetze">Gesamte Plätze</label>
-            <input class="adm-input" type="number" id="e-plaetze" min="1" placeholder="z. B. 10">
+            <label class="adm-label" for="e-budget">Bezahltes Budget (€)</label>
+            <input class="adm-input" type="number" id="e-budget" min="0" step="50" placeholder="z. B. 3000">
+            <span class="adm-hint">Der vom Träger vorab bezahlte Gesamtbetrag.</span>
           </div>
         </div>
 
@@ -244,6 +245,12 @@
           <textarea class="adm-textarea" id="e-notizen" placeholder="z. B. Mengenrabatt vereinbart, bevorzugt Tagesfortbildungen …" rows="2"></textarea>
         </div>
 
+        <div class="adm-group">
+          <label class="adm-label" for="e-kurse">Vereinbarte Fortbildungen</label>
+          <textarea class="adm-textarea" id="e-kurse" placeholder="Eine Fortbildung pro Zeile, z. B.:&#10;Kinderschutz in der Kita (Tagesfortbildung, 135 €)&#10;ADHS in der Kita (Tagesfortbildung, 135 €)&#10;Kita-ExpertIn für ADHS & Autismus (3-Monats, 810 €)" rows="4"></textarea>
+          <span class="adm-hint">Diese Liste sieht der Träger auf seiner Seite – zeigt, welche Fortbildungen im Paket vereinbart sind.</span>
+        </div>
+
         <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
           <button class="btn-adm-primary" onclick="saveTraeger()">Speichern</button>
           <button class="btn-adm-danger" id="delete-btn" onclick="deleteTraeger()" style="display:none;">Träger löschen</button>
@@ -255,6 +262,11 @@
       <!-- Buchungen -->
       <div class="editor-panel">
         <h3>Buchungen <span id="buch-count" style="font-weight:400;font-size:0.9rem;color:var(--text-light);"></span></h3>
+        <div id="budget-bar" style="background:var(--beige);border-radius:var(--radius-md);padding:14px 18px;margin-bottom:16px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;text-align:center;">
+          <div><div id="bb-gesamt" style="font-size:1.4rem;font-weight:900;color:var(--dark);">–</div><div style="font-size:0.78rem;color:var(--text-light);font-weight:600;">Bezahlt</div></div>
+          <div><div id="bb-genutzt" style="font-size:1.4rem;font-weight:900;color:#c0392b;">–</div><div style="font-size:0.78rem;color:var(--text-light);font-weight:600;">Genutzt</div></div>
+          <div><div id="bb-offen"  style="font-size:1.4rem;font-weight:900;color:var(--green-deeper);">–</div><div style="font-size:0.78rem;color:var(--text-light);font-weight:600;">Verfügbar</div></div>
+        </div>
 
         <div class="buch-list" id="buch-list"></div>
 
@@ -270,9 +282,16 @@
               <input class="adm-input" type="text" id="b-datum" placeholder="z. B. 15.10.2025">
             </div>
           </div>
-          <div class="adm-group">
-            <label class="adm-label" for="b-kurs">Fortbildung</label>
-            <input class="adm-input" type="text" id="b-kurs" placeholder="z. B. Kinderschutz in der Kita – Tagesfortbildung">
+          <div class="adm-row">
+            <div class="adm-group">
+              <label class="adm-label" for="b-kurs">Fortbildung</label>
+              <input class="adm-input" type="text" id="b-kurs" placeholder="z. B. Kinderschutz in der Kita – Tagesfortbildung">
+            </div>
+            <div class="adm-group">
+              <label class="adm-label" for="b-preis">Preis (€)</label>
+              <input class="adm-input" type="number" id="b-preis" min="0" step="1" placeholder="z. B. 135">
+              <span class="adm-hint">150 € Tages / 135 € mit Rabatt / 900 € 3-Monats</span>
+            </div>
           </div>
           <button class="btn-adm-green" onclick="addBuchung()">Buchung hinzufügen</button>
           <span class="adm-err" id="buch-err" style="margin-left:10px;"></span>
@@ -398,9 +417,10 @@ function fillEditor() {
   document.getElementById('e-einrichtung').value    = e.einrichtung || '';
   document.getElementById('e-ansprechperson').value = e.ansprechperson || '';
   document.getElementById('e-email').value          = e.email || '';
-  document.getElementById('e-plaetze').value        = e.gesamtPlaetze || '';
+  document.getElementById('e-budget').value         = e.budgetGesamt || '';
   document.getElementById('e-zeitraum').value       = e.zeitraum || '';
   document.getElementById('e-notizen').value        = e.notizen || '';
+  document.getElementById('e-kurse').value          = e.vereinbarteFortbildungen || '';
   document.getElementById('save-err').style.display = 'none';
   document.getElementById('save-ok').style.display  = 'none';
   renderBuchungen();
@@ -409,14 +429,15 @@ function fillEditor() {
 function collectEntry() {
   return {
     ...currentEntry,
-    code:            document.getElementById('e-code').value.trim().toUpperCase(),
-    einrichtung:     document.getElementById('e-einrichtung').value.trim(),
-    ansprechperson:  document.getElementById('e-ansprechperson').value.trim(),
-    email:           document.getElementById('e-email').value.trim(),
-    gesamtPlaetze:   parseInt(document.getElementById('e-plaetze').value) || 0,
-    zeitraum:        document.getElementById('e-zeitraum').value.trim(),
-    notizen:         document.getElementById('e-notizen').value.trim(),
-    buchungen:       currentEntry.buchungen || [],
+    code:                     document.getElementById('e-code').value.trim().toUpperCase(),
+    einrichtung:              document.getElementById('e-einrichtung').value.trim(),
+    ansprechperson:           document.getElementById('e-ansprechperson').value.trim(),
+    email:                    document.getElementById('e-email').value.trim(),
+    budgetGesamt:             parseFloat(document.getElementById('e-budget').value) || 0,
+    zeitraum:                 document.getElementById('e-zeitraum').value.trim(),
+    notizen:                  document.getElementById('e-notizen').value.trim(),
+    vereinbarteFortbildungen: document.getElementById('e-kurse').value.trim(),
+    buchungen:                currentEntry.buchungen || [],
   };
 }
 
@@ -456,9 +477,17 @@ async function deleteTraeger() {
 
 // ── Buchungen ─────────────────────────────────────
 function renderBuchungen() {
-  const b = currentEntry.buchungen || [];
-  const gesamt = parseInt(document.getElementById('e-plaetze').value) || 0;
-  document.getElementById('buch-count').textContent = `(${b.length} von ${gesamt} Plätzen belegt)`;
+  const b       = currentEntry.buchungen || [];
+  const budget  = parseFloat(document.getElementById('e-budget').value) || 0;
+  const genutzt = b.reduce((s, x) => s + (parseFloat(x.preis) || 0), 0);
+  const offen   = Math.max(0, budget - genutzt);
+
+  document.getElementById('buch-count').textContent = `(${b.length} Buchung${b.length !== 1 ? 'en' : ''})`;
+
+  const fmtEur = n => n.toLocaleString('de-DE') + ' €';
+  document.getElementById('bb-gesamt').textContent = budget  ? fmtEur(budget)  : '–';
+  document.getElementById('bb-genutzt').textContent = genutzt ? fmtEur(genutzt) : '0 €';
+  document.getElementById('bb-offen').textContent   = budget  ? fmtEur(offen)   : '–';
 
   const container = document.getElementById('buch-list');
   if (b.length === 0) {
@@ -470,6 +499,7 @@ function renderBuchungen() {
       <span class="b-name">${esc(item.teilnehmer || '–')}</span>
       <span class="b-kurs">${esc(item.kurs || '–')}</span>
       <span class="b-datum">${esc(item.datum || '')}</span>
+      <span class="b-datum" style="font-weight:700;color:var(--dark);min-width:60px;text-align:right;">${item.preis ? item.preis.toLocaleString('de-DE') + ' €' : ''}</span>
       <button class="buch-remove" onclick="removeBuchung(${i})" title="Entfernen">×</button>
     </div>`).join('');
 }
@@ -478,6 +508,7 @@ function addBuchung() {
   const teilnehmer = document.getElementById('b-teilnehmer').value.trim();
   const kurs       = document.getElementById('b-kurs').value.trim();
   const datum      = document.getElementById('b-datum').value.trim();
+  const preis      = parseFloat(document.getElementById('b-preis').value) || 0;
   const errEl      = document.getElementById('buch-err');
 
   if (!teilnehmer || !kurs) {
@@ -487,11 +518,12 @@ function addBuchung() {
   errEl.style.display = 'none';
 
   if (!currentEntry.buchungen) currentEntry.buchungen = [];
-  currentEntry.buchungen.push({ teilnehmer, kurs, datum, id: Date.now().toString(36) });
+  currentEntry.buchungen.push({ teilnehmer, kurs, datum, preis, id: Date.now().toString(36) });
 
   document.getElementById('b-teilnehmer').value = '';
   document.getElementById('b-kurs').value = '';
   document.getElementById('b-datum').value = '';
+  document.getElementById('b-preis').value = '';
 
   renderBuchungen();
 }

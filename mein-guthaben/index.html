@@ -206,12 +206,37 @@ function showResult(j) {
 
   if (d.zeitraum) html += `<div class="g-zeitraum">Zeitraum: ${esc(d.zeitraum)}</div>`;
 
-  html += `
-    <div class="g-spots">
-      <div class="g-spot"><div class="g-spot-num">${gesamt}</div><div class="g-spot-lbl">Plätze gesamt</div></div>
-      <div class="g-spot"><div class="g-spot-num">${gebucht}</div><div class="g-spot-lbl">Bereits gebucht</div></div>
-      <div class="g-spot highlight"><div class="g-spot-num">${offen}</div><div class="g-spot-lbl">Noch verfügbar</div></div>
-    </div>`;
+  // Budget in Euro (falls eingetragen)
+  if (d.budgetGesamt) {
+    const budgetGesamt = parseFloat(d.budgetGesamt) || 0;
+    const genutztEur   = (d.buchungen || []).reduce((s, x) => s + (parseFloat(x.preis) || 0), 0);
+    const verfuegbar   = Math.max(0, budgetGesamt - genutztEur);
+    const fmtEur = n => n.toLocaleString('de-DE') + ' €';
+    html += `
+      <div class="g-spots">
+        <div class="g-spot"><div class="g-spot-num" style="font-size:1.6rem;">${fmtEur(budgetGesamt)}</div><div class="g-spot-lbl">Budget bezahlt</div></div>
+        <div class="g-spot"><div class="g-spot-num" style="font-size:1.6rem;color:#c0392b;">${fmtEur(genutztEur)}</div><div class="g-spot-lbl">Bereits genutzt</div></div>
+        <div class="g-spot highlight"><div class="g-spot-num" style="font-size:1.6rem;">${fmtEur(verfuegbar)}</div><div class="g-spot-lbl">Noch verfügbar</div></div>
+      </div>`;
+  } else {
+    html += `
+      <div class="g-spots">
+        <div class="g-spot"><div class="g-spot-num">${gesamt}</div><div class="g-spot-lbl">Plätze gesamt</div></div>
+        <div class="g-spot"><div class="g-spot-num">${gebucht}</div><div class="g-spot-lbl">Bereits gebucht</div></div>
+        <div class="g-spot highlight"><div class="g-spot-num">${offen}</div><div class="g-spot-lbl">Noch verfügbar</div></div>
+      </div>`;
+  }
+
+  // Vereinbarte Fortbildungen
+  if (d.vereinbarteFortbildungen) {
+    const lines = d.vereinbarteFortbildungen.split('\n').filter(l => l.trim());
+    html += `<div class="g-buch-title" style="margin-top:8px;">Vereinbarte Fortbildungen</div>`;
+    html += `<div class="g-buch-list" style="margin-bottom:24px;">`;
+    lines.forEach(l => {
+      html += `<div class="g-buch-item"><div class="g-buch-name">${esc(l.trim())}</div></div>`;
+    });
+    html += `</div>`;
+  }
 
   html += `<div class="g-buch-title">Gebuchte Fortbildungen</div><div class="g-buch-list">`;
   if (buchungen.length === 0) {
@@ -220,11 +245,12 @@ function showResult(j) {
     buchungen.forEach(b => {
       html += `
         <div class="g-buch-item">
-          <div>
+          <div style="flex:1;">
             <div class="g-buch-name">${esc(b.teilnehmer || '–')}</div>
             <div class="g-buch-kurs">${esc(b.kurs || '–')}</div>
           </div>
           <div class="g-buch-datum">${esc(b.datum || '')}</div>
+          ${b.preis ? `<div class="g-buch-datum" style="font-weight:700;color:var(--dark);min-width:60px;text-align:right;">${parseFloat(b.preis).toLocaleString('de-DE')} €</div>` : ''}
         </div>`;
     });
   }

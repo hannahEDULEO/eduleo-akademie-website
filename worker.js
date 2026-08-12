@@ -665,7 +665,8 @@ async function handleGuthabenGet(request, env) {
   const raw = await env.FORM_SUBMISSIONS.get('guthaben_' + code);
   if (!raw) return new Response(JSON.stringify({ ok: false, msg: 'Code nicht gefunden. Bitte prüfe die Schreibweise.' }), { status: 404, headers: json });
 
-  return new Response(raw, { headers: json });
+  const entry = JSON.parse(raw);
+  return new Response(JSON.stringify({ ok: true, ...entry }), { headers: json });
 }
 
 // ── Guthaben: Admin (Passwort-geschützt) ─────────
