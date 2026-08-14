@@ -396,11 +396,11 @@
           <div class="wiz-row">
             <div class="wiz-group">
               <label class="wiz-label" for="inp-von">Zeitraum: von <span class="req">*</span></label>
-              <input class="wiz-input" type="text" id="inp-von" placeholder="z. B. Oktober 2025">
+              <input class="wiz-input" type="text" id="inp-von" placeholder="z. B. Oktober 2026">
             </div>
             <div class="wiz-group">
               <label class="wiz-label" for="inp-bis">bis <span class="req">*</span></label>
-              <input class="wiz-input" type="text" id="inp-bis" placeholder="z. B. März 2026">
+              <input class="wiz-input" type="text" id="inp-bis" placeholder="z. B. März 2027">
             </div>
           </div>
 
@@ -897,6 +897,16 @@ async function handleSubmit(e) {
 function fmt(n) {
   return Number.isInteger(n) ? n.toLocaleString('de-DE') : n.toLocaleString('de-DE', { maximumFractionDigits:0 });
 }
+
+// ─── Platzhalter-Daten automatisch aktuell halten ────
+(function setDatePlaceholders() {
+  const monate = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+  const now  = new Date();
+  const von  = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+  const bis  = new Date(now.getFullYear(), now.getMonth() + 7, 1);
+  document.getElementById('inp-von').placeholder = `z. B. ${monate[von.getMonth()]} ${von.getFullYear()}`;
+  document.getElementById('inp-bis').placeholder = `z. B. ${monate[bis.getMonth()]} ${bis.getFullYear()}`;
+})();
 </script>
 
 </body>
