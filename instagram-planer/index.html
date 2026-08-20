@@ -51,6 +51,33 @@
       margin-bottom: 32px;
     }
 
+    /* ── Anleitung ── */
+    .anleitung {
+      background: #fff;
+      border: 1.5px solid #D8CEC8;
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+    .anleitung-title {
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: #261D18;
+      margin-bottom: 12px;
+    }
+    .anleitung-steps {
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .anleitung-steps li {
+      font-size: 0.88rem;
+      color: #3D302A;
+      line-height: 1.5;
+    }
+    .anleitung-steps li strong { color: #261D18; }
+
     /* ── Erklärung ── */
     .legend {
       background: #fff;
@@ -349,6 +376,17 @@
 
   <h1 class="page-title">📸 Instagram Planer</h1>
   <p class="page-sub" id="pageSub">Lädt aktuelle Kurstermine aus SimplyOrg…</p>
+
+  <div class="anleitung">
+    <div class="anleitung-title">📋 So funktioniert's</div>
+    <ol class="anleitung-steps">
+      <li><strong>Rote Zone zuerst</strong> — das sind die Kurse, für die du jetzt eine Story posten solltest. Gelb = diese Woche planen. Grün = schon mal im Blick haben.</li>
+      <li><strong>Story-Text kopieren</strong> — auf den lila Button „Text kopieren" klicken. Den Text kannst du direkt als Story-Caption oder Folie nutzen, gerne noch anpassen.</li>
+      <li><strong>Dozentin verlinken</strong> — den Instagram-Handle der Dozentin (lila Pill) antippen, das öffnet ihr Profil. In der Story mit @-Mention verlinken, damit sie reposten kann.</li>
+      <li><strong>Link zur Kursseite direkt in die Story</strong> — auf „Kursseite ansehen" klicken, URL kopieren und als Link-Sticker in die Instagram Story einfügen (nicht Bio!).</li>
+      <li><strong>Abhaken</strong> — nach dem Posten auf „Als gepostet markieren" klicken. Das Häkchen bleibt auch nach dem Neu-Laden gespeichert.</li>
+    </ol>
+  </div>
 
   <div class="legend">
     <div class="legend-item">🔴 <strong>Jetzt posten</strong> — Kurs startet bald (Tagesfob. ≤ 2 Wo., 3-Monats-Kurs ≤ 4 Wo.)</div>
