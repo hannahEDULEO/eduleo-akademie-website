@@ -562,20 +562,14 @@ const DATE_OVERRIDES = {
   "41_2026-12-04": ["nadja"],
 
   // ── 3-Monats-Kurse (Starttermine der Durchgänge) ──
-  // VA – Verhaltensauffälligkeiten (ID 31)
-  "31_2026-09-03": ["isabelle"],
   // TC – Teamcoach (ID 33)
   "33_2026-09-08": ["nadja"],
-  // AA Sep-Durchgang – ADHS & Autismus (ID 30)
-  "30_2026-09-10": ["sarah"],
   // Yoga Z1 – Kinderyoga Kursleitung (ID 27)
   "27_2026-09-30": ["belinda"],
-  // AA Okt-Durchgang – ADHS & Autismus (ID 30)
-  "30_2026-10-06": ["sarah"],
   // Ink – FachberaterIn Inklusion (ID 34)
   "34_2026-10-15": ["belinda"],
-  // VS Z2 – Leitung der Vorschule (ID 26)
-  "26_2026-11-05": ["belinda"],
+  // VS Z2 – Leitung der Vorschule (ID 26): Belinda + Nadine als Ausnahme
+  "26_2026-11-05": ["belinda", "nadine"],
   // KS Z2 – Kinderschutz-KoordinatorIn (ID 32)
   "32_2026-11-16": ["nadja"],
   // DM Z3 – Digitale Medien (ID 28)
@@ -658,9 +652,6 @@ function renderCard(kurs, iso, days) {
         <a class="ig-link" href="https://www.instagram.com/${d.ig}/" target="_blank" rel="noopener">${d.handle}</a>
       </div>`;
     }).join('');
-    if (!isOverride && activeDozentinnen.length > 1) {
-      dozenHTML += '<div class="multi-note">→ Im Apple Kalender nachschauen, wer diesen Termin hält</div>';
-    }
   }
 
   const storyText = buildStoryText(kurs, iso, activeDozentinnen);
