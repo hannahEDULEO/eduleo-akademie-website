@@ -521,9 +521,9 @@ function buildStoryText(kurs, iso) {
   const handleStr = handles.length === 0 ? '' : handles.join(' & ');
 
   if (kurs.typ === '3monate') {
-    return `🎓 Nächster Start: ${kurs.name}\n📅 ab ${datumStr}\n\n3 Monate, 8 Live-Termine, echte Expertise 💚${handleStr ? '\n👉 ' + handleStr + ' begleitet dich auf dem Weg zur Fachkraft.' : ''}\n\nJetzt anmelden → Link in Bio!`;
+    return `🎓 Nächster Start: ${kurs.name}\n📅 ab ${datumStr}\n\n3 Monate, 8 Live-Termine, echte Expertise 💚${handleStr ? '\n👉 ' + handleStr + ' begleitet dich auf dem Weg zur Fachkraft.' : ''}\n\nJetzt anmelden → Link direkt in der Story! 👆`;
   } else {
-    return `🗓️ ${kurs.name}\n📅 ${datumStr}\n\nBist du dabei? 💚${handleStr ? '\n👉 ' + handleStr + ' nimmt dich mit durch einen Tag voller Praxis und Impulse.' : ''}\n\nJetzt anmelden → Link in Bio!`;
+    return `🗓️ ${kurs.name}\n📅 ${datumStr}\n\nBist du dabei? 💚${handleStr ? '\n👉 ' + handleStr + ' nimmt dich mit durch einen Tag voller Praxis und Impulse.' : ''}\n\nJetzt anmelden → Link direkt in der Story! 👆`;
   }
 }
 
