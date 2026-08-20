@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Instagram Planer – EDULEO Intern</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Nunito', system-ui, sans-serif;
+      background: #FAF7F5;
+      color: #3D302A;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+    a { color: inherit; }
+
+    /* ── Header ── */
+    .top-bar {
+      background: #261D18;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .top-bar-logo { color: #fff; font-weight: 800; font-size: 1rem; letter-spacing: -0.01em; }
+    .top-bar-logo span { color: #D2EADA; }
+    .top-bar-sep { color: rgba(255,255,255,0.3); font-size: 0.85rem; }
+    .top-bar-title { color: rgba(255,255,255,0.6); font-size: 0.85rem; }
+
+    /* ── Wrapper ── */
+    .wrap {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 32px 20px 60px;
+    }
+
+    .page-title {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: #261D18;
+      margin-bottom: 4px;
+    }
+    .page-sub {
+      font-size: 0.88rem;
+      color: #7A6860;
+      margin-bottom: 32px;
+    }
+
+    /* ── Erklärung ── */
+    .legend {
+      background: #fff;
+      border: 1.5px solid #D8CEC8;
+      border-radius: 14px;
+      padding: 16px 20px;
+      margin-bottom: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+    }
+    .legend-item { font-size: 0.85rem; color: #7A6860; }
+    .legend-item strong { color: #261D18; }
+
+    /* ── Loading ── */
+    .loading {
+      text-align: center;
+      padding: 60px 20px;
+      color: #7A6860;
+    }
+    .spinner {
+      width: 36px; height: 36px;
+      border: 3px solid #D8CEC8;
+      border-top-color: #5A9E7A;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 16px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Zonen ── */
+    .zone { margin-bottom: 40px; }
+    .zone-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      margin-bottom: 14px;
+    }
+    .zone-count {
+      margin-left: auto;
+      font-weight: 600;
+      font-size: 0.82rem;
+      opacity: 0.75;
+    }
+    .zone--now  .zone-header { background: #fde8e8; color: #b91c1c; }
+    .zone--soon .zone-header { background: #fef9c3; color: #854d0e; }
+    .zone--later .zone-header { background: #dcfce7; color: #166534; }
+
+    /* ── Cards ── */
+    .card {
+      background: #fff;
+      border: 1.5px solid #D8CEC8;
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 8px rgba(38,29,24,0.06);
+    }
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .card-name {
+      font-weight: 800;
+      font-size: 1rem;
+      color: #261D18;
+    }
+    .badge {
+      flex-shrink: 0;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 9999px;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+    .badge--tages { background: #e0f2fe; color: #0369a1; }
+    .badge--3m    { background: #d1fae5; color: #065f46; }
+
+    .card-date {
+      font-size: 0.88rem;
+      color: #7A6860;
+      margin-bottom: 12px;
+    }
+    .card-date strong { color: #261D18; font-weight: 700; }
+    .card-date .days-badge {
+      display: inline-block;
+      background: #EDE6E2;
+      color: #3D302A;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      margin-left: 6px;
+    }
+
+    .card-dozentin {
+      background: #FAF7F5;
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-bottom: 12px;
+    }
+    .card-dozentin-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #9E7060;
+      margin-bottom: 8px;
+    }
+    .dozentin-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+    .dozentin-row:last-of-type { margin-bottom: 0; }
+    .dozentin-name-text {
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: #261D18;
+    }
+    .ig-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: #7c3aed;
+      font-weight: 700;
+      font-size: 0.82rem;
+      text-decoration: none;
+      background: #f3e8ff;
+      padding: 3px 10px;
+      border-radius: 9999px;
+    }
+    .ig-link:hover { background: #ede9fe; }
+    .ig-link::before { content: "📸"; font-size: 0.75rem; }
+
+    .multi-note {
+      margin-top: 8px;
+      font-size: 0.75rem;
+      color: #9E7060;
+      font-style: italic;
+    }
+    .no-dozentin {
+      font-size: 0.85rem;
+      color: #9E7060;
+      font-style: italic;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .card-link {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #5A9E7A;
+      text-decoration: none;
+    }
+    .card-link:hover { text-decoration: underline; }
+
+    /* ── Empty state ── */
+    .empty {
+      background: #F5EBE6;
+      border-radius: 10px;
+      padding: 14px 18px;
+      text-align: center;
+      color: #9E7060;
+      font-size: 0.88rem;
+    }
+
+    /* ── Far ahead ── */
+    .far-section {
+      border-top: 1.5px solid #D8CEC8;
+      margin-top: 40px;
+      padding-top: 32px;
+    }
+    .far-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #9E7060;
+      margin-bottom: 14px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .far-title:hover { color: #261D18; }
+    .far-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 10px;
+    }
+    .far-card {
+      background: #fff;
+      border: 1.5px solid #D8CEC8;
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 0.82rem;
+    }
+    .far-card-name { font-weight: 700; color: #261D18; margin-bottom: 3px; }
+    .far-card-date { color: #7A6860; }
+  </style>
+</head>
+<body>
+
+<div class="top-bar">
+  <span class="top-bar-logo">EDULEO <span>Akademie</span></span>
+  <span class="top-bar-sep">|</span>
+  <span class="top-bar-title">Intern — Instagram Planer</span>
+</div>
+
+<div class="wrap">
+
+  <h1 class="page-title">📸 Instagram Planer</h1>
+  <p class="page-sub" id="pageSub">Lädt aktuelle Kurstermine aus SimplyOrg…</p>
+
+  <div class="legend">
+    <div class="legend-item">🔴 <strong>Jetzt posten</strong> — Kurs startet bald (Tagesfob. ≤ 2 Wo., 3-Monats-Kurs ≤ 4 Wo.)</div>
+    <div class="legend-item">🟡 <strong>Diese Woche planen</strong> — noch etwas Zeit (bis 5 Wo. / bis 8 Wo.)</div>
+    <div class="legend-item">🟢 <strong>Auf dem Schirm</strong> — vorbereiten (bis 9 Wo. / bis 12 Wo.)</div>
+  </div>
+
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+    <p style="font-weight:700">Termine werden geladen…</p>
+    <p style="font-size:0.82rem;margin-top:6px">Das dauert 10–20 Sekunden.</p>
+  </div>
+
+  <div id="content" style="display:none">
+
+    <!-- Jetzt posten -->
+    <div class="zone zone--now">
+      <div class="zone-header">
+        <span>🔴</span>
+        <span>Jetzt posten</span>
+        <span class="zone-count" id="countNow"></span>
+      </div>
+      <div id="cardsNow"></div>
+    </div>
+
+    <!-- Diese Woche planen -->
+    <div class="zone zone--soon">
+      <div class="zone-header">
+        <span>🟡</span>
+        <span>Diese Woche planen</span>
+        <span class="zone-count" id="countSoon"></span>
+      </div>
+      <div id="cardsSoon"></div>
+    </div>
+
+    <!-- Auf dem Schirm -->
+    <div class="zone zone--later">
+      <div class="zone-header">
+        <span>🟢</span>
+        <span>Auf dem Schirm</span>
+        <span class="zone-count" id="countLater"></span>
+      </div>
+      <div id="cardsLater"></div>
+    </div>
+
+    <!-- Weit voraus -->
+    <div class="far-section" id="farSection" style="display:none">
+      <div class="far-title" onclick="toggleFar()">
+        ▸ Weitere Termine (weit im Voraus) — <span id="farToggleLabel">anzeigen</span>
+      </div>
+      <div id="farGrid" class="far-grid" style="display:none"></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const DOZENTINNEN = {
+  nadine:   { name: "Nadine Lehmann",              handle: "@nadinelehmannde",              ig: "nadinelehmannde" },
+  nadja:    { name: "Nadja Peuckert",              handle: "@meine.alltagsabenteuer",       ig: "meine.alltagsabenteuer" },
+  belinda:  { name: "Belinda Papajewski",          handle: "@belinda-papaya",               ig: "belinda-papaya" },
+  daniela:  { name: "Daniela Faller",              handle: "@daniela_faller_paedagogikum",  ig: "daniela_faller_paedagogikum" },
+  sarah:    { name: "Sarah Weber",                 handle: "@autisplus",                    ig: "autisplus" },
+  lena:     { name: "Lena Weisz",                  handle: "@familienzeit_yoga",            ig: "familienzeit_yoga" },
+  melanie:  { name: "Melanie Schroeder",           handle: "@_melanieschoeder_",            ig: "_melanieschoeder_" },
+  isabelle: { name: "Isabelle Trittel",            handle: "@brainfrogg.de",                ig: "brainfrogg.de" },
+  silke:    { name: "Silke Geschwenter-Westmeier", handle: "@marte_meo_fortbildung",        ig: "marte_meo_fortbildung" },
+};
+
+const KURSE = [
+  // Tagesfortbildungen
+  { id: 9,  name: "Stressbewältigung im Kita-Alltag",        typ: "tages",   url: "/fortbildungen/tagesfortbildungen/stressbewaltigung-kita-alltag/",   dozentinnen: [] },
+  { id: 10, name: "Gewaltfreie Kommunikation",                typ: "tages",   url: "/fortbildungen/tagesfortbildungen/gewaltfreie-kommunikation/",        dozentinnen: ["nadja"] },
+  { id: 11, name: "Elterngespräche führen",                   typ: "tages",   url: "/fortbildungen/tagesfortbildungen/elterngespraeche-fuehren/",         dozentinnen: ["daniela"] },
+  { id: 12, name: "Sexualentwicklung 0–6 Jahre",              typ: "tages",   url: "/fortbildungen/tagesfortbildungen/sexualentwicklung-0-6-jahre/",      dozentinnen: ["daniela"] },
+  { id: 13, name: "Umgang mit Personalmangel",                typ: "tages",   url: "/fortbildungen/tagesfortbildungen/umgang-mit-personalmangel/",        dozentinnen: ["nadja"] },
+  { id: 14, name: "Autismus im Kita-Alltag",                  typ: "tages",   url: "/fortbildungen/tagesfortbildungen/autismus-kita-alltag/",             dozentinnen: ["sarah"] },
+  { id: 15, name: "ADHS in der Kita",                         typ: "tages",   url: "/fortbildungen/tagesfortbildungen/adhs-kita/",                        dozentinnen: ["melanie", "isabelle"] },
+  { id: 16, name: "Kinderschutz in der Kita",                 typ: "tages",   url: "/fortbildungen/tagesfortbildungen/kinderschutz-kita/",                dozentinnen: ["daniela"] },
+  { id: 17, name: "Kinderyoga für deine Kita",                typ: "tages",   url: "/fortbildungen/tagesfortbildungen/kinderyoga-kita/",                  dozentinnen: ["belinda", "lena"] },
+  { id: 18, name: "Praxisübungen Kinderyoga",                 typ: "tages",   url: "/fortbildungen/tagesfortbildungen/kinderyoga-praxisuebungen/",        dozentinnen: ["belinda", "lena"] },
+  { id: 19, name: "Schule in Sicht",                          typ: "tages",   url: "/fortbildungen/tagesfortbildungen/schule-in-sicht/",                  dozentinnen: ["nadine", "belinda"] },
+  { id: 20, name: "Vorschulkonzept gestalten",                typ: "tages",   url: "/fortbildungen/tagesfortbildungen/vorschulkonzept-gestalten/",        dozentinnen: ["nadine", "belinda"] },
+  { id: 21, name: "Sprache erforschen mit Wuppi",             typ: "tages",   url: "/fortbildungen/tagesfortbildungen/sprache-wuppi/",                    dozentinnen: ["nadine"] },
+  { id: 22, name: "Musik, Tanz & Bewegung mit Bodo",          typ: "tages",   url: "/fortbildungen/tagesfortbildungen/musik-tanz-bodo/",                  dozentinnen: ["nadja"] },
+  { id: 23, name: "Forschen & Entdecken mit Fred",            typ: "tages",   url: "/fortbildungen/tagesfortbildungen/forschen-entdecken-fred/",          dozentinnen: ["nadja"] },
+  { id: 24, name: "Meine Führungsrolle als Kita-Leitung",     typ: "tages",   url: "/fortbildungen/tagesfortbildungen/fuehrungsrolle-kita-leitung/",      dozentinnen: ["nadja"] },
+  { id: 25, name: "Teams leiten und stärken",                 typ: "tages",   url: "/fortbildungen/tagesfortbildungen/teams-leiten-staerken/",            dozentinnen: ["nadja"] },
+  { id: 38, name: "Digitale Kita mit Kitaversum",             typ: "tages",   url: "/fortbildungen/tagesfortbildungen/digitale-kita-kitaversum/",         dozentinnen: [] },
+  { id: 41, name: "Zahlen & Mengen mit Baldur",               typ: "tages",   url: "/fortbildungen/tagesfortbildungen/zahlen-mengen-baldur/",             dozentinnen: ["nadja"] },
+  // 3-Monats-Fortbildungen
+  { id: 26, name: "Leitung der Vorschule",                    typ: "3monate", url: "/fortbildungen/leitung-vorschule/",                                   dozentinnen: ["belinda"] },
+  { id: 27, name: "Kinderyoga Kursleitung",                   typ: "3monate", url: "/fortbildungen/kinderyoga-kursleitung/",                              dozentinnen: ["belinda", "lena"] },
+  { id: 28, name: "Digitale Medien Beauftragte/r",            typ: "3monate", url: "/fortbildungen/digitale-medien-beauftragte-kita/",                    dozentinnen: ["nadja"] },
+  { id: 29, name: "Stressbewältigungscoach",                  typ: "3monate", url: "/fortbildungen/stressbewaetigungscoach/",                             dozentinnen: ["nadja"] },
+  { id: 30, name: "Kita-ExpertIn ADHS & Autismus",            typ: "3monate", url: "/fortbildungen/kita-expertin-adhs-autismus/",                        dozentinnen: ["sarah", "melanie", "isabelle"] },
+  { id: 31, name: "Kita-ExpertIn Verhaltensauffälligkeiten",  typ: "3monate", url: "/fortbildungen/kita-expertin-verhaltensauffaelligkeiten/",            dozentinnen: ["belinda", "melanie", "isabelle"] },
+  { id: 32, name: "Kinderschutz-KoordinatorIn",               typ: "3monate", url: "/fortbildungen/kinderschutz-koordinatorin-kita/",                    dozentinnen: ["nadja"] },
+  { id: 33, name: "Teamcoach in der Kita",                    typ: "3monate", url: "/fortbildungen/teamcoach-kita/",                                      dozentinnen: ["nadja", "daniela"] },
+  { id: 34, name: "FachberaterIn für Inklusion",              typ: "3monate", url: "/fortbildungen/fachberaterin-inklusion/",                             dozentinnen: ["belinda", "sarah"] },
+  { id: 35, name: "Marte Meo PraktikerIn",                    typ: "3monate", url: "/fortbildungen/marte-meo-praktikerin/",                               dozentinnen: ["silke"] },
+];
+
+const MONATE = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+
+function fmtDate(iso) {
+  const [y, m, d] = iso.split('-').map(Number);
+  return `${d}. ${MONATE[m - 1]} ${y}`;
+}
+
+function daysUntil(iso) {
+  const today = new Date(); today.setHours(0,0,0,0);
+  const d = new Date(iso + 'T00:00:00');
+  return Math.round((d - today) / 86400000);
+}
+
+function urgency(days, typ) {
+  if (typ === 'tages') {
+    if (days <= 14) return 'now';
+    if (days <= 35) return 'soon';
+    if (days <= 63) return 'later';
+  } else {
+    if (days <= 28) return 'now';
+    if (days <= 56) return 'soon';
+    if (days <= 84) return 'later';
+  }
+  return 'far';
+}
+
+function renderCard(kurs, iso, days) {
+  const badge = kurs.typ === '3monate'
+    ? '<span class="badge badge--3m">3-Monats-Kurs</span>'
+    : '<span class="badge badge--tages">Tagesfortbildung</span>';
+
+  const daysStr = days === 0 ? 'heute!' : days === 1 ? 'morgen!' : `in ${days} Tagen`;
+
+  let dozenHTML;
+  if (kurs.dozentinnen.length === 0) {
+    dozenHTML = '<div class="no-dozentin">Keine Dozentin zugeordnet</div>';
+  } else {
+    dozenHTML = kurs.dozentinnen.map(k => {
+      const d = DOZENTINNEN[k];
+      return `<div class="dozentin-row">
+        <span class="dozentin-name-text">${d.name}</span>
+        <a class="ig-link" href="https://www.instagram.com/${d.ig}/" target="_blank" rel="noopener">${d.handle}</a>
+      </div>`;
+    }).join('');
+    if (kurs.dozentinnen.length > 1) {
+      dozenHTML += '<div class="multi-note">→ In SimplyOrg prüfen, wer genau diesen Termin hält</div>';
+    }
+  }
+
+  return `<div class="card">
+    <div class="card-top">
+      <div class="card-name">${kurs.name}</div>
+      ${badge}
+    </div>
+    <div class="card-date">
+      📅 <strong>${fmtDate(iso)}</strong>
+      <span class="days-badge">${daysStr}</span>
+    </div>
+    <div class="card-dozentin">
+      <div class="card-dozentin-label">Dozentin taggen</div>
+      ${dozenHTML}
+    </div>
+    <div class="card-footer">
+      <a class="card-link" href="${kurs.url}" target="_blank" rel="noopener">Kursseite ansehen →</a>
+    </div>
+  </div>`;
+}
+
+function renderFarCard(kurs, iso, days) {
+  return `<div class="far-card">
+    <div class="far-card-name">${kurs.name}</div>
+    <div class="far-card-date">📅 ${fmtDate(iso)} (in ${days} Tagen)</div>
+  </div>`;
+}
+
+let farVisible = false;
+function toggleFar() {
+  farVisible = !farVisible;
+  document.getElementById('farGrid').style.display = farVisible ? 'grid' : 'none';
+  document.getElementById('farToggleLabel').textContent = farVisible ? 'ausblenden' : 'anzeigen';
+}
+
+async function init() {
+  const today = new Date(); today.setHours(0,0,0,0);
+
+  const results = await Promise.all(
+    KURSE.map(k =>
+      fetch(`/api/termine?category_id=${k.id}`)
+        .then(r => r.json())
+        .then(data => ({ kurs: k, dates: (data.dates || []).filter(d => new Date(d.dateISO + 'T00:00:00') >= today) }))
+        .catch(() => ({ kurs: k, dates: [] }))
+    )
+  );
+
+  // Für 3-Monats-Kurse: nur eine Karte pro Start-Datum (SimplyOrg gibt manchmal Folgetermine zurück)
+  // Für 3-Monats: Nur den nächsten Start zeigen (erster Termin eines neuen Durchgangs)
+  // Wir erkennen das daran, dass die API für 3-Monats-Kurse bereits Starttermine liefert
+  // => wir zeigen alle dates, aber deduplizieren nach Monat/Jahr
+  const entries = [];
+  results.forEach(({ kurs, dates }) => {
+    if (kurs.typ === '3monate') {
+      const seenMonths = new Set();
+      dates.forEach(d => {
+        const mk = d.dateISO.substring(0, 7);
+        if (!seenMonths.has(mk)) {
+          seenMonths.add(mk);
+          entries.push({ kurs, iso: d.dateISO, days: daysUntil(d.dateISO) });
+        }
+      });
+    } else {
+      dates.forEach(d => {
+        entries.push({ kurs, iso: d.dateISO, days: daysUntil(d.dateISO) });
+      });
+    }
+  });
+
+  entries.sort((a, b) => a.iso.localeCompare(b.iso));
+
+  const zones = { now: [], soon: [], later: [], far: [] };
+  entries.forEach(e => zones[urgency(e.days, e.kurs.typ)].push(e));
+
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('content').style.display = 'block';
+
+  const dateStr = new Date().toLocaleDateString('de-DE', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+  document.getElementById('pageSub').textContent = `Stand: ${dateStr} · ${entries.length} Termine geladen`;
+
+  function fill(zone, countId, cardsId) {
+    document.getElementById(countId).textContent = `${zones[zone].length} Termin${zones[zone].length !== 1 ? 'e' : ''}`;
+    document.getElementById(cardsId).innerHTML = zones[zone].length
+      ? zones[zone].map(e => renderCard(e.kurs, e.iso, e.days)).join('')
+      : '<div class="empty">Keine Termine in diesem Zeitraum 🌿</div>';
+  }
+
+  fill('now',   'countNow',   'cardsNow');
+  fill('soon',  'countSoon',  'cardsSoon');
+  fill('later', 'countLater', 'cardsLater');
+
+  if (zones.far.length > 0) {
+    document.getElementById('farSection').style.display = 'block';
+    document.getElementById('farGrid').innerHTML = zones.far.map(e => renderFarCard(e.kurs, e.iso, e.days)).join('');
+    document.querySelector('.far-title').textContent =
+      `▸ Noch ${zones.far.length} weitere Termin${zones.far.length !== 1 ? 'e' : ''} weit im Voraus — anzeigen`;
+    document.querySelector('.far-title').onclick = toggleFar;
+  }
+}
+
+init().catch(err => {
+  document.getElementById('loading').innerHTML =
+    '<p style="color:#b91c1c">Fehler beim Laden der Termine. Bitte Seite neu laden.</p>';
+  console.error(err);
+});
+</script>
+</body>
+</html>
