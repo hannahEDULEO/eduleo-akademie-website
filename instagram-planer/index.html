@@ -383,7 +383,7 @@
       <li><strong>Zones checken</strong> — Rot = startet bald, Gelb = kommt als nächstes, Grün = schon mal im Blick haben. Täglich kurz reinschauen und entscheiden, was heute dran ist.</li>
       <li><strong>Story-Text kopieren</strong> — auf den lila Button „Text kopieren" klicken. Den Text kannst du direkt als Story-Caption oder Folie nutzen, gerne noch anpassen.</li>
       <li><strong>Dozentin verlinken</strong></li>
-      <li><strong>Link zur Kursseite direkt in die Story</strong> — auf „Kursseite ansehen" klicken, URL kopieren und als Link-Sticker in die Instagram Story einfügen (nicht Bio!).</li>
+      <li><strong>Link zur Kursseite direkt in die Story</strong> — auf „Kursseite ansehen" klicken, URL kopieren und als Link-Sticker in die Instagram Story einfügen.</li>
       <li><strong>Abhaken</strong> — nach dem Posten auf „Als gepostet markieren" klicken. Das Häkchen bleibt auch nach dem Neu-Laden gespeichert.</li>
     </ol>
   </div>
@@ -516,6 +516,74 @@ function urgency(days, typ) {
   return 'far';
 }
 
+// Kalender-Zuordnung: category_YYYY-MM-DD → spezifische Dozentin für diesen Termin
+// Eingetragen aus EDULEO Apple-Kalender, Stand 20.08.2026
+const DATE_OVERRIDES = {
+  // ── Tagesfortbildungen ──
+  // KA 1 – Stressbewältigung im Kita-Alltag (ID 9)
+  "9_2026-09-07":  ["nadja"],
+  "9_2026-12-14":  ["nadja"],
+  // KA 3 – Elterngespräche führen (ID 11)
+  "11_2026-10-12": ["nadja"],
+  // KA 4 – Sexualentwicklung 0–6 Jahre (ID 12)
+  "12_2026-09-29": ["daniela"],
+  "12_2026-12-03": ["daniela"],
+  // KA 5 – Umgang mit Personalmangel (ID 13)
+  "13_2026-09-14": ["nadja"],
+  "13_2026-11-16": ["nadja"],
+  // KA 6 – Autismus im Kita-Alltag (ID 14)
+  "14_2026-09-14": ["sarah"],
+  "14_2026-11-12": ["sarah"],
+  // KA 7 – ADHS in der Kita (ID 15)
+  "15_2026-09-08": ["isabelle"],
+  "15_2026-11-24": ["melanie"],
+  // KA 8 – Kinderschutz in der Kita (ID 16)
+  "16_2026-10-06": ["daniela"],
+  "16_2026-11-25": ["daniela"],
+  // Y1 – Kinderyoga für deine Kita (ID 17)
+  "17_2026-09-10": ["belinda"],
+  "17_2026-12-02": ["belinda"],
+  // Y2 – Praxisübungen Kinderyoga (ID 18)
+  "18_2026-09-24": ["belinda"],
+  "18_2026-11-27": ["lena"],
+  // VS1 + VS2 – Schule in Sicht / Vorschulkonzept (ID 19 + 20, beide belegt)
+  "19_2026-09-11": ["belinda"],
+  "20_2026-09-11": ["belinda"],
+  "19_2026-10-02": ["nadine"],
+  "20_2026-10-02": ["nadine"],
+  // Wuppi – Sprache erforschen (ID 21)
+  "21_2026-10-09": ["nadine"],
+  // Bodo – Musik, Tanz & Bewegung (ID 22)
+  "22_2026-09-28": ["nadja"],
+  "22_2026-11-09": ["nadja"],
+  // Fred – Forschen & Entdecken (ID 23)
+  "23_2026-10-05": ["nadja"],
+  // Baldur – Zahlen & Mengen (ID 41)
+  "41_2026-12-04": ["nadja"],
+
+  // ── 3-Monats-Kurse (Starttermine der Durchgänge) ──
+  // VA – Verhaltensauffälligkeiten (ID 31)
+  "31_2026-09-03": ["isabelle"],
+  // TC – Teamcoach (ID 33)
+  "33_2026-09-08": ["nadja"],
+  // AA Sep-Durchgang – ADHS & Autismus (ID 30)
+  "30_2026-09-10": ["sarah"],
+  // Yoga Z1 – Kinderyoga Kursleitung (ID 27)
+  "27_2026-09-30": ["belinda"],
+  // AA Okt-Durchgang – ADHS & Autismus (ID 30)
+  "30_2026-10-06": ["sarah"],
+  // Ink – FachberaterIn Inklusion (ID 34)
+  "34_2026-10-15": ["belinda"],
+  // VS Z2 – Leitung der Vorschule (ID 26)
+  "26_2026-11-05": ["belinda"],
+  // KS Z2 – Kinderschutz-KoordinatorIn (ID 32)
+  "32_2026-11-16": ["nadja"],
+  // DM Z3 – Digitale Medien (ID 28)
+  "28_2027-01-05": ["nadja"],
+  // Stresscoach Z3 (ID 29)
+  "29_2027-01-07": ["nadja"],
+};
+
 function copyStory(btn, text) {
   navigator.clipboard.writeText(text).then(() => {
     btn.classList.add('copied');
@@ -553,9 +621,9 @@ function togglePosted(key, btn) {
   }
 }
 
-function buildStoryText(kurs, iso) {
+function buildStoryText(kurs, iso, activeDozentinnen) {
   const datumStr = fmtDate(iso);
-  const handles = kurs.dozentinnen.map(k => DOZENTINNEN[k].handle);
+  const handles = activeDozentinnen.map(k => DOZENTINNEN[k].handle);
   const handleStr = handles.length === 0 ? '' : handles.join(' & ');
 
   if (kurs.typ === '3monate') {
@@ -575,23 +643,27 @@ function renderCard(kurs, iso, days) {
 
   const daysStr = days === 0 ? 'heute!' : days === 1 ? 'morgen!' : `in ${days} Tagen`;
 
+  const overrideKey = `${kurs.id}_${iso}`;
+  const activeDozentinnen = DATE_OVERRIDES[overrideKey] || kurs.dozentinnen;
+  const isOverride = !!DATE_OVERRIDES[overrideKey];
+
   let dozenHTML;
-  if (kurs.dozentinnen.length === 0) {
+  if (activeDozentinnen.length === 0) {
     dozenHTML = '<div class="no-dozentin">Keine Dozentin zugeordnet</div>';
   } else {
-    dozenHTML = kurs.dozentinnen.map(k => {
+    dozenHTML = activeDozentinnen.map(k => {
       const d = DOZENTINNEN[k];
       return `<div class="dozentin-row">
         <span class="dozentin-name-text">${d.name}</span>
         <a class="ig-link" href="https://www.instagram.com/${d.ig}/" target="_blank" rel="noopener">${d.handle}</a>
       </div>`;
     }).join('');
-    if (kurs.dozentinnen.length > 1) {
-      dozenHTML += '<div class="multi-note">→ In SimplyOrg prüfen, wer genau diesen Termin hält</div>';
+    if (!isOverride && activeDozentinnen.length > 1) {
+      dozenHTML += '<div class="multi-note">→ Im Apple Kalender nachschauen, wer diesen Termin hält</div>';
     }
   }
 
-  const storyText = buildStoryText(kurs, iso);
+  const storyText = buildStoryText(kurs, iso, activeDozentinnen);
   const storyEscaped = storyText.replace(/`/g, '\\`');
 
   return `<div class="card ${posted ? 'posted' : ''}">
