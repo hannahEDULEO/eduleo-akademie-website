@@ -223,6 +223,39 @@
     }
     .card-link:hover { text-decoration: underline; }
 
+    /* ── Abgehakt ── */
+    .check-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      cursor: pointer;
+      border: 2px solid #D8CEC8;
+      border-radius: 9999px;
+      padding: 5px 14px 5px 10px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #7A6860;
+      background: transparent;
+      font-family: inherit;
+      transition: all 0.15s ease;
+    }
+    .check-btn:hover { border-color: #5A9E7A; color: #5A9E7A; }
+    .check-btn.done {
+      background: #d1fae5;
+      border-color: #5A9E7A;
+      color: #065f46;
+    }
+    .check-btn .check-icon { font-size: 1rem; }
+
+    .card.posted {
+      opacity: 0.55;
+    }
+    .card.posted .card-name::after {
+      content: " ✓";
+      color: #5A9E7A;
+      font-size: 0.9rem;
+    }
+
     /* ── Empty state ── */
     .empty {
       background: #F5EBE6;
@@ -232,6 +265,46 @@
       color: #9E7060;
       font-size: 0.88rem;
     }
+
+    /* ── Story-Block ── */
+    .story-block {
+      background: #f3e8ff;
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-bottom: 12px;
+    }
+    .story-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #7c3aed;
+      margin-bottom: 8px;
+    }
+    .story-text {
+      font-size: 0.85rem;
+      color: #3D302A;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      margin-bottom: 10px;
+    }
+    .copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #7c3aed;
+      background: #ede9fe;
+      border: none;
+      border-radius: 9999px;
+      padding: 5px 12px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s;
+    }
+    .copy-btn:hover { background: #ddd6fe; }
+    .copy-btn.copied { background: #d1fae5; color: #065f46; }
 
     /* ── Far ahead ── */
     .far-section {
@@ -367,7 +440,7 @@ const KURSE = [
   { id: 38, name: "Digitale Kita mit Kitaversum",             typ: "tages",   url: "/fortbildungen/tagesfortbildungen/digitale-kita-kitaversum/",         dozentinnen: [] },
   { id: 41, name: "Zahlen & Mengen mit Baldur",               typ: "tages",   url: "/fortbildungen/tagesfortbildungen/zahlen-mengen-baldur/",             dozentinnen: ["nadja"] },
   // 3-Monats-Fortbildungen
-  { id: 26, name: "Leitung der Vorschule",                    typ: "3monate", url: "/fortbildungen/leitung-vorschule/",                                   dozentinnen: ["belinda"] },
+  { id: 26, name: "Leitung der Vorschule",                    typ: "3monate", url: "/fortbildungen/leitung-vorschule/",                                   dozentinnen: ["belinda", "nadine"] },
   { id: 27, name: "Kinderyoga Kursleitung",                   typ: "3monate", url: "/fortbildungen/kinderyoga-kursleitung/",                              dozentinnen: ["belinda", "lena"] },
   { id: 28, name: "Digitale Medien Beauftragte/r",            typ: "3monate", url: "/fortbildungen/digitale-medien-beauftragte-kita/",                    dozentinnen: ["nadja"] },
   { id: 29, name: "Stressbewältigungscoach",                  typ: "3monate", url: "/fortbildungen/stressbewaetigungscoach/",                             dozentinnen: ["nadja"] },
@@ -405,7 +478,59 @@ function urgency(days, typ) {
   return 'far';
 }
 
+function copyStory(btn, text) {
+  navigator.clipboard.writeText(text).then(() => {
+    btn.classList.add('copied');
+    btn.textContent = '✅ Kopiert!';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      btn.textContent = '📋 Text kopieren';
+    }, 2000);
+  });
+}
+
+function storageKey(kursId, iso) {
+  return `eduleo_posted_${kursId}_${iso}`;
+}
+
+function isPosted(kursId, iso) {
+  return localStorage.getItem(storageKey(kursId, iso)) === '1';
+}
+
+function togglePosted(key, btn) {
+  const card = btn.closest('.card');
+  const currently = localStorage.getItem(key) === '1';
+  if (currently) {
+    localStorage.removeItem(key);
+    btn.classList.remove('done');
+    btn.querySelector('.check-icon').textContent = '☐';
+    btn.querySelector('span:last-child').textContent = 'Als gepostet markieren';
+    card.classList.remove('posted');
+  } else {
+    localStorage.setItem(key, '1');
+    btn.classList.add('done');
+    btn.querySelector('.check-icon').textContent = '✅';
+    btn.querySelector('span:last-child').textContent = 'Gepostet';
+    card.classList.add('posted');
+  }
+}
+
+function buildStoryText(kurs, iso) {
+  const datumStr = fmtDate(iso);
+  const handles = kurs.dozentinnen.map(k => DOZENTINNEN[k].handle);
+  const handleStr = handles.length === 0 ? '' : handles.join(' & ');
+
+  if (kurs.typ === '3monate') {
+    return `🎓 Nächster Start: ${kurs.name}\n📅 ab ${datumStr}\n\n3 Monate, 8 Live-Termine, echte Expertise 💚${handleStr ? '\n👉 ' + handleStr + ' begleitet dich auf dem Weg zur Fachkraft.' : ''}\n\nJetzt anmelden → Link in Bio!`;
+  } else {
+    return `🗓️ ${kurs.name}\n📅 ${datumStr}\n\nBist du dabei? 💚${handleStr ? '\n👉 ' + handleStr + ' nimmt dich mit durch einen Tag voller Praxis und Impulse.' : ''}\n\nJetzt anmelden → Link in Bio!`;
+  }
+}
+
 function renderCard(kurs, iso, days) {
+  const key = storageKey(kurs.id, iso);
+  const posted = isPosted(kurs.id, iso);
+
   const badge = kurs.typ === '3monate'
     ? '<span class="badge badge--3m">3-Monats-Kurs</span>'
     : '<span class="badge badge--tages">Tagesfortbildung</span>';
@@ -428,7 +553,10 @@ function renderCard(kurs, iso, days) {
     }
   }
 
-  return `<div class="card">
+  const storyText = buildStoryText(kurs, iso);
+  const storyEscaped = storyText.replace(/`/g, '\\`');
+
+  return `<div class="card ${posted ? 'posted' : ''}">
     <div class="card-top">
       <div class="card-name">${kurs.name}</div>
       ${badge}
@@ -441,8 +569,17 @@ function renderCard(kurs, iso, days) {
       <div class="card-dozentin-label">Dozentin taggen</div>
       ${dozenHTML}
     </div>
+    <div class="story-block">
+      <div class="story-label">Story-Text Vorschlag</div>
+      <div class="story-text">${storyText.replace(/\n/g, '<br>')}</div>
+      <button class="copy-btn" onclick="copyStory(this, \`${storyEscaped}\`)">📋 Text kopieren</button>
+    </div>
     <div class="card-footer">
       <a class="card-link" href="${kurs.url}" target="_blank" rel="noopener">Kursseite ansehen →</a>
+      <button class="check-btn ${posted ? 'done' : ''}" onclick="togglePosted('${key}', this)">
+        <span class="check-icon">${posted ? '✅' : '☐'}</span>
+        <span>${posted ? 'Gepostet' : 'Als gepostet markieren'}</span>
+      </button>
     </div>
   </div>`;
 }
