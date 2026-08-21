@@ -625,7 +625,7 @@ function buildStoryText(kurs, iso, activeDozentinnen) {
 
   const mehrere = handles.length > 1;
   if (kurs.typ === '3monate') {
-    return `🎓 Nächster Start: ${kurs.name}\n📅 ab ${datumStr}\n\nDeine Zusatzqualifikation – 3 Monate, live & zertifiziert 💚${handleStr ? '\n👉 ' + handleStr + (mehrere ? ' sind deine ExpertInnen dabei.' : ' ist deine ExpertIn dabei.') : ''}\n\nJetzt anmelden → Link direkt in der Story! 👆`;
+    return `🎓 Nächster Start: ${kurs.name}\n📅 ab ${datumStr}\n\nDeine Zusatzqualifikation – 3 Monate, live & zertifiziert 💚${handleStr ? '\n👉 ' + handleStr + (mehrere ? ' sind deine Expertinnen dabei.' : ' ist deine Expertin dabei.') : ''}\n\nJetzt anmelden → Link direkt in der Story! 👆`;
   } else {
     return `🗓️ ${kurs.name}\n📅 ${datumStr}\n\nBist du dabei? 💚${handleStr ? '\n👉 ' + handleStr + (mehrere ? ' nehmen dich mit durch einen Tag voller Praxis und Impulse.' : ' nimmt dich mit durch einen Tag voller Praxis und Impulse.') : ''}\n\nJetzt anmelden → Link direkt in der Story! 👆`;
   }
