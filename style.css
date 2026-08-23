@@ -215,7 +215,7 @@ p   { font-size: 1.05rem; line-height: 1.75; }
   display: flex; align-items: center; justify-content: space-between;
   height: var(--nav-h);
 }
-.nav-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.nav-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; margin-right: 24px; }
 .nav-logo img { height: 44px; width: auto; }
 .nav-logo-text {
   font-size: 1.15rem; font-weight: 900; color: var(--dark);
