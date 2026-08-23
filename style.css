@@ -215,7 +215,7 @@ p   { font-size: 1.05rem; line-height: 1.75; }
   display: flex; align-items: center; justify-content: space-between;
   height: var(--nav-h);
 }
-.nav-logo { display: flex; align-items: center; gap: 10px; }
+.nav-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
 .nav-logo img { height: 44px; width: auto; }
 .nav-logo-text {
   font-size: 1.15rem; font-weight: 900; color: var(--dark);
@@ -1153,6 +1153,8 @@ p   { font-size: 1.05rem; line-height: 1.75; }
   .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; }
   .footer-grid > *:last-child { grid-column: 1 / -1; }
   .kurs-body-grid { grid-template-columns: 1fr 300px; gap: 40px; }
+  .nav-links { gap: 18px; }
+  .nav-links a { font-size: 0.875rem; }
 }
 
 @media (max-width: 900px) {
