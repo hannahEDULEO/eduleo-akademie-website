@@ -143,8 +143,10 @@
     var select = document.getElementById('tf-termin') || document.getElementById('m3-termin');
 
     if (allDates.length > 0) {
+      var courseTitle = document.querySelector('h1') ? document.querySelector('h1').innerText.trim() : '';
       widget.innerHTML = allDates.map(function (d) {
-        return '<a class="termin-card" href="' + (d.url || portalUrl) + '" target="_blank" rel="noopener">'
+        return '<a class="termin-card" href="' + (d.url || portalUrl) + '" target="_blank" rel="noopener"'
+          + ' onclick="if(typeof gtag===\'function\')gtag(\'event\',\'portal_booking_click\',{\'course\':\''+courseTitle.replace(/'/g,'')+'\',\'date\':\''+d.date+'\'});">'
           + '<div class="termin-card-info">'
           + '<span class="termin-datum">' + fmtDate(d.date) + (showLabels && d.label ? d.label : '') + '</span>'
           + (d.time ? '<span class="termin-zeit">' + d.time + '</span>' : '')
