@@ -220,14 +220,7 @@
 
     <div style="margin-top:16px;padding-top:16px;border-top:1px solid #f0ebe6;">
       <p style="font-size:0.78rem;color:#aaa;margin-bottom:8px;text-align:center;">Noch keine Freigabe vom Träger?</p>
-      <button class="btn btn-outline" style="width:100%;font-size:0.78rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:0.35rem;padding:10px 12px;" type="button" onclick="var t=document.querySelector('h1')?document.querySelector('h1').innerText.trim():'';var pp=document.querySelector('.booking-price');var p=pp?pp.childNodes[0].textContent.trim():'';var u=window.location.href;var ml=document.createElement('a');ml.href='mailto:?subject='+encodeURIComponent('Fortbildungsanfrage: '+t)+'&body='+encodeURIComponent('Hallo,
-Ich möchte gerne an folgender Fortbildung teilnehmen und bitte um Freigabe:
-
-'+t+(p?' (Kosten: '+p+')':\'\'')+' - Online & live
-
-Alle Infos: '+u+'
-
-Viele Grüße');document.body.appendChild(ml);ml.click();document.body.removeChild(ml);var h=document.getElementById('weiterleiten-hint');if(h)h.style.display='block';"><span>📨</span><span>An meine Leitung weiterleiten</span></button>
+      <button class="btn btn-outline" style="width:100%;font-size:0.78rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:0.35rem;padding:10px 12px;" type="button" onclick="var t=document.querySelector('h1')?document.querySelector('h1').innerText.trim():'';var pp=document.querySelector('.booking-price');var p=pp?pp.childNodes[0].textContent.trim():'';var u=window.location.href;var nl='%0A';var body='Hallo,'+nl+'Ich moechte gerne an folgender Fortbildung teilnehmen und bitte um Freigabe:'+nl+nl+t+(p?' (Kosten: '+p+')':'')+' - Online & live'+nl+nl+'Alle Infos: '+u+nl+nl+'Viele Gruesse';var ml=document.createElement('a');ml.href='mailto:?subject='+encodeURIComponent('Fortbildungsanfrage: '+t)+'&body='+body;document.body.appendChild(ml);ml.click();document.body.removeChild(ml);var h=document.getElementById('weiterleiten-hint');if(h)h.style.display='block';"><span>📨</span><span>An meine Leitung weiterleiten</span></button>
       <div id="weiterleiten-hint" style="display:none;margin-top:10px;background:#f5f3f0;border-radius:8px;padding:10px 12px;font-size:0.78rem;color:#666;line-height:1.5;">Hat sich kein E-Mail-Programm geöffnet? Kein Problem – kopiere einfach den Link zu dieser Seite und schicke ihn per WhatsApp oder E-Mail an deine Leitung.</div>
     </div>
     </div>
