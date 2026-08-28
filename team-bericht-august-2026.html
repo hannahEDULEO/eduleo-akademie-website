@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website-Auswertung August 2026 – EDULEO Akademie</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f3f0; color: #2a2a2a; line-height: 1.5; }
+  .header { background: #2d4a3e; color: white; padding: 2.5rem 2rem; }
+  .header h1 { font-size: 1.7rem; font-weight: 800; margin-bottom: 0.3rem; }
+  .header p { opacity: 0.7; font-size: 0.9rem; }
+  .container { max-width: 980px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .chapter { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; color: #b0a89e; margin: 2.5rem 0 0.75rem; }
+  .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(155px, 1fr)); gap: 0.9rem; margin-bottom: 1rem; }
+  .kpi { background: white; border-radius: 12px; padding: 1.2rem 1.4rem; }
+  .kpi .label { font-size: 0.73rem; color: #999; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.35rem; }
+  .kpi .value { font-size: 1.9rem; font-weight: 800; color: #2d4a3e; line-height: 1.1; }
+  .kpi .sub { font-size: 0.76rem; color: #bbb; margin-top: 0.25rem; }
+  .kpi.warn .value { color: #c0392b; }
+  .kpi.ok .value { color: #27ae60; }
+  .kpi.neutral .value { color: #7a6a5e; }
+  .section { background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.1rem; }
+  .section h2 { font-size: 0.92rem; font-weight: 700; color: #2d4a3e; border-bottom: 2px solid #f0ebe6; padding-bottom: 0.55rem; margin-bottom: 1rem; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+  th { text-align: left; padding: 0.45rem 0.7rem; color: #b0a89e; font-weight: 600; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid #f0ebe6; }
+  td { padding: 0.52rem 0.7rem; border-bottom: 1px solid #f9f6f3; vertical-align: middle; }
+  tr:last-child td { border-bottom: none; }
+  .bar-wrap { display: flex; align-items: center; gap: 0.6rem; }
+  .bar { height: 7px; border-radius: 4px; flex-shrink: 0; }
+  .g { background: #2d4a3e; }
+  .g2 { background: #a8c4bb; }
+  .or { background: #e07a35; }
+  .mv { background: #9b7fa6; }
+  .re { background: #e05252; }
+  .bl { background: #3b82f6; }
+  .num { font-weight: 700; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 0.68rem; font-weight: 700; white-space: nowrap; }
+  .br { background: #fde8e8; color: #c0392b; }
+  .bg { background: #e8f5e9; color: #27ae60; }
+  .by { background: #fff8e1; color: #b07800; }
+  .bb { background: #f0f0f0; color: #888; }
+  .alert { background: #fff8e1; border-left: 4px solid #f5a623; padding: 1rem 1.2rem; border-radius: 0 10px 10px 0; margin-bottom: 1.1rem; font-size: 0.875rem; }
+  .alert strong { display: block; margin-bottom: 0.2rem; }
+  .insight { background: #f0f7f4; border-left: 4px solid #2d4a3e; padding: 1rem 1.2rem; border-radius: 0 10px 10px 0; margin-top: 0.9rem; font-size: 0.875rem; }
+  .insight strong { display: block; margin-bottom: 0.2rem; color: #2d4a3e; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; margin-bottom: 1.1rem; }
+  .three { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.1rem; margin-bottom: 1.1rem; }
+  .note { font-size: 0.73rem; color: #c0b8b0; margin-top: 0.7rem; }
+  .tag-kurs { background: #e8f5e9; color: #2d6a4f; padding: 1px 7px; border-radius: 20px; font-size: 0.68rem; font-weight: 700; }
+  .tag-blog { background: #fff3e0; color: #a05a00; padding: 1px 7px; border-radius: 20px; font-size: 0.68rem; font-weight: 700; }
+  .tag-other { background: #f3f0ff; color: #6b48c8; padding: 1px 7px; border-radius: 20px; font-size: 0.68rem; font-weight: 700; }
+  .highlight { background: #fff8e1; }
+  .footer { text-align: center; font-size: 0.73rem; color: #c0b8b0; padding: 2.5rem 1rem; }
+  .spike { background: #fde8e8; font-weight: 700; }
+  .pdf-btn { position: fixed; bottom: 1.5rem; right: 1.5rem; background: #2d4a3e; color: white; border: none; border-radius: 50px; padding: 0.75rem 1.5rem; font-size: 0.85rem; font-weight: 700; cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,0.2); z-index: 999; }
+  .pdf-btn:hover { background: #1e3329; }
+  @media print { .pdf-btn { display: none; } body { background: white; } .container { padding: 0; } }
+  @media (max-width: 650px) { .two, .three { grid-template-columns: 1fr; } .kpi .value { font-size: 1.5rem; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Website-Auswertung EDULEO Akademie</h1>
+  <p>31. Juli – 27. August 2026 &nbsp;·&nbsp; 28 Tage &nbsp;·&nbsp; Quelle: Google Analytics 4</p>
+</div>
+
+<div class="container">
+
+  <!-- ① ÜBERSICHT -->
+  <p class="chapter">① Übersicht</p>
+
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="label">Aktive Nutzer:innen</div>
+      <div class="value">4.203</div>
+      <div class="sub">gesamt inkl. Bots</div>
+    </div>
+    <div class="kpi neutral">
+      <div class="label">Deutschsprachig (real)</div>
+      <div class="value">~2.000</div>
+      <div class="sub">ohne Bot-Traffic</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Seitenaufrufe</div>
+      <div class="value">8.758</div>
+      <div class="sub">Ø 2,1 pro Besuch</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Ø Verweildauer</div>
+      <div class="value">39 Sek.</div>
+      <div class="sub">pro aktivem Nutzer</div>
+    </div>
+    <div class="kpi warn">
+      <div class="label">Kursanmeldungen</div>
+      <div class="value">5</div>
+      <div class="sub">generate_lead Events</div>
+    </div>
+    <div class="kpi warn">
+      <div class="label">Conversion Rate</div>
+      <div class="value">0,25 %</div>
+      <div class="sub">auf ~2.000 echte Nutzer</div>
+    </div>
+    <div class="kpi ok">
+      <div class="label">Freebie-Downloads</div>
+      <div class="value">33</div>
+      <div class="sub">bestätigt per E-Mail</div>
+    </div>
+    <div class="kpi warn">
+      <div class="label">Newsletter-Anmeldung</div>
+      <div class="value">1</div>
+      <div class="sub">im gesamten Monat</div>
+    </div>
+  </div>
+
+  <div class="alert">
+    <strong>Wichtigste Erkenntnis: Conversion-Lücke</strong>
+    24 Personen haben ein Anmeldeformular geöffnet, aber nur 5 haben es abgeschickt – 79 % Abbruchrate. Hier liegt das größte Optimierungspotenzial. Microsoft Clarity zeigt ab sofort in Video-Replays genau wo und warum das passiert.
+  </div>
+
+  <!-- ② WOHER KOMMEN DIE BESUCHER:INNEN -->
+  <p class="chapter">② Woher kommen die Besucher:innen?</p>
+
+  <div class="two">
+    <div class="section">
+      <h2>Traffic-Quellen</h2>
+      <table>
+        <tr><th>Kanal</th><th>Nutzer:innen</th><th>Anmeldungen</th></tr>
+        <tr>
+          <td><strong>Newsletter (Brevo)</strong><br><span style="font-size:0.75rem;color:#aaa">wird als "Referral" gezählt</span></td>
+          <td><div class="bar-wrap"><div class="bar g" style="width:100px"></div><span class="num">2.261</span></div></td>
+          <td><span class="badge bb">0</span></td>
+        </tr>
+        <tr>
+          <td><strong>Google (organisch)</strong></td>
+          <td><div class="bar-wrap"><div class="bar g2" style="width:47px"></div><span class="num">1.065</span></div></td>
+          <td><span class="badge by">1</span></td>
+        </tr>
+        <tr>
+          <td><strong>Direkt</strong><br><span style="font-size:0.75rem;color:#aaa">URL direkt eingetippt</span></td>
+          <td><div class="bar-wrap"><div class="bar g2" style="width:25px"></div><span class="num">556</span></div></td>
+          <td><span class="badge bg">4</span></td>
+        </tr>
+        <tr>
+          <td><strong>Social Media</strong><br><span style="font-size:0.75rem;color:#aaa">Pinterest, Instagram</span></td>
+          <td><div class="bar-wrap"><div class="bar mv" style="width:13px"></div><span class="num">298</span></div></td>
+          <td><span class="badge bb">0</span></td>
+        </tr>
+        <tr>
+          <td><strong>E-Mail (UTM-markiert)</strong></td>
+          <td><div class="bar-wrap"><div class="bar or" style="width:5px"></div><span class="num">22</span></div></td>
+          <td><span class="badge bb">0</span></td>
+        </tr>
+        <tr>
+          <td><strong>KI-Assistenten</strong><br><span style="font-size:0.75rem;color:#aaa">ChatGPT, Perplexity etc.</span></td>
+          <td><div class="bar-wrap"><div class="bar bl" style="width:5px"></div><span class="num">16</span></div></td>
+          <td><span class="badge bb">0</span></td>
+        </tr>
+      </table>
+      <div class="insight">
+        <strong>4 von 5 Anmeldungen kamen von Direktbesuchen</strong>
+        Wer die URL direkt eintippt kennt EDULEO bereits. Der Newsletter bringt zwar 2.261 Besucher:innen, aber 0 Anmeldungen. Ab jetzt werden Newsletter-Klicks dank UTM-Setup als "Email/brevo" gezählt statt als "Referral".
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Verweildauer nach Kanal</h2>
+      <table>
+        <tr><th>Kanal</th><th>Ø Verweildauer</th><th>Qualität</th></tr>
+        <tr><td>E-Mail (UTM)</td><td><strong>124 Sek.</strong></td><td><span class="badge bg">Sehr gut</span></td></tr>
+        <tr><td>Direkt</td><td><strong>52 Sek.</strong></td><td><span class="badge bg">Gut</span></td></tr>
+        <tr><td>Google</td><td><strong>89 Sek.</strong></td><td><span class="badge bg">Gut</span></td></tr>
+        <tr><td>Social Media</td><td><strong>34 Sek.</strong></td><td><span class="badge by">Mittel</span></td></tr>
+        <tr><td>KI-Assistenten</td><td><strong>46 Sek.</strong></td><td><span class="badge by">Mittel</span></td></tr>
+        <tr><td>Newsletter (Referral)</td><td><strong>10 Sek.</strong></td><td><span class="badge br">Sehr niedrig</span></td></tr>
+      </table>
+      <div class="insight">
+        <strong>Newsletter-Besuche: sehr kurze Verweildauer</strong>
+        Newsletter-Klicks führen zu durchschnittlich nur 10 Sekunden auf der Seite. Das deutet darauf hin, dass die Erwartung aus dem Newsletter nicht mit dem übereinstimmt, was auf der Seite zu finden ist.
+      </div>
+    </div>
+  </div>
+
+  <!-- ③ GERÄTE -->
+  <p class="chapter">③ Welche Geräte nutzen die Besucher:innen?</p>
+
+  <div class="three">
+    <div class="section">
+      <h2>Gerät</h2>
+      <table>
+        <tr><th>Gerät</th><th>Nutzer:innen</th></tr>
+        <tr><td>💻 Desktop</td><td><div class="bar-wrap"><div class="bar g" style="width:90px"></div><span class="num">2.980 (71 %)</span></div></td></tr>
+        <tr><td>📱 Mobil</td><td><div class="bar-wrap"><div class="bar g2" style="width:35px"></div><span class="num">1.157 (27 %)</span></div></td></tr>
+        <tr><td>⬛ Tablet</td><td><div class="bar-wrap"><div class="bar g2" style="width:3px"></div><span class="num">69 (2 %)</span></div></td></tr>
+      </table>
+    </div>
+    <div class="section">
+      <h2>Betriebssystem</h2>
+      <table>
+        <tr><th>System</th><th>Nutzer:innen</th></tr>
+        <tr><td>Windows</td><td><div class="bar-wrap"><div class="bar g" style="width:80px"></div><span class="num">2.391</span></div></td></tr>
+        <tr><td>Android</td><td><div class="bar-wrap"><div class="bar g2" style="width:22px"></div><span class="num">668</span></div></td></tr>
+        <tr><td>iOS (iPhone)</td><td><div class="bar-wrap"><div class="bar g2" style="width:19px"></div><span class="num">558</span></div></td></tr>
+        <tr><td>Mac</td><td><div class="bar-wrap"><div class="bar g2" style="width:17px"></div><span class="num">505</span></div></td></tr>
+        <tr><td>Linux</td><td><div class="bar-wrap"><div class="bar re" style="width:3px"></div><span class="num">76</span></div></td></tr>
+      </table>
+    </div>
+    <div class="section">
+      <h2>Browser & Engagement</h2>
+      <table>
+        <tr><th>Browser</th><th>Nutzer</th><th>Ø Verweildauer</th></tr>
+        <tr><td>Chrome</td><td>2.768</td><td><span class="badge br">17 Sek.</span></td></tr>
+        <tr><td>Safari</td><td>566</td><td><span class="badge bg">87 Sek.</span></td></tr>
+        <tr><td>Edge</td><td>386</td><td><span class="badge bg">88 Sek.</span></td></tr>
+        <tr><td>Firefox</td><td>233</td><td><span class="badge bg">98 Sek.</span></td></tr>
+        <tr><td>Samsung</td><td>111</td><td><span class="badge by">60 Sek.</span></td></tr>
+      </table>
+      <p class="note">Chrome hat 17 Sek. Ø – deutet auf Bot-Traffic hin (Google-Crawler nutzt Chrome). Safari/Edge/Firefox = echte Nutzer:innen.</p>
+    </div>
+  </div>
+
+  <!-- ④ SEITEN + ABSPRUNGRATE -->
+  <p class="chapter">④ Welche Seiten werden besucht – und wo springen Leute ab?</p>
+
+  <div class="section">
+    <h2>Top-Seiten mit Absprungrate</h2>
+    <table>
+      <tr><th>Seite</th><th>Typ</th><th>Aufrufe</th><th>Absprungrate</th><th>Bewertung</th></tr>
+      <tr><td>Fortbildungen (Übersicht)</td><td><span class="tag-kurs">Kurs</span></td><td>865</td><td>38 %</td><td><span class="badge by">Mittel</span></td></tr>
+      <tr><td>Verhaltensauffälligkeiten Kita</td><td><span class="tag-kurs">Kurs</span></td><td>796</td><td>39 %</td><td><span class="badge by">Mittel</span></td></tr>
+      <tr><td>Bring a Friend</td><td><span class="tag-other">Aktion</span></td><td>749</td><td>34 %</td><td><span class="badge by">Mittel</span></td></tr>
+      <tr><td>ADHS & Autismus Kita</td><td><span class="tag-kurs">Kurs</span></td><td>721</td><td>31 %</td><td><span class="badge by">Mittel</span></td></tr>
+      <tr><td>Startseite</td><td><span class="tag-other">Start</span></td><td>710</td><td>23 %</td><td><span class="badge bg">Gut</span></td></tr>
+      <tr><td>Teamcoach Kita</td><td><span class="tag-kurs">Kurs</span></td><td>693</td><td>30 %</td><td><span class="badge by">Mittel</span></td></tr>
+      <tr><td>Alle Fortbildungen</td><td><span class="tag-kurs">Kurs</span></td><td>520</td><td>20 %</td><td><span class="badge bg">Gut</span></td></tr>
+      <tr class="highlight"><td>Blog: 10 Vorschulideen (2021)</td><td><span class="tag-blog">Blog</span></td><td>516</td><td><strong>48 %</strong></td><td><span class="badge br">Hoch</span></td></tr>
+      <tr><td>Vorschulkonzept für die Kita</td><td><span class="tag-blog">Blog</span></td><td>373</td><td>37 %</td><td><span class="badge by">Mittel</span></td></tr>
+      <tr class="highlight"><td>Digitale Medien Beauftragte</td><td><span class="tag-kurs">Kurs</span></td><td>199</td><td><strong>73 %</strong></td><td><span class="badge br">Sehr hoch</span></td></tr>
+      <tr class="highlight"><td>Blog: Ideen für Projekte (2024)</td><td><span class="tag-blog">Blog</span></td><td>163</td><td><strong>56 %</strong></td><td><span class="badge br">Hoch</span></td></tr>
+      <tr><td>Kinderschutz KoordinatorIn</td><td><span class="tag-kurs">Kurs</span></td><td>134</td><td>42 %</td><td><span class="badge by">Mittel</span></td></tr>
+      <tr><td>Kita-ExpertIn ADHS & Autismus</td><td><span class="tag-kurs">Kurs</span></td><td>96</td><td>22 %</td><td><span class="badge bg">Gut</span></td></tr>
+      <tr><td>Leitung der Vorschule</td><td><span class="tag-kurs">Kurs</span></td><td>86</td><td>16 %</td><td><span class="badge bg">Sehr gut</span></td></tr>
+      <tr class="highlight"><td>Kinderschutz Kita (Blog)</td><td><span class="tag-blog">Blog</span></td><td>26</td><td><strong>82 %</strong></td><td><span class="badge br">Alarm</span></td></tr>
+      <tr><td>Autismus im Kita Alltag (Tagesfortb.)</td><td><span class="tag-kurs">Kurs</span></td><td>27</td><td><strong>4 %</strong></td><td><span class="badge bg">Exzellent</span></td></tr>
+      <tr><td>Über uns</td><td><span class="tag-other">Info</span></td><td>45</td><td><strong>6 %</strong></td><td><span class="badge bg">Exzellent</span></td></tr>
+    </table>
+    <p class="note">Absprungrate = Anteil der Besucher:innen, die nur diese eine Seite aufgerufen haben und dann gegangen sind. Gelb hinterlegt = auffällige Werte.</p>
+    <div class="insight">
+      <strong>Muster: Tagesfortbildungen haben sehr geringe Absprungrate</strong>
+      "Autismus im Kita Alltag" (4 %) und "Über uns" (6 %) zeigen, dass diese Seiten Interesse wecken und Leute weitersurfen. Die Kursseite "Digitale Medien Beauftragte" mit 73 % ist hingegen auffällig – entweder passt der Inhalt nicht zur Erwartung oder die Seite wirkt nicht überzeugend.
+    </div>
+  </div>
+
+  <!-- ⑤ DEUTSCHLAND -->
+  <p class="chapter">⑤ Wo in Deutschland kommen die Besucher:innen her?</p>
+
+  <div class="two">
+    <div class="section">
+      <h2>Top-Städte (ohne Frankfurt)</h2>
+      <table>
+        <tr><th>Stadt</th><th>Nutzer:innen</th></tr>
+        <tr><td>Berlin</td><td><div class="bar-wrap"><div class="bar g" style="width:100px"></div><span class="num">106</span></div></td></tr>
+        <tr><td>Hamburg</td><td><div class="bar-wrap"><div class="bar g" style="width:65px"></div><span class="num">69</span></div></td></tr>
+        <tr><td>München</td><td><div class="bar-wrap"><div class="bar g" style="width:46px"></div><span class="num">49</span></div></td></tr>
+        <tr><td>Dortmund</td><td><div class="bar-wrap"><div class="bar g" style="width:39px"></div><span class="num">41</span></div></td></tr>
+        <tr><td>Hannover</td><td><div class="bar-wrap"><div class="bar g" style="width:28px"></div><span class="num">30</span></div></td></tr>
+        <tr><td>Heidelberg</td><td><div class="bar-wrap"><div class="bar g" style="width:28px"></div><span class="num">30</span></div></td></tr>
+        <tr><td>Leipzig</td><td><div class="bar-wrap"><div class="bar g2" style="width:26px"></div><span class="num">28</span></div></td></tr>
+        <tr><td>Stuttgart</td><td><div class="bar-wrap"><div class="bar g2" style="width:25px"></div><span class="num">27</span></div></td></tr>
+        <tr><td>Nürnberg</td><td><div class="bar-wrap"><div class="bar g2" style="width:24px"></div><span class="num">26</span></div></td></tr>
+        <tr><td>Dresden</td><td><div class="bar-wrap"><div class="bar g2" style="width:21px"></div><span class="num">22</span></div></td></tr>
+        <tr><td>Düsseldorf</td><td><div class="bar-wrap"><div class="bar g2" style="width:20px"></div><span class="num">21</span></div></td></tr>
+        <tr><td>Köln</td><td><div class="bar-wrap"><div class="bar g2" style="width:17px"></div><span class="num">18</span></div></td></tr>
+      </table>
+      <p class="note">Frankfurt (1.104) ausgeblendet – wahrscheinlicher Serverstandort/Bot-Traffic. Deutschland gesamt: 2.915 Nutzer:innen (69 % aller Besuche).</p>
+    </div>
+    <div class="section">
+      <h2>Deutschland im Vergleich</h2>
+      <table>
+        <tr><th>Land</th><th>Nutzer</th><th>Ø Verweildauer</th><th>Anmeldungen</th></tr>
+        <tr><td>🇩🇪 Deutschland</td><td><strong>2.915</strong></td><td>54 Sek.</td><td><span class="badge bg">5</span></td></tr>
+        <tr><td>🇳🇱 Niederlande</td><td>506</td><td>0 Sek.</td><td><span class="badge bb">0</span></td></tr>
+        <tr><td>🇮🇪 Irland</td><td>423</td><td>0 Sek.</td><td><span class="badge bb">0</span></td></tr>
+        <tr><td>🇺🇸 USA</td><td>179</td><td>1 Sek.</td><td><span class="badge bb">0</span></td></tr>
+        <tr><td>🇦🇹 Österreich</td><td>41</td><td>48 Sek.</td><td><span class="badge bb">0</span></td></tr>
+        <tr><td>🇸🇬 Singapur</td><td>40</td><td>0 Sek.</td><td><span class="badge bb">0</span></td></tr>
+      </table>
+      <div class="insight">
+        <strong>Niederlande, Irland, Singapur = Bots</strong>
+        0 Sekunden Verweildauer bestätigt: das sind keine echten Besucher:innen. Nur Deutschland und Österreich zeigen echtes Engagement.
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑥ NEWSLETTER-SPIKE -->
+  <p class="chapter">⑥ Auffälliger Traffic-Spike am 25. August</p>
+
+  <div class="section">
+    <h2>Neue Nutzer:innen pro Tag (aus Leads-Bericht)</h2>
+    <table>
+      <tr><th>Datum</th><th>Neue Nutzer:innen</th><th>Hinweis</th></tr>
+      <tr><td>31. Juli</td><td>46</td><td></td></tr>
+      <tr><td>1. Aug.</td><td>24</td><td></td></tr>
+      <tr><td>10. Aug.</td><td>93</td><td></td></tr>
+      <tr><td>11. Aug. (Tag 11)</td><td>325</td><td><span class="badge by">Spike – evtl. Kampagne?</span></td></tr>
+      <tr><td>17. Aug.</td><td>109</td><td></td></tr>
+      <tr><td>20. Aug.</td><td>96</td><td></td></tr>
+      <tr class="spike"><td>25. Aug.</td><td><strong>2.041</strong></td><td><span class="badge br">Newsletter-Versand Kampagne #19?</span></td></tr>
+      <tr><td>26. Aug.</td><td>124</td><td></td></tr>
+      <tr><td>27. Aug.</td><td>104</td><td></td></tr>
+    </table>
+    <div class="insight">
+      <strong>Am 25. August kamen 2.041 neue Besucher:innen an einem Tag</strong>
+      Das ist fast die Hälfte aller monatlichen Besucher:innen an einem einzigen Tag – sehr wahrscheinlich durch einen Newsletter-Versand ausgelöst. Trotzdem wurden an diesem Tag keine Anmeldungen registriert. Das ist der stärkste Hinweis, dass Newsletter-Empfänger:innen zwar klicken aber nicht konvertieren.
+    </div>
+  </div>
+
+  <!-- ⑦ LEARNINGS & MASSNAHMEN -->
+  <p class="chapter">⑦ Erkenntnisse & Was geändert wurde</p>
+
+  <div class="section">
+    <h2>Learnings aus der Auswertung</h2>
+    <table>
+      <tr><th>Erkenntnis</th><th>Was das bedeutet</th></tr>
+      <tr>
+        <td><strong>Der Newsletter bringt Traffic, aber keine direkten Anmeldungen</strong></td>
+        <td>2.261 Klicks, nur 10 Sek. Verweildauer. Wahrscheinlich sehen Interessierte die Seite, haben aber keine Träger-Freigabe parat. Die Anmeldung kommt dann zeitversetzt über einen Direktbesuch.</td>
+      </tr>
+      <tr>
+        <td><strong>ErzieherInnen können sich oft nicht selbst anmelden</strong></td>
+        <td>Das Anmeldeformular fragt nach Rechnungsanschrift und Kostenträger-E-Mail – Daten die nur die Leitung/Träger hat. 79 % brechen das Formular ab.</td>
+      </tr>
+      <tr>
+        <td><strong>Hero-Buttons linkten extern zu SimplyOrg</strong></td>
+        <td>Alle "Jetzt anmelden" Buttons im sichtbaren Bereich oben verlinkten auf eine externe Website – GA4 wertete das als Absprung. Erklärt die hohen Absprungraten auf Kursseiten.</td>
+      </tr>
+      <tr>
+        <td><strong>Blog-Artikel haben passende Kurs-Links</strong></td>
+        <td>Alle Blog-Artikel verlinken bereits auf zugehörige Fortbildungen. Kein Handlungsbedarf.</td>
+      </tr>
+      <tr>
+        <td><strong>70 % der Besucher:innen nutzen Desktop</strong></td>
+        <td>Formulare werden primär am Computer ausgefüllt. Dennoch 27 % Mobil – auch dort sollte die Bedienung funktionieren.</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Heute umgesetzte Änderungen (28. August 2026)</h2>
+    <table>
+      <tr><th>Maßnahme</th><th>Auf wie vielen Seiten</th><th>Status</th></tr>
+      <tr>
+        <td><strong>Microsoft Clarity eingebaut</strong><br>Session-Recordings und Heatmaps – zeigt ab sofort genau was Besucher:innen klicken und wo sie abbrechen</td>
+        <td>82 Seiten</td>
+        <td><span class="badge bg">✅ Live</span></td>
+      </tr>
+      <tr>
+        <td><strong>Brevo UTM-Tracking bestätigt</strong><br>Newsletter-Klicks erscheinen ab nächster Kampagne sauber als "brevo / email / [Kampagnenname]" statt als unbekannte Referrals</td>
+        <td>Alle Kampagnen</td>
+        <td><span class="badge bg">✅ Aktiv</span></td>
+      </tr>
+      <tr>
+        <td><strong>"Jetzt anmelden" scrollt jetzt zur Sidebar</strong><br>Vorher: externer Link zu SimplyOrg → Absprung. Jetzt: scrollt zur Buchungsbox auf der gleichen Seite</td>
+        <td>29 Kursseiten</td>
+        <td><span class="badge bg">✅ Deployed</span></td>
+      </tr>
+      <tr>
+        <td><strong>"An meine Leitung weiterleiten" Button</strong><br>Öffnet mit einem Klick eine fertig vorbereitete E-Mail mit Kursname, Kosten und Link – für ErzieherInnen die erst Träger-Freigabe brauchen</td>
+        <td>29 Kursseiten</td>
+        <td><span class="badge bg">✅ Deployed</span></td>
+      </tr>
+      <tr>
+        <td><strong>GA4 Internal Traffic Filter aktiviert</strong><br>Eigene Besuche werden aus den Statistiken herausgefiltert</td>
+        <td>GA4-Property</td>
+        <td><span class="badge bg">✅ Aktiv</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Noch offene Maßnahmen</h2>
+    <table>
+      <tr><th>#</th><th>Maßnahme</th><th>Warum</th><th>Prio</th></tr>
+      <tr>
+        <td>1</td>
+        <td><strong>Clarity-Recordings auswerten</strong><br>Daten kommen in den nächsten Stunden/Tagen – dann Formular-Abbrüche analysieren</td>
+        <td>79 % Formular-Abbruchrate</td>
+        <td><span class="badge by">Diese Woche</span></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><strong>Newsletter-Anmeldung sichtbarer platzieren</strong><br>Nur 1 Anmeldung im gesamten Monat</td>
+        <td>Newsletter = wichtigster Kanal</td>
+        <td><span class="badge by">Nächste Woche</span></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><strong>Mobile Formulare testen</strong><br>Formular auf dem Handy durchklicken – 27 % der Besucher:innen sind mobil</td>
+        <td>Mögliche Bedienprobleme</td>
+        <td><span class="badge by">Nächste Woche</span></td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+<div class="footer">
+  EDULEO Akademie · Website-Auswertung August 2026 · Erstellt 28. August 2026 mit Google Analytics 4-Daten
+</div>
+
+<button class="pdf-btn" onclick="window.print()">⬇ Als PDF speichern</button>
+
+</body>
+</html>
