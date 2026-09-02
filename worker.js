@@ -167,6 +167,7 @@ async function handleFreebieConfirm(request, env) {
       'pfeffertrick-anleitung':      'Anleitung: Der magische Pfeffertrick',
       'sprachentwicklung-im-blick':  'Sprachentwicklung im Blick',
       'bindung-als-basis':           'Bindung als Basis: 3 Impulse für die ersten Wochen',
+      'elterngespraeche-leitfaden':  'Elterngespräch-Leitfaden',
     };
     const freebiePdfs = {
       'vorschulideen-10':            'https://www.eduleo-akademie.de/assets/downloads/vorschulideen-10.pdf',
@@ -175,6 +176,7 @@ async function handleFreebieConfirm(request, env) {
       'pfeffertrick-anleitung':      'https://www.eduleo-akademie.de/assets/blog/pfeffertrick/anleitung.pdf',
       'sprachentwicklung-im-blick':  'https://www.eduleo-akademie.de/assets/blog/sprachentwicklung/sprachentwicklung-checkliste.pdf',
       'bindung-als-basis':           'https://www.eduleo-akademie.de/assets/downloads/bindung-als-basis.pdf',
+      'elterngespraeche-leitfaden':  'https://www.eduleo-akademie.de/assets/blog/elterngespraeche/leitfaden.pdf',
     };
     const freebieName = freebieNames[freebie] || 'dein Freebie';
     const pdfUrl = freebiePdfs[freebie];

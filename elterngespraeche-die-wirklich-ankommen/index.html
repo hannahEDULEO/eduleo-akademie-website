@@ -326,8 +326,8 @@
       <div class="freebie-box">
         <h3>Elterngespräch-Leitfaden – kostenlos zum Download</h3>
         <p>Alle fünf Schritte kompakt auf einer Seite, zum Ausdrucken und für das nächste Gespräch griffbereit. Die drei Fallbeispiele sind ebenfalls enthalten.</p>
-        <!-- PLATZHALTER: Freebie-Link hier einfügen, sobald PDF fertig ist -->
-        <p>Kommentiere auf Instagram <span class="keyword">HINHÖREN</span> unter dem Beitrag vom 4. September, dann schicken wir dir den Leitfaden direkt als PDF.</p>
+        <p style="margin-bottom:1.1rem;">Kommentiere auf Instagram <span class="keyword">HINHÖREN</span> unter dem Beitrag vom 4. September, dann schicken wir dir den Leitfaden direkt als PDF.</p>
+        <a href="../freebies/#elterngespraeche-leitfaden" style="display:inline-block;background:#fff;color:var(--dark);font-weight:700;font-size:0.9rem;padding:0.7rem 1.4rem;border-radius:8px;text-decoration:none;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">Leitfaden kostenlos herunterladen →</a>
       </div>
 
       <hr class="blog-divider">
@@ -371,7 +371,57 @@
   </div>
 </div>
 
-<script src="../main.js"></script>
+<!-- Footer -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="../assets/images/logo.png" alt="EDULEO Akademie" style="height:40px;width:auto;margin-bottom:1rem;filter:brightness(0) invert(1);">
+        <p style="font-size:0.85rem;color:rgba(255,255,255,0.6);line-height:1.7;">Online-Fortbildungen für Kita-Fachkräfte. Praxisnah, fundiert, flexibel.</p>
+        <p style="font-size:0.8rem;color:rgba(255,255,255,0.4);margin-top:0.5rem;">Klumper &amp; Flunkert EDULEO GbR · kontakt@eduleo-akademie.de · 0160 50 59 620</p>
+      </div>
+      <div>
+        <h4 style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.5);margin:0 0 1rem;">Fortbildungen</h4>
+        <ul style="list-style:none;padding:0;margin:0;">
+          <li style="margin-bottom:0.5rem;"><a href="../fortbildungen/" style="font-size:0.87rem;color:rgba(255,255,255,0.75);text-decoration:none;">Alle Fortbildungen</a></li>
+          <li style="margin-bottom:0.5rem;"><a href="../fortbildungen/#3-monate" style="font-size:0.87rem;color:rgba(255,255,255,0.75);text-decoration:none;">3-Monats-Fortbildungen</a></li>
+          <li style="margin-bottom:0.5rem;"><a href="../fortbildungen/#tagesfortbildungen" style="font-size:0.87rem;color:rgba(255,255,255,0.75);text-decoration:none;">Tagesfortbildungen</a></li>
+          <li><a href="/#kontakt" style="font-size:0.87rem;color:rgba(255,255,255,0.75);text-decoration:none;">Teamfortbildungen</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.5);margin:0 0 1rem;">Über uns</h4>
+        <ul style="list-style:none;padding:0;margin:0;">
+          <li style="margin-bottom:0.5rem;"><a href="../ueber-uns/" style="font-size:0.87rem;color:rgba(255,255,255,0.75);text-decoration:none;">Das Team</a></li>
+          <li style="margin-bottom:0.5rem;"><a href="../dozentinnen/" style="font-size:0.87rem;color:rgba(255,255,255,0.75);text-decoration:none;">DozentInnen</a></li>
+          <li><a href="/#kontakt" style="font-size:0.87rem;color:rgba(255,255,255,0.75);text-decoration:none;">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.5);margin:0 0 1rem;">Rechtliches</h4>
+        <ul style="list-style:none;padding:0;margin:0;">
+          <li style="margin-bottom:0.5rem;"><a href="../impressum.html" style="font-size:0.87rem;color:rgba(255,255,255,0.75);text-decoration:none;">Impressum</a></li>
+          <li style="margin-bottom:0.5rem;"><a href="../datenschutz.html" style="font-size:0.87rem;color:rgba(255,255,255,0.75);text-decoration:none;">Datenschutz</a></li>
+          <li style="margin-bottom:0.5rem;"><a href="../agb.html" style="font-size:0.87rem;color:rgba(255,255,255,0.75);text-decoration:none;">AGB</a></li>
+          <li><a href="../anmeldebedingungen.html" style="font-size:0.87rem;color:rgba(255,255,255,0.75);text-decoration:none;">Anmeldebedingungen</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Klumper &amp; Flunkert EDULEO GbR · Alle Rechte vorbehalten</p>
+    </div>
+  </div>
+</footer>
 
+<a href="#" class="back-to-top" aria-label="Nach oben scrollen" style="position:fixed;bottom:150px;right:24px;background:var(--dark);color:#fff;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;opacity:0;transition:opacity 0.3s;z-index:999;font-size:1.1rem;">↑</a>
+
+<script src="../main.js"></script>
+<script>
+  window.addEventListener('scroll', () => {
+    const btn = document.querySelector('.back-to-top');
+    if (btn) btn.style.opacity = window.scrollY > 400 ? '1' : '0';
+  });
+</script>
+<script src="/chatbot.js"></script>
 </body>
 </html>
