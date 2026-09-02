@@ -233,42 +233,13 @@
 
     <div class="ip-buttons">
 
-      <!-- ════════════════════════════════════════════
-           SAISONALER SLOT – Text hier anpassen.
-           Ausblenden: style="display:none" ergänzen.
-           ════════════════════════════════════════════ -->
-      <div class="ip-slot-heading ai ai-4">
-        🚀 5 Fobis starten demnächst
+      <div class="ip-slot-heading ai ai-4" id="fobi-heading">
+        🚀 Starten demnächst
       </div>
 
-      <div class="ip-sub-buttons">
-        <a href="../fortbildungen/digitale-medien-beauftragte-kita/?utm_source=instagram&utm_medium=bio&utm_campaign=linkseite&utm_content=aug-digital"
-           class="ip-btn-sub ai ai-5"
-           onclick="gtag('event','insta_link_click',{link:'aug-digital'})">
-          Digitale Medien Beauftragte/r in der Kita
-        </a>
-        <a href="../fortbildungen/kinderschutz-koordinatorin-kita/?utm_source=instagram&utm_medium=bio&utm_campaign=linkseite&utm_content=aug-kinderschutz"
-           class="ip-btn-sub ai ai-6"
-           onclick="gtag('event','insta_link_click',{link:'aug-kinderschutz'})">
-          Kita KoordinatorIn für Kinderschutz
-        </a>
-        <a href="../fortbildungen/stressbewaetigungscoach/?utm_source=instagram&utm_medium=bio&utm_campaign=linkseite&utm_content=sep-stress"
-           class="ip-btn-sub ai ai-7"
-           onclick="gtag('event','insta_link_click',{link:'sep-stress'})">
-          Stressbewältigungscoach in der Kita
-        </a>
-        <a href="../fortbildungen/kita-expertin-verhaltensauffaelligkeiten/?utm_source=instagram&utm_medium=bio&utm_campaign=linkseite&utm_content=sep-verhalten"
-           class="ip-btn-sub ai ai-8"
-           onclick="gtag('event','insta_link_click',{link:'sep-verhalten'})">
-          Verhaltensauffälligkeiten in der Kita
-        </a>
-        <a href="../fortbildungen/teamcoach-kita/?utm_source=instagram&utm_medium=bio&utm_campaign=linkseite&utm_content=sep-teamcoach"
-           class="ip-btn-sub ai ai-9"
-           onclick="gtag('event','insta_link_click',{link:'sep-teamcoach'})">
-          Teamcoach in der Kita
-        </a>
+      <div class="ip-sub-buttons" id="fobi-list">
+        <div style="text-align:center;padding:10px 0;font-size:0.82rem;color:rgba(38,29,24,0.45);">Termine werden geladen…</div>
       </div>
-      <!-- ════════════════════════════════════════════ -->
 
       <a href="../fortbildungen/?utm_source=instagram&utm_medium=bio&utm_campaign=linkseite&utm_content=fortbildungen"
          class="ip-btn ip-btn-primary ai ai-8"
@@ -304,6 +275,77 @@
   </footer>
 
   <script src="../main.js"></script>
+  <script>
+    const KURSE = [
+      { id: 9,  name: "Stressbewältigung im Kita-Alltag",       url: "../fortbildungen/tagesfortbildungen/stressbewaltigung-kita-alltag/" },
+      { id: 10, name: "Gewaltfreie Kommunikation",               url: "../fortbildungen/tagesfortbildungen/gewaltfreie-kommunikation/" },
+      { id: 11, name: "Elterngespräche führen",                  url: "../fortbildungen/tagesfortbildungen/elterngespraeche-fuehren/" },
+      { id: 12, name: "Sexualentwicklung 0–6 Jahre",             url: "../fortbildungen/tagesfortbildungen/sexualentwicklung-0-6-jahre/" },
+      { id: 13, name: "Umgang mit Personalmangel",               url: "../fortbildungen/tagesfortbildungen/umgang-mit-personalmangel/" },
+      { id: 14, name: "Autismus im Kita-Alltag",                 url: "../fortbildungen/tagesfortbildungen/autismus-kita-alltag/" },
+      { id: 15, name: "ADHS in der Kita",                        url: "../fortbildungen/tagesfortbildungen/adhs-kita/" },
+      { id: 16, name: "Kinderschutz in der Kita",                url: "../fortbildungen/tagesfortbildungen/kinderschutz-kita/" },
+      { id: 17, name: "Kinderyoga für deine Kita",               url: "../fortbildungen/tagesfortbildungen/kinderyoga-kita/" },
+      { id: 18, name: "Praxisübungen Kinderyoga",                url: "../fortbildungen/tagesfortbildungen/kinderyoga-praxisuebungen/" },
+      { id: 19, name: "Schule in Sicht",                         url: "../fortbildungen/tagesfortbildungen/schule-in-sicht/" },
+      { id: 20, name: "Vorschulkonzept gestalten",               url: "../fortbildungen/tagesfortbildungen/vorschulkonzept-gestalten/" },
+      { id: 21, name: "Sprache erforschen mit Wuppi",            url: "../fortbildungen/tagesfortbildungen/sprache-wuppi/" },
+      { id: 22, name: "Musik, Tanz & Bewegung mit Bodo",         url: "../fortbildungen/tagesfortbildungen/musik-tanz-bodo/" },
+      { id: 23, name: "Forschen & Entdecken mit Fred",           url: "../fortbildungen/tagesfortbildungen/forschen-entdecken-fred/" },
+      { id: 24, name: "Meine Führungsrolle als Kita-Leitung",    url: "../fortbildungen/tagesfortbildungen/fuehrungsrolle-kita-leitung/" },
+      { id: 25, name: "Teams leiten und stärken",                url: "../fortbildungen/tagesfortbildungen/teams-leiten-staerken/" },
+      { id: 38, name: "Digitale Kita mit Kitaversum",            url: "../fortbildungen/tagesfortbildungen/digitale-kita-kitaversum/" },
+      { id: 41, name: "Zahlen & Mengen mit Baldur",              url: "../fortbildungen/tagesfortbildungen/zahlen-mengen-baldur/" },
+      { id: 26, name: "Leitung der Vorschule",                   url: "../fortbildungen/leitung-vorschule/" },
+      { id: 27, name: "Kinderyoga Kursleitung",                  url: "../fortbildungen/kinderyoga-kursleitung/" },
+      { id: 28, name: "Digitale Medien BeauftragteR in der Kita",url: "../fortbildungen/digitale-medien-beauftragte-kita/" },
+      { id: 29, name: "Stressbewältigungscoach",                 url: "../fortbildungen/stressbewaetigungscoach/" },
+      { id: 30, name: "Kita-ExpertIn ADHS & Autismus",           url: "../fortbildungen/kita-expertin-adhs-autismus/" },
+      { id: 31, name: "Kita-ExpertIn Verhaltensauffälligkeiten", url: "../fortbildungen/kita-expertin-verhaltensauffaelligkeiten/" },
+      { id: 32, name: "Kinderschutz-KoordinatorIn",              url: "../fortbildungen/kinderschutz-koordinatorin-kita/" },
+      { id: 33, name: "Teamcoach in der Kita",                   url: "../fortbildungen/teamcoach-kita/" },
+      { id: 34, name: "FachberaterIn für Inklusion",             url: "../fortbildungen/fachberaterin-inklusion/" },
+      { id: 35, name: "Marte Meo PraktikerIn",                   url: "../fortbildungen/marte-meo-praktikerin/" },
+    ];
 
+    async function loadFobis() {
+      const today = new Date(); today.setHours(0,0,0,0);
+
+      const results = await Promise.all(
+        KURSE.map(k =>
+          fetch(`/api/termine?category_id=${k.id}`)
+            .then(r => r.json())
+            .then(data => {
+              const next = (data.dates || [])
+                .map(d => d.dateISO)
+                .filter(iso => new Date(iso + 'T00:00:00') >= today)
+                .sort()[0];
+              return next ? { kurs: k, iso: next } : null;
+            })
+            .catch(() => null)
+        )
+      );
+
+      const upcoming = results
+        .filter(Boolean)
+        .sort((a, b) => a.iso.localeCompare(b.iso))
+        .slice(0, 5);
+
+      const list = document.getElementById('fobi-list');
+      if (upcoming.length === 0) {
+        list.innerHTML = '';
+        document.getElementById('fobi-heading').style.display = 'none';
+        return;
+      }
+
+      list.innerHTML = upcoming.map(e =>
+        `<a href="${e.kurs.url}?utm_source=instagram&utm_medium=bio&utm_campaign=linkseite&utm_content=dynamic"
+            class="ip-btn-sub"
+            onclick="gtag('event','insta_link_click',{link:'fobi-${e.kurs.id}'})">${e.kurs.name}</a>`
+      ).join('');
+    }
+
+    loadFobis();
+  </script>
 </body>
 </html>
