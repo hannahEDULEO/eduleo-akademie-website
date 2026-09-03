@@ -71,6 +71,21 @@ export default {
       return handleStundenAbrufen(request, env);
     }
 
+    // API: Urlaubsplanung – Block speichern (Calvin)
+    if (path === '/api/urlaub-eintragen') {
+      return handleUrlaubEintragen(request, env);
+    }
+
+    // API: Urlaubsplanung – alle Blöcke abrufen (Kalender)
+    if (path === '/api/urlaub-abrufen') {
+      return handleUrlaubAbrufen(request, env);
+    }
+
+    // API: Urlaubsplanung – Block löschen
+    if (path === '/api/urlaub-loeschen') {
+      return handleUrlaubLoeschen(request, env);
+    }
+
     // Redirects für alte QR-Code-URLs (Broschüre & Postkarte)
     const decodedPath = decodeURIComponent(path).replace(/\/?$/, '/');
     if (decodedPath === '/3-monats-fortbildungen/' || decodedPath === '/überblick-fortbildungen/') {
@@ -781,6 +796,61 @@ async function handleStundenAbrufen(request, env) {
       new Date(b.eingereicht) - new Date(a.eingereicht)
     );
     return new Response(JSON.stringify({ ok: true, eintraege: sorted }), { headers: json });
+  } catch (e) {
+    return new Response(JSON.stringify({ ok: false, msg: e.message }), { status: 500, headers: json });
+  }
+}
+
+// ── Urlaubsplanung ──────────────────────────────────────────────────────────
+
+async function handleUrlaubEintragen(request, env) {
+  const json = { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' };
+  if (request.method === 'OPTIONS') return new Response(null, { headers: json });
+  if (request.method !== 'POST') return new Response(JSON.stringify({ ok: false }), { status: 405, headers: json });
+
+  try {
+    const data = await request.json();
+    if (!data.von || !data.bis) {
+      return new Response(JSON.stringify({ ok: false, msg: 'Von- und Bis-Datum erforderlich.' }), { status: 400, headers: json });
+    }
+    const id = Date.now() + '-' + Math.random().toString(36).slice(2, 8);
+    const key = 'urlaub:' + id;
+    data.id = id;
+    data.eingereicht = new Date().toISOString();
+    await env.FORM_SUBMISSIONS.put(key, JSON.stringify(data));
+    return new Response(JSON.stringify({ ok: true, id }), { headers: json });
+  } catch (e) {
+    return new Response(JSON.stringify({ ok: false, msg: e.message }), { status: 500, headers: json });
+  }
+}
+
+async function handleUrlaubAbrufen(request, env) {
+  const json = { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' };
+  try {
+    const list = await env.FORM_SUBMISSIONS.list({ prefix: 'urlaub:' });
+    const bloecke = await Promise.all(
+      list.keys.map(async ({ name }) => {
+        const val = await env.FORM_SUBMISSIONS.get(name);
+        return val ? JSON.parse(val) : null;
+      })
+    );
+    const sorted = bloecke.filter(Boolean).sort((a, b) => new Date(a.von) - new Date(b.von));
+    return new Response(JSON.stringify({ ok: true, bloecke: sorted }), { headers: json });
+  } catch (e) {
+    return new Response(JSON.stringify({ ok: false, msg: e.message }), { status: 500, headers: json });
+  }
+}
+
+async function handleUrlaubLoeschen(request, env) {
+  const json = { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' };
+  if (request.method === 'OPTIONS') return new Response(null, { headers: json });
+  if (request.method !== 'POST') return new Response(JSON.stringify({ ok: false }), { status: 405, headers: json });
+
+  try {
+    const { id } = await request.json();
+    if (!id) return new Response(JSON.stringify({ ok: false, msg: 'ID fehlt.' }), { status: 400, headers: json });
+    await env.FORM_SUBMISSIONS.delete('urlaub:' + id);
+    return new Response(JSON.stringify({ ok: true }), { headers: json });
   } catch (e) {
     return new Response(JSON.stringify({ ok: false, msg: e.message }), { status: 500, headers: json });
   }
