@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gute Führung beginnt beim Menschen – Moderne Kita-Leitung | EDULEO Akademie</title>
+  <meta name="description" content="Warum moderne Kita-Führung mehr braucht als Dienstpläne: Leadership, Teamrollen, Konflikte, Kommunikation und Personalentwicklung als Qualitätsentwicklung erklärt.">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="EDULEO Akademie">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:url" content="https://www.eduleo-akademie.de/gute-fuehrung-beginnt-beim-menschen/">
+  <meta property="og:title" content="Gute Führung beginnt beim Menschen – Warum moderne Kita-Führung mehr braucht als Organisation">
+  <meta property="og:description" content="Leadership, Managen, Coachen – was Kita-Leitungen wirklich brauchen. Ein praxisnaher Überblick über Teamrollen, Konfliktmanagement und Mitarbeitergespräche.">
+  <meta property="og:image" content="https://www.eduleo-akademie.de/assets/blog/fuehrung-kita/hero.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://www.eduleo-akademie.de/gute-fuehrung-beginnt-beim-menschen/">
+  <link rel="icon" href="../favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon-6/apple-touch-icon-180x180.png">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .blog-hero { position: relative; min-height: 520px; display: flex; align-items: center; overflow: hidden; }
+    .blog-hero-bg { position: absolute; inset: 0; background-image: url('../assets/blog/fuehrung-kita/hero.png'); background-size: cover; background-position: center; }
+    .blog-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(38,29,24,0.42) 0%, rgba(38,29,24,0.83) 100%); }
+    .blog-hero-content { position: relative; z-index: 2; padding: 3rem 0 3.5rem; color: #fff; width: 100%; }
+    .blog-breadcrumb { font-size: 0.85rem; color: rgba(255,255,255,0.75); margin-bottom: 1rem; }
+    .blog-breadcrumb a { color: rgba(255,255,255,0.75); text-decoration: none; }
+    .blog-breadcrumb a:hover { color: #fff; }
+    .blog-breadcrumb span { margin: 0 0.4rem; }
+    .blog-tag { display: inline-block; color: #fff; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 20px; margin-bottom: 1rem; margin-right: 0.4rem; background: var(--green-dark); }
+    .blog-hero-title { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800; line-height: 1.2; margin: 0 0 1rem; color: #fff; }
+    .blog-meta { display: flex; align-items: center; gap: 1rem; font-size: 0.85rem; color: rgba(255,255,255,0.8); flex-wrap: wrap; }
+    .blog-meta-item { display: flex; align-items: center; gap: 0.35rem; }
+
+    .blog-body { padding: 3.5rem 0 5rem; }
+    .blog-layout { display: grid; grid-template-columns: 1fr 280px; gap: 3rem; max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; }
+    .blog-content { min-width: 0; }
+    .blog-content h2 { font-size: 1.3rem; font-weight: 800; color: var(--dark); margin: 2.5rem 0 0.9rem; }
+    .blog-content h2:first-child { margin-top: 0; }
+    .blog-content p { color: #444; line-height: 1.8; margin-bottom: 1rem; }
+    .blog-content ul { padding-left: 1.4rem; margin-bottom: 1rem; }
+    .blog-content ul li { color: #444; line-height: 1.8; margin-bottom: 0.3rem; }
+    .blog-intro { font-size: 1.08rem; color: #333; line-height: 1.8; border-left: 4px solid var(--green-dark); padding-left: 1.25rem; margin-bottom: 2rem; font-style: italic; }
+    .blog-divider { border: none; border-top: 2px solid var(--beige); margin: 2.5rem 0; }
+
+    /* Fakten */
+    .facts-row { background: var(--beige); border-radius: var(--radius-xl); padding: 1.5rem 2rem; margin-bottom: 2rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; text-align: center; }
+    .fact-num { font-size: 1.7rem; font-weight: 900; color: var(--green-dark); line-height: 1; }
+    .fact-label { font-size: 0.78rem; color: #666; margin-top: 0.3rem; line-height: 1.4; }
+
+    /* Pull-Quote */
+    .pull-quote { border-left: 4px solid var(--green-dark); padding: 1.1rem 1.5rem; margin: 1.75rem 0; background: var(--beige); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; font-size: 1rem; font-weight: 700; color: var(--dark); line-height: 1.7; font-style: italic; }
+
+    /* Dreispaltige Vergleichstabelle */
+    .vergleich-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; border-radius: var(--radius-lg); overflow: hidden; font-size: 0.88rem; }
+    .vergleich-table th { padding: 0.85rem 1rem; font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; text-align: left; }
+    .vergleich-table th:first-child { background: #d0d0d0; color: #555; }
+    .vergleich-table th:nth-child(2) { background: #3b6998; color: #fff; }
+    .vergleich-table th:nth-child(3) { background: #9b4f96; color: #fff; }
+    .vergleich-table th:nth-child(4) { background: var(--green-dark); color: #fff; }
+    .vergleich-table td { padding: 0.75rem 1rem; border-bottom: 1px solid #f0ebe8; vertical-align: top; line-height: 1.65; }
+    .vergleich-table td:first-child { font-weight: 700; color: var(--dark); background: #faf7f5; }
+    .vergleich-table td:nth-child(2) { color: #1c3a5e; background: #f0f4ff; }
+    .vergleich-table td:nth-child(3) { color: #5a1c5e; background: #fdf0ff; }
+    .vergleich-table td:nth-child(4) { color: #2a5c3f; background: #f0f8f4; font-weight: 600; }
+    .vergleich-table tr:last-child td { border-bottom: none; }
+
+    /* Teamrollen-Karten */
+    .rollen-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; margin: 1.5rem 0; }
+    .rolle-card { background: var(--beige); border-radius: var(--radius-lg); padding: 1rem 1.1rem; border-top: 3px solid var(--green-dark); }
+    .rolle-card strong { display: block; font-size: 0.88rem; font-weight: 800; color: var(--dark); margin-bottom: 0.3rem; }
+    .rolle-card span { font-size: 0.8rem; color: #666; line-height: 1.5; }
+
+    /* Fragen-Box */
+    .fragen-box { background: #f0f8f4; border-radius: var(--radius-xl); padding: 1.5rem 1.75rem; margin: 1.5rem 0; border-left: 4px solid var(--green-dark); }
+    .fragen-box p { font-size: 0.95rem; color: #2a5c3f; font-weight: 700; margin: 0 0 0.5rem; }
+    .fragen-box ul { padding-left: 1.2rem; margin: 0; }
+    .fragen-box ul li { font-size: 0.9rem; color: #2a5c3f; line-height: 1.75; margin-bottom: 0.25rem; }
+
+    /* Fortbildungs-Karten */
+    .fobi-cards { display: flex; flex-direction: column; gap: 1rem; margin: 1.5rem 0; }
+    .fobi-card { border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
+    .fobi-card-info h4 { font-size: 0.98rem; font-weight: 800; color: var(--dark); margin: 0 0 0.35rem; }
+    .fobi-card-info p { font-size: 0.86rem; color: #666; line-height: 1.6; margin: 0; }
+    .fobi-card-link { flex-shrink: 0; background: var(--green-dark); color: #fff; font-weight: 700; font-size: 0.82rem; padding: 0.55rem 1rem; border-radius: 8px; text-decoration: none; white-space: nowrap; transition: background 0.2s; }
+    .fobi-card-link:hover { background: var(--green-deeper); }
+    .fobi-card-badge { display: inline-block; font-size: 0.72rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 20px; margin-bottom: 0.4rem; background: var(--beige); color: var(--green-dark); }
+
+    /* Autorin-Box */
+    .autorin-box { border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 1.5rem; margin: 2.5rem 0; display: flex; gap: 1.25rem; align-items: flex-start; background: #faf7f5; }
+    .autorin-info h4 { font-size: 1rem; font-weight: 800; color: var(--dark); margin: 0 0 0.3rem; }
+    .autorin-info p { font-size: 0.88rem; color: #555; line-height: 1.65; margin: 0 0 0.5rem; }
+    .autorin-info a { font-size: 0.85rem; color: var(--green-dark); font-weight: 700; text-decoration: none; }
+    .autorin-info a:hover { text-decoration: underline; }
+    .autorin-links { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 0.5rem; }
+
+    /* Instagram-Button */
+    .instagram-btn { display: inline-flex; align-items: center; gap: 0.45rem; background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: #fff; font-weight: 700; font-size: 0.85rem; padding: 0.55rem 1.1rem; border-radius: 8px; text-decoration: none; transition: opacity 0.2s; }
+    .instagram-btn:hover { opacity: 0.88; }
+    .insta-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin: 1.5rem 0 0; }
+
+    /* CTA Banner */
+    .blog-cta-banner { background: var(--dark); border-radius: var(--radius-xl); padding: 2rem; margin: 2.5rem 0; color: #fff; }
+    .blog-cta-banner h3 { font-size: 1.1rem; font-weight: 800; margin: 0 0 0.6rem; color: #fff; }
+    .blog-cta-banner p { color: rgba(255,255,255,0.8); font-size: 0.92rem; margin-bottom: 1rem; }
+    .blog-cta-banner-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .blog-cta-banner-links a { background: var(--green-dark); color: #fff; font-weight: 700; font-size: 0.85rem; padding: 0.6rem 1.1rem; border-radius: 8px; text-decoration: none; transition: background 0.2s; }
+    .blog-cta-banner-links a:hover { background: var(--green-deeper); }
+
+    /* Sidebar */
+    .blog-sidebar { position: relative; }
+    .blog-sidebar-inner { position: sticky; top: 100px; }
+    .blog-sidebar-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 1.5rem; margin-bottom: 1.25rem; }
+    .blog-sidebar-card h4 { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-light); margin: 0 0 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
+    .blog-sidebar-card ul { list-style: none; padding: 0; margin: 0; }
+    .blog-sidebar-card ul li { border-bottom: 1px solid #F0EBE8; }
+    .blog-sidebar-card ul li:last-child { border-bottom: none; }
+    .blog-sidebar-card ul li a { font-size: 0.87rem; font-weight: 600; color: var(--dark); text-decoration: none; display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 0; line-height: 1.4; transition: color 0.15s; }
+    .blog-sidebar-card ul li a:hover { color: var(--green-dark); }
+    .blog-sidebar-card ul li a::after { content: '→'; color: var(--beige-dark); font-size: 0.8rem; }
+    .blog-cta-sidebar { background: var(--dark); border-radius: var(--radius-xl); padding: 1.5rem; margin-bottom: 1.25rem; }
+    .blog-cta-sidebar h4 { font-size: 1rem; font-weight: 800; margin: 0 0 0.6rem; color: #fff; }
+    .blog-cta-sidebar p { font-size: 0.86rem; color: rgba(255,255,255,0.75); line-height: 1.6; margin-bottom: 1.1rem; }
+    .blog-cta-sidebar a.btn { background: var(--green-dark); color: #fff; font-weight: 700; font-size: 0.85rem; padding: 0.65rem 1.2rem; border-radius: 8px; text-decoration: none; display: block; text-align: center; transition: background 0.2s; }
+    .blog-cta-sidebar a.btn:hover { background: var(--green-deeper); }
+
+    @media (max-width: 768px) {
+      .blog-layout { grid-template-columns: 1fr; padding: 0 1rem; }
+      .blog-sidebar { display: none; }
+      .facts-row { grid-template-columns: 1fr; gap: 0.75rem; }
+      .rollen-grid { grid-template-columns: 1fr 1fr; }
+      .vergleich-table { font-size: 0.78rem; }
+      .vergleich-table th, .vergleich-table td { padding: 0.6rem 0.7rem; }
+      .fobi-card { flex-direction: column; }
+    }
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6R6TGSJM8P"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-6R6TGSJM8P");
+  </script>
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "y9fscnnl3q");
+  </script>
+</head>
+<body>
+
+<!-- Cookie Banner -->
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#261D18;color:#fff;padding:1rem 1.5rem;z-index:9999;display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;">
+  <p style="margin:0;font-size:0.85rem;flex:1;min-width:200px;">Diese Website verwendet Cookies. <a href="../datenschutz.html" style="color:#D2EADA;">Datenschutz</a></p>
+  <div style="display:flex;gap:0.75rem;flex-shrink:0;">
+    <button onclick="acceptCookies()" style="background:#5A9E7A;color:#fff;border:none;padding:0.5rem 1.25rem;border-radius:6px;cursor:pointer;font-weight:700;">Akzeptieren</button>
+    <button onclick="rejectCookies()" style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.4);padding:0.5rem 1.25rem;border-radius:6px;cursor:pointer;">Ablehnen</button>
+  </div>
+</div>
+
+<!-- Navigation -->
+<nav class="nav" id="nav" role="navigation" aria-label="Hauptnavigation">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="EDULEO Akademie, Startseite">
+        <img src="../assets/images/logo.png" alt="EDULEO Akademie" style="height:48px;width:auto;">
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="../ueber-uns/">Über uns</a></li>
+        <li><a href="../budget-planer/">Budget-Planer</a></li>
+        <li><a href="../bring-a-friend/">Bring a Friend</a></li>
+        <li><a href="/#kontakt">Kontakt</a></li>
+        <li><a href="../anmeldebedingungen.html">Anmeldebedingungen</a></li>
+        <li><a href="../blog-1/">Blog</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="../fortbildungen/" class="btn btn-primary btn-sm">Alle Fortbildungen</a>
+      </div>
+      <button class="hamburger" aria-label="Menü öffnen" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" role="navigation" aria-label="Mobile Navigation">
+  <a href="../fortbildungen/">Fortbildungen</a>
+  <a href="../ueber-uns/">Über uns</a>
+  <a href="../budget-planer/">Budget-Planer</a>
+  <a href="../bring-a-friend/">Bring a Friend</a>
+  <a href="/#kontakt">Kontakt</a>
+  <a href="../anmeldebedingungen.html">Anmeldebedingungen</a>
+  <a href="../blog-1/">Blog</a>
+  <a href="../fortbildungen/" class="btn btn-primary">Alle Fortbildungen</a>
+</div>
+
+<!-- Hero -->
+<header class="blog-hero">
+  <div class="blog-hero-bg"></div>
+  <div class="blog-hero-overlay"></div>
+  <div class="blog-hero-content">
+    <div class="container" style="max-width:820px;">
+      <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Startseite</a>
+        <span>›</span>
+        <a href="../blog-1/">Blog</a>
+        <span>›</span>
+        <span>Kita-Leitung</span>
+      </nav>
+      <span class="blog-tag">Kita-Leitung</span>
+      <span class="blog-tag">Teamführung</span>
+      <h1 class="blog-hero-title">Gute Führung beginnt beim Menschen — Warum moderne Kita-Führung mehr braucht als Organisation und Dienstpläne</h1>
+      <div class="blog-meta">
+        <div class="blog-meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          27. August 2026
+        </div>
+        <div class="blog-meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          ca. 9 Min. Lesezeit
+        </div>
+        <div class="blog-meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Nadja Peuckert
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Artikel -->
+<main class="blog-body">
+  <div class="blog-layout">
+
+    <article class="blog-content">
+
+      <p class="blog-intro">Eine Kita zu leiten bedeutet längst mehr, als Dienstpläne zu schreiben und Elternanliegen zu bearbeiten. Hinter jeder Organisation stehen Menschen — und ob ein Team gut zusammenarbeitet, Veränderungen mitträgt und Verantwortung übernimmt, hängt wesentlich davon ab, wie Führung gestaltet wird.</p>
+
+      <div class="facts-row">
+        <div>
+          <div class="fact-num">3</div>
+          <div class="fact-label">Führungsbereiche: Leadership,<br>Management und Coaching</div>
+        </div>
+        <div>
+          <div class="fact-num">9</div>
+          <div class="fact-label">Teamrollen nach Belbin,<br>die ein Team vollständig machen</div>
+        </div>
+        <div>
+          <div class="fact-num">8</div>
+          <div class="fact-label">Termine in der 3-Monats-<br>Fortbildung Teamcoach</div>
+        </div>
+      </div>
+
+      <p>Kita-Leitungen stehen heute vor einer Vielzahl an Herausforderungen: Fachkräftemangel, unterschiedliche Generationen im Team, steigende Anforderungen an Qualität und Dokumentation, Konflikte und der Anspruch, gute pädagogische Arbeit zu ermöglichen. Dabei gerät eine Aufgabe manchmal aus dem Blick, die für all diese Themen entscheidend ist: <strong>Führung.</strong></p>
+
+      <hr class="blog-divider">
+
+      <h2 id="fuehrung-vs-leitung">Führung ist mehr als Leitung — was den Unterschied macht</h2>
+
+      <p>Eine Leitung kann Prozesse organisieren, Aufgaben verteilen und Entscheidungen treffen. Führung geht darüber hinaus: sie bedeutet, Menschen Orientierung zu geben, Beziehungen zu gestalten, Entwicklung zu ermöglichen und Verantwortung zu übernehmen.</p>
+
+      <p>In unserer Arbeit unterscheiden wir deshalb drei zentrale Bereiche — und gute Führungskräfte brauchen alle drei:</p>
+
+      <table class="vergleich-table" aria-label="Leadership, Management und Coaching im Vergleich">
+        <thead>
+          <tr>
+            <th>Bereich</th>
+            <th>Leadership</th>
+            <th>Management</th>
+            <th>Coaching</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Kernfrage</td>
+            <td>Wohin wollen wir?</td>
+            <td>Wie kommen wir dahin?</td>
+            <td>Was braucht dieser Mensch?</td>
+          </tr>
+          <tr>
+            <td>Fokus</td>
+            <td>Vision, Haltung, Orientierung</td>
+            <td>Strukturen, Entscheidungen, Qualität</td>
+            <td>Stärken, Entwicklung, Begleitung</td>
+          </tr>
+          <tr>
+            <td>Typische Aufgaben</td>
+            <td>Team motivieren, Veränderungen gestalten</td>
+            <td>Dienstpläne, Prozesse, Qualitätssicherung</td>
+            <td>Mitarbeitergespräche, Feedback, Fördern</td>
+          </tr>
+          <tr>
+            <td>Führungsstil</td>
+            <td>Inspirierend, richtungsweisend</td>
+            <td>Strukturierend, entscheidungsfreudig</td>
+            <td>Zuhörend, fragend, entwicklungsorientiert</td>
+          </tr>
+          <tr>
+            <td>Wann besonders wichtig</td>
+            <td>Bei Veränderungen, Unsicherheit im Team</td>
+            <td>Bei klaren Prozessen, Effizienzfragen</td>
+            <td>Bei individuellen Herausforderungen</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="pull-quote">
+        Es gibt nicht den einen perfekten Führungsstil. Gute Führung bedeutet, situativ zu führen: Was braucht mein Team — oder was braucht dieser eine Mensch in dieser Situation?
+      </div>
+
+      <hr class="blog-divider">
+
+      <h2 id="teamrollen">Aus Einzelpersonen wird noch kein Team — Teamrollen nach Belbin</h2>
+
+      <p>In einer Kita arbeiten viele unterschiedliche Menschen zusammen: mit verschiedenen Erfahrungen, Persönlichkeiten, Kompetenzen und Arbeitsweisen. Dass daraus automatisch ein funktionierendes Team entsteht, ist ein Trugschluss — Teamarbeit braucht Gestaltung.</p>
+
+      <p>Das <strong>Teamrollenmodell nach Belbin</strong> zeigt, dass unterschiedliche Rollen im Team sinnvoll und notwendig sind. Keine Rolle ist grundsätzlich besser oder schlechter. Die Herausforderung für Führungskräfte: die Stärken erkennen und so einsetzen, dass sie sich ergänzen.</p>
+
+      <div class="rollen-grid">
+        <div class="rolle-card">
+          <strong>Der Erfinder</strong>
+          <span>Entwickelt kreative Ideen und neue Ansätze. Denkt quer und innovativ.</span>
+        </div>
+        <div class="rolle-card">
+          <strong>Die Koordinatorin</strong>
+          <span>Hält den Überblick, gibt dem Team Orientierung und delegiert gezielt.</span>
+        </div>
+        <div class="rolle-card">
+          <strong>Der Umsetzer</strong>
+          <span>Macht aus Ideen konkrete Aufgaben und bringt Projekte zum Abschluss.</span>
+        </div>
+        <div class="rolle-card">
+          <strong>Die Spezialistin</strong>
+          <span>Bringt tiefes Fachwissen ein und ist Ansprechpartnerin für ihren Bereich.</span>
+        </div>
+        <div class="rolle-card">
+          <strong>Der Beobachter</strong>
+          <span>Analysiert kritisch, bewertet Vorschläge und sorgt für Qualität.</span>
+        </div>
+        <div class="rolle-card">
+          <strong>Die Teamarbeiterin</strong>
+          <span>Verbindet Menschen, löst Spannungen und sorgt für gutes Klima.</span>
+        </div>
+        <div class="rolle-card">
+          <strong>Der Wegbereiter</strong>
+          <span>Bringt Informationen und Kontakte von außen ins Team.</span>
+        </div>
+        <div class="rolle-card">
+          <strong>Die Perfektionistin</strong>
+          <span>Behält Details im Blick, stellt Qualität sicher und findet Fehler.</span>
+        </div>
+        <div class="rolle-card">
+          <strong>Der Macher</strong>
+          <span>Treibt voran, bringt Energie und Tempo — auch unter Druck.</span>
+        </div>
+      </div>
+
+      <p>Diversität kann ein großer Gewinn für ein Team sein, wenn Unterschiede nicht als Störung, sondern als Ressource verstanden werden.</p>
+
+      <hr class="blog-divider">
+
+      <h2 id="konflikte">Wenn es knirscht: Konflikte sind kein Zeichen für schlechtes Teamwork</h2>
+
+      <p>Wo Menschen zusammenarbeiten, entstehen unterschiedliche Interessen, Erwartungen und Sichtweisen. Es geht nicht darum, Konflikte vollständig zu verhindern, sondern darum, wie eine Einrichtung mit ihnen umgeht. Ein Konflikt kann auf ein ungelöstes Problem hinweisen, unterschiedliche Bedürfnisse sichtbar machen oder zeigen, dass Kommunikation oder Zuständigkeiten unklar sind.</p>
+
+      <div class="fragen-box">
+        <p>Die richtigen Fragen im Konflikt:</p>
+        <ul>
+          <li>Was steckt hinter dem sichtbaren Verhalten?</li>
+          <li>Was wird gerade nicht ausgesprochen?</li>
+          <li>Welche Bedürfnisse oder Interessen treffen aufeinander?</li>
+          <li>Was braucht es, damit wieder gemeinsam gearbeitet werden kann?</li>
+        </ul>
+      </div>
+
+      <p>Konfliktfähigkeit ist kein Zusatzwissen, sondern gehört zum Handwerkszeug guter Führung.</p>
+
+      <hr class="blog-divider">
+
+      <h2 id="kommunikation">Kommunikation entscheidet über Zusammenarbeit</h2>
+
+      <p>Viele Konflikte beginnen nicht mit einem großen Streit, sondern mit einem Satz, der falsch verstanden wurde, mit einer Information, die nicht weitergegeben wurde, oder mit einem Gespräch, das nie stattgefunden hat. Kommunikation bewusst zu gestalten ist deshalb eine Kernaufgabe von Führung.</p>
+
+      <table class="vergleich-table" aria-label="Kommunikation in der Kita-Leitung: Was wirkt wie">
+        <thead>
+          <tr>
+            <th>Kommunikationsbereich</th>
+            <th style="background:#c0392b;color:#fff;">Ohne Bewusstsein</th>
+            <th style="background:var(--green-dark);color:#fff;">Mit Bewusstsein</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Feedback geben</td>
+            <td style="background:#fff5f4;color:#7a2a00;">Pauschal, persönlich, zu selten</td>
+            <td style="background:#f0f8f4;color:#2a5c3f;font-weight:600;">Konkret, zeitnah, auf Verhalten bezogen</td>
+          </tr>
+          <tr>
+            <td>Fragen stellen</td>
+            <td style="background:#fff5f4;color:#7a2a00;">"Haben Sie noch Fragen?" — Ja/Nein-Fragen</td>
+            <td style="background:#f0f8f4;color:#2a5c3f;font-weight:600;">"Was hat Sie daran interessiert?" — Öffnende Fragen</td>
+          </tr>
+          <tr>
+            <td>Kritik ansprechen</td>
+            <td style="background:#fff5f4;color:#7a2a00;">Aufgeschoben oder im Team statt direkt</td>
+            <td style="background:#f0f8f4;color:#2a5c3f;font-weight:600;">Zeitnah im Vieraugengespräch</td>
+          </tr>
+          <tr>
+            <td>Mitarbeitende wahrnehmen</td>
+            <td style="background:#fff5f4;color:#7a2a00;">Nur bei Problemen ansprechen</td>
+            <td style="background:#f0f8f4;color:#2a5c3f;font-weight:600;">Regelmäßige kurze Gespräche — Vertrauen aufbauen</td>
+          </tr>
+          <tr>
+            <td>Zuhören</td>
+            <td style="background:#fff5f4;color:#7a2a00;">Halbherzig, während andere Aufgaben laufen</td>
+            <td style="background:#f0f8f4;color:#2a5c3f;font-weight:600;">Volles Gespräch, Augenkontakt, keine Ablenkung</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="pull-quote">
+        Führung findet nicht nur in großen Entscheidungen statt — sondern in vielen kleinen Gesprächen des Alltags.
+      </div>
+
+      <hr class="blog-divider">
+
+      <h2 id="mitarbeitergespraeche">Mitarbeitergespräche sind Führungsinstrumente</h2>
+
+      <p>Ein Zielvereinbarungsgespräch ist mehr als ein jährlicher Pflichttermin. Richtig eingesetzt, bietet es Raum für Rückblick, Reflexion, Entwicklung und gemeinsame Ziele. Dabei interessiert nicht nur: „Was hast du im vergangenen Jahr geleistet?"</p>
+
+      <div class="fragen-box">
+        <p>Fragen, die ein gutes Mitarbeitergespräch ausmachen:</p>
+        <ul>
+          <li>Was hat dir Freude gemacht?</li>
+          <li>Was hat dich herausgefordert?</li>
+          <li>Wie erlebst du die Zusammenarbeit im Team?</li>
+          <li>Welche Kompetenzen bringst du mit, die noch nicht genutzt werden?</li>
+          <li>Wo möchtest du dich weiterentwickeln?</li>
+          <li>Welche Unterstützung brauchst du von mir?</li>
+        </ul>
+      </div>
+
+      <p>Diese Gespräche schaffen Verbindung zwischen Unternehmensführung und Personalführung. Sie geben Mitarbeitenden die Möglichkeit, ihre eigene berufliche Entwicklung aktiv mitzugestalten.</p>
+
+      <hr class="blog-divider">
+
+      <h2 id="onboarding">Neue Mitarbeitende: Onboarding beginnt vor dem ersten Arbeitstag</h2>
+
+      <p>Der Fachkräftemangel verändert die Bedeutung des Onboardings. Wenn eine neue Mitarbeiterin den Arbeitsvertrag unterschrieben hat, ist die Personalgewinnung noch nicht abgeschlossen — jetzt beginnt die eigentliche Integration. Zwischen Vertragsunterzeichnung und erstem Arbeitstag können Wochen oder Monate liegen. Wer in dieser Zeit nichts hört, kann schnell das Gefühl bekommen, bereits wieder vergessen worden zu sein.</p>
+
+      <table class="vergleich-table" aria-label="Die drei Ebenen guten Onboardings">
+        <thead>
+          <tr>
+            <th>Ebene</th>
+            <th style="background:#3b6998;color:#fff;">Ziel</th>
+            <th style="background:var(--green-dark);color:#fff;">Beispiele</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Orientierung</td>
+            <td style="background:#f0f4ff;color:#1c3a5e;">Die Einrichtung kennenlernen</td>
+            <td style="background:#f0f8f4;color:#2a5c3f;font-weight:600;">Willkommenspaket, Einführungstermin, Rundgang</td>
+          </tr>
+          <tr>
+            <td>Einarbeitung</td>
+            <td style="background:#f0f4ff;color:#1c3a5e;">Aufgaben und Abläufe verstehen</td>
+            <td style="background:#f0f8f4;color:#2a5c3f;font-weight:600;">Patenschaft, klare Zuständigkeiten, Checkliste</td>
+          </tr>
+          <tr>
+            <td>Soziale Integration</td>
+            <td style="background:#f0f4ff;color:#1c3a5e;">Dazugehören und ankommen</td>
+            <td style="background:#f0f8f4;color:#2a5c3f;font-weight:600;">Teamvorstellung, gemeinsame Pausen, regelmäßige Feedback-Gespräche</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr class="blog-divider">
+
+      <h2 id="generationen">Mehrere Generationen — ein Team</h2>
+
+      <p>In vielen Kitas arbeiten heute Menschen verschiedener Generationen zusammen. Das bringt unterschiedliche Erfahrungen, Werte und Vorstellungen von Arbeit mit. Die entscheidende Frage: Was können unterschiedliche Generationen voneinander lernen?</p>
+
+      <table class="vergleich-table" aria-label="Generationenvielfalt im Kita-Team nutzen">
+        <thead>
+          <tr>
+            <th>Aspekt</th>
+            <th style="background:#7b6b3d;color:#fff;">Erfahrene Fachkräfte</th>
+            <th style="background:var(--green-dark);color:#fff;">Jüngere Fachkräfte</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Stärken</td>
+            <td style="background:#fffbf0;color:#5a4a1c;">Erfahrungswissen, Routine, Verlässlichkeit</td>
+            <td style="background:#f0f8f4;color:#2a5c3f;font-weight:600;">Neue Perspektiven, digitale Kompetenzen, frische Ideen</td>
+          </tr>
+          <tr>
+            <td>Arbeitsmotivation</td>
+            <td style="background:#fffbf0;color:#5a4a1c;">Sicherheit, Anerkennung, Verlässlichkeit</td>
+            <td style="background:#f0f8f4;color:#2a5c3f;font-weight:600;">Sinn, Selbstbestimmung, Flexibilität</td>
+          </tr>
+          <tr>
+            <td>Führungswunsch</td>
+            <td style="background:#fffbf0;color:#5a4a1c;">Klare Strukturen, Verbindlichkeit</td>
+            <td style="background:#f0f8f4;color:#2a5c3f;font-weight:600;">Beteiligung, Transparenz, Freiraum</td>
+          </tr>
+          <tr>
+            <td>Potenzial für das Team</td>
+            <td style="background:#fffbf0;color:#5a4a1c;">Mentoring, Weitergabe von Erfahrungen</td>
+            <td style="background:#f0f8f4;color:#2a5c3f;font-weight:600;">Neue Methoden, digitale Tools, neue Netzwerke</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Teams müssen nicht gleich sein, um gut zusammenzuarbeiten. Sie müssen lernen, Unterschiede produktiv zu nutzen.</p>
+
+      <hr class="blog-divider">
+
+      <h2 id="selbstreflexion">Von der Leitungskraft zur Führungspersönlichkeit: Selbstreflexion</h2>
+
+      <p>Unsere Fortbildungen verbindet ein Gedanke, der sich durch alle Themen zieht: <strong>Führung beginnt mit Selbstreflexion.</strong> Wer andere Menschen führen möchte, sollte sich selbst kennen.</p>
+
+      <div class="fragen-box">
+        <p>Fragen für die eigene Führungsreflexion:</p>
+        <ul>
+          <li>Welche Werte sind mir bei Führung wichtig?</li>
+          <li>Wie treffe ich Entscheidungen — und wie kommuniziere ich sie?</li>
+          <li>Was löst Widerstand bei mir aus?</li>
+          <li>Wie gebe ich Feedback — und wie nehme ich es an?</li>
+          <li>Wie viel Kontrolle brauche ich?</li>
+          <li>Wo kann ich Verantwortung abgeben?</li>
+          <li>Welche Wirkung habe ich eigentlich auf mein Team?</li>
+        </ul>
+      </div>
+
+      <div class="pull-quote">
+        Führung bedeutet nicht, perfekt zu sein. Führung bedeutet, bereit zu sein, das eigene Handeln immer wieder zu reflektieren und weiterzuentwickeln.
+      </div>
+
+      <hr class="blog-divider">
+
+      <h2 id="fortbildungen">Unsere Fortbildungen: Führung ganzheitlich denken</h2>
+
+      <p>Bei der EDULEO Akademie sind vier Fortbildungsformate entstanden, die an unterschiedlichen Bereichen von Führung und Teamentwicklung ansetzen. Jede Fortbildung kann einzeln gebucht werden — inhaltlich bauen sie aufeinander auf.</p>
+
+      <div class="fobi-cards">
+
+        <div class="fobi-card">
+          <div class="fobi-card-info">
+            <div class="fobi-card-badge">Tagesfortbildung</div>
+            <h4>Leitung 1 – Meine Führungsrolle als Kita-Leitung</h4>
+            <p>Den Alltag und die Herausforderungen der Leitungsrolle sicher bewältigen. Führungsstile reflektieren, Rolle klären, konkrete Ideen für den Führungsalltag entwickeln.</p>
+          </div>
+          <a href="../fortbildungen/tagesfortbildungen/fuehrungsrolle-kita-leitung/" class="fobi-card-link">Infos</a>
+        </div>
+
+        <div class="fobi-card">
+          <div class="fobi-card-info">
+            <div class="fobi-card-badge">Tagesfortbildung</div>
+            <h4>Leitung 2 – Kita-Teams leiten und stärken</h4>
+            <p>Teamrollen, Ressourcen, Kommunikation, Feedback und Konfliktbegleitung. Wie Leitungskräfte Teamprozesse bewusst gestalten und Entwicklung anstoßen können.</p>
+          </div>
+          <a href="../fortbildungen/tagesfortbildungen/teams-leiten-staerken/" class="fobi-card-link">Infos</a>
+        </div>
+
+        <div class="fobi-card">
+          <div class="fobi-card-info">
+            <div class="fobi-card-badge">3-Monats-Fortbildung · 8 Termine</div>
+            <h4>Teamcoach in der Kita</h4>
+            <p>Von der eigenen Führungsrolle über Teamrollen, Konflikte und Kommunikation bis zu Mitarbeitergesprächen, Onboarding, Generationenteams und Moderation. Praxistransfer inklusive.</p>
+          </div>
+          <a href="../fortbildungen/teamcoach-kita/" class="fobi-card-link">Infos</a>
+        </div>
+
+        <div class="fobi-card">
+          <div class="fobi-card-info">
+            <div class="fobi-card-badge">Teamfortbildung · für das ganze Kita-Team</div>
+            <h4>Ressourcen stärken – Teamarbeit und Kommunikation im Kita-Alltag</h4>
+            <p>Für alle gemeinsam: Teamarbeit, Rollen, Erwartungen und Teamkultur betrachten. Perspektiven sichtbar machen, Ressourcen stärken und Entwicklungsmöglichkeiten erarbeiten.</p>
+          </div>
+          <a href="/#kontakt" class="fobi-card-link">Anfragen</a>
+        </div>
+
+      </div>
+
+      <div class="blog-cta-banner">
+        <h3>Führung, Teamarbeit und Personalentwicklung — ganzheitlich gedacht</h3>
+        <p>Personalentwicklung ist für uns keine Zusatzaufgabe. Sie gehört zur Qualitätsentwicklung einer Kita dazu — denn Konzepte können nur wirken, wenn Menschen sie mittragen.</p>
+        <div class="blog-cta-banner-links">
+          <a href="../fortbildungen/teamcoach-kita/">Teamcoach-Fortbildung</a>
+          <a href="../fortbildungen/">Alle Fortbildungen</a>
+          <a href="/#kontakt">Teamfortbildung anfragen</a>
+        </div>
+      </div>
+
+      <div class="insta-row">
+        <a href="https://www.instagram.com/eduleo_akademie/" target="_blank" rel="noopener" class="instagram-btn"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> @eduleo_akademie</a>
+        <a href="https://www.instagram.com/meine.alltagsabenteuer/" target="_blank" rel="noopener" class="instagram-btn"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> @meine.alltagsabenteuer</a>
+      </div>
+
+      <!-- Autorin -->
+      <div class="autorin-box">
+        <div class="autorin-info">
+          <h4>Über die Autorin: Nadja Peuckert</h4>
+          <p>Nadja Peuckert ist Bildungsreferentin und Dozentin mit dem Schwerpunkt Führung, Teamentwicklung und frühkindliche Bildung. Sie begleitet Kita-Leitungen und Teams in Fortbildungen und Entwicklungsprozessen.</p>
+          <div class="autorin-links">
+            <a href="https://www.nadjapeuckert.de" target="_blank" rel="noopener">nadjapeuckert.de →</a>
+            <a href="https://www.instagram.com/meine.alltagsabenteuer/" target="_blank" rel="noopener">Instagram →</a>
+          </div>
+        </div>
+      </div>
+
+    </article>
+
+    <!-- Sidebar -->
+    <aside class="blog-sidebar" aria-label="Weitere Empfehlungen">
+      <div class="blog-sidebar-inner">
+
+        <div class="blog-cta-sidebar">
+          <h4>Teamcoach in der Kita</h4>
+          <p>8 Termine über 3 Monate: Führung, Teamrollen, Konflikte, Kommunikation und Personalentwicklung kompakt.</p>
+          <a href="../fortbildungen/teamcoach-kita/" class="btn">Jetzt informieren</a>
+        </div>
+
+        <div class="blog-sidebar-card">
+          <h4>Weitere Artikel</h4>
+          <ul>
+            <li><a href="../diese-art-von-führung-macht-deine-kita-kaputt/">Führungsfehler in der Kita</a></li>
+            <li><a href="../selbstfuersorge-fuer-erzieherinnen/">Selbstfürsorge für ErzieherInnen</a></li>
+            <li><a href="../kinderschutz-in-der-kita-kinderrechte-verantwortung/">Kinderschutz in der Kita</a></li>
+            <li><a href="../elterngespraeche-die-wirklich-ankommen/">Elterngespräche</a></li>
+            <li><a href="../blog-1/">Alle Blogartikel</a></li>
+          </ul>
+        </div>
+
+        <div class="blog-sidebar-card">
+          <h4>Passende Fortbildungen</h4>
+          <ul>
+            <li><a href="../fortbildungen/teamcoach-kita/">Teamcoach (3 Monate)</a></li>
+            <li><a href="../fortbildungen/tagesfortbildungen/fuehrungsrolle-kita-leitung/">Führungsrolle Kita-Leitung</a></li>
+            <li><a href="../fortbildungen/tagesfortbildungen/teams-leiten-staerken/">Teams leiten und stärken</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </aside>
+
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="../assets/images/logo.png" alt="EDULEO Akademie" style="height:40px;width:auto;margin-bottom:1rem;filter:brightness(0) invert(1);">
+        <p style="font-size:0.85rem;color:rgba(255,255,255,0.6);line-height:1.7;">Online-Fortbildungen für Kita-Fachkräfte. Praxisnah, fundiert, flexibel.</p>
+        <p style="font-size:0.8rem;color:rgba(255,255,255,0.4);margin-top:0.5rem;">Klumper &amp; Flunkert EDULEO GbR · kontakt@eduleo-akademie.de · 0160 50 59 620</p>
+      </div>
+      <div>
+        <h4 style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.5);margin:0 0 1rem;">Fortbildungen</h4>
+        <ul style="list-style:none;padding:0;margin:0;">
+          <li style="margin-bottom:0.5rem;"><a href="../fortbildungen/" style="font-size:0.87rem;color:rgba(255,255,255,0.75);text-decoration:none;">Alle Fortbildungen</a></li>
+          <li style="margin-bottom:0.5rem;"><a href="../fortbildungen/#3-monate" style="font-size:0.87rem;color:rgba(255,255,255,0.75);text-decoration:none;">3-Monats-Fortbildungen</a></li>
+          <li style="margin-bottom:0.5rem;"><a href="../fortbildungen/#tagesfortbildungen" style="font-size:0.87rem;color:rgba(255,255,255,0.75);text-decoration:none;">Tagesfortbildungen</a></li>
+          <li><a href="/#kontakt" style="font-size:0.87rem;color:rgba(255,255,255,0.75);text-decoration:none;">Teamfortbildungen</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.5);margin:0 0 1rem;">Über uns</h4>
+        <ul style="list-style:none;padding:0;margin:0;">
+          <li style="margin-bottom:0.5rem;"><a href="../ueber-uns/" style="font-size:0.87rem;color:rgba(255,255,255,0.75);text-decoration:none;">Das Team</a></li>
+          <li style="margin-bottom:0.5rem;"><a href="../dozentinnen/" style="font-size:0.87rem;color:rgba(255,255,255,0.75);text-decoration:none;">DozentInnen</a></li>
+          <li><a href="/#kontakt" style="font-size:0.87rem;color:rgba(255,255,255,0.75);text-decoration:none;">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.5);margin:0 0 1rem;">Rechtliches</h4>
+        <ul style="list-style:none;padding:0;margin:0;">
+          <li style="margin-bottom:0.5rem;"><a href="../impressum.html" style="font-size:0.87rem;color:rgba(255,255,255,0.75);text-decoration:none;">Impressum</a></li>
+          <li style="margin-bottom:0.5rem;"><a href="../datenschutz.html" style="font-size:0.87rem;color:rgba(255,255,255,0.75);text-decoration:none;">Datenschutz</a></li>
+          <li style="margin-bottom:0.5rem;"><a href="../agb.html" style="font-size:0.87rem;color:rgba(255,255,255,0.75);text-decoration:none;">AGB</a></li>
+          <li><a href="../anmeldebedingungen.html" style="font-size:0.87rem;color:rgba(255,255,255,0.75);text-decoration:none;">Anmeldebedingungen</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Klumper &amp; Flunkert EDULEO GbR · Alle Rechte vorbehalten</p>
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="back-to-top" aria-label="Nach oben scrollen" style="position:fixed;bottom:150px;right:24px;background:var(--dark);color:#fff;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;opacity:0;transition:opacity 0.3s;z-index:999;font-size:1.1rem;">↑</a>
+
+<script src="../main.js"></script>
+<script>
+  window.addEventListener('scroll', () => {
+    const btn = document.querySelector('.back-to-top');
+    if (btn) btn.style.opacity = window.scrollY > 400 ? '1' : '0';
+  });
+</script>
+<script src="/chatbot.js"></script>
+</body>
+</html>

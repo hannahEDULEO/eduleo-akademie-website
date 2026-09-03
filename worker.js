@@ -61,6 +61,16 @@ export default {
       return handleGuthabenAdmin(request, env);
     }
 
+    // API: Stundendokumentation – Eintrag speichern (Calvin)
+    if (path === '/api/stunden-eintragen') {
+      return handleStundenEintragen(request, env);
+    }
+
+    // API: Stundendokumentation – alle Einträge abrufen (Dashboard)
+    if (path === '/api/stunden-abrufen') {
+      return handleStundenAbrufen(request, env);
+    }
+
     // Redirects für alte QR-Code-URLs (Broschüre & Postkarte)
     const decodedPath = decodeURIComponent(path).replace(/\/?$/, '/');
     if (decodedPath === '/3-monats-fortbildungen/' || decodedPath === '/überblick-fortbildungen/') {
@@ -737,4 +747,41 @@ async function handleGuthabenAdmin(request, env) {
   }
 
   return new Response(JSON.stringify({ ok: false, msg: 'Unbekannte Aktion.' }), { status: 400, headers: json });
+}
+
+// ── Stundendokumentation ────────────────────────────────────────────────────
+
+async function handleStundenEintragen(request, env) {
+  const json = { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' };
+  if (request.method === 'OPTIONS') return new Response(null, { headers: json });
+  if (request.method !== 'POST') return new Response(JSON.stringify({ ok: false }), { status: 405, headers: json });
+
+  try {
+    const data = await request.json();
+    const key = 'stunden:' + new Date().toISOString();
+    data.eingereicht = new Date().toISOString();
+    await env.FORM_SUBMISSIONS.put(key, JSON.stringify(data));
+    return new Response(JSON.stringify({ ok: true }), { headers: json });
+  } catch (e) {
+    return new Response(JSON.stringify({ ok: false, msg: e.message }), { status: 500, headers: json });
+  }
+}
+
+async function handleStundenAbrufen(request, env) {
+  const json = { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' };
+  try {
+    const list = await env.FORM_SUBMISSIONS.list({ prefix: 'stunden:' });
+    const eintraege = await Promise.all(
+      list.keys.map(async ({ name }) => {
+        const val = await env.FORM_SUBMISSIONS.get(name);
+        return val ? JSON.parse(val) : null;
+      })
+    );
+    const sorted = eintraege.filter(Boolean).sort((a, b) =>
+      new Date(b.eingereicht) - new Date(a.eingereicht)
+    );
+    return new Response(JSON.stringify({ ok: true, eintraege: sorted }), { headers: json });
+  } catch (e) {
+    return new Response(JSON.stringify({ ok: false, msg: e.message }), { status: 500, headers: json });
+  }
 }

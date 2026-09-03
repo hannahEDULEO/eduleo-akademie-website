@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wochenbericht – EDULEO Akademie</title>
+  <link rel="icon" href="/favicon-32x32.png">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Nunito', system-ui, sans-serif;
+      background: #EDE6E2;
+      min-height: 100vh;
+      padding: 24px 16px 48px;
+      color: #261D18;
+    }
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px;
+      max-width: 720px;
+      margin: 0 auto;
+      box-shadow: 0 2px 16px rgba(38,29,24,0.08);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .logo img { height: 36px; }
+    .logo span { font-size: 13px; color: #C4A092; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; }
+    h1 { font-size: 22px; font-weight: 800; color: #261D18; margin-bottom: 4px; }
+    .subtitle { font-size: 14px; color: #888; margin-bottom: 28px; }
+
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+    label { display: block; font-size: 13px; font-weight: 700; color: #5A9E7A; margin-bottom: 6px; }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1.5px solid #D2EADA;
+      border-radius: 10px;
+      font-size: 14px;
+      font-family: inherit;
+      color: #261D18;
+      background: #fff;
+      transition: border-color .2s;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #5A9E7A;
+    }
+
+    .section-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: #261D18;
+      margin: 28px 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #D2EADA;
+    }
+
+    .tag-grid {
+      display: grid;
+      grid-template-columns: 100px 1fr 160px 80px;
+      gap: 8px;
+      align-items: start;
+      margin-bottom: 8px;
+    }
+    .tag-header {
+      display: grid;
+      grid-template-columns: 100px 1fr 160px 80px;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+    .tag-header span { font-size: 11px; font-weight: 700; color: #C4A092; text-transform: uppercase; letter-spacing: .4px; }
+
+    .stunden-input { text-align: center; }
+
+    .add-row {
+      background: none;
+      border: 1.5px dashed #D2EADA;
+      border-radius: 10px;
+      color: #5A9E7A;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 8px;
+      width: 100%;
+      cursor: pointer;
+      margin-top: 4px;
+      transition: background .2s;
+    }
+    .add-row:hover { background: #D2EADA22; }
+
+    .remove-row {
+      background: none;
+      border: none;
+      color: #ccc;
+      cursor: pointer;
+      font-size: 18px;
+      padding: 0 4px;
+      line-height: 1;
+    }
+    .remove-row:hover { color: #e88; }
+
+    .tag-grid-full { grid-template-columns: 100px 1fr 1fr 80px 24px; }
+    .tag-header-full { grid-template-columns: 100px 1fr 1fr 80px 24px; }
+
+    .kat-chips { display: flex; flex-wrap: wrap; gap: 5px; padding: 4px 0; }
+    .kat-chip {
+      background: #EDE6E2;
+      border: 1.5px solid #D2EADA;
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #888;
+      cursor: pointer;
+      user-select: none;
+      transition: all .15s;
+      white-space: nowrap;
+    }
+    .kat-chip.active {
+      background: #5A9E7A;
+      border-color: #5A9E7A;
+      color: #fff;
+    }
+
+    .total-box {
+      background: #D2EADA;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .total-box span { font-size: 14px; font-weight: 700; color: #261D18; }
+    .total-box .stunden-zahl { font-size: 28px; font-weight: 900; color: #5A9E7A; }
+    .soll { font-size: 12px; color: #888; margin-top: 2px; }
+
+    .notizen-field { margin-top: 20px; }
+    textarea { resize: vertical; min-height: 80px; }
+
+    .btn {
+      display: block;
+      width: 100%;
+      margin-top: 28px;
+      background: #5A9E7A;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 800;
+      font-family: inherit;
+      border: none;
+      border-radius: 12px;
+      padding: 16px;
+      cursor: pointer;
+      transition: background .2s, transform .1s;
+    }
+    .btn:hover { background: #4a8a6a; }
+    .btn:active { transform: scale(.98); }
+    .btn:disabled { background: #aaa; cursor: not-allowed; }
+
+    .success {
+      display: none;
+      background: #D2EADA;
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+      margin-top: 20px;
+    }
+    .success .icon { font-size: 36px; margin-bottom: 8px; }
+    .success h2 { font-size: 18px; font-weight: 800; color: #5A9E7A; margin-bottom: 4px; }
+    .success p { font-size: 14px; color: #555; }
+
+    .error-msg { color: #c00; font-size: 13px; margin-top: 8px; display: none; }
+
+    @media (max-width: 600px) {
+      .row2 { grid-template-columns: 1fr; }
+      .tag-grid, .tag-grid-full { grid-template-columns: 1fr; }
+      .tag-header, .tag-header-full { display: none; }
+      .card { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">
+      <img src="/Logo Akademie.png" alt="EDULEO Akademie">
+      <span>Wochenbericht</span>
+    </div>
+
+    <h1>Wochenbericht einreichen</h1>
+    <p class="subtitle">Bitte wöchentlich ausfüllen und absenden.</p>
+
+    <form id="form">
+      <div class="row2">
+        <div>
+          <label for="kw">Kalenderwoche</label>
+          <input type="number" id="kw" name="kw" min="1" max="53" placeholder="z.B. 36" required>
+        </div>
+        <div>
+          <label for="zeitraum">Zeitraum</label>
+          <input type="text" id="zeitraum" name="zeitraum" placeholder="z.B. 01.09. – 07.09.2026" required>
+        </div>
+      </div>
+
+      <div class="section-title">Tätigkeiten der Woche</div>
+
+      <div class="tag-header tag-header-full">
+        <span>Tag</span>
+        <span>Tätigkeit / Aufgabe</span>
+        <span>Kategorie</span>
+        <span>Stunden</span>
+        <span></span>
+      </div>
+
+      <div id="eintraege">
+        <!-- Rows added by JS -->
+      </div>
+
+      <button type="button" class="add-row" onclick="addRow()">+ Zeile hinzufügen</button>
+
+      <div class="total-box">
+        <div>
+          <span>Gesamtstunden diese Woche</span>
+          <div class="soll">Soll: 40 Stunden</div>
+        </div>
+        <div class="stunden-zahl" id="total">0</div>
+      </div>
+
+      <div class="notizen-field">
+        <label for="notizen">Anmerkungen (optional)</label>
+        <textarea id="notizen" name="notizen" placeholder="Besondere Vorkommnisse, Fragen, Hinweise..."></textarea>
+      </div>
+
+      <div class="error-msg" id="error">Beim Absenden ist etwas schiefgelaufen. Bitte nochmal versuchen.</div>
+
+      <button type="submit" class="btn" id="submitBtn">Wochenbericht absenden</button>
+    </form>
+
+    <div class="success" id="success">
+      <div class="icon">✅</div>
+      <h2>Danke, Calvin!</h2>
+      <p>Dein Wochenbericht für KW <span id="successKw"></span> wurde erfolgreich übermittelt.</p>
+    </div>
+  </div>
+
+  <script>
+    const KATEGORIEN = [
+      'SimplyOrg', 'Teilnehmerkommunikation', 'Dozentenkommunikation',
+      'DKLK / Messen', 'Verwaltung', 'Kitaversum', 'Sonstiges'
+    ];
+    const TAGE = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Sonstiges'];
+
+    let rowCount = 0;
+
+    function addRow(tag = '', aufgabe = '', kats = [], std = '') {
+      rowCount++;
+      const id = rowCount;
+      const chips = KATEGORIEN.map(k =>
+        `<span class="kat-chip ${kats.includes(k) ? 'active' : ''}" onclick="toggleChip(this,'${k}')">${k}</span>`
+      ).join('');
+      const tagOptions = TAGE.map(t =>
+        `<option value="${t}" ${t === tag ? 'selected' : ''}>${t}</option>`
+      ).join('');
+
+      const row = document.createElement('div');
+      row.className = 'tag-grid tag-grid-full';
+      row.id = 'row-' + id;
+      row.innerHTML = `
+        <select name="tag_${id}" required>
+          <option value="">Tag wählen</option>
+          ${tagOptions}
+        </select>
+        <input type="text" name="aufgabe_${id}" placeholder="Was hast du gemacht?" value="${aufgabe}" required>
+        <div class="kat-chips" id="chips-${id}">${chips}</div>
+        <input type="hidden" name="kategorie_${id}" value="${kats.join(', ')}">
+        <input type="number" name="stunden_${id}" class="stunden-input" min="0" max="12" step="0.5" placeholder="0" value="${std}" oninput="calcTotal()" required>
+        <button type="button" class="remove-row" onclick="removeRow(${id})" title="Zeile löschen">×</button>
+      `;
+      document.getElementById('eintraege').appendChild(row);
+      calcTotal();
+    }
+
+    function toggleChip(el, kat) {
+      el.classList.toggle('active');
+      // Update hidden input
+      const chipsDiv = el.closest('.kat-chips');
+      const hiddenInput = chipsDiv.nextElementSibling;
+      const active = [...chipsDiv.querySelectorAll('.kat-chip.active')].map(c => c.textContent);
+      hiddenInput.value = active.join(', ');
+    }
+
+    function removeRow(id) {
+      const row = document.getElementById('row-' + id);
+      if (row) { row.remove(); calcTotal(); }
+    }
+
+    function calcTotal() {
+      const inputs = document.querySelectorAll('input[name^="stunden_"]');
+      let total = 0;
+      inputs.forEach(i => { total += parseFloat(i.value) || 0; });
+      document.getElementById('total').textContent = total % 1 === 0 ? total : total.toFixed(1);
+    }
+
+    // Start with 5 default rows (Mon–Fri)
+    ['Montag','Dienstag','Mittwoch','Donnerstag','Freitag'].forEach(t => addRow(t));
+
+    // Auto-fill KW and Zeitraum
+    const now = new Date();
+    const kw = getKW(now);
+    document.getElementById('kw').value = kw;
+    const mon = getMonday(now);
+    const fri = new Date(mon); fri.setDate(fri.getDate() + 4);
+    document.getElementById('zeitraum').value = formatDate(mon) + ' – ' + formatDate(fri);
+
+    function getKW(d) {
+      const date = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+      const dayNum = date.getUTCDay() || 7;
+      date.setUTCDate(date.getUTCDate() + 4 - dayNum);
+      const yearStart = new Date(Date.UTC(date.getUTCFullYear(), 0, 1));
+      return Math.ceil((((date - yearStart) / 86400000) + 1) / 7);
+    }
+    function getMonday(d) {
+      const day = d.getDay() || 7;
+      const mon = new Date(d);
+      mon.setDate(d.getDate() - day + 1);
+      return mon;
+    }
+    function formatDate(d) {
+      return d.getDate().toString().padStart(2,'0') + '.' + (d.getMonth()+1).toString().padStart(2,'0') + '.';
+    }
+
+    document.getElementById('form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      const errEl = document.getElementById('error');
+      btn.disabled = true;
+      btn.textContent = 'Wird gesendet...';
+      errEl.style.display = 'none';
+
+      // Collect rows
+      const rows = document.querySelectorAll('[id^="row-"]');
+      const eintraege = [];
+      rows.forEach(row => {
+        const id = row.id.replace('row-', '');
+        eintraege.push({
+          tag: row.querySelector(`[name="tag_${id}"]`)?.value || '',
+          aufgabe: row.querySelector(`[name="aufgabe_${id}"]`)?.value || '',
+          kategorie: row.querySelector(`[name="kategorie_${id}"]`)?.value || '',
+          stunden: parseFloat(row.querySelector(`[name="stunden_${id}"]`)?.value) || 0
+        });
+        // Also collect active chips directly
+        eintraege[eintraege.length-1].kategorien = [...(row.querySelectorAll('.kat-chip.active') || [])].map(c => c.textContent);
+      });
+
+      const payload = {
+        kw: document.getElementById('kw').value,
+        zeitraum: document.getElementById('zeitraum').value,
+        eintraege,
+        gesamt: parseFloat(document.getElementById('total').textContent) || 0,
+        notizen: document.getElementById('notizen').value
+      };
+
+      try {
+        const res = await fetch('/api/stunden-eintragen', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (data.ok) {
+          document.getElementById('form').style.display = 'none';
+          document.getElementById('successKw').textContent = payload.kw;
+          document.getElementById('success').style.display = 'block';
+        } else {
+          throw new Error(data.msg);
+        }
+      } catch {
+        errEl.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Wochenbericht absenden';
+      }
+    });
+  </script>
+</body>
+</html>
