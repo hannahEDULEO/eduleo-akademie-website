@@ -44,7 +44,7 @@
     }
     input:focus, select:focus { outline: none; border-color: #5A9E7A; }
 
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; align-items: end; }
+    .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; align-items: end; }
     .form-grid .full { grid-column: 1 / -1; }
 
     .btn {
@@ -57,15 +57,21 @@
     .error-msg { color: #c00; font-size: 13px; margin-top: 10px; display: none; }
 
     .toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
-    .toolbar .stats { display: flex; gap: 18px; flex-wrap: wrap; }
-    .stat b { font-size: 22px; font-weight: 900; color: #5A9E7A; }
+    .stats { display: flex; gap: 18px; flex-wrap: wrap; }
+    .stat b { font-size: 22px; font-weight: 900; }
     .stat small { display: block; font-size: 11px; color: #888; font-weight: 700; text-transform: uppercase; }
 
-    .legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: #666; margin-bottom: 16px; }
-    .legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
+    .legend { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+    .legend-item {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 700; color: #555;
+      background: #F5F1EF; border: 1.5px solid transparent; border-radius: 20px;
+      padding: 5px 12px; cursor: pointer; user-select: none;
+    }
+    .legend-item i { display: inline-block; width: 13px; height: 13px; border-radius: 4px; }
+    .legend-item.off { opacity: .4; }
 
     .year-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .month { }
     .month h3 { font-size: 13px; font-weight: 800; margin-bottom: 8px; color: #261D18; }
     .dow { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; margin-bottom: 2px; }
     .dow span { font-size: 9px; text-align: center; color: #C4A092; font-weight: 700; }
@@ -78,9 +84,7 @@
     .day.empty { background: transparent; }
     .day.weekend { color: #bbb; }
     .day.today { outline: 2px solid #261D18; outline-offset: -2px; font-weight: 900; }
-    .day.u-Urlaub { background: #5A9E7A; color: #fff; font-weight: 700; }
-    .day.u-Unbezahlt { background: #e07000; color: #fff; font-weight: 700; }
-    .day.u-Sonstiges { background: #C4A092; color: #fff; font-weight: 700; }
+    .day.filled { color: #fff; font-weight: 700; text-shadow: 0 1px 1px rgba(0,0,0,.3); }
 
     .blocks { margin-top: 4px; }
     .block {
@@ -88,17 +92,16 @@
       padding: 12px 14px; border: 1.5px solid #f0ecea; border-radius: 10px; margin-bottom: 8px;
     }
     .block-info { font-size: 14px; }
-    .block-info .art { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .3px; }
-    .block-info .art.Urlaub { color: #5A9E7A; }
-    .block-info .art.Unbezahlt { color: #e07000; }
-    .block-info .art.Sonstiges { color: #C4A092; }
+    .block-person { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .3px; }
+    .block-person i { display: inline-block; width: 11px; height: 11px; border-radius: 3px; }
     .block-info .notiz { color: #888; font-size: 13px; }
+    .block-info .art-tag { color: #aaa; font-size: 12px; }
     .del-btn { background: none; border: none; color: #ccc; font-size: 18px; cursor: pointer; }
     .del-btn:hover { color: #e88; }
 
     .empty-hint { color: #aaa; font-size: 14px; padding: 12px 0; }
 
-    @media (max-width: 720px) { .year-grid { grid-template-columns: repeat(2, 1fr); } .form-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 720px) { .year-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 440px) { .year-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
@@ -108,15 +111,23 @@
       <img src="/Logo Akademie.png" alt="EDULEO">
       <div>
         <h1>Urlaubsplanung</h1>
-        <span>Calvin Klumper · Intern</span>
+        <span>EDULEO Team · Intern</span>
       </div>
     </div>
-    <p class="intro">Geplanten Urlaub im Voraus eintragen, damit Hannah und Janine drumherum planen können. Bitte den Jahresurlaub fürs Folgejahr bis spätestens 31. Oktober einreichen.</p>
+    <p class="intro">Geplanten Urlaub im Voraus eintragen, damit ihr drumherum planen könnt. Jede Person hat eine eigene Farbe. Sind mehrere am selben Tag weg, wird der Tag geteilt eingefärbt. Calvin: Jahresurlaub fürs Folgejahr bis spätestens 31. Oktober.</p>
 
     <div class="card">
       <h2>Urlaub / Abwesenheit eintragen</h2>
       <form id="form">
         <div class="form-grid">
+          <div>
+            <label for="person">Wer?</label>
+            <select id="person">
+              <option>Hannah</option>
+              <option>Janine</option>
+              <option>Calvin</option>
+            </select>
+          </div>
           <div>
             <label for="von">Von</label>
             <input type="date" id="von" required>
@@ -135,7 +146,7 @@
           </div>
           <div class="full">
             <label for="notiz">Notiz (optional)</label>
-            <input type="text" id="notiz" placeholder="z.B. Sommerurlaub mit Janine">
+            <input type="text" id="notiz" placeholder="z.B. Sommerurlaub">
           </div>
         </div>
         <button type="submit" class="btn" id="submitBtn" style="margin-top:16px;">Eintragen</button>
@@ -146,16 +157,9 @@
     <div class="card">
       <div class="toolbar">
         <select id="jahr" onchange="render()" style="width:auto;"></select>
-        <div class="stats">
-          <div class="stat"><b id="s-tage">0</b><small>Urlaubstage (Werktage)</small></div>
-          <div class="stat"><b id="s-bloecke">0</b><small>Einträge</small></div>
-        </div>
+        <div class="stats" id="stats"></div>
       </div>
-      <div class="legend">
-        <span><i style="background:#5A9E7A"></i>Urlaub</span>
-        <span><i style="background:#e07000"></i>Unbezahlt frei</span>
-        <span><i style="background:#C4A092"></i>Sonstiges</span>
-      </div>
+      <div class="legend" id="legend"></div>
       <div class="year-grid" id="calendar"></div>
     </div>
 
@@ -166,6 +170,10 @@
   </div>
 
   <script>
+    const PERSONS = ['Hannah', 'Janine', 'Calvin'];
+    const PERSON_COLOR = { Hannah: '#9B5DA6', Janine: '#D98E2B', Calvin: '#5A9E7A' };
+    const activePersons = { Hannah: true, Janine: true, Calvin: true };
+
     let allBlocks = [];
     const MONATE = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
     const DOW = ['Mo','Di','Mi','Do','Fr','Sa','So'];
@@ -173,17 +181,37 @@
     function fmt(d) {
       return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
     }
+    function personsBg(persons) {
+      if (persons.length === 1) return PERSON_COLOR[persons[0]];
+      const step = 100 / persons.length;
+      const stops = persons.map((p, i) => `${PERSON_COLOR[p]} ${i*step}% ${(i+1)*step}%`).join(', ');
+      return `linear-gradient(135deg, ${stops})`;
+    }
 
-    // Jahr-Dropdown: aktuelles Jahr bis +2, Standard = Folgejahr
-    (function initJahr() {
+    // Jahr-Dropdown + Formular-Vorbelegung
+    (function init() {
       const cur = new Date().getFullYear();
       const sel = document.getElementById('jahr');
       for (let y = cur; y <= cur + 2; y++) {
         sel.innerHTML += `<option value="${y}" ${y === cur+1 ? 'selected' : ''}>${y}</option>`;
       }
-      // Formular-Standard: Von-Datum auf 1.1. Folgejahr vorbelegen
       document.getElementById('von').value = (cur+1) + '-01-01';
+      const savedPerson = localStorage.getItem('urlaub_person');
+      if (savedPerson && PERSONS.includes(savedPerson)) document.getElementById('person').value = savedPerson;
+
+      // Legende mit Umschaltern
+      document.getElementById('legend').innerHTML = PERSONS.map(p =>
+        `<span class="legend-item" data-person="${p}" onclick="togglePerson('${p}')">
+          <i style="background:${PERSON_COLOR[p]}"></i>${p}
+        </span>`
+      ).join('');
     })();
+
+    function togglePerson(p) {
+      activePersons[p] = !activePersons[p];
+      document.querySelector(`.legend-item[data-person="${p}"]`).classList.toggle('off', !activePersons[p]);
+      render();
+    }
 
     async function loadData() {
       try {
@@ -198,14 +226,36 @@
       const map = {};
       allBlocks.forEach(b => {
         if (!b.von || !b.bis) return;
+        const person = PERSONS.includes(b.person) ? b.person : 'Calvin';
+        if (!activePersons[person]) return;
         let d = new Date(b.von + 'T00:00:00');
         const end = new Date(b.bis + 'T00:00:00');
         while (d <= end) {
-          if (d.getFullYear() === year) map[fmt(d)] = b.art || 'Urlaub';
+          if (d.getFullYear() === year) {
+            const ds = fmt(d);
+            map[ds] = map[ds] || [];
+            if (!map[ds].includes(person)) map[ds].push(person);
+          }
           d.setDate(d.getDate() + 1);
         }
       });
       return map;
+    }
+
+    // Urlaubs-Werktage (Mo-Fr, Art Urlaub) pro Person im Jahr – unabhängig vom Filter
+    function werktageProPerson(year) {
+      const res = { Hannah: 0, Janine: 0, Calvin: 0 };
+      allBlocks.forEach(b => {
+        if (!b.von || !b.bis || b.art !== 'Urlaub') return;
+        const person = PERSONS.includes(b.person) ? b.person : 'Calvin';
+        let d = new Date(b.von + 'T00:00:00');
+        const end = new Date(b.bis + 'T00:00:00');
+        while (d <= end) {
+          if (d.getFullYear() === year && d.getDay() !== 0 && d.getDay() !== 6) res[person]++;
+          d.setDate(d.getDate() + 1);
+        }
+      });
+      return res;
     }
 
     function render() {
@@ -217,7 +267,7 @@
       let html = '';
       for (let m = 0; m < 12; m++) {
         const first = new Date(year, m, 1);
-        const offset = (first.getDay() + 6) % 7; // Montag = 0
+        const offset = (first.getDay() + 6) % 7;
         const daysInMonth = new Date(year, m+1, 0).getDate();
         let cells = '';
         for (let i = 0; i < offset; i++) cells += `<div class="day empty"></div>`;
@@ -225,11 +275,14 @@
           const d = new Date(year, m, dnum);
           const ds = fmt(d);
           const wknd = (d.getDay() === 0 || d.getDay() === 6);
+          const persons = (map[ds] || []).slice().sort((a,b) => PERSONS.indexOf(a) - PERSONS.indexOf(b));
           const cls = ['day'];
+          let style = '';
           if (wknd) cls.push('weekend');
-          if (map[ds]) cls.push('u-' + map[ds]);
+          if (persons.length) { cls.push('filled'); style = ` style="background:${personsBg(persons)}"`; }
           if (ds === todayStr) cls.push('today');
-          cells += `<div class="${cls.join(' ')}">${dnum}</div>`;
+          const title = persons.length ? ` title="${persons.join(', ')}"` : '';
+          cells += `<div class="${cls.join(' ')}"${style}${title}>${dnum}</div>`;
         }
         html += `<div class="month">
           <h3>${MONATE[m]}</h3>
@@ -239,32 +292,30 @@
       }
       document.getElementById('calendar').innerHTML = html;
 
-      // Statistik: Werktage (Mo-Fr) mit Art Urlaub im Jahr
-      let werktage = 0;
-      Object.entries(map).forEach(([ds, art]) => {
-        if (art !== 'Urlaub') return;
-        const d = new Date(ds + 'T00:00:00');
-        if (d.getDay() !== 0 && d.getDay() !== 6) werktage++;
-      });
-      const jahrBloecke = allBlocks.filter(b => b.von && new Date(b.von).getFullYear() === year
-        || b.bis && new Date(b.bis).getFullYear() === year);
-      document.getElementById('s-tage').textContent = werktage;
-      document.getElementById('s-bloecke').textContent = jahrBloecke.length;
+      // Statistik pro Person
+      const wt = werktageProPerson(year);
+      document.getElementById('stats').innerHTML = PERSONS.map(p =>
+        `<div class="stat"><b style="color:${PERSON_COLOR[p]}">${wt[p]}</b><small>${p} · Urlaubstage</small></div>`
+      ).join('');
 
-      // Liste
+      // Liste (nach Von-Datum, gefiltert aufs Jahr)
+      const jahrBloecke = allBlocks
+        .filter(b => (b.von && new Date(b.von).getFullYear() === year) || (b.bis && new Date(b.bis).getFullYear() === year))
+        .sort((a,b) => new Date(a.von) - new Date(b.von));
       const list = document.getElementById('blocks');
       if (jahrBloecke.length === 0) {
         list.innerHTML = `<div class="empty-hint">Für ${year} noch nichts eingetragen.</div>`;
         return;
       }
       list.innerHTML = jahrBloecke.map(b => {
+        const person = PERSONS.includes(b.person) ? b.person : 'Calvin';
         const von = new Date(b.von).toLocaleDateString('de', {day:'2-digit',month:'2-digit',year:'numeric'});
         const bis = new Date(b.bis).toLocaleDateString('de', {day:'2-digit',month:'2-digit',year:'numeric'});
-        const art = b.art || 'Urlaub';
+        const artTag = b.art && b.art !== 'Urlaub' ? ` <span class="art-tag">(${b.art})</span>` : '';
         return `<div class="block">
           <div class="block-info">
-            <span class="art ${art}">${art}</span><br>
-            ${von} – ${bis}${b.notiz ? ` · <span class="notiz">${b.notiz}</span>` : ''}
+            <span class="block-person"><i style="background:${PERSON_COLOR[person]}"></i>${person}</span><br>
+            ${von} – ${bis}${artTag}${b.notiz ? ` · <span class="notiz">${b.notiz}</span>` : ''}
           </div>
           <button class="del-btn" onclick="loeschen('${b.id}')" title="Löschen">🗑</button>
         </div>`;
@@ -275,20 +326,21 @@
       e.preventDefault();
       const btn = document.getElementById('submitBtn');
       const err = document.getElementById('error');
+      const person = document.getElementById('person').value;
       const von = document.getElementById('von').value;
       const bis = document.getElementById('bis').value;
       if (bis < von) { err.textContent = 'Das Bis-Datum liegt vor dem Von-Datum.'; err.style.display = 'block'; return; }
       btn.disabled = true; btn.textContent = 'Wird gespeichert…'; err.style.display = 'none';
 
-      const payload = { von, bis, art: document.getElementById('art').value, notiz: document.getElementById('notiz').value };
+      const payload = { person, von, bis, art: document.getElementById('art').value, notiz: document.getElementById('notiz').value };
       try {
         const res = await fetch('/api/urlaub-eintragen', {
           method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(payload)
         });
         const data = await res.json();
         if (!data.ok) throw new Error(data.msg);
+        localStorage.setItem('urlaub_person', person);
         document.getElementById('notiz').value = '';
-        // Kalenderjahr auf das Jahr des Eintrags setzen, damit man es sofort sieht
         const y = new Date(von).getFullYear();
         const sel = document.getElementById('jahr');
         if ([...sel.options].some(o => o.value == y)) sel.value = y;
