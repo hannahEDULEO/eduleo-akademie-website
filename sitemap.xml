@@ -221,6 +221,18 @@
 
   <!-- Blogartikel – Slug-basiert -->
   <url>
+    <loc>https://www.eduleo-akademie.de/kinderschutz-in-der-kita-kinderrechte-verantwortung/</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.eduleo-akademie.de/gute-fuehrung-beginnt-beim-menschen/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.eduleo-akademie.de/bindungsfoerderung-in-der-kita/</loc>
     <lastmod>2026-08-28</lastmod>
     <changefreq>yearly</changefreq>
