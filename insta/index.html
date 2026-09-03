@@ -311,20 +311,21 @@
     async function loadFobis() {
       const today = new Date(); today.setHours(0,0,0,0);
 
-      const results = await Promise.all(
-        KURSE.map(k =>
-          fetch(`/api/termine?category_id=${k.id}`)
-            .then(r => r.json())
-            .then(data => {
-              const next = (data.dates || [])
-                .map(d => d.dateISO)
-                .filter(iso => new Date(iso + 'T00:00:00') >= today)
-                .sort()[0];
-              return next ? { kurs: k, iso: next } : null;
-            })
-            .catch(() => null)
-        )
-      );
+      const ids = KURSE.map(k => k.id).join(',');
+      let allData = [];
+      try {
+        allData = await fetch(`/api/termine-batch?ids=${ids}`).then(r => r.json());
+      } catch (e) { allData = []; }
+
+      const results = allData.map(d => {
+        const kurs = KURSE.find(k => k.id === d.id);
+        if (!kurs) return null;
+        const next = (d.dates || [])
+          .map(x => x.dateISO)
+          .filter(iso => new Date(iso + 'T00:00:00') >= today)
+          .sort()[0];
+        return next ? { kurs, iso: next } : null;
+      });
 
       const upcoming = results
         .filter(Boolean)

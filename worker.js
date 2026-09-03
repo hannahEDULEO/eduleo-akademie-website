@@ -46,6 +46,11 @@ export default {
       return handleTermine(url);
     }
 
+    // API: Termine für mehrere Kategorien auf einmal (1 Request statt N)
+    if (path === '/api/termine-batch') {
+      return handleTermineBatch(url);
+    }
+
     // API: Guthaben abrufen (öffentlich, per Code)
     if (path === '/api/guthaben') {
       return handleGuthabenGet(request, env);
@@ -658,6 +663,25 @@ async function handleTermine(url) {
   } catch (e) {
     return new Response(JSON.stringify({ dates: [], error: String(e) }), { headers });
   }
+}
+
+async function handleTermineBatch(url) {
+  const ids = (url.searchParams.get('ids') || '').split(',').map(s => s.trim()).filter(Boolean);
+  const headers = {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Cache-Control': 'public, max-age=3600'
+  };
+  if (ids.length === 0) {
+    return new Response(JSON.stringify([]), { headers });
+  }
+  const results = await Promise.all(ids.map(async id => {
+    const fakeUrl = new URL(`https://x/api/termine?category_id=${id}`);
+    const resp = await handleTermine(fakeUrl);
+    const data = await resp.json();
+    return { id: Number(id), dates: data.dates || [] };
+  }));
+  return new Response(JSON.stringify(results), { headers });
 }
 
 // ── Guthaben: öffentliche Abfrage per Code ────────
