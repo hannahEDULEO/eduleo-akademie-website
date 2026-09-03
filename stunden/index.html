@@ -106,6 +106,10 @@
     .tag-grid-full { grid-template-columns: 100px 1fr 1fr 80px 24px; }
     .tag-header-full { grid-template-columns: 100px 1fr 1fr 80px 24px; }
 
+    .abw-grid, .abw-header { grid-template-columns: 140px 130px 1fr 24px; }
+    .abw-grid label, .abw-header span { color: #C4A092; }
+    .abw-hint { font-size: 12px; color: #888; margin: -6px 0 12px; }
+
     .kat-chips { display: flex; flex-wrap: wrap; gap: 5px; padding: 4px 0; }
     .kat-chip {
       background: #EDE6E2;
@@ -221,6 +225,22 @@
 
       <button type="button" class="add-row" onclick="addRow()">+ Zeile hinzufügen</button>
 
+      <div class="section-title">Abwesenheit (Urlaub / Krank / Feiertag)</div>
+      <p class="abw-hint">Nur ausfüllen, wenn du an einem Tag frei/krank warst. An diesen Tagen sind keine Tätigkeitszeilen nötig, du kannst sie oben löschen.</p>
+
+      <div class="tag-header abw-header">
+        <span>Tag</span>
+        <span>Status</span>
+        <span>Notiz (optional)</span>
+        <span></span>
+      </div>
+
+      <div id="abwesenheiten">
+        <!-- Rows added by JS -->
+      </div>
+
+      <button type="button" class="add-row" onclick="addAbwRow()">+ Abwesenheit hinzufügen</button>
+
       <div class="total-box">
         <div>
           <span>Gesamtstunden diese Woche</span>
@@ -281,6 +301,43 @@
       `;
       document.getElementById('eintraege').appendChild(row);
       calcTotal();
+    }
+
+    const ABW_TAGE = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Ganze Woche'];
+    const ABW_STATUS = ['Urlaub', 'Krank', 'Feiertag'];
+    let abwCount = 0;
+
+    function addAbwRow(tag = '', status = '', notiz = '') {
+      abwCount++;
+      const id = abwCount;
+      const tagOptions = ABW_TAGE.map(t =>
+        `<option value="${t}" ${t === tag ? 'selected' : ''}>${t}</option>`
+      ).join('');
+      const statusOptions = ABW_STATUS.map(s =>
+        `<option value="${s}" ${s === status ? 'selected' : ''}>${s}</option>`
+      ).join('');
+
+      const row = document.createElement('div');
+      row.className = 'tag-grid abw-grid';
+      row.id = 'abwrow-' + id;
+      row.innerHTML = `
+        <select name="abwtag_${id}">
+          <option value="">Tag wählen</option>
+          ${tagOptions}
+        </select>
+        <select name="abwstatus_${id}">
+          <option value="">Status</option>
+          ${statusOptions}
+        </select>
+        <input type="text" name="abwnotiz_${id}" placeholder="z.B. Betriebsausflug" value="${notiz}">
+        <button type="button" class="remove-row" onclick="removeAbwRow(${id})" title="Zeile löschen">×</button>
+      `;
+      document.getElementById('abwesenheiten').appendChild(row);
+    }
+
+    function removeAbwRow(id) {
+      const row = document.getElementById('abwrow-' + id);
+      if (row) row.remove();
     }
 
     function toggleChip(el, kat) {
@@ -355,10 +412,21 @@
         eintraege[eintraege.length-1].kategorien = [...(row.querySelectorAll('.kat-chip.active') || [])].map(c => c.textContent);
       });
 
+      // Collect absence rows
+      const abwesenheiten = [];
+      document.querySelectorAll('[id^="abwrow-"]').forEach(row => {
+        const id = row.id.replace('abwrow-', '');
+        const tag = row.querySelector(`[name="abwtag_${id}"]`)?.value || '';
+        const status = row.querySelector(`[name="abwstatus_${id}"]`)?.value || '';
+        const notiz = row.querySelector(`[name="abwnotiz_${id}"]`)?.value || '';
+        if (tag && status) abwesenheiten.push({ tag, status, notiz });
+      });
+
       const payload = {
         kw: document.getElementById('kw').value,
         zeitraum: document.getElementById('zeitraum').value,
         eintraege,
+        abwesenheiten,
         gesamt: parseFloat(document.getElementById('total').textContent) || 0,
         notizen: document.getElementById('notizen').value
       };

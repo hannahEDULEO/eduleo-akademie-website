@@ -139,6 +139,36 @@
     }
     .notiz-box strong { color: #C4A092; font-size: 11px; text-transform: uppercase; display: block; margin-bottom: 4px; }
 
+    .abw-box {
+      background: #F3F7FF;
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin-top: 12px;
+      font-size: 13px;
+      color: #555;
+      border-left: 3px solid #7BA7D9;
+    }
+    .abw-box strong { color: #5985c0; font-size: 11px; text-transform: uppercase; display: block; margin-bottom: 6px; }
+    .abw-item {
+      display: inline-block;
+      background: #fff;
+      border-radius: 6px;
+      padding: 3px 9px;
+      margin: 2px 4px 2px 0;
+      font-weight: 700;
+      font-size: 12px;
+      color: #444;
+    }
+    .abw-badge {
+      background: #EAF1FB;
+      color: #5985c0;
+      font-size: 12px;
+      font-weight: 800;
+      border-radius: 8px;
+      padding: 4px 9px;
+      white-space: nowrap;
+    }
+
     .datum-klein { font-size: 11px; color: #bbb; margin-top: 12px; text-align: right; }
 
     .empty { text-align: center; padding: 48px; color: #aaa; font-size: 15px; }
@@ -289,6 +319,15 @@
           </tr>`
         ).join('');
 
+        const abw = e.abwesenheiten || [];
+        const abwIcon = s => s === 'Urlaub' ? '🌴' : s === 'Krank' ? '🤒' : s === 'Feiertag' ? '📅' : '•';
+        const abwBadge = abw.length
+          ? `<span class="abw-badge">${abwIcon(abw[0].status)} ${abw.length} Abw.</span>` : '';
+        const abwBox = abw.length
+          ? `<div class="abw-box"><strong>Abwesenheit</strong>${abw.map(a =>
+              `<span class="abw-item">${abwIcon(a.status)} ${a.tag}: ${a.status}${a.notiz ? ' (' + a.notiz + ')' : ''}</span>`
+            ).join('')}</div>` : '';
+
         const notizBox = e.notizen
           ? `<div class="notiz-box"><strong>Anmerkung</strong>${e.notizen}</div>` : '';
 
@@ -302,6 +341,7 @@
                 </div>
               </div>
               <div style="display:flex;align-items:center;gap:12px;">
+                ${abwBadge}
                 <span class="stunden-badge ${isLow?'low':''}">${gesamt} h</span>
                 <span class="chevron" id="chev-${i}">▾</span>
               </div>
@@ -311,6 +351,7 @@
                 <thead><tr><th>Tag</th><th>Tätigkeit</th><th>Kategorie</th><th style="text-align:right">Std.</th></tr></thead>
                 <tbody>${rows}</tbody>
               </table>
+              ${abwBox}
               ${notizBox}
               <div class="datum-klein">Eingereicht: ${eingereicht}</div>
             </div>
