@@ -133,11 +133,13 @@
     .kat-toggle.placeholder .kat-label { color: #999; }
     .kat-panel {
       position: absolute; top: 100%; left: 0; margin-top: 4px; z-index: 30;
-      display: none; flex-wrap: wrap; gap: 6px; width: 250px;
-      background: #fff; border: 1.5px solid #D2EADA; border-radius: 10px;
-      padding: 10px; box-shadow: 0 8px 24px rgba(38,29,24,.16);
+      display: none; flex-wrap: wrap; gap: 6px;
+      width: 320px; max-width: calc(100vw - 48px);
+      background: #fff; border: 1.5px solid #D2EADA; border-radius: 12px;
+      padding: 12px; box-shadow: 0 8px 24px rgba(38,29,24,.16);
     }
     .kat-panel.open { display: flex; }
+    .kat-panel .kat-chip { white-space: normal; max-width: 100%; }
     .kat-chip {
       background: #EDE6E2;
       border: 1.5px solid #D2EADA;
