@@ -246,6 +246,8 @@
         </div>
       </div>
 
+      <p class="section-hint" id="loadHint" style="display:none; color:#5A9E7A; font-weight:700; margin-bottom:16px;"></p>
+
       <div id="tasksBlock">
         <div class="section-title" id="tasksTitle">Aufgaben & Stunden der Woche</div>
         <p class="section-hint">Trag die Aufgaben ein, an denen du diese Woche gearbeitet hast. Für jede Aufgabe eine Zeile, so viele du magst.</p>
@@ -450,12 +452,47 @@
       rowCount = 0;
       addRow(); addRow(); addRow();
     }
+
+    // Bestehenden Wochenbericht (gleiche Person + KW) laden, damit man ergänzen kann
+    async function loadExisting() {
+      const hint = document.getElementById('loadHint');
+      hint.style.display = 'none';
+      const p = personSel.value;
+      const kw = document.getElementById('kw').value;
+      if (!kw) return;
+      let all = [];
+      try {
+        const r = await fetch('/api/stunden-abrufen');
+        all = (await r.json()).eintraege || [];
+      } catch { return; }
+      const found = all.find(e => (e.person || 'Calvin') === p && String(e.kw) === String(kw));
+      if (!found) return;
+
+      document.getElementById('eintraege').innerHTML = '';
+      rowCount = 0;
+      (found.eintraege || []).forEach(r => addRow(r.aufgabe || '', r.kategorien || [], r.notiz || '', r.stunden ?? ''));
+      if (!document.querySelector('[id^="row-"]')) addRow();
+
+      document.getElementById('abwesenheiten').innerHTML = '';
+      abwCount = 0;
+      (found.abwesenheiten || []).forEach(a => addAbwRow(a.tag, a.status, a.notiz));
+
+      document.getElementById('notizen').value = found.notizen || '';
+      const ft = document.getElementById('freitext');
+      if (ft) ft.value = found.bericht_text || '';
+      calcTotal();
+
+      hint.textContent = 'Bestehender Bericht für KW ' + kw + ' geladen. Du kannst ergänzen und erneut absenden.';
+      hint.style.display = 'block';
+    }
+
     const savedPerson = localStorage.getItem('stunden_person');
     if (savedPerson && [...personSel.options].some(o => o.value === savedPerson)) personSel.value = savedPerson;
     personSel.addEventListener('change', () => {
       localStorage.setItem('stunden_person', personSel.value);
       applyMode();
       rebuildRows(); // Kategorien der neuen Person laden
+      loadExisting();
     });
     applyMode();
     rebuildRows();
@@ -466,6 +503,9 @@
     const mon = getMonday(now);
     const fri = new Date(mon); fri.setDate(fri.getDate() + 4);
     document.getElementById('zeitraum').value = formatDate(mon) + ' – ' + formatDate(fri);
+
+    document.getElementById('kw').addEventListener('change', loadExisting);
+    loadExisting();
 
     function getKW(d) {
       const date = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
@@ -541,6 +581,7 @@
 
       const payload = {
         person: personSel.value,
+        jahr: new Date().getFullYear(),
         kw: document.getElementById('kw').value,
         zeitraum: document.getElementById('zeitraum').value,
         eintraege,

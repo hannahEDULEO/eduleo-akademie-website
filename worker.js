@@ -778,7 +778,12 @@ async function handleStundenEintragen(request, env) {
 
   try {
     const data = await request.json();
-    const key = 'stunden:' + new Date().toISOString();
+    // Fester Schlüssel pro Person + Kalenderwoche: erneutes Absenden aktualisiert
+    // denselben Wochenbericht (kein Duplikat).
+    const jahr = data.jahr || new Date().getFullYear();
+    const kw = String(data.kw || '0').padStart(2, '0');
+    const person = data.person || 'Calvin';
+    const key = `stunden:${jahr}-${kw}:${person}`;
     data.eingereicht = new Date().toISOString();
     await env.FORM_SUBMISSIONS.put(key, JSON.stringify(data));
     return new Response(JSON.stringify({ ok: true }), { headers: json });
