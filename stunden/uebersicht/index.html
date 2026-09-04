@@ -169,6 +169,15 @@
       white-space: nowrap;
     }
 
+    .person-badge {
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      border-radius: 8px;
+      padding: 4px 10px;
+      white-space: nowrap;
+    }
+
     .datum-klein { font-size: 11px; color: #bbb; margin-top: 12px; text-align: right; }
 
     .empty { text-align: center; padding: 48px; color: #aaa; font-size: 15px; }
@@ -218,6 +227,12 @@
   </div>
 
   <div class="filter-row">
+    <select id="filterPerson" onchange="render()">
+      <option value="">Alle Personen</option>
+      <option value="Calvin">Calvin</option>
+      <option value="Hannah">Hannah</option>
+      <option value="Janine">Janine</option>
+    </select>
     <select id="filterMonat" onchange="render()">
       <option value="">Alle Monate</option>
     </select>
@@ -230,6 +245,9 @@
 
   <script>
     let allData = [];
+    const PERSON_COLOR = { Hannah: '#9B5DA6', Janine: '#D98E2B', Calvin: '#5A9E7A' };
+    const personOf = e => (e.person && PERSON_COLOR[e.person]) ? e.person : 'Calvin';
+    const hasHours = e => personOf(e) === 'Calvin';
 
     async function loadData() {
       try {
@@ -268,7 +286,10 @@
       document.getElementById('s-eintraege').textContent = n;
       if (n === 0) return;
 
-      const avg = allData.reduce((s,e) => s + (e.gesamt||0), 0) / n;
+      // Stunden-Kennzahlen nur über Calvin-Berichte (nur er erfasst Stunden)
+      const calvin = allData.filter(hasHours);
+      const avg = calvin.length
+        ? calvin.reduce((s,e) => s + (e.gesamt||0), 0) / calvin.length : 0;
       document.getElementById('s-schnitt').textContent = avg.toFixed(1);
 
       const last = new Date(allData[0].eingereicht);
@@ -276,7 +297,7 @@
 
       const now = new Date();
       const monatStr = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0');
-      const monatStd = allData
+      const monatStd = calvin
         .filter(e => e.eingereicht && e.eingereicht.startsWith(monatStr))
         .reduce((s,e) => s + (e.gesamt||0), 0);
       document.getElementById('s-monat').textContent = monatStd;
@@ -284,10 +305,12 @@
 
     function render() {
       const monat = document.getElementById('filterMonat').value;
+      const person = document.getElementById('filterPerson').value;
       const suche = document.getElementById('filterSuche').value.toLowerCase();
 
       let filtered = allData.filter(e => {
         if (monat && e.eingereicht && !e.eingereicht.startsWith(monat)) return false;
+        if (person && personOf(e) !== person) return false;
         if (suche) {
           const text = JSON.stringify(e).toLowerCase();
           if (!text.includes(suche)) return false;
@@ -302,22 +325,25 @@
       }
 
       container.innerHTML = filtered.map((e, i) => {
-        const isLow = (e.gesamt || 0) < 30;
+        const p = personOf(e);
+        const zeigtStunden = hasHours(e);
+        const isLow = zeigtStunden && (e.gesamt || 0) < 30;
         const kw = e.kw ? `KW ${e.kw}` : '–';
         const zeitraum = e.zeitraum || '';
-        const gesamt = e.gesamt ?? '–';
         const eingereicht = e.eingereicht
           ? new Date(e.eingereicht).toLocaleDateString('de', {day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'})
           : '';
 
-        const rows = (e.eintraege || []).map(r =>
-          `<tr>
-            <td>${r.tag || ''}</td>
-            <td>${r.aufgabe || ''}</td>
+        const rows = (e.eintraege || []).map(r => {
+          const auf = (r.tag ? r.tag + ': ' : '') + (r.aufgabe || '');
+          const std = zeigtStunden
+            ? `<td style="font-weight:700;text-align:right;">${r.stunden ?? 0} h</td>` : '';
+          return `<tr>
+            <td>${auf}</td>
             <td><span class="kat-badge">${r.kategorie || '–'}</span></td>
-            <td style="font-weight:700;text-align:right;">${r.stunden || 0} h</td>
-          </tr>`
-        ).join('');
+            ${std}
+          </tr>`;
+        }).join('');
 
         const abw = e.abwesenheiten || [];
         const abwIcon = s => s === 'Urlaub' ? '🌴' : s === 'Krank' ? '🤒' : s === 'Feiertag' ? '📅' : '•';
@@ -329,12 +355,17 @@
             ).join('')}</div>` : '';
 
         const notizBox = e.notizen
-          ? `<div class="notiz-box"><strong>Anmerkung</strong>${e.notizen}</div>` : '';
+          ? `<div class="notiz-box"><strong>Notiz</strong>${e.notizen}</div>` : '';
+
+        const stundenBadge = zeigtStunden
+          ? `<span class="stunden-badge ${isLow?'low':''}">${e.gesamt ?? 0} h</span>` : '';
+        const stdHead = zeigtStunden ? '<th style="text-align:right">Std.</th>' : '';
 
         return `
           <div class="entry-card">
             <div class="entry-head" onclick="toggle(${i})">
               <div class="entry-head-left">
+                <span class="person-badge" style="background:${PERSON_COLOR[p]}">${p}</span>
                 <span class="kw-badge">${kw}</span>
                 <div class="entry-head-meta">
                   <strong>${zeitraum}</strong>
@@ -342,13 +373,13 @@
               </div>
               <div style="display:flex;align-items:center;gap:12px;">
                 ${abwBadge}
-                <span class="stunden-badge ${isLow?'low':''}">${gesamt} h</span>
+                ${stundenBadge}
                 <span class="chevron" id="chev-${i}">▾</span>
               </div>
             </div>
             <div class="entry-body" id="body-${i}">
               <table>
-                <thead><tr><th>Tag</th><th>Tätigkeit</th><th>Kategorie</th><th style="text-align:right">Std.</th></tr></thead>
+                <thead><tr><th>Tätigkeit</th><th>Kategorie</th>${stdHead}</tr></thead>
                 <tbody>${rows}</tbody>
               </table>
               ${abwBox}

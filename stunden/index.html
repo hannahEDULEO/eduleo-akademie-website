@@ -34,6 +34,7 @@
     .subtitle { font-size: 14px; color: #888; margin-bottom: 28px; }
 
     .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+    .person-field { margin-bottom: 20px; }
     label { display: block; font-size: 13px; font-weight: 700; color: #5A9E7A; margin-bottom: 6px; }
     input, select, textarea {
       width: 100%;
@@ -55,21 +56,20 @@
       font-size: 15px;
       font-weight: 800;
       color: #261D18;
-      margin: 28px 0 14px;
+      margin: 28px 0 6px;
       padding-bottom: 8px;
       border-bottom: 2px solid #D2EADA;
     }
+    .section-hint { font-size: 12px; color: #888; margin: 0 0 14px; }
 
     .tag-grid {
       display: grid;
-      grid-template-columns: 100px 1fr 160px 80px;
       gap: 8px;
       align-items: start;
       margin-bottom: 8px;
     }
     .tag-header {
       display: grid;
-      grid-template-columns: 100px 1fr 160px 80px;
       gap: 8px;
       margin-bottom: 4px;
     }
@@ -103,12 +103,21 @@
     }
     .remove-row:hover { color: #e88; }
 
-    .tag-grid-full { grid-template-columns: 100px 1fr 1fr 80px 24px; }
-    .tag-header-full { grid-template-columns: 100px 1fr 1fr 80px 24px; }
+    /* Aufgaben-Zeilen: Tätigkeit | Kategorie | Stunden | x */
+    .tag-grid-full   { grid-template-columns: 1fr 1fr 80px 24px; }
+    .tag-header-full { grid-template-columns: 1fr 1fr 80px 24px; }
+
+    /* Ohne Stunden (Hannah/Janine) */
+    body.nohours .tag-grid-full,
+    body.nohours .tag-header-full { grid-template-columns: 1fr 1fr 24px; }
+    body.nohours .stunden-input,
+    body.nohours .col-std,
+    body.nohours #totalBox,
+    body.nohours #abwBlock { display: none; }
 
     .abw-grid, .abw-header { grid-template-columns: 140px 130px 1fr 24px; }
-    .abw-grid label, .abw-header span { color: #C4A092; }
-    .abw-hint { font-size: 12px; color: #888; margin: -6px 0 12px; }
+    .abw-header span { color: #C4A092; }
+    .abw-hint { font-size: 12px; color: #888; margin: 0 0 12px; }
 
     .kat-chips { display: flex; flex-wrap: wrap; gap: 5px; padding: 4px 0; }
     .kat-chip {
@@ -181,7 +190,8 @@
 
     @media (max-width: 600px) {
       .row2 { grid-template-columns: 1fr; }
-      .tag-grid, .tag-grid-full { grid-template-columns: 1fr; }
+      .tag-grid, .tag-grid-full,
+      body.nohours .tag-grid-full { grid-template-columns: 1fr; }
       .tag-header, .tag-header-full { display: none; }
       .card { padding: 20px; }
     }
@@ -195,9 +205,18 @@
     </div>
 
     <h1>Wochenbericht einreichen</h1>
-    <p class="subtitle">Bitte wöchentlich ausfüllen und absenden.</p>
+    <p class="subtitle">Einmal pro Woche ausfüllen: was hast du diese Woche gemacht?</p>
 
     <form id="form">
+      <div class="person-field">
+        <label for="person">Wer trägt ein?</label>
+        <select id="person">
+          <option>Calvin</option>
+          <option>Hannah</option>
+          <option>Janine</option>
+        </select>
+      </div>
+
       <div class="row2">
         <div>
           <label for="kw">Kalenderwoche</label>
@@ -209,13 +228,13 @@
         </div>
       </div>
 
-      <div class="section-title">Tätigkeiten der Woche</div>
+      <div class="section-title" id="tasksTitle">Aufgaben der Woche</div>
+      <p class="section-hint">Trag einfach die Aufgaben ein, an denen du diese Woche gearbeitet hast. Für jede Aufgabe eine Zeile, so viele du magst.</p>
 
       <div class="tag-header tag-header-full">
-        <span>Tag</span>
         <span>Tätigkeit / Aufgabe</span>
         <span>Kategorie</span>
-        <span>Stunden</span>
+        <span class="col-std">Stunden</span>
         <span></span>
       </div>
 
@@ -223,25 +242,25 @@
         <!-- Rows added by JS -->
       </div>
 
-      <button type="button" class="add-row" onclick="addRow()">+ Zeile hinzufügen</button>
+      <button type="button" class="add-row" onclick="addRow()">+ Eintrag hinzufügen</button>
 
-      <div class="section-title">Abwesenheit (Urlaub / Krank / Feiertag)</div>
-      <p class="abw-hint">Nur ausfüllen, wenn du an einem Tag frei/krank warst. An diesen Tagen sind keine Tätigkeitszeilen nötig, du kannst sie oben löschen.</p>
+      <div id="abwBlock">
+        <div class="section-title">Abwesenheit (Urlaub / Krank / Feiertag)</div>
+        <p class="abw-hint">Nur ausfüllen, wenn du diese Woche frei oder krank warst.</p>
 
-      <div class="tag-header abw-header">
-        <span>Tag</span>
-        <span>Status</span>
-        <span>Notiz (optional)</span>
-        <span></span>
+        <div class="tag-header abw-header">
+          <span>Tag</span>
+          <span>Status</span>
+          <span>Notiz (optional)</span>
+          <span></span>
+        </div>
+
+        <div id="abwesenheiten"></div>
+
+        <button type="button" class="add-row" onclick="addAbwRow()">+ Abwesenheit hinzufügen</button>
       </div>
 
-      <div id="abwesenheiten">
-        <!-- Rows added by JS -->
-      </div>
-
-      <button type="button" class="add-row" onclick="addAbwRow()">+ Abwesenheit hinzufügen</button>
-
-      <div class="total-box">
+      <div class="total-box" id="totalBox">
         <div>
           <span>Gesamtstunden diese Woche</span>
           <div class="soll">Soll: 40 Stunden</div>
@@ -250,8 +269,8 @@
       </div>
 
       <div class="notizen-field">
-        <label for="notizen">Anmerkungen (optional)</label>
-        <textarea id="notizen" name="notizen" placeholder="Besondere Vorkommnisse, Fragen, Hinweise..."></textarea>
+        <label for="notizen">Notizen / Ergänzungen (optional)</label>
+        <textarea id="notizen" name="notizen" placeholder="Besonderes, Fragen, Hinweise, offene Punkte..."></textarea>
       </div>
 
       <div class="error-msg" id="error">Beim Absenden ist etwas schiefgelaufen. Bitte nochmal versuchen.</div>
@@ -261,8 +280,8 @@
 
     <div class="success" id="success">
       <div class="icon">✅</div>
-      <h2>Danke, Calvin!</h2>
-      <p>Dein Wochenbericht für KW <span id="successKw"></span> wurde erfolgreich übermittelt.</p>
+      <h2 id="successHead">Danke!</h2>
+      <p>Dein Bericht für KW <span id="successKw"></span> wurde erfolgreich übermittelt.</p>
     </div>
   </div>
 
@@ -271,32 +290,24 @@
       'SimplyOrg', 'Teilnehmerkommunikation', 'Dozentenkommunikation',
       'DKLK / Messen', 'Verwaltung', 'Kitaversum', 'Sonstiges'
     ];
-    const TAGE = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Sonstiges'];
 
     let rowCount = 0;
 
-    function addRow(tag = '', aufgabe = '', kats = [], std = '') {
+    function addRow(aufgabe = '', kats = [], std = '') {
       rowCount++;
       const id = rowCount;
       const chips = KATEGORIEN.map(k =>
         `<span class="kat-chip ${kats.includes(k) ? 'active' : ''}" onclick="toggleChip(this,'${k}')">${k}</span>`
-      ).join('');
-      const tagOptions = TAGE.map(t =>
-        `<option value="${t}" ${t === tag ? 'selected' : ''}>${t}</option>`
       ).join('');
 
       const row = document.createElement('div');
       row.className = 'tag-grid tag-grid-full';
       row.id = 'row-' + id;
       row.innerHTML = `
-        <select name="tag_${id}" required>
-          <option value="">Tag wählen</option>
-          ${tagOptions}
-        </select>
-        <input type="text" name="aufgabe_${id}" placeholder="Was hast du gemacht?" value="${aufgabe}" required>
+        <input type="text" name="aufgabe_${id}" placeholder="Woran hast du gearbeitet?" value="${aufgabe}">
         <div class="kat-chips" id="chips-${id}">${chips}</div>
         <input type="hidden" name="kategorie_${id}" value="${kats.join(', ')}">
-        <input type="number" name="stunden_${id}" class="stunden-input" min="0" max="12" step="0.5" placeholder="0" value="${std}" oninput="calcTotal()" required>
+        <input type="number" name="stunden_${id}" class="stunden-input" min="0" max="60" step="0.5" placeholder="0" value="${std}" oninput="calcTotal()">
         <button type="button" class="remove-row" onclick="removeRow(${id})" title="Zeile löschen">×</button>
       `;
       document.getElementById('eintraege').appendChild(row);
@@ -342,7 +353,6 @@
 
     function toggleChip(el, kat) {
       el.classList.toggle('active');
-      // Update hidden input
       const chipsDiv = el.closest('.kat-chips');
       const hiddenInput = chipsDiv.nextElementSibling;
       const active = [...chipsDiv.querySelectorAll('.kat-chip.active')].map(c => c.textContent);
@@ -361,13 +371,27 @@
       document.getElementById('total').textContent = total % 1 === 0 ? total : total.toFixed(1);
     }
 
-    // Start with 5 default rows (Mon–Fri)
-    ['Montag','Dienstag','Mittwoch','Donnerstag','Freitag'].forEach(t => addRow(t));
+    // Personen-Modus (Calvin = mit Stunden, sonst nur Aufgaben)
+    const personSel = document.getElementById('person');
+    function applyMode() {
+      const nohours = personSel.value !== 'Calvin';
+      document.body.classList.toggle('nohours', nohours);
+      document.getElementById('tasksTitle').textContent = nohours ? 'Aufgaben der Woche' : 'Aufgaben & Stunden der Woche';
+    }
+    const savedPerson = localStorage.getItem('stunden_person');
+    if (savedPerson) personSel.value = savedPerson;
+    personSel.addEventListener('change', () => {
+      localStorage.setItem('stunden_person', personSel.value);
+      applyMode();
+    });
+    applyMode();
 
-    // Auto-fill KW and Zeitraum
+    // Mit 3 leeren Einträgen starten
+    addRow(); addRow(); addRow();
+
+    // KW und Zeitraum vorbelegen
     const now = new Date();
-    const kw = getKW(now);
-    document.getElementById('kw').value = kw;
+    document.getElementById('kw').value = getKW(now);
     const mon = getMonday(now);
     const fri = new Date(mon); fri.setDate(fri.getDate() + 4);
     document.getElementById('zeitraum').value = formatDate(mon) + ' – ' + formatDate(fri);
@@ -381,9 +405,9 @@
     }
     function getMonday(d) {
       const day = d.getDay() || 7;
-      const mon = new Date(d);
-      mon.setDate(d.getDate() - day + 1);
-      return mon;
+      const m = new Date(d);
+      m.setDate(d.getDate() - day + 1);
+      return m;
     }
     function formatDate(d) {
       return d.getDate().toString().padStart(2,'0') + '.' + (d.getMonth()+1).toString().padStart(2,'0') + '.';
@@ -397,37 +421,49 @@
       btn.textContent = 'Wird gesendet...';
       errEl.style.display = 'none';
 
-      // Collect rows
-      const rows = document.querySelectorAll('[id^="row-"]');
+      const nohours = personSel.value !== 'Calvin';
+
+      // Aufgaben sammeln
       const eintraege = [];
-      rows.forEach(row => {
+      document.querySelectorAll('[id^="row-"]').forEach(row => {
         const id = row.id.replace('row-', '');
+        const aufgabe = row.querySelector(`[name="aufgabe_${id}"]`)?.value || '';
+        if (!aufgabe.trim()) return; // leere Zeilen überspringen
         eintraege.push({
-          tag: row.querySelector(`[name="tag_${id}"]`)?.value || '',
-          aufgabe: row.querySelector(`[name="aufgabe_${id}"]`)?.value || '',
+          aufgabe,
           kategorie: row.querySelector(`[name="kategorie_${id}"]`)?.value || '',
-          stunden: parseFloat(row.querySelector(`[name="stunden_${id}"]`)?.value) || 0
+          kategorien: [...row.querySelectorAll('.kat-chip.active')].map(c => c.textContent),
+          stunden: nohours ? null : (parseFloat(row.querySelector(`[name="stunden_${id}"]`)?.value) || 0)
         });
-        // Also collect active chips directly
-        eintraege[eintraege.length-1].kategorien = [...(row.querySelectorAll('.kat-chip.active') || [])].map(c => c.textContent);
       });
 
-      // Collect absence rows
+      if (eintraege.length === 0) {
+        errEl.textContent = 'Bitte trag mindestens eine Aufgabe ein.';
+        errEl.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Wochenbericht absenden';
+        return;
+      }
+
+      // Abwesenheit (nur Calvin)
       const abwesenheiten = [];
-      document.querySelectorAll('[id^="abwrow-"]').forEach(row => {
-        const id = row.id.replace('abwrow-', '');
-        const tag = row.querySelector(`[name="abwtag_${id}"]`)?.value || '';
-        const status = row.querySelector(`[name="abwstatus_${id}"]`)?.value || '';
-        const notiz = row.querySelector(`[name="abwnotiz_${id}"]`)?.value || '';
-        if (tag && status) abwesenheiten.push({ tag, status, notiz });
-      });
+      if (!nohours) {
+        document.querySelectorAll('[id^="abwrow-"]').forEach(row => {
+          const id = row.id.replace('abwrow-', '');
+          const tag = row.querySelector(`[name="abwtag_${id}"]`)?.value || '';
+          const status = row.querySelector(`[name="abwstatus_${id}"]`)?.value || '';
+          const notiz = row.querySelector(`[name="abwnotiz_${id}"]`)?.value || '';
+          if (tag && status) abwesenheiten.push({ tag, status, notiz });
+        });
+      }
 
       const payload = {
+        person: personSel.value,
         kw: document.getElementById('kw').value,
         zeitraum: document.getElementById('zeitraum').value,
         eintraege,
         abwesenheiten,
-        gesamt: parseFloat(document.getElementById('total').textContent) || 0,
+        gesamt: nohours ? null : (parseFloat(document.getElementById('total').textContent) || 0),
         notizen: document.getElementById('notizen').value
       };
 
@@ -439,6 +475,7 @@
         });
         const data = await res.json();
         if (data.ok) {
+          document.getElementById('successHead').textContent = 'Danke, ' + payload.person + '!';
           document.getElementById('form').style.display = 'none';
           document.getElementById('successKw').textContent = payload.kw;
           document.getElementById('success').style.display = 'block';
