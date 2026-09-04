@@ -178,6 +178,14 @@
       white-space: nowrap;
     }
 
+    .bericht-text {
+      white-space: pre-wrap;
+      font-size: 14px;
+      color: #444;
+      line-height: 1.55;
+      padding: 12px 2px 4px;
+    }
+
     .datum-klein { font-size: 11px; color: #bbb; margin-top: 12px; text-align: right; }
 
     .empty { text-align: center; padding: 48px; color: #aaa; font-size: 15px; }
@@ -334,6 +342,7 @@
           ? new Date(e.eingereicht).toLocaleDateString('de', {day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'})
           : '';
 
+        const isText = !!(e.bericht_text && e.bericht_text.trim());
         const rows = (e.eintraege || []).map(r => {
           const auf = (r.tag ? r.tag + ': ' : '') + (r.aufgabe || '');
           const std = zeigtStunden
@@ -341,6 +350,7 @@
           return `<tr>
             <td>${auf}</td>
             <td><span class="kat-badge">${r.kategorie || '–'}</span></td>
+            <td>${r.notiz || ''}</td>
             ${std}
           </tr>`;
         }).join('');
@@ -361,6 +371,13 @@
           ? `<span class="stunden-badge ${isLow?'low':''}">${e.gesamt ?? 0} h</span>` : '';
         const stdHead = zeigtStunden ? '<th style="text-align:right">Std.</th>' : '';
 
+        const bodyContent = isText
+          ? `<div class="bericht-text">${e.bericht_text}</div>`
+          : `<table>
+                <thead><tr><th>Tätigkeit</th><th>Kategorie</th><th>Notiz</th>${stdHead}</tr></thead>
+                <tbody>${rows}</tbody>
+              </table>`;
+
         return `
           <div class="entry-card">
             <div class="entry-head" onclick="toggle(${i})">
@@ -378,10 +395,7 @@
               </div>
             </div>
             <div class="entry-body" id="body-${i}">
-              <table>
-                <thead><tr><th>Tätigkeit</th><th>Kategorie</th>${stdHead}</tr></thead>
-                <tbody>${rows}</tbody>
-              </table>
+              ${bodyContent}
               ${abwBox}
               ${notizBox}
               <div class="datum-klein">Eingereicht: ${eingereicht}</div>

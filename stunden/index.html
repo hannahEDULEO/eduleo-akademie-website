@@ -18,7 +18,7 @@
       background: #fff;
       border-radius: 16px;
       padding: 32px;
-      max-width: 720px;
+      max-width: 1040px;
       margin: 0 auto;
       box-shadow: 0 2px 16px rgba(38,29,24,0.08);
     }
@@ -103,23 +103,41 @@
     }
     .remove-row:hover { color: #e88; }
 
-    /* Aufgaben-Zeilen: Tätigkeit | Kategorie | Stunden | x */
-    .tag-grid-full   { grid-template-columns: 1fr 1fr 80px 24px; }
-    .tag-header-full { grid-template-columns: 1fr 1fr 80px 24px; }
+    /* Aufgaben-Zeilen: Tätigkeit | Kategorie | Notiz | Stunden | x */
+    .tag-grid-full   { grid-template-columns: 1.4fr 1.2fr 1.4fr 70px 24px; }
+    .tag-header-full { grid-template-columns: 1.4fr 1.2fr 1.4fr 70px 24px; }
 
     /* Ohne Stunden (Hannah/Janine) */
     body.nohours .tag-grid-full,
-    body.nohours .tag-header-full { grid-template-columns: 1fr 1fr 24px; }
+    body.nohours .tag-header-full { grid-template-columns: 1.4fr 1.2fr 1.4fr 24px; }
     body.nohours .stunden-input,
     body.nohours .col-std,
     body.nohours #totalBox,
     body.nohours #abwBlock { display: none; }
+    #freitextBlock { display: none; }
+    body.freitext #tasksBlock { display: none; }
+    body.freitext #freitextBlock { display: block; }
 
     .abw-grid, .abw-header { grid-template-columns: 140px 130px 1fr 24px; }
     .abw-header span { color: #C4A092; }
     .abw-hint { font-size: 12px; color: #888; margin: 0 0 12px; }
 
-    .kat-chips { display: flex; flex-wrap: wrap; gap: 5px; padding: 4px 0; }
+    .kat-select { position: relative; }
+    .kat-toggle {
+      width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 6px;
+      cursor: pointer; background: #fff; border: 1.5px solid #D2EADA; border-radius: 10px;
+      padding: 10px 12px; font-size: 13px; color: #261D18; font-family: inherit;
+    }
+    .kat-toggle .kat-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .kat-toggle .caret { color: #5A9E7A; flex: none; }
+    .kat-toggle.placeholder .kat-label { color: #999; }
+    .kat-panel {
+      position: absolute; top: 100%; left: 0; margin-top: 4px; z-index: 30;
+      display: none; flex-wrap: wrap; gap: 6px; width: 250px;
+      background: #fff; border: 1.5px solid #D2EADA; border-radius: 10px;
+      padding: 10px; box-shadow: 0 8px 24px rgba(38,29,24,.16);
+    }
+    .kat-panel.open { display: flex; }
     .kat-chip {
       background: #EDE6E2;
       border: 1.5px solid #D2EADA;
@@ -228,21 +246,30 @@
         </div>
       </div>
 
-      <div class="section-title" id="tasksTitle">Aufgaben der Woche</div>
-      <p class="section-hint">Trag einfach die Aufgaben ein, an denen du diese Woche gearbeitet hast. Für jede Aufgabe eine Zeile, so viele du magst.</p>
+      <div id="tasksBlock">
+        <div class="section-title" id="tasksTitle">Aufgaben & Stunden der Woche</div>
+        <p class="section-hint">Trag die Aufgaben ein, an denen du diese Woche gearbeitet hast. Für jede Aufgabe eine Zeile, so viele du magst.</p>
 
-      <div class="tag-header tag-header-full">
-        <span>Tätigkeit / Aufgabe</span>
-        <span>Kategorie</span>
-        <span class="col-std">Stunden</span>
-        <span></span>
+        <div class="tag-header tag-header-full">
+          <span>Tätigkeit / Aufgabe</span>
+          <span>Kategorie</span>
+          <span>Notiz</span>
+          <span class="col-std">Stunden</span>
+          <span></span>
+        </div>
+
+        <div id="eintraege">
+          <!-- Rows added by JS -->
+        </div>
+
+        <button type="button" class="add-row" onclick="addRow()">+ Eintrag hinzufügen</button>
       </div>
 
-      <div id="eintraege">
-        <!-- Rows added by JS -->
+      <div id="freitextBlock">
+        <div class="section-title">Was hast du diese Woche gemacht?</div>
+        <p class="section-hint">Schreib einfach in Textform: Aufgaben, Fortschritte, was fertig wurde, offene Punkte.</p>
+        <textarea id="freitext" rows="12" placeholder="Diese Woche habe ich..."></textarea>
       </div>
-
-      <button type="button" class="add-row" onclick="addRow()">+ Eintrag hinzufügen</button>
 
       <div id="abwBlock">
         <div class="section-title">Abwesenheit (Urlaub / Krank / Feiertag)</div>
@@ -286,27 +313,51 @@
   </div>
 
   <script>
-    const KATEGORIEN = [
-      'SimplyOrg', 'Teilnehmerkommunikation', 'Dozentenkommunikation',
-      'DKLK / Messen', 'Verwaltung', 'Kitaversum', 'Sonstiges'
-    ];
+    const KATS = {
+      Calvin: [
+        'SimplyOrg', 'Newsletter-Auswertung', 'Warme Kontakte / Anrufliste',
+        'Nachfassen / Wiederbuchung', 'Telefonate (tägliche Rückfragen)',
+        'Koordination & Bestandskunden', 'Bring-a-Friend einpflegen',
+        'DKLK / Messen', 'DKLK nachfassen', 'Teilnehmerkommunikation',
+        'Dozentenkommunikation', 'Verwaltung', 'Kitaversum', 'Sonstiges'
+      ],
+      Hannah: [
+        'Blogbeitrag', 'Pinterest', 'ManyChat', 'Social Media Redaktionsplan',
+        'Erstellung neuer Beiträge', 'Content erstellen (Reels)',
+        'Newsletter erstellen/planen', 'Fortbildung erstellen/bearbeiten',
+        'Website', 'Google Search Console', 'GA4', 'Meetings',
+        'Kitaversum', 'Dozentenabsprache'
+      ],
+      Janine: [
+        'Kooperation', 'Neukunden & Neu-Ansprachen', 'Finanzen & Buchhaltung',
+        'Finanzberichte', 'Instagram Story', 'Arbeitgeberseite Krankmeldung'
+      ]
+    };
 
     let rowCount = 0;
 
-    function addRow(aufgabe = '', kats = [], std = '') {
+    function addRow(aufgabe = '', kats = [], notiz = '', std = '') {
       rowCount++;
       const id = rowCount;
-      const chips = KATEGORIEN.map(k =>
-        `<span class="kat-chip ${kats.includes(k) ? 'active' : ''}" onclick="toggleChip(this,'${k}')">${k}</span>`
+      const list = KATS[document.getElementById('person').value] || [];
+      const chips = list.map(k =>
+        `<span class="kat-chip ${kats.includes(k) ? 'active' : ''}" onclick="toggleChip(this)">${k}</span>`
       ).join('');
+      const label = kats.length ? kats.join(', ') : 'Kategorie wählen';
 
       const row = document.createElement('div');
       row.className = 'tag-grid tag-grid-full';
       row.id = 'row-' + id;
       row.innerHTML = `
         <input type="text" name="aufgabe_${id}" placeholder="Woran hast du gearbeitet?" value="${aufgabe}">
-        <div class="kat-chips" id="chips-${id}">${chips}</div>
-        <input type="hidden" name="kategorie_${id}" value="${kats.join(', ')}">
+        <div class="kat-select">
+          <button type="button" class="kat-toggle ${kats.length ? '' : 'placeholder'}" onclick="toggleKatPanel(this)">
+            <span class="kat-label">${label}</span><span class="caret">▾</span>
+          </button>
+          <div class="kat-panel">${chips}</div>
+          <input type="hidden" name="kategorie_${id}" value="${kats.join(', ')}">
+        </div>
+        <input type="text" name="notiz_${id}" placeholder="Notiz (optional)" value="${notiz}">
         <input type="number" name="stunden_${id}" class="stunden-input" min="0" max="60" step="0.5" placeholder="0" value="${std}" oninput="calcTotal()">
         <button type="button" class="remove-row" onclick="removeRow(${id})" title="Zeile löschen">×</button>
       `;
@@ -351,12 +402,27 @@
       if (row) row.remove();
     }
 
-    function toggleChip(el, kat) {
+    function toggleKatPanel(btn) {
+      const panel = btn.nextElementSibling; // .kat-panel
+      const wasOpen = panel.classList.contains('open');
+      closeAllKatPanels();
+      if (!wasOpen) panel.classList.add('open');
+    }
+    function closeAllKatPanels() {
+      document.querySelectorAll('.kat-panel.open').forEach(p => p.classList.remove('open'));
+    }
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.kat-select')) closeAllKatPanels();
+    });
+
+    function toggleChip(el) {
       el.classList.toggle('active');
-      const chipsDiv = el.closest('.kat-chips');
-      const hiddenInput = chipsDiv.nextElementSibling;
-      const active = [...chipsDiv.querySelectorAll('.kat-chip.active')].map(c => c.textContent);
-      hiddenInput.value = active.join(', ');
+      const sel = el.closest('.kat-select');
+      const active = [...sel.querySelectorAll('.kat-chip.active')].map(c => c.textContent);
+      sel.querySelector('input[type=hidden]').value = active.join(', ');
+      const toggle = sel.querySelector('.kat-toggle');
+      toggle.querySelector('.kat-label').textContent = active.length ? active.join(', ') : 'Kategorie wählen';
+      toggle.classList.toggle('placeholder', active.length === 0);
     }
 
     function removeRow(id) {
@@ -374,20 +440,25 @@
     // Personen-Modus (Calvin = mit Stunden, sonst nur Aufgaben)
     const personSel = document.getElementById('person');
     function applyMode() {
-      const nohours = personSel.value !== 'Calvin';
-      document.body.classList.toggle('nohours', nohours);
-      document.getElementById('tasksTitle').textContent = nohours ? 'Aufgaben der Woche' : 'Aufgaben & Stunden der Woche';
+      const p = personSel.value;
+      document.body.classList.toggle('nohours', p !== 'Calvin');
+      document.getElementById('tasksTitle').textContent =
+        (p === 'Calvin') ? 'Aufgaben & Stunden der Woche' : 'Aufgaben der Woche';
+    }
+    function rebuildRows() {
+      document.getElementById('eintraege').innerHTML = '';
+      rowCount = 0;
+      addRow(); addRow(); addRow();
     }
     const savedPerson = localStorage.getItem('stunden_person');
-    if (savedPerson) personSel.value = savedPerson;
+    if (savedPerson && [...personSel.options].some(o => o.value === savedPerson)) personSel.value = savedPerson;
     personSel.addEventListener('change', () => {
       localStorage.setItem('stunden_person', personSel.value);
       applyMode();
+      rebuildRows(); // Kategorien der neuen Person laden
     });
     applyMode();
-
-    // Mit 3 leeren Einträgen starten
-    addRow(); addRow(); addRow();
+    rebuildRows();
 
     // KW und Zeitraum vorbelegen
     const now = new Date();
@@ -421,40 +492,51 @@
       btn.textContent = 'Wird gesendet...';
       errEl.style.display = 'none';
 
-      const nohours = personSel.value !== 'Calvin';
+      const isCalvin = personSel.value === 'Calvin';
+      const usesFreetext = false; // alle drei nutzen jetzt strukturierte Zeilen
 
-      // Aufgaben sammeln
       const eintraege = [];
-      document.querySelectorAll('[id^="row-"]').forEach(row => {
-        const id = row.id.replace('row-', '');
-        const aufgabe = row.querySelector(`[name="aufgabe_${id}"]`)?.value || '';
-        if (!aufgabe.trim()) return; // leere Zeilen überspringen
-        eintraege.push({
-          aufgabe,
-          kategorie: row.querySelector(`[name="kategorie_${id}"]`)?.value || '',
-          kategorien: [...row.querySelectorAll('.kat-chip.active')].map(c => c.textContent),
-          stunden: nohours ? null : (parseFloat(row.querySelector(`[name="stunden_${id}"]`)?.value) || 0)
-        });
-      });
-
-      if (eintraege.length === 0) {
-        errEl.textContent = 'Bitte trag mindestens eine Aufgabe ein.';
-        errEl.style.display = 'block';
-        btn.disabled = false;
-        btn.textContent = 'Wochenbericht absenden';
-        return;
-      }
-
-      // Abwesenheit (nur Calvin)
       const abwesenheiten = [];
-      if (!nohours) {
-        document.querySelectorAll('[id^="abwrow-"]').forEach(row => {
-          const id = row.id.replace('abwrow-', '');
-          const tag = row.querySelector(`[name="abwtag_${id}"]`)?.value || '';
-          const status = row.querySelector(`[name="abwstatus_${id}"]`)?.value || '';
-          const notiz = row.querySelector(`[name="abwnotiz_${id}"]`)?.value || '';
-          if (tag && status) abwesenheiten.push({ tag, status, notiz });
+      let bericht_text = '';
+
+      if (usesFreetext) {
+        // Janine: Freitext
+        bericht_text = document.getElementById('freitext').value.trim();
+        if (!bericht_text) {
+          errEl.textContent = 'Bitte schreib kurz, was du diese Woche gemacht hast.';
+          errEl.style.display = 'block';
+          btn.disabled = false; btn.textContent = 'Wochenbericht absenden';
+          return;
+        }
+      } else {
+        // Calvin & Hannah: strukturierte Zeilen (Stunden nur bei Calvin)
+        document.querySelectorAll('[id^="row-"]').forEach(row => {
+          const id = row.id.replace('row-', '');
+          const aufgabe = row.querySelector(`[name="aufgabe_${id}"]`)?.value || '';
+          if (!aufgabe.trim()) return; // leere Zeilen überspringen
+          eintraege.push({
+            aufgabe,
+            kategorie: row.querySelector(`[name="kategorie_${id}"]`)?.value || '',
+            kategorien: [...row.querySelectorAll('.kat-chip.active')].map(c => c.textContent),
+            notiz: row.querySelector(`[name="notiz_${id}"]`)?.value || '',
+            stunden: isCalvin ? (parseFloat(row.querySelector(`[name="stunden_${id}"]`)?.value) || 0) : null
+          });
         });
+        if (eintraege.length === 0) {
+          errEl.textContent = 'Bitte trag mindestens eine Aufgabe ein.';
+          errEl.style.display = 'block';
+          btn.disabled = false; btn.textContent = 'Wochenbericht absenden';
+          return;
+        }
+        if (isCalvin) {
+          document.querySelectorAll('[id^="abwrow-"]').forEach(row => {
+            const id = row.id.replace('abwrow-', '');
+            const tag = row.querySelector(`[name="abwtag_${id}"]`)?.value || '';
+            const status = row.querySelector(`[name="abwstatus_${id}"]`)?.value || '';
+            const notiz = row.querySelector(`[name="abwnotiz_${id}"]`)?.value || '';
+            if (tag && status) abwesenheiten.push({ tag, status, notiz });
+          });
+        }
       }
 
       const payload = {
@@ -462,8 +544,9 @@
         kw: document.getElementById('kw').value,
         zeitraum: document.getElementById('zeitraum').value,
         eintraege,
+        bericht_text,
         abwesenheiten,
-        gesamt: nohours ? null : (parseFloat(document.getElementById('total').textContent) || 0),
+        gesamt: isCalvin ? (parseFloat(document.getElementById('total').textContent) || 0) : null,
         notizen: document.getElementById('notizen').value
       };
 
