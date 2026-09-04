@@ -64,6 +64,14 @@
     .vergleich-table td:nth-child(4) { color: #2a5c3f; background: #f0f8f4; font-weight: 600; }
     .vergleich-table tr:last-child td { border-bottom: none; }
 
+    /* Stufen-Tabelle: Belastung → Beeinträchtigung → Gefährdung (steigende Dringlichkeit) */
+    .stufen-table th:nth-child(2) { background: #cf9f39; color: #fff; }
+    .stufen-table th:nth-child(3) { background: #d67629; color: #fff; }
+    .stufen-table th:nth-child(4) { background: #b23021; color: #fff; }
+    .stufen-table td:nth-child(2) { color: #6b5310; background: #fbf5e4; font-weight: 400; }
+    .stufen-table td:nth-child(3) { color: #8a4413; background: #fdf0e4; font-weight: 400; }
+    .stufen-table td:nth-child(4) { color: #8b2117; background: #fbe9e7; font-weight: 600; }
+
     /* Schritt-Prozess */
     .prozess-steps { display: flex; flex-direction: column; gap: 0; margin: 1.5rem 0; }
     .prozess-step { display: flex; gap: 1rem; align-items: flex-start; padding: 1rem 1.25rem; }
@@ -235,7 +243,7 @@
 
     <article class="blog-content">
 
-      <p class="blog-intro">Kinderschutz ist weit mehr als das Eingreifen in akuten Krisensituationen. Er beginnt im pädagogischen Alltag dort, wo Erwachsene Verantwortung tragen, Entscheidungen treffen und Kinder begleiten — und genau das macht ihn so komplex und so wichtig.</p>
+      <p class="blog-intro">Kinderschutz ist weit mehr als das Eingreifen in akuten Krisensituationen. Er beginnt im pädagogischen Alltag dort, wo Erwachsene Verantwortung tragen, Entscheidungen treffen und Kinder begleiten, und genau das macht ihn so komplex und so wichtig.</p>
 
       <div class="facts-row">
         <div>
@@ -254,7 +262,7 @@
 
       <p>Genau hier setzt die dreimonatige Fortbildungsreihe der EDULEO Akademie zum Thema Kinderschutz an. Über acht Termine beschäftigen wir uns mit unterschiedlichen Facetten des Kinderschutzes, die auf den ersten Blick nicht immer unmittelbar zusammengehören. Im Laufe der Fortbildung wird jedoch deutlich, wie eng sie miteinander verbunden sind.</p>
 
-      <p>Wer Kinder schützen möchte, muss auch ihre Rechte kennen. Dazu gehört es, Macht zu verstehen und sich mit dem Thema Adultismus auseinanderzusetzen. Wer Gewalt verhindern möchte, muss Grenzverletzungen erkennen können. Und wer Kinder ernsthaft beteiligen möchte, braucht funktionierende Beschwerdemöglichkeiten.</p>
+      <p>Wer Kinder schützen möchte, muss auch ihre Rechte kennen. Dazu gehört es, Macht zu verstehen und sich mit dem Thema Adultismus auseinanderzusetzen. Wer Gewalt verhindern möchte, muss Grenzverletzungen erkennen können, und wer Kinder ernsthaft beteiligen möchte, braucht funktionierende Beschwerdemöglichkeiten.</p>
 
       <div class="pull-quote">
         Kinderschutz ist kein einzelnes Thema, sondern Haltung, Wissen und gemeinsame Verantwortung.
@@ -317,7 +325,7 @@
         </div>
       </div>
 
-      <p>Der Verhaltenskodex soll dabei nicht einfach ein Dokument sein, das in einem Ordner liegt. Es geht darum, sich gemeinsam zu verständigen — und Kinderschutz dadurch zur Aufgabe des gesamten Teams und der Organisation zu machen.</p>
+      <p>Der Verhaltenskodex soll dabei nicht einfach ein Dokument sein, das in einem Ordner liegt. Es geht darum, sich gemeinsam zu verständigen und Kinderschutz dadurch zur Aufgabe des gesamten Teams und der Organisation zu machen.</p>
 
       <hr class="blog-divider">
 
@@ -352,9 +360,9 @@
 
       <h2 id="drei-ebenen">Drei Ebenen unterscheiden: Belastung, Beeinträchtigung, Gefährdung</h2>
 
-      <p>Nicht jedes ungewöhnliche Verhalten bedeutet automatisch eine Kindeswohlgefährdung. Gleichzeitig kann eine einzelne Beobachtung im Zusammenhang mit anderen Informationen eine ganz andere Bedeutung bekommen. Deshalb ist die Unterscheidung der drei Ebenen entscheidend:</p>
+      <p>Nicht jedes ungewöhnliche Verhalten bedeutet automatisch eine Kindeswohlgefährdung. Gleichzeitig kann eine einzelne Beobachtung im Zusammenhang mit anderen Informationen eine ganz andere Bedeutung bekommen. Deshalb kann die Unterscheidung zwischen Belastung, Kindeswohlbeeinträchtigung und Kindeswohlgefährdung eine hilfreiche fachliche Orientierung sein, um Situationen genauer einzuordnen und angemessene nächste Schritte zu entwickeln.</p>
 
-      <table class="vergleich-table" aria-label="Unterschied zwischen Belastung, Beeinträchtigung und Gefährdung des Kindeswohls">
+      <table class="vergleich-table stufen-table" aria-label="Unterschied zwischen Belastung, Beeinträchtigung und Gefährdung des Kindeswohls">
         <thead>
           <tr>
             <th>Merkmal</th>
@@ -366,30 +374,32 @@
         <tbody>
           <tr>
             <td>Definition</td>
-            <td>Schwierige Lebenssituation, die das Kind belastet</td>
-            <td>Bedürfnisse des Kindes werden nicht ausreichend erfüllt</td>
-            <td>Konkrete Gefahr für Entwicklung oder Unversehrtheit</td>
+            <td>Schwierige Lebenssituation oder besondere Herausforderung, die das Kind oder die Familie belastet</td>
+            <td>Das Wohl oder die Entwicklung des Kindes ist bereits spürbar beeinträchtigt</td>
+            <td>Es besteht eine gegenwärtige oder absehbare erhebliche Gefahr für das körperliche, geistige oder seelische Wohl des Kindes</td>
           </tr>
           <tr>
             <td>Beispiele</td>
-            <td>Armut, Elternkonflikt, Wohnungswechsel</td>
-            <td>Chronische Vernachlässigung, fehlende Förderung</td>
-            <td>Körperliche oder sexuelle Gewalt, schwere Verwahrlosung</td>
+            <td>Armut, Elternkonflikte, Wohnungswechsel oder andere familiäre Veränderungen</td>
+            <td>Anhaltende unzureichende Versorgung oder fehlende Unterstützung, die sich auf das Kind und seine Entwicklung auswirken</td>
+            <td>Körperliche, psychische oder sexualisierte Gewalt, schwere Vernachlässigung oder andere erhebliche Gefährdungen</td>
           </tr>
           <tr>
             <td>Handlungsbedarf</td>
-            <td>Beobachten, dokumentieren, unterstützen</td>
-            <td>Beratung suchen, Hilfeleistungen einleiten</td>
-            <td>§ 8a-Verfahren einleiten, INSOFA einschalten</td>
+            <td>Beobachten, dokumentieren, Bedürfnisse wahrnehmen und bei Bedarf Unterstützung anbieten</td>
+            <td>Genauer hinschauen, fachlich einordnen, Beratung und geeignete Hilfen prüfen</td>
+            <td>Das Kinderschutzverfahren nach den geltenden Vorgaben einleiten, fachliche Beratung hinzuziehen und erforderliche weitere Schritte prüfen</td>
           </tr>
           <tr>
             <td>Allein entscheiden?</td>
-            <td>Ja, mit Dokumentation</td>
-            <td>Nein, im Team besprechen</td>
-            <td>Nein, zwingend fachliche Beratung</td>
+            <td>Nicht zwingend, je nach Situation im Austausch mit Team und Leitung</td>
+            <td>Nein, die fachliche Einordnung und Beratung im Team sind wichtig</td>
+            <td>Nein, das weitere Vorgehen richtet sich nach dem vorgesehenen Kinderschutzverfahren und erfolgt unter Einbeziehung der erforderlichen fachlichen Stellen</td>
           </tr>
         </tbody>
       </table>
+
+      <p>Die Unterscheidung zwischen allgemeiner Belastung, Kindeswohlbeeinträchtigung und Kindeswohlgefährdung ist keine gesetzlich festgelegte Dreiteilung. Die rechtlichen Anforderungen an das Vorgehen bei gewichtigen Anhaltspunkten für eine Kindeswohlgefährdung ergeben sich insbesondere aus § 8a SGB VIII. Für Fachkräfte in Einrichtungen sieht § 8a SGB VIII unter anderem eine Gefährdungseinschätzung und die beratende Hinzuziehung einer insoweit erfahrenen Fachkraft vor.</p>
 
       <h2 id="fuenf-schritte">Das professionelle Vorgehen: 5 Schritte bei einer Sorge</h2>
 
@@ -407,7 +417,7 @@
           <div class="prozess-num">2</div>
           <div class="prozess-text">
             <strong>Dokumentieren</strong>
-            <span>Datum, Uhrzeit, genaue Beschreibung — sachlich und ohne Interpretation.</span>
+            <span>Datum, Uhrzeit, genaue Beschreibung, sachlich und ohne Interpretation.</span>
           </div>
         </div>
         <div class="prozess-step">
@@ -428,7 +438,7 @@
           <div class="prozess-num">5</div>
           <div class="prozess-text">
             <strong>Handeln</strong>
-            <span>Geeignete Schritte einleiten — und weiter beobachten, denn Einschätzungen können sich verändern.</span>
+            <span>Geeignete Schritte einleiten und weiter beobachten, denn Einschätzungen können sich verändern.</span>
           </div>
         </div>
       </div>
@@ -437,7 +447,7 @@
 
       <h2 id="informationen">Nicht jede Information ist eine Tatsache</h2>
 
-      <p>Im pädagogischen Alltag hören Fachkräfte vieles — und gerade im Kinderschutz müssen diese Informationen sorgfältig voneinander getrennt werden:</p>
+      <p>Im pädagogischen Alltag hören Fachkräfte vieles, und gerade im Kinderschutz müssen diese Informationen sorgfältig voneinander getrennt werden:</p>
 
       <table class="vergleich-table" aria-label="Unterschied zwischen Beobachtung, Bericht und Einschätzung">
         <thead>
@@ -482,13 +492,13 @@
 
       <h2 id="bilanz">Was bleibt nach drei Monaten?</h2>
 
-      <p>Nach acht Terminen haben wir nicht einfach eine Liste von Vorschriften und Fachbegriffen erarbeitet, sondern im besten Fall den Blick geschärft — auf Kinder und ihre Rechte, auf die eigene Macht, auf Situationen, die vielleicht zu selbstverständlich geworden sind, auf Beschwerden und nonverbale Signale, auf Risiken innerhalb der Einrichtung und darauf, was zu tun ist, wenn sich eine ernsthafte Sorge entwickelt.</p>
+      <p>Nach acht Terminen haben wir nicht einfach eine Liste von Vorschriften und Fachbegriffen erarbeitet, sondern im besten Fall den Blick geschärft: auf Kinder und ihre Rechte, auf die eigene Macht, auf Situationen, die vielleicht zu selbstverständlich geworden sind, auf Beschwerden und nonverbale Signale, auf Risiken innerhalb der Einrichtung und darauf, was zu tun ist, wenn sich eine ernsthafte Sorge entwickelt.</p>
 
-      <p>Kinderschutz bedeutet, hinzuschauen, zuzuhören, zu reflektieren und Verantwortung zu übernehmen. Und genauso: nicht allein bleiben zu müssen. Fachkräfte brauchen Wissen, klare Verfahren, fachliche Beratung, gute Teamstrukturen und eine Einrichtung, in der Fragen und Unsicherheiten offen angesprochen werden können.</p>
+      <p>Kinderschutz bedeutet, hinzuschauen, zuzuhören, zu reflektieren und Verantwortung zu übernehmen, und genauso: nicht allein bleiben zu müssen. Fachkräfte brauchen Wissen, klare Verfahren, fachliche Beratung, gute Teamstrukturen und eine Einrichtung, in der Fragen und Unsicherheiten offen angesprochen werden können.</p>
 
       <div class="blog-cta-banner">
         <h3>3-Monats-Fortbildung: KoordinatorIn im Kinderschutz</h3>
-        <p>Acht Termine — von Kinderrechten über Risikoanalyse und Partizipation bis zu §8a SGB VIII. Online, berufsbegleitend und mit Raum für den Austausch im Team.</p>
+        <p>Acht Termine: von Kinderrechten über Risikoanalyse und Partizipation bis zu §8a SGB VIII. Online, berufsbegleitend und mit Raum für den Austausch im Team.</p>
         <div class="blog-cta-banner-links">
           <a href="../fortbildungen/kinderschutz-koordinatorin-kita/">Zur Fortbildung</a>
           <a href="../fortbildungskalender/">Alle Termine</a>
