@@ -71,6 +71,11 @@ export default {
       return handleStundenAbrufen(request, env);
     }
 
+    // API: Stundendokumentation – Eintrag löschen
+    if (path === '/api/stunden-loeschen') {
+      return handleStundenLoeschen(request, env);
+    }
+
     // API: Urlaubsplanung – Block speichern (Calvin)
     if (path === '/api/urlaub-eintragen') {
       return handleUrlaubEintragen(request, env);
@@ -789,13 +794,33 @@ async function handleStundenAbrufen(request, env) {
     const eintraege = await Promise.all(
       list.keys.map(async ({ name }) => {
         const val = await env.FORM_SUBMISSIONS.get(name);
-        return val ? JSON.parse(val) : null;
+        if (!val) return null;
+        const obj = JSON.parse(val);
+        obj._key = name;
+        return obj;
       })
     );
     const sorted = eintraege.filter(Boolean).sort((a, b) =>
       new Date(b.eingereicht) - new Date(a.eingereicht)
     );
     return new Response(JSON.stringify({ ok: true, eintraege: sorted }), { headers: json });
+  } catch (e) {
+    return new Response(JSON.stringify({ ok: false, msg: e.message }), { status: 500, headers: json });
+  }
+}
+
+async function handleStundenLoeschen(request, env) {
+  const json = { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' };
+  if (request.method === 'OPTIONS') return new Response(null, { headers: json });
+  if (request.method !== 'POST') return new Response(JSON.stringify({ ok: false }), { status: 405, headers: json });
+
+  try {
+    const { key } = await request.json();
+    if (!key || !key.startsWith('stunden:')) {
+      return new Response(JSON.stringify({ ok: false, msg: 'Ungültiger Schlüssel.' }), { status: 400, headers: json });
+    }
+    await env.FORM_SUBMISSIONS.delete(key);
+    return new Response(JSON.stringify({ ok: true }), { headers: json });
   } catch (e) {
     return new Response(JSON.stringify({ ok: false, msg: e.message }), { status: 500, headers: json });
   }
