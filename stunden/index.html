@@ -492,6 +492,16 @@
     async function loadExisting() {
       const hint = document.getElementById('loadHint');
       hint.style.display = 'none';
+
+      // Personen-eigene Felder zurücksetzen, damit nichts von einer anderen Person/Woche
+      // übernommen wird (Notizen, geprägt, Auslastung, Freitext werden pro Bericht gespeichert)
+      document.getElementById('notizen').value = '';
+      document.getElementById('gepraegt').value = '';
+      document.getElementById('auslastungVal').value = '';
+      document.querySelectorAll('#auslastung .load-pill').forEach(b => b.classList.remove('active'));
+      const ftReset = document.getElementById('freitext');
+      if (ftReset) ftReset.value = '';
+
       const p = personSel.value;
       const kw = document.getElementById('kw').value;
       if (!kw) return;
