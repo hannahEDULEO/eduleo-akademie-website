@@ -172,6 +172,18 @@
     .total-box .stunden-zahl { font-size: 28px; font-weight: 900; color: #5A9E7A; }
     .soll { font-size: 12px; color: #888; margin-top: 2px; }
 
+    .auslastung { display: flex; flex-wrap: wrap; gap: 8px; }
+    .load-pill {
+      background: #fff; border: 1.5px solid #D2EADA; border-radius: 20px;
+      padding: 9px 16px; font-size: 14px; font-weight: 700; color: #666;
+      cursor: pointer; font-family: inherit;
+    }
+    .load-pill:hover { border-color: #5A9E7A; }
+    .load-pill.active {
+      border-color: #5A9E7A; background: #EDF6F0; color: #261D18;
+      box-shadow: inset 0 0 0 1.5px #5A9E7A;
+    }
+
     .notizen-field { margin-top: 20px; }
     textarea { resize: vertical; min-height: 80px; }
 
@@ -297,6 +309,21 @@
           <div class="soll">Soll: 40 Stunden</div>
         </div>
         <div class="stunden-zahl" id="total">0</div>
+      </div>
+
+      <div class="section-title">Auslastung diese Woche</div>
+      <p class="section-hint">Wie voll war deine Woche? So sehen wir auf einen Blick, wer gerade Luft hat.</p>
+      <div class="auslastung" id="auslastung">
+        <button type="button" class="load-pill" data-v="ruhig" onclick="setAuslastung(this)">🟢 ruhig</button>
+        <button type="button" class="load-pill" data-v="normal" onclick="setAuslastung(this)">🟡 normal</button>
+        <button type="button" class="load-pill" data-v="voll" onclick="setAuslastung(this)">🟠 voll</button>
+        <button type="button" class="load-pill" data-v="am Limit" onclick="setAuslastung(this)">🔴 am Limit</button>
+      </div>
+      <input type="hidden" id="auslastungVal">
+
+      <div class="notizen-field">
+        <label for="gepraegt">Was hat die Woche geprägt? (optional)</label>
+        <input type="text" id="gepraegt" placeholder="z.B. Kitaversum-Fortbildung + neues Thema">
       </div>
 
       <div class="notizen-field">
@@ -434,6 +461,12 @@
       if (row) { row.remove(); calcTotal(); }
     }
 
+    function setAuslastung(btn) {
+      document.querySelectorAll('#auslastung .load-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('auslastungVal').value = btn.dataset.v;
+    }
+
     function calcTotal() {
       const inputs = document.querySelectorAll('input[name^="stunden_"]');
       let total = 0;
@@ -480,6 +513,10 @@
       (found.abwesenheiten || []).forEach(a => addAbwRow(a.tag, a.status, a.notiz));
 
       document.getElementById('notizen').value = found.notizen || '';
+      document.getElementById('gepraegt').value = found.gepraegt || '';
+      document.getElementById('auslastungVal').value = found.auslastung || '';
+      document.querySelectorAll('#auslastung .load-pill').forEach(b =>
+        b.classList.toggle('active', b.dataset.v === (found.auslastung || '')));
       const ft = document.getElementById('freitext');
       if (ft) ft.value = found.bericht_text || '';
       calcTotal();
@@ -590,6 +627,8 @@
         bericht_text,
         abwesenheiten,
         gesamt: isCalvin ? (parseFloat(document.getElementById('total').textContent) || 0) : null,
+        auslastung: document.getElementById('auslastungVal').value,
+        gepraegt: document.getElementById('gepraegt').value,
         notizen: document.getElementById('notizen').value
       };
 

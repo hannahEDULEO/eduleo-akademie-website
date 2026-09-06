@@ -178,6 +178,16 @@
       white-space: nowrap;
     }
 
+    .load-badge {
+      background: #F5F1EF;
+      color: #555;
+      font-size: 12px;
+      font-weight: 800;
+      border-radius: 8px;
+      padding: 4px 9px;
+      white-space: nowrap;
+    }
+
     .bericht-text {
       white-space: pre-wrap;
       font-size: 14px;
@@ -375,6 +385,12 @@
               `<span class="abw-item">${abwIcon(a.status)} ${a.tag}: ${a.status}${a.notiz ? ' (' + a.notiz + ')' : ''}</span>`
             ).join('')}</div>` : '';
 
+        const loadIcon = { 'ruhig': '🟢', 'normal': '🟡', 'voll': '🟠', 'am Limit': '🔴' };
+        const loadBadge = e.auslastung
+          ? `<span class="load-badge">${loadIcon[e.auslastung] || ''} ${e.auslastung}</span>` : '';
+        const gepraegtBox = e.gepraegt
+          ? `<div class="notiz-box"><strong>Diese Woche geprägt</strong>${e.gepraegt}</div>` : '';
+
         const notizBox = e.notizen
           ? `<div class="notiz-box"><strong>Notiz</strong>${e.notizen}</div>` : '';
 
@@ -400,6 +416,7 @@
                 </div>
               </div>
               <div style="display:flex;align-items:center;gap:12px;">
+                ${loadBadge}
                 ${abwBadge}
                 ${stundenBadge}
                 <span class="chevron" id="chev-${i}">▾</span>
@@ -407,6 +424,7 @@
             </div>
             <div class="entry-body" id="body-${i}">
               ${bodyContent}
+              ${gepraegtBox}
               ${abwBox}
               ${notizBox}
               <div class="datum-klein">Eingereicht: ${eingereicht}${e._key ? ` <button class="del-btn" onclick="loeschen('${e._key}')" title="Bericht löschen">🗑 Löschen</button>` : ''}</div>
