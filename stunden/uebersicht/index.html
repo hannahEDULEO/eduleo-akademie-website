@@ -75,16 +75,16 @@
     .ausw-head { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
     .ausw-head h2 { font-size: 15px; font-weight: 800; color: #261D18; }
     .ausw-total { font-size: 13px; font-weight: 800; color: #5A9E7A; }
-    .ausw-bars { display: flex; flex-direction: column; gap: 10px; }
-    .ausw-row { display: grid; grid-template-columns: 160px 1fr 92px; align-items: center; gap: 12px; }
-    .ausw-label { font-size: 12px; font-weight: 700; color: #261D18; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .ausw-track { background: #EDE6E2; border-radius: 8px; height: 16px; overflow: hidden; }
+    .ausw-bars { display: flex; flex-direction: column; gap: 14px; }
+    .ausw-row { display: flex; flex-direction: column; gap: 5px; }
+    .ausw-label { font-size: 13px; font-weight: 700; color: #261D18; line-height: 1.3; }
+    .ausw-barline { display: flex; align-items: center; gap: 12px; }
+    .ausw-track { flex: 1; background: #EDE6E2; border-radius: 8px; height: 16px; overflow: hidden; }
     .ausw-fill { display: block; height: 100%; background: #5A9E7A; border-radius: 8px; transition: width .4s; }
-    .ausw-val { font-size: 12px; font-weight: 700; color: #666; text-align: right; white-space: nowrap; }
+    .ausw-val { font-size: 12px; font-weight: 700; color: #666; text-align: right; white-space: nowrap; min-width: 88px; }
     @media (max-width: 600px) {
-      .ausw-row { grid-template-columns: 104px 1fr 74px; gap: 8px; }
-      .ausw-label { font-size: 11px; }
-      .ausw-val { font-size: 11px; }
+      .ausw-label { font-size: 12px; }
+      .ausw-val { font-size: 11px; min-width: 74px; }
     }
 
     /* Entries */
@@ -402,9 +402,11 @@
           const pct = total ? Math.round(r.v / total * 100) : 0;
           const w = max ? (r.v / max * 100) : 0;
           return '<div class="ausw-row">' +
-            '<span class="ausw-label" title="' + r.k + '">' + r.k + '</span>' +
-            '<span class="ausw-track"><span class="ausw-fill" style="width:' + w + '%"></span></span>' +
-            '<span class="ausw-val">' + fmt(r.v) + ' h · ' + pct + '%</span>' +
+            '<span class="ausw-label">' + r.k + '</span>' +
+            '<span class="ausw-barline">' +
+              '<span class="ausw-track"><span class="ausw-fill" style="width:' + w + '%"></span></span>' +
+              '<span class="ausw-val">' + fmt(r.v) + ' h · ' + pct + '%</span>' +
+            '</span>' +
             '</div>';
         }).join('') + '</div>';
     }
