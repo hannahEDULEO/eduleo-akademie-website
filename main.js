@@ -425,6 +425,12 @@ if (filterTabs.length) {
     { t: 'Vorschulkonzept für die Kita', s: 'Ein starkes Konzept entwickeln', u: '/vorschulkonzept-für-die-kita/', c: 'blog', k: 'vorschulkonzept konzept entwickeln schulvorbereitung' },
     { t: 'Waldpädagogik in der Kita', s: 'Natur als Lernraum', u: '/waldpädagogik-in-der-kita/', c: 'blog', k: 'waldpädagogik natur draußen wald naturkindergarten outdoor' },
     { t: 'Welche Fortbildung passt zu mir?', s: 'Entscheidungshilfe', u: '/welche-fortbildung/', c: 'blog', k: 'beratung auswahl fortbildung wahl empfehlung' },
+    { t: 'Bindung als Basis: die ersten Wochen in der Kita', s: 'Bindung & Eingewöhnung', u: '/bindungsfoerderung-in-der-kita/', c: 'blog', k: 'bindung bindungsförderung beziehung sicherheit eingewöhnung erste wochen kita' },
+    { t: 'Eingewöhnung ohne Tränendrama', s: 'Eingewöhnung', u: '/eingewoehnung-ohne-traenendrama/', c: 'blog', k: 'eingewöhnung eingewoehnung tränen start kita bindung eltern übergang' },
+    { t: 'Gute Führung beginnt beim Menschen', s: 'Kita-Leitung & Führung', u: '/gute-fuehrung-beginnt-beim-menschen/', c: 'blog', k: 'führung leitung kita-leitung mitarbeiter team menschlich modern' },
+    { t: 'Kinderschutz in der Kita: Kinderrechte & Verantwortung', s: 'Kinderschutz', u: '/kinderschutz-in-der-kita-kinderrechte-verantwortung/', c: 'blog', k: 'kinderschutz kinderrechte schutz verantwortung sicher handeln gewalt' },
+    { t: 'Selbstständigkeit im Kita-Alltag fördern', s: 'Selbstständigkeit fördern', u: '/selbstständigkeit-im-kita-alltag-fördern/', c: 'blog', k: 'selbstständigkeit selbständigkeit autonomie fördern loslassen alltag kinder' },
+    { t: 'Sprachentwicklung bei den Kleinsten beobachten', s: 'Sprachentwicklung', u: '/sprachentwicklung-bei-den-kleinsten-beobachten/', c: 'blog', k: 'sprachentwicklung sprache beobachten kleinkind krippe u3 meilensteine sprachförderung' },
     // ── Alle Fortbildungen ──
     { t: 'Alle Fortbildungen', s: 'Übersicht unserer Kurse', u: '/fortbildungen/', c: 'fortbildung', k: 'kurs seminar weiterbildung zertifikat übersicht' },
     // ── 3-Monats-Fortbildungen ──
@@ -438,6 +444,7 @@ if (filterTabs.length) {
     { t: 'Teamcoach in der Kita', s: '3-Monats-Fortbildung', u: '/fortbildungen/teamcoach-kita/', c: 'fortbildung', k: 'team coaching führung leitung kommunikation 3 monate' },
     { t: 'Kita KoordinatorIn für Kinderschutz', s: '3-Monats-Fortbildung', u: '/fortbildungen/kinderschutz-koordinatorin-kita/', c: 'fortbildung', k: 'kinderschutz schutz gewalt missbrauch koordination 3 monate' },
     { t: 'Kita-ExpertIn für ADHS & Autismus', s: '3-Monats-Fortbildung', u: '/fortbildungen/kita-expertin-adhs-autismus/', c: 'fortbildung', k: 'adhs autismus experte expertise fachkraft 3 monate' },
+    { t: 'Sprachförderung in der Kita mit Wuppi', s: '3-Monats-Fortbildung', u: '/fortbildungen/sprachfoerderung-kita-wuppi/', c: 'fortbildung', k: 'sprache sprachförderung sprachbildung wuppi finken phonologische bewusstheit literacy 3 monate zertifikat' },
     // ── Tagesfortbildungen ──
     { t: 'Stressbewältigung im Kita-Alltag', s: 'Tagesfortbildung', u: '/fortbildungen/tagesfortbildungen/stressbewaltigung-kita-alltag/', c: 'fortbildung', k: 'stress alltag bewältigung entspannung tagesfortbildung' },
     { t: 'Vorschulkonzept entwickeln und gestalten', s: 'Tagesfortbildung', u: '/fortbildungen/tagesfortbildungen/vorschulkonzept-gestalten/', c: 'fortbildung', k: 'vorschule konzept entwickeln gestalten tagesfortbildung' },

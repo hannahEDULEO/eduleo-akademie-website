@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
   <title>Wochenbericht – EDULEO Akademie</title>
   <link rel="icon" href="/favicon-32x32.png">
   <style>
@@ -107,11 +108,8 @@
     .tag-grid-full   { grid-template-columns: 1.4fr 1.2fr 1.4fr 70px 24px; }
     .tag-header-full { grid-template-columns: 1.4fr 1.2fr 1.4fr 70px 24px; }
 
-    /* Ohne Stunden (Hannah/Janine) */
-    body.nohours .tag-grid-full,
-    body.nohours .tag-header-full { grid-template-columns: 1.4fr 1.2fr 1.4fr 24px; }
-    body.nohours .stunden-input,
-    body.nohours .col-std,
+    /* Kein 40-Stunden-Soll (Hannah/Janine): Stunden werden pro Aufgabe erfasst,
+       aber es gibt keine Gesamtstundenzahl und kein 40-Stunden-Soll */
     body.nohours #totalBox,
     body.nohours #abwBlock { display: none; }
     #freitextBlock { display: none; }
@@ -361,7 +359,7 @@
       ],
       Janine: [
         'Kooperation', 'Neukunden & Neu-Ansprachen', 'Finanzen & Buchhaltung',
-        'Finanzberichte', 'Instagram Story', 'Arbeitgeberseite Krankmeldung', 'Sonstiges'
+        'Finanzberichte', 'Instagram Story', 'Newsletter', 'Arbeitgeberseite Krankmeldung', 'Sonstiges'
       ]
     };
 
@@ -479,8 +477,7 @@
     function applyMode() {
       const p = personSel.value;
       document.body.classList.toggle('nohours', p !== 'Calvin');
-      document.getElementById('tasksTitle').textContent =
-        (p === 'Calvin') ? 'Aufgaben & Stunden der Woche' : 'Aufgaben der Woche';
+      document.getElementById('tasksTitle').textContent = 'Aufgaben & Stunden der Woche';
     }
     function rebuildRows() {
       document.getElementById('eintraege').innerHTML = '';
@@ -598,7 +595,8 @@
           return;
         }
       } else {
-        // Calvin & Hannah: strukturierte Zeilen (Stunden nur bei Calvin)
+        // Alle drei: strukturierte Zeilen mit Stunden pro Aufgabe.
+        // Gesamtstunden/40-Stunden-Soll gibt es nur bei Calvin (siehe payload.gesamt).
         document.querySelectorAll('[id^="row-"]').forEach(row => {
           const id = row.id.replace('row-', '');
           const aufgabe = row.querySelector(`[name="aufgabe_${id}"]`)?.value || '';
@@ -608,7 +606,7 @@
             kategorie: row.querySelector(`[name="kategorie_${id}"]`)?.value || '',
             kategorien: [...row.querySelectorAll('.kat-chip.active')].map(c => c.textContent),
             notiz: row.querySelector(`[name="notiz_${id}"]`)?.value || '',
-            stunden: isCalvin ? (parseFloat(row.querySelector(`[name="stunden_${id}"]`)?.value) || 0) : null
+            stunden: parseFloat(row.querySelector(`[name="stunden_${id}"]`)?.value) || 0
           });
         });
         if (eintraege.length === 0) {

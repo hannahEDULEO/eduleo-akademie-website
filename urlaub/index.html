@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
   <title>Urlaubsplanung – EDULEO intern</title>
   <link rel="icon" href="/favicon-32x32.png">
   <style>
@@ -106,6 +107,16 @@
   </style>
 </head>
 <body>
+  <div id="pwgate" style="position:fixed;inset:0;z-index:99999;background:#EDE6E2;display:flex;align-items:center;justify-content:center;padding:20px;">
+    <form id="pwform" style="background:#fff;border-radius:18px;padding:34px 30px;box-shadow:0 4px 24px rgba(38,29,24,.12);max-width:340px;width:100%;text-align:center;font-family:'Nunito',system-ui,sans-serif;">
+      <div style="font-size:2rem;margin-bottom:10px;">🔒</div>
+      <h1 style="font-size:1.15rem;color:#261D18;margin-bottom:6px;">Interner Bereich</h1>
+      <p style="font-size:.85rem;color:#8a7d75;margin-bottom:18px;">Bitte gib das Team-Passwort ein.</p>
+      <input type="password" id="pwinput" placeholder="Passwort" autocomplete="current-password" style="width:100%;padding:12px 14px;border:1.5px solid #d9cfc8;border-radius:10px;font-size:1rem;margin-bottom:10px;font-family:inherit;">
+      <div id="pwerror" style="display:none;color:#c0392b;font-size:.82rem;margin-bottom:10px;">Falsches Passwort.</div>
+      <button type="submit" style="width:100%;padding:12px;background:#5A9E7A;color:#fff;border:none;border-radius:100px;font-size:1rem;font-weight:700;cursor:pointer;font-family:inherit;">Anmelden</button>
+    </form>
+  </div>
   <div class="wrap">
     <div class="header">
       <img src="/Logo Akademie.png" alt="EDULEO">
@@ -363,7 +374,28 @@
       } catch {}
     }
 
-    loadData();
+    // ── Passwortschutz (interner Bereich) ──
+    (function gate(){
+      var PW = 'G-Klasse123';
+      var ov = document.getElementById('pwgate');
+      if (sessionStorage.getItem('eduleo_intern_ok') === '1') { if (ov) ov.remove(); loadData(); return; }
+      var f = document.getElementById('pwform');
+      var inp = document.getElementById('pwinput');
+      var errEl = document.getElementById('pwerror');
+      if (inp) inp.focus();
+      f.addEventListener('submit', function(e){
+        e.preventDefault();
+        if (inp.value === PW) {
+          sessionStorage.setItem('eduleo_intern_ok', '1');
+          if (ov) ov.remove();
+          loadData();
+        } else {
+          errEl.style.display = 'block';
+          inp.value = '';
+          inp.focus();
+        }
+      });
+    })();
   </script>
 </body>
 </html>

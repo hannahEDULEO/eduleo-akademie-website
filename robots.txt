@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
 
+# Interne Team-Seiten (nicht indexieren)
+Disallow: /stunden/
+Disallow: /urlaub/
+Disallow: /guthaben-admin/
+Disallow: /instagram-planer/
+
 Sitemap: https://www.eduleo-akademie.de/sitemap.xml
