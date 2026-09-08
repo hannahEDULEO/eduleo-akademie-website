@@ -62,6 +62,31 @@
     .stat-card.warn .val { color: #e07000; }
     .stat-card.ok .val { color: #5A9E7A; }
 
+    /* Auswertung / Diagramm */
+    .auswertung {
+      max-width: 900px;
+      margin: 0 auto 20px;
+      background: #fff;
+      border-radius: 14px;
+      padding: 20px 22px;
+      box-shadow: 0 1px 8px rgba(38,29,24,.06);
+      display: none;
+    }
+    .ausw-head { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+    .ausw-head h2 { font-size: 15px; font-weight: 800; color: #261D18; }
+    .ausw-total { font-size: 13px; font-weight: 800; color: #5A9E7A; }
+    .ausw-bars { display: flex; flex-direction: column; gap: 10px; }
+    .ausw-row { display: grid; grid-template-columns: 160px 1fr 92px; align-items: center; gap: 12px; }
+    .ausw-label { font-size: 12px; font-weight: 700; color: #261D18; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .ausw-track { background: #EDE6E2; border-radius: 8px; height: 16px; overflow: hidden; }
+    .ausw-fill { display: block; height: 100%; background: #5A9E7A; border-radius: 8px; transition: width .4s; }
+    .ausw-val { font-size: 12px; font-weight: 700; color: #666; text-align: right; white-space: nowrap; }
+    @media (max-width: 600px) {
+      .ausw-row { grid-template-columns: 104px 1fr 74px; gap: 8px; }
+      .ausw-label { font-size: 11px; }
+      .ausw-val { font-size: 11px; }
+    }
+
     /* Entries */
     .entries { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
 
@@ -280,6 +305,8 @@
     <input type="text" id="filterSuche" placeholder="Suche..." oninput="render()" style="flex:1; min-width:150px;">
   </div>
 
+  <div class="auswertung" id="auswertung"></div>
+
   <div class="entries" id="entries">
     <div class="loading">Daten werden geladen…</div>
   </div>
@@ -344,6 +371,44 @@
       document.getElementById('s-monat').textContent = monatStd;
     }
 
+    // Auswertung: Stunden pro Kategorie über die aktuell gefilterten Berichte.
+    // Hat eine Aufgabe mehrere Kategorien, werden die Stunden gleichmäßig aufgeteilt.
+    function renderAuswertung(filtered) {
+      const box = document.getElementById('auswertung');
+      const map = {};
+      let total = 0;
+      filtered.forEach(e => {
+        (e.eintraege || []).forEach(r => {
+          const std = parseFloat(r.stunden);
+          if (!std || std <= 0) return;
+          let kats = (r.kategorien && r.kategorien.length)
+            ? r.kategorien
+            : (r.kategorie ? String(r.kategorie).split(',').map(s => s.trim()).filter(Boolean) : []);
+          if (!kats.length) kats = ['Ohne Kategorie'];
+          const share = std / kats.length;
+          kats.forEach(k => { map[k] = (map[k] || 0) + share; });
+          total += std;
+        });
+      });
+      const rows = Object.keys(map).map(k => ({ k, v: map[k] })).sort((a, b) => b.v - a.v);
+      if (!rows.length) { box.style.display = 'none'; box.innerHTML = ''; return; }
+      const max = rows[0].v;
+      const fmt = n => (n % 1 === 0 ? n : n.toFixed(1));
+      box.style.display = 'block';
+      box.innerHTML =
+        '<div class="ausw-head"><h2>Auswertung: Wofür geht die Zeit drauf?</h2>' +
+        '<span class="ausw-total">' + fmt(total) + ' h gesamt</span></div>' +
+        '<div class="ausw-bars">' + rows.map(r => {
+          const pct = total ? Math.round(r.v / total * 100) : 0;
+          const w = max ? (r.v / max * 100) : 0;
+          return '<div class="ausw-row">' +
+            '<span class="ausw-label" title="' + r.k + '">' + r.k + '</span>' +
+            '<span class="ausw-track"><span class="ausw-fill" style="width:' + w + '%"></span></span>' +
+            '<span class="ausw-val">' + fmt(r.v) + ' h · ' + pct + '%</span>' +
+            '</div>';
+        }).join('') + '</div>';
+    }
+
     function render() {
       const monat = document.getElementById('filterMonat').value;
       const person = document.getElementById('filterPerson').value;
@@ -358,6 +423,8 @@
         }
         return true;
       });
+
+      renderAuswertung(filtered);
 
       const container = document.getElementById('entries');
       if (filtered.length === 0) {
