@@ -393,7 +393,7 @@
       const rows = Object.keys(map).map(k => ({ k, v: map[k] })).sort((a, b) => b.v - a.v);
       if (!rows.length) { box.style.display = 'none'; box.innerHTML = ''; return; }
       const max = rows[0].v;
-      const fmt = n => (n % 1 === 0 ? n : n.toFixed(1));
+      const fmt = n => Math.round(n * 100) / 100;
       box.style.display = 'block';
       box.innerHTML =
         '<div class="ausw-head"><h2>Auswertung: Wofür geht die Zeit drauf?</h2>' +

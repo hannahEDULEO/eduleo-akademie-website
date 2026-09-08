@@ -358,18 +358,18 @@
         'Nachfassen / Wiederbuchung', 'Telefonate (tägliche Rückfragen)',
         'Koordination & Bestandskunden', 'Bring-a-Friend einpflegen',
         'DKLK / Messen', 'DKLK nachfassen', 'Teilnehmerkommunikation',
-        'Dozentenkommunikation', 'Verwaltung', 'Kitaversum', 'Sonstiges'
+        'Dozentenkommunikation', 'Verwaltung', 'Kitaversum', 'Teammeeting', 'Vorbereitung Teammeeting', 'Sonstiges'
       ],
       Hannah: [
         'Blogbeitrag', 'Pinterest', 'ManyChat', 'Social Media Redaktionsplan',
         'Erstellung neuer Beiträge', 'Content erstellen (Reels)',
         'Newsletter erstellen/planen', 'Fortbildung erstellen/bearbeiten',
         'Website', 'Google Search Console', 'GA4', 'Meetings',
-        'Kitaversum', 'Dozentenabsprache', 'Sonstiges'
+        'Kitaversum', 'Dozentenabsprache', 'Teammeeting', 'Vorbereitung Teammeeting', 'Sonstiges'
       ],
       Janine: [
         'Kooperation', 'Neukunden & Neu-Ansprachen', 'Finanzen & Buchhaltung',
-        'Finanzberichte', 'Instagram Story', 'Newsletter', 'Arbeitgeberseite Krankmeldung', 'Sonstiges'
+        'Finanzberichte', 'Instagram Story', 'Newsletter', 'Arbeitgeberseite Krankmeldung', 'Teammeeting', 'Vorbereitung Teammeeting', 'Sonstiges'
       ]
     };
 
@@ -397,7 +397,7 @@
           <input type="hidden" name="kategorie_${id}" value="${kats.join(', ')}">
         </div>
         <input type="text" name="notiz_${id}" placeholder="Notiz (optional)" value="${notiz}">
-        <input type="number" name="stunden_${id}" class="stunden-input" min="0" max="60" step="0.5" placeholder="0" value="${std}" oninput="calcTotal()">
+        <input type="number" name="stunden_${id}" class="stunden-input" min="0" max="60" step="any" placeholder="0" value="${std}" oninput="calcTotal()">
         <button type="button" class="remove-row" onclick="removeRow(${id})" title="Zeile löschen">×</button>
       `;
       document.getElementById('eintraege').appendChild(row);
@@ -479,7 +479,7 @@
       const inputs = document.querySelectorAll('input[name^="stunden_"]');
       let total = 0;
       inputs.forEach(i => { total += parseFloat(i.value) || 0; });
-      document.getElementById('total').textContent = total % 1 === 0 ? total : total.toFixed(1);
+      document.getElementById('total').textContent = Math.round(total * 100) / 100;
     }
 
     // Personen-Modus (Calvin = mit Stunden, sonst nur Aufgaben)
