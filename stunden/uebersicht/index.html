@@ -471,7 +471,7 @@
     (function gate(){
       var PW = 'G-Klasse123';
       var ov = document.getElementById('pwgate');
-      if (sessionStorage.getItem('eduleo_intern_ok') === '1') { if (ov) ov.remove(); loadData(); return; }
+      if (localStorage.getItem('eduleo_intern_ok') === '1') { if (ov) ov.remove(); loadData(); return; }
       var f = document.getElementById('pwform');
       var inp = document.getElementById('pwinput');
       var errEl = document.getElementById('pwerror');
@@ -479,7 +479,7 @@
       f.addEventListener('submit', function(e){
         e.preventDefault();
         if (inp.value === PW) {
-          sessionStorage.setItem('eduleo_intern_ok', '1');
+          localStorage.setItem('eduleo_intern_ok', '1');
           if (ov) ov.remove();
           loadData();
         } else {
