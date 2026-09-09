@@ -58,6 +58,10 @@
     .kurs-hero .btn-outline { border-color: rgba(255,255,255,0.7); color: #fff; }
     .kurs-hero .btn-outline:hover { background: rgba(255,255,255,0.15); border-color: #fff; }
     @media (prefers-reduced-motion: reduce) { .kurs-hero::after { animation: none; opacity: 0.7; } }
+    /* Wuppi schwebt sanft neben dem Text im Infokasten */
+    .wuppi-inline { width: 150px; flex: 0 0 auto; margin: 0 auto; filter: drop-shadow(0 8px 18px rgba(0,0,0,0.18)); animation: wuppiBob 5.5s ease-in-out infinite alternate; }
+    @keyframes wuppiBob { from { transform: translateY(-5px); } to { transform: translateY(5px); } }
+    @media (prefers-reduced-motion: reduce) { .wuppi-inline { animation: none; } }
   </style>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Course", "name": "Sprachförderung in der Kita mit Wuppi – 3-Monats-Fortbildung | EDULEO Akademie", "description": "Phonologische Bewusstheit, Literacy und Sprachbildung praxisnah in den Kita-Alltag bringen. Beide Wuppi-Materialordner, online & live via Zoom, mit Zertifikat, in Kooperation mit dem Finken Verlag.", "url": "https://www.eduleo-akademie.de/fortbildungen/sprachfoerderung-kita-wuppi/", "provider": {"@type": "Organization", "name": "EDULEO Akademie", "url": "https://www.eduleo-akademie.de"}, "offers": {"@type": "Offer", "price": "900", "priceCurrency": "EUR", "availability": "https://schema.org/InStock"}, "courseMode": "online", "inLanguage": "de", "timeRequired": "P3M", "educationalCredentialAwarded": "Zertifikat"}</script>
   <!-- Google tag (gtag.js) -->
@@ -215,8 +219,9 @@
       </div>
     </div>
 
-    <div style="background:var(--off-white);border-left:3px solid var(--accent-green);border-radius:var(--radius-md);padding:16px 20px;margin-top:24px;font-size:0.92rem;line-height:1.65;">
-      💡 <strong>Mehr als Programm-Durchführung:</strong> Diese Fortbildung geht bewusst über die reine Durchführung des WUPPI-Programms hinaus. Du kommst selbst ins Ausprobieren, Reflektieren und Weiterentwickeln und nimmst am Ende wirklich etwas für deine eigene pädagogische Praxis mit. Basis sind die Materialordner <a href="https://www.finken.de/" target="_blank" rel="noopener"><strong>vom Finken Verlag</strong></a>.
+    <div style="background:var(--off-white);border-left:3px solid var(--accent-green);border-radius:var(--radius-md);padding:20px 22px;margin-top:24px;display:flex;gap:22px;align-items:center;flex-wrap:wrap;">
+      <img src="../../assets/images/wuppi/wuppi-rakete.png" alt="Wuppi in seiner Weltraum-Rakete" loading="lazy" class="wuppi-inline">
+      <p style="flex:1;min-width:240px;margin:0;font-size:0.92rem;line-height:1.65;">💡 <strong>Mehr als Programm-Durchführung:</strong> Diese Fortbildung geht bewusst über die reine Durchführung des WUPPI-Programms hinaus. Du kommst selbst ins Ausprobieren, Reflektieren und Weiterentwickeln und nimmst am Ende wirklich etwas für deine eigene pädagogische Praxis mit. Basis sind die Materialordner <a href="https://www.finken.de/" target="_blank" rel="noopener"><strong>vom Finken Verlag</strong></a>.</p>
     </div>
 
   </div>
@@ -270,9 +275,10 @@
         </div>
       </div>
 
-    <div style="margin-top:16px;padding-top:16px;border-top:1px solid #f0ebe6;">
-      <p style="font-size:0.78rem;color:#aaa;margin-bottom:8px;text-align:center;">Noch keine Freigabe vom Träger?</p>
-      <button class="btn btn-outline" style="width:100%;font-size:0.6rem;cursor:pointer;padding:7px 8px;letter-spacing:0.01em;white-space:normal;text-align:center;line-height:1.3;" type="button" onclick="var t=document.querySelector('h1')?document.querySelector('h1').innerText.trim():'';var pp=document.querySelector('.booking-price');var p=pp?pp.childNodes[0].textContent.trim():'';var u=window.location.href;var body='Hallo,\n\nich habe folgende Fortbildung bei der EDULEO Akademie gefunden und möchte gerne daran teilnehmen. Ich bitte um Freigabe und Kostenübernahme.\n\nFortbildung: '+t+'\nAnbieter: EDULEO Akademie\nKosten: '+(p?p:'auf Anfrage')+' (umsatzsteuerbefreit)\nFormat: Online & live via Zoom\n\nWeitere Informationen und Anmeldung:\n'+u+'\n\nIch freue mich sehr auf deine Rückmeldung.\n\nViele Grüße';var ml=document.createElement('a');ml.href='mailto:?subject='+encodeURIComponent('Fortbildungsanfrage: '+t)+'&body='+encodeURIComponent(body);document.body.appendChild(ml);ml.click();document.body.removeChild(ml);var h=document.getElementById('weiterleiten-hint');if(h)h.style.display='block';"><span>📨</span><span>An meine Leitung weiterleiten</span></button>
+    <div style="margin-top:18px;padding:16px 16px 14px;background:linear-gradient(#fbf7f2,#f4ede4);border:1.5px solid #e6d8c8;border-radius:14px;">
+      <p style="font-size:0.92rem;font-weight:800;color:#4a3f36;margin-bottom:4px;text-align:center;">🙋‍♀️ Noch keine Freigabe vom Träger?</p>
+      <p style="font-size:0.78rem;color:#8a7d70;margin-bottom:12px;text-align:center;line-height:1.45;">Wir haben die Anfrage schon für dich vorformuliert. Ein Klick, und du schickst sie in 10 Sekunden an deine Leitung.</p>
+      <button class="btn" style="width:100%;font-size:0.95rem;font-weight:800;cursor:pointer;padding:13px 14px;white-space:normal;text-align:center;line-height:1.3;background:#C4A092;color:#fff;border:none;box-shadow:0 5px 16px rgba(196,160,146,.55);display:flex;align-items:center;justify-content:center;gap:8px;" type="button" onclick="var t=document.querySelector('h1')?document.querySelector('h1').innerText.trim():'';var pp=document.querySelector('.booking-price');var p=pp?pp.childNodes[0].textContent.trim():'';var u=window.location.href;var body='Hallo,\n\nich habe folgende Fortbildung bei der EDULEO Akademie gefunden und möchte gerne daran teilnehmen. Ich bitte um Freigabe und Kostenübernahme.\n\nFortbildung: '+t+'\nAnbieter: EDULEO Akademie\nKosten: '+(p?p:'auf Anfrage')+' (umsatzsteuerbefreit)\nFormat: Online & live via Zoom\n\nWeitere Informationen und Anmeldung:\n'+u+'\n\nIch freue mich sehr auf deine Rückmeldung.\n\nViele Grüße';var ml=document.createElement('a');ml.href='mailto:?subject='+encodeURIComponent('Fortbildungsanfrage: '+t)+'&body='+encodeURIComponent(body);document.body.appendChild(ml);ml.click();document.body.removeChild(ml);var h=document.getElementById('weiterleiten-hint');if(h)h.style.display='block';"><span>📨</span><span>An meine Leitung weiterleiten</span></button>
       <div id="weiterleiten-hint" style="display:none;margin-top:10px;background:#f5f3f0;border-radius:8px;padding:10px 12px;font-size:0.78rem;color:#666;line-height:1.5;">Hat sich kein E-Mail-Programm geöffnet? Kein Problem – kopiere einfach den Link zu dieser Seite und schicke ihn per WhatsApp oder E-Mail an deine Leitung.</div>
     </div>
     </div>
