@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>EDULEO Leitfaden – Vorschule &amp; Konzentration</title>
+<style>
+  @page { size: A4; margin: 16mm 15mm 18mm; }
+
+  :root {
+    --green: #5A9E7A;
+    --green-dark: #2C6E4E;
+    --green-light: #D2EADA;
+    --beige: #F5EFE9;
+    --beige-dark: #E7DCD1;
+    --dark: #261D18;
+    --orange: #E8A030;
+    --red: #C0392B;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    color: #2f2a26;
+    font-size: 10.5pt;
+    line-height: 1.55;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  h1, h2, h3 { color: var(--dark); margin: 0; }
+
+  /* ── Cover-Kopf ── */
+  .cover {
+    background: var(--dark);
+    color: #fff;
+    border-radius: 14px;
+    padding: 26px 28px;
+    margin-bottom: 22px;
+  }
+  .cover .brand {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 9pt; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--green-light); font-weight: 700; margin-bottom: 16px;
+  }
+  .cover .brand img { height: 30px; width: auto; filter: brightness(0) invert(1); }
+  .cover .kicker { color: var(--green-light); font-size: 9.5pt; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 8px; }
+  .cover h1 { color: #fff; font-size: 22pt; line-height: 1.18; font-weight: 800; margin-bottom: 10px; }
+  .cover p { color: rgba(255,255,255,0.82); font-size: 10.5pt; margin: 0; max-width: 92%; }
+
+  /* ── Intro ── */
+  .intro {
+    border-left: 4px solid var(--green);
+    padding: 4px 0 4px 16px;
+    font-style: italic;
+    color: #40372f;
+    font-size: 11pt;
+    margin-bottom: 22px;
+  }
+
+  h2 {
+    font-size: 13.5pt;
+    font-weight: 800;
+    margin: 22px 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--beige-dark);
+  }
+  h2 .num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--green); color: #fff; font-size: 10pt; margin-right: 8px;
+    vertical-align: middle;
+  }
+  p { margin: 0 0 10px; }
+
+  /* ── Faustregel-Kasten ── */
+  .rule-box {
+    background: var(--green-light);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 4px 0 14px;
+    font-size: 10.5pt;
+  }
+  .rule-box strong { color: var(--green-dark); }
+
+  /* ── Fehler-Karten ── */
+  .fehler { border-radius: 10px; overflow: hidden; margin-bottom: 12px; page-break-inside: avoid; border: 1px solid var(--beige-dark); }
+  .fehler-head { padding: 8px 16px; color: #fff; font-weight: 800; font-size: 10.5pt; letter-spacing: 0.02em; }
+  .fehler-1 .fehler-head { background: var(--orange); }
+  .fehler-2 .fehler-head { background: #7A8FA0; }
+  .fehler-3 .fehler-head { background: var(--green); }
+  .fehler-body { background: var(--beige); padding: 12px 16px; }
+  .fehler-body p { margin: 0 0 8px; font-size: 10pt; color: #4a4038; }
+  .fehler-besser {
+    background: #fff; border-left: 3px solid var(--green);
+    border-radius: 5px; padding: 8px 12px; font-size: 9.7pt; color: var(--dark); margin: 0;
+  }
+
+  /* ── Übungen-Grid ── */
+  .uebungen { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 6px 0 12px; }
+  .uebung { background: var(--beige); border-radius: 8px; padding: 9px 12px; page-break-inside: avoid; }
+  .uebung strong { display: block; color: var(--dark); font-size: 10pt; margin-bottom: 2px; }
+  .uebung span { font-size: 9.2pt; color: #5c5249; line-height: 1.45; }
+
+  /* ── Team-Kasten ── */
+  .team-box {
+    background: #F0F8F4; border-radius: 10px; border-left: 4px solid var(--green);
+    padding: 14px 18px; margin: 4px 0 14px; font-size: 10.3pt; color: #2a5c3f;
+  }
+  .team-box strong { color: var(--green-dark); }
+
+  /* ── CTA ── */
+  .cta {
+    background: var(--dark); color: #fff; border-radius: 12px;
+    padding: 20px 22px; margin-top: 20px; page-break-inside: avoid;
+  }
+  .cta h3 { color: #fff; font-size: 12.5pt; margin-bottom: 6px; }
+  .cta p { color: rgba(255,255,255,0.82); font-size: 10pt; margin-bottom: 12px; }
+  .cta-item { display: flex; gap: 10px; margin-bottom: 8px; align-items: baseline; }
+  .cta-item .dot { color: var(--green-light); font-weight: 800; }
+  .cta-item b { color: #fff; }
+  .cta-item span { color: rgba(255,255,255,0.78); font-size: 9.6pt; }
+  .cta-link { margin-top: 10px; font-size: 10pt; color: var(--green-light); font-weight: 700; }
+
+  /* ── Footer ── */
+  .foot {
+    margin-top: 16px; padding-top: 10px; border-top: 1px solid var(--beige-dark);
+    font-size: 8.5pt; color: #8a7f74; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px;
+  }
+</style>
+</head>
+<body>
+
+  <div class="cover">
+    <div class="brand">
+      <img src="../assets/images/logo.png" alt="EDULEO Akademie">
+      EDULEO Akademie · Leitfaden
+    </div>
+    <div class="kicker">Vorschule &amp; Konzentration</div>
+    <h1>Wenn ein Vorschulkind noch nicht lange still sitzen kann</h1>
+    <p>Dein kompakter Leitfaden für mehr Ruhe in der Vorschulgruppe: die 3 häufigsten Fehler, spielerische Übungen und eine klare Linie im Team.</p>
+  </div>
+
+  <p class="intro">In jeder Vorschulgruppe gibt es ein Kind, das dir keine Ruhe lässt. Nimm Henri, 5 Jahre: schulreif in fast allem, aber nach 5 Minuten Konzentration ist die Luft raus, und dann wird es im Stuhlkreis schnell unruhig. Die gute Nachricht: Das ist normal. Und mit dem richtigen Ansatz bringst du spürbar mehr Ruhe in die Gruppe, ohne eine einzige Ermahnung mehr.</p>
+
+  <h2>Warum das völlig normal ist</h2>
+  <p>Eine kurze Konzentrationsspanne mit 5 Jahren ist keine Störung und kein Erziehungsfehler, sondern schlicht ein Entwicklungsstand. Das Problem ist selten das Kind, sondern wenn wir mit den falschen Erwartungen und Methoden reagieren.</p>
+  <div class="rule-box">
+    <strong>Faustregel:</strong> Ungefähr so viele Minuten Konzentration am Stück, wie das Kind Jahre alt ist, plus ein paar mehr, wenn das Thema wirklich zieht. Bei einem 5-jährigen Kind sind das oft nur 5 bis 15 Minuten.
+  </div>
+
+  <h2>Die 3 häufigsten Fehler</h2>
+
+  <div class="fehler fehler-1">
+    <div class="fehler-head">Fehler 1 · Zu früh zu viel Druck</div>
+    <div class="fehler-body">
+      <p>Wer schon im September mit Arbeitsblättern und Stillsitz-Ansage startet, erzeugt oft genau das Gegenteil: noch mehr Unruhe statt mehr Konzentration. Kinder verknüpfen Vorschule dann mit Anstrengung und Ermahnung.</p>
+      <p class="fehler-besser"><strong>Besser:</strong> spielerisch starten, kurze Einheiten, viel Bewegung. Konzentration wächst über das Jahr, sie lässt sich nicht per Ansage erzwingen.</p>
+    </div>
+  </div>
+
+  <div class="fehler fehler-2">
+    <div class="fehler-head">Fehler 2 · Zu spät zu wenig Struktur</div>
+    <div class="fehler-body">
+      <p>Das andere Extrem: bis November warten, weil sich das Thema von allein legen soll. Damit verschenkst du wertvolle Monate, in denen sich kleine, spielerische Übungen ganz locker in den Alltag einbauen lassen.</p>
+      <p class="fehler-besser"><strong>Besser:</strong> früh mit festen Mini-Ritualen beginnen, die immer gleich ablaufen. Struktur gibt Sicherheit, und Sicherheit macht ruhig.</p>
+    </div>
+  </div>
+
+  <div class="fehler fehler-3">
+    <div class="fehler-head">Fehler 3 · Keine gemeinsame Linie im Team</div>
+    <div class="fehler-body">
+      <p>Wenn jede KollegIn anders reagiert, mal streng, mal nachsichtig, mal gar nicht, verunsichert das die Kinder mehr als die kurze Konzentrationsspanne selbst.</p>
+      <p class="fehler-besser"><strong>Besser:</strong> eine kurze Absprache im Team, wie ihr auf Unruhe reagiert. Das bringt oft schon spürbar mehr Ruhe, ganz ohne neue Methode.</p>
+    </div>
+  </div>
+
+  <h2>Spielerische Übungen für mehr Konzentration</h2>
+  <p>Konzentration trainiert man nicht durch längeres Stillsitzen, sondern durch kurze, klare Impulse mit Bewegung und Spiel. Diese Übungen brauchen kaum Material:</p>
+  <div class="uebungen">
+    <div class="uebung"><strong>Stopp-Tanz &amp; Einfrieren</strong><span>Musik an, Bewegung, bei Stopp sofort stehen bleiben. Trainiert Impulskontrolle.</span></div>
+    <div class="uebung"><strong>Ich packe meinen Koffer</strong><span>Reihum die Kette merken und wiederholen. Fördert Hörgedächtnis und Fokus.</span></div>
+    <div class="uebung"><strong>Wer fehlt in der Runde?</strong><span>Ein Kind versteckt sich, die anderen erraten, wer weg ist. Genaues Hinsehen.</span></div>
+    <div class="uebung"><strong>Klatsch- &amp; Rhythmusspiele</strong><span>Rhythmus vorgeben, die Gruppe klatscht nach. Konzentration über das Ohr.</span></div>
+    <div class="uebung"><strong>Fühlbeutel ertasten</strong><span>Gegenstände nur mit den Händen erkennen. Ruhiges, fokussiertes Tasten.</span></div>
+    <div class="uebung"><strong>Ruhige Atem-Insel</strong><span>Kurz die Hand auf den Bauch, langsam ein und aus. Bringt das System runter.</span></div>
+    <div class="uebung"><strong>Muster nachlegen</strong><span>Eine Reihe aus Naturmaterial vorlegen, das Kind legt sie nach.</span></div>
+    <div class="uebung"><strong>Fehlersuche im Bild</strong><span>Zwei ähnliche Bilder vergleichen. Genaues Hinschauen macht Spaß.</span></div>
+  </div>
+
+  <div class="team-box">
+    <strong>Der Rahmen macht den Unterschied:</strong> immer zur gleichen Tageszeit, kurze Einheiten von wenigen Minuten, lieber wiederholen als ständig etwas Neues. Und wenn bei einem Kind wie Henri die Luft raus ist, darf es eine Bewegungspause geben. Das ist kein Scheitern, sondern Teil des Plans.
+  </div>
+
+  <div class="cta">
+    <h3>Vorschulkonzept als Team größer angehen?</h3>
+    <p>Wenn ihr das Thema nicht nur bei einem Kind, sondern als ganzes Team klar aufstellen wollt, gibt es dafür bei uns Unterstützung:</p>
+    <div class="cta-item"><span class="dot">›</span><div><b>Schule in Sicht</b> <span>– kompakte Tagesfortbildung, um Vorschularbeit klar aufzubauen.</span></div></div>
+    <div class="cta-item"><span class="dot">›</span><div><b>Leitung der Vorschule</b> <span>– die ausführliche 3-Monats-Fortbildung für dein Vorschulkonzept.</span></div></div>
+    <div class="cta-link">Alle Infos &amp; Termine: www.eduleo-akademie.de/fortbildungen</div>
+  </div>
+
+  <div class="foot">
+    <span>© 2026 Klumper &amp; Flunkert EDULEO GbR · Online-Fortbildungen für Kita-Fachkräfte</span>
+    <span>eduleo-akademie.de · kontakt@eduleo-akademie.de</span>
+  </div>
+
+</body>
+</html>

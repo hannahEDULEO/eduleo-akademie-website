@@ -135,8 +135,16 @@
       .blog-sidebar { display: none; }
       .facts-row { grid-template-columns: 1fr; gap: 0.75rem; }
       .themen-grid { grid-template-columns: 1fr; }
-      .vergleich-table { font-size: 0.78rem; }
-      .vergleich-table th, .vergleich-table td { padding: 0.6rem 0.7rem; }
+      /* Vergleichs-Tabellen auf dem Handy als gestapelte Karten */
+      .vergleich-table { display: block; font-size: 0.85rem; }
+      .vergleich-table thead { display: none; }
+      .vergleich-table tbody, .vergleich-table tr, .vergleich-table td { display: block; width: 100%; }
+      .vergleich-table tr { margin: 0 0 1.25rem; border: 1px solid #e8e0da; border-radius: var(--radius-lg); overflow: hidden; }
+      .vergleich-table td { padding: 0.7rem 0.95rem; border-bottom: 1px solid #f0ebe8; }
+      .vergleich-table tr:last-child td, .vergleich-table td:last-child { border-bottom: none; }
+      .vergleich-table td::before { content: attr(data-label); display: block; font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: #888; margin-bottom: 0.25rem; }
+      .vergleich-table td:first-child { font-size: 0.98rem; font-weight: 800; }
+      .vergleich-table td:first-child::before { display: none; }
     }
   </style>
   <!-- Google tag (gtag.js) -->
@@ -373,28 +381,28 @@
         </thead>
         <tbody>
           <tr>
-            <td>Definition</td>
-            <td>Schwierige Lebenssituation oder besondere Herausforderung, die das Kind oder die Familie belastet</td>
-            <td>Das Wohl oder die Entwicklung des Kindes ist bereits spürbar beeinträchtigt</td>
-            <td>Es besteht eine gegenwärtige oder absehbare erhebliche Gefahr für das körperliche, geistige oder seelische Wohl des Kindes</td>
+            <td data-label="Merkmal">Definition</td>
+            <td data-label="Allgemeine Belastung">Schwierige Lebenssituation oder besondere Herausforderung, die das Kind oder die Familie belastet</td>
+            <td data-label="Kindeswohlbeeinträchtigung">Das Wohl oder die Entwicklung des Kindes ist bereits spürbar beeinträchtigt</td>
+            <td data-label="Kindeswohlgefährdung">Es besteht eine gegenwärtige oder absehbare erhebliche Gefahr für das körperliche, geistige oder seelische Wohl des Kindes</td>
           </tr>
           <tr>
-            <td>Beispiele</td>
-            <td>Armut, Elternkonflikte, Wohnungswechsel oder andere familiäre Veränderungen</td>
-            <td>Anhaltende unzureichende Versorgung oder fehlende Unterstützung, die sich auf das Kind und seine Entwicklung auswirken</td>
-            <td>Körperliche, psychische oder sexualisierte Gewalt, schwere Vernachlässigung oder andere erhebliche Gefährdungen</td>
+            <td data-label="Merkmal">Beispiele</td>
+            <td data-label="Allgemeine Belastung">Armut, Elternkonflikte, Wohnungswechsel oder andere familiäre Veränderungen</td>
+            <td data-label="Kindeswohlbeeinträchtigung">Anhaltende unzureichende Versorgung oder fehlende Unterstützung, die sich auf das Kind und seine Entwicklung auswirken</td>
+            <td data-label="Kindeswohlgefährdung">Körperliche, psychische oder sexualisierte Gewalt, schwere Vernachlässigung oder andere erhebliche Gefährdungen</td>
           </tr>
           <tr>
-            <td>Handlungsbedarf</td>
-            <td>Beobachten, dokumentieren, Bedürfnisse wahrnehmen und bei Bedarf Unterstützung anbieten</td>
-            <td>Genauer hinschauen, fachlich einordnen, Beratung und geeignete Hilfen prüfen</td>
-            <td>Das Kinderschutzverfahren nach den geltenden Vorgaben einleiten, fachliche Beratung hinzuziehen und erforderliche weitere Schritte prüfen</td>
+            <td data-label="Merkmal">Handlungsbedarf</td>
+            <td data-label="Allgemeine Belastung">Beobachten, dokumentieren, Bedürfnisse wahrnehmen und bei Bedarf Unterstützung anbieten</td>
+            <td data-label="Kindeswohlbeeinträchtigung">Genauer hinschauen, fachlich einordnen, Beratung und geeignete Hilfen prüfen</td>
+            <td data-label="Kindeswohlgefährdung">Das Kinderschutzverfahren nach den geltenden Vorgaben einleiten, fachliche Beratung hinzuziehen und erforderliche weitere Schritte prüfen</td>
           </tr>
           <tr>
-            <td>Allein entscheiden?</td>
-            <td>Nicht zwingend, je nach Situation im Austausch mit Team und Leitung</td>
-            <td>Nein, die fachliche Einordnung und Beratung im Team sind wichtig</td>
-            <td>Nein, das weitere Vorgehen richtet sich nach dem vorgesehenen Kinderschutzverfahren und erfolgt unter Einbeziehung der erforderlichen fachlichen Stellen</td>
+            <td data-label="Merkmal">Allein entscheiden?</td>
+            <td data-label="Allgemeine Belastung">Nicht zwingend, je nach Situation im Austausch mit Team und Leitung</td>
+            <td data-label="Kindeswohlbeeinträchtigung">Nein, die fachliche Einordnung und Beratung im Team sind wichtig</td>
+            <td data-label="Kindeswohlgefährdung">Nein, das weitere Vorgehen richtet sich nach dem vorgesehenen Kinderschutzverfahren und erfolgt unter Einbeziehung der erforderlichen fachlichen Stellen</td>
           </tr>
         </tbody>
       </table>
@@ -459,29 +467,29 @@
         </thead>
         <tbody>
           <tr>
-            <td>Eigene Beobachtung</td>
-            <td style="background:#fff5f4;color:#7a2a00;">Kann trotzdem lückenhaft sein</td>
-            <td style="background:#f0f8f4;color:#2a5c3f;font-weight:600;">Stärkste Grundlage für Dokumentation</td>
+            <td data-label="Quelle">Eigene Beobachtung</td>
+            <td data-label="Risiko bei Verwechslung" style="background:#fff5f4;color:#7a2a00;">Kann trotzdem lückenhaft sein</td>
+            <td data-label="Was es bedeutet" style="background:#f0f8f4;color:#2a5c3f;font-weight:600;">Stärkste Grundlage für Dokumentation</td>
           </tr>
           <tr>
-            <td>Berichte anderer</td>
-            <td style="background:#fff5f4;color:#7a2a00;">Möglicherweise gefärbt oder unvollständig</td>
-            <td style="background:#f0f8f4;color:#2a5c3f;font-weight:600;">Kennzeichnen, nicht als Tatsache behandeln</td>
+            <td data-label="Quelle">Berichte anderer</td>
+            <td data-label="Risiko bei Verwechslung" style="background:#fff5f4;color:#7a2a00;">Möglicherweise gefärbt oder unvollständig</td>
+            <td data-label="Was es bedeutet" style="background:#f0f8f4;color:#2a5c3f;font-weight:600;">Kennzeichnen, nicht als Tatsache behandeln</td>
           </tr>
           <tr>
-            <td>Aussagen des Kindes</td>
-            <td style="background:#fff5f4;color:#7a2a00;">Darf nicht bewertet oder kommentiert werden</td>
-            <td style="background:#f0f8f4;color:#2a5c3f;font-weight:600;">Wörtlich dokumentieren, ohne Interpretation</td>
+            <td data-label="Quelle">Aussagen des Kindes</td>
+            <td data-label="Risiko bei Verwechslung" style="background:#fff5f4;color:#7a2a00;">Darf nicht bewertet oder kommentiert werden</td>
+            <td data-label="Was es bedeutet" style="background:#f0f8f4;color:#2a5c3f;font-weight:600;">Wörtlich dokumentieren, ohne Interpretation</td>
           </tr>
           <tr>
-            <td>Fachliche Einschätzung</td>
-            <td style="background:#fff5f4;color:#7a2a00;">Hypothese, keine Gewissheit</td>
-            <td style="background:#f0f8f4;color:#2a5c3f;font-weight:600;">Klar als Einschätzung kennzeichnen</td>
+            <td data-label="Quelle">Fachliche Einschätzung</td>
+            <td data-label="Risiko bei Verwechslung" style="background:#fff5f4;color:#7a2a00;">Hypothese, keine Gewissheit</td>
+            <td data-label="Was es bedeutet" style="background:#f0f8f4;color:#2a5c3f;font-weight:600;">Klar als Einschätzung kennzeichnen</td>
           </tr>
           <tr>
-            <td>Soziale Faktoren (Armut, Gerüchte)</td>
-            <td style="background:#fff5f4;color:#7a2a00;">Werden oft fälschlicherweise als Beweis gewertet</td>
-            <td style="background:#f0f8f4;color:#2a5c3f;font-weight:600;">Sind für sich genommen kein Beweis für Gefährdung</td>
+            <td data-label="Quelle">Soziale Faktoren (Armut, Gerüchte)</td>
+            <td data-label="Risiko bei Verwechslung" style="background:#fff5f4;color:#7a2a00;">Werden oft fälschlicherweise als Beweis gewertet</td>
+            <td data-label="Was es bedeutet" style="background:#f0f8f4;color:#2a5c3f;font-weight:600;">Sind für sich genommen kein Beweis für Gefährdung</td>
           </tr>
         </tbody>
       </table>
