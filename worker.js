@@ -102,15 +102,39 @@ export default {
       return Response.redirect(new URL('/fortbildungen/', url).toString(), 301);
     }
 
-    // Statische Assets
-    let response = await env.ASSETS.fetch(request);
-    if (response.status === 404) {
-      if (!path.endsWith('/')) path += '/';
-      const indexUrl = new URL(request.url);
-      indexUrl.pathname = path + 'index.html';
-      response = await env.ASSETS.fetch(new Request(indexUrl.toString(), request));
+    // Alte Umlaut-/Sonder-URLs, die die _redirects-Datei nicht zuverlässig trifft
+    const legacyRedirects = {
+      '/über-uns/': '/ueber-uns/',
+      '/übergang-kita-schule-gestalten/': '/übergänge-in-der-kita/',
+      '/koordinator-in-für-kinderschutz-in-der-kita/': '/fortbildungen/kinderschutz-koordinatorin-kita/',
+      '/online-fortbildung-für-erzieher/': '/fortbildungen/',
+      '/online-fortbildungen-für-erzieherinnen/': '/fortbildungen/',
+      '/verhaltensauffälligkeiten-verstehen-und-liebevoll-begleiten/': '/fortbildungen/kita-expertin-verhaltensauffaelligkeiten/',
+      '/fobis-für-päd-fachkräfte/elterngespräche/fachkraefte-3/': '/fortbildungen/',
+      '/fobis-fuer-kita-leitungen/führungsrolle-als-kita-leitung/': '/fortbildungen/',
+      '/newsletter/': '/#newsletter-form',
+    };
+    if (legacyRedirects[decodedPath]) {
+      return Response.redirect(new URL(legacyRedirects[decodedPath], url).toString(), 301);
     }
-    return response;
+
+    // Statische Assets – gegen Fehler abgesichert: nie 500 bei fehlenden Seiten,
+    // stattdessen ein sauberes 404 (wichtig für Google-Indexierung).
+    try {
+      let response = await env.ASSETS.fetch(request);
+      if (response.status === 404) {
+        const p = path.endsWith('/') ? path : path + '/';
+        const indexUrl = new URL(request.url);
+        indexUrl.pathname = p + 'index.html';
+        response = await env.ASSETS.fetch(new Request(indexUrl.toString(), request));
+      }
+      return response;
+    } catch (e) {
+      return new Response('Seite nicht gefunden.', {
+        status: 404,
+        headers: { 'content-type': 'text/plain; charset=utf-8' },
+      });
+    }
   }
 };
 
