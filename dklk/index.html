@@ -111,7 +111,7 @@
           <input type="email" id="dklk-email" name="email" placeholder="deine@email.de" required inputmode="email" autocapitalize="off" spellcheck="false">
         </div>
 
-        <label class="dklk-consent">
+        <label class="dklk-consent" id="consent-gewinn-row">
           <input type="checkbox" id="dklk-consent" required>
           <span>Ich möchte meinen Gewinn per E-Mail erhalten und bin einverstanden, dass EDULEO mich dafür kontaktiert. Datenschutz <a href="../datenschutz.html" target="_blank">hier</a>.</span>
         </label>
@@ -128,7 +128,7 @@
       <div class="dklk-success" id="dklk-success">
         <div class="check">✓</div>
         <h2>Eingetragen!</h2>
-        <p>Dein Gewinn kommt per E-Mail. 🎁</p>
+        <p id="success-text">Dein Gewinn kommt per E-Mail. 🎁</p>
       </div>
     </div>
 
@@ -156,6 +156,7 @@
       { slug: 'freebie-3',  tab: 'Schulfähigkeit', label: 'Freebie',            titel: 'Schulfähigkeit im Kita-Alltag erkennen', beschreibung: 'Praktische Beobachtungshilfe, um Schulfähigkeit an Alltagssituationen zu erkennen. Kommt direkt per E-Mail.' },
       { slug: 'tagesfobi',  tab: 'Tagesfobi',   label: 'Tagesfortbildung',     titel: 'Tagesfortbildung',       beschreibung: 'Eine Tagesfortbildung deiner Wahl. Wir melden uns per E-Mail bei dir.' },
       { slug: 'monatsfobi', tab: '3-Monats-Fobi', label: '3-Monats-Fortbildung', titel: '3-Monats-Fortbildung', beschreibung: 'Eine 3-Monats-Fortbildung deiner Wahl. Wir melden uns per E-Mail bei dir.' },
+      { slug: 'newsletter', tab: '✉️ Newsletter', label: 'Newsletter', titel: 'Newsletter', beschreibung: 'Kein Gewinn nötig: Trag dich einfach für kostenlose Praxisimpulse & Infos von EDULEO ein.', newsletterOnly: true },
     ];
 
     var current = PREISE[0];
@@ -171,6 +172,8 @@
     var consentEl = document.getElementById('dklk-consent');
     var newsEl    = document.getElementById('dklk-newsletter');
     var queueEl   = document.getElementById('dklk-queue');
+    var consentRow  = document.getElementById('consent-gewinn-row');
+    var successText = document.getElementById('success-text');
 
     // Reiter aufbauen
     PREISE.forEach(function(p, i) {
@@ -191,6 +194,16 @@
       labelEl.textContent = current.label;
       titleEl.textContent = current.titel;
       descEl.textContent  = current.beschreibung;
+      if (current.newsletterOnly) {
+        // Reiter "Nur Newsletter": Gewinn-Häkchen ausblenden, nur Newsletter-Häkchen Pflicht
+        consentRow.style.display = 'none';
+        consentEl.required = false;
+        successText.textContent = 'Willkommen im Newsletter! 🌱';
+      } else {
+        consentRow.style.display = '';
+        consentEl.required = true;
+        successText.textContent = 'Dein Gewinn kommt per E-Mail. 🎁';
+      }
     }
 
     function resetForm() {

@@ -367,6 +367,7 @@ async function handleDklkSignup(request, env) {
     'freebie-3':  18,
     'tagesfobi':  19,
     'monatsfobi': 20,
+    'newsletter': Number(env.BREVO_FREEBIE_LIST_ID),  // Reiter "Nur Newsletter" → Freebies-Newsletter-Liste (#12)
   };
 
   // Freebies werden sofort per E-Mail verschickt. name + pdf hier eintragen.
