@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>DKLK Gewinnspiel – EDULEO Akademie</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="../assets/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    * { box-sizing: border-box; }
+    body { background: var(--beige); min-height: 100vh; margin: 0; }
+
+    .dklk-wrap { max-width: 640px; margin: 0 auto; padding: 1.75rem 1.25rem 3rem; }
+
+    .dklk-logo { display: flex; justify-content: center; margin-bottom: 1.25rem; }
+    .dklk-logo img { height: 46px; width: auto; }
+
+    .dklk-head { text-align: center; margin-bottom: 1.5rem; }
+    .dklk-head h1 { font-size: clamp(1.4rem, 5vw, 1.9rem); font-weight: 800; color: var(--dark); margin: 0 0 0.4rem; }
+    .dklk-head p { font-size: 1rem; color: var(--text); margin: 0; }
+
+    /* ── Reiter ── */
+    .dklk-tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-bottom: 1.5rem; }
+    .dklk-tab {
+      padding: 0.7rem 1.1rem; border-radius: 100px; border: 2px solid var(--beige-dark);
+      background: #fff; color: var(--dark); font-family: var(--font); font-size: 0.95rem;
+      font-weight: 700; cursor: pointer; transition: all 0.15s; white-space: nowrap;
+    }
+    .dklk-tab:hover { border-color: var(--green-dark); }
+    .dklk-tab.active { background: var(--green-dark); border-color: var(--green-dark); color: #fff; }
+
+    /* ── Karte / Formular ── */
+    .dklk-card { background: #fff; border-radius: 22px; padding: 1.75rem 1.75rem 2rem; box-shadow: 0 3px 16px rgba(38,29,24,0.09); position: relative; overflow: hidden; }
+    .dklk-prize-label { font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--green-deeper); background: var(--green); border-radius: 20px; padding: 4px 12px; display: inline-block; margin-bottom: 0.75rem; }
+    .dklk-prize-title { font-size: 1.3rem; font-weight: 800; color: var(--dark); margin: 0 0 0.4rem; line-height: 1.25; }
+    .dklk-prize-desc { font-size: 0.95rem; color: rgba(38,29,24,0.6); margin: 0 0 1.5rem; line-height: 1.5; }
+
+    .dklk-field { margin-bottom: 1rem; }
+    .dklk-field label { display: block; font-size: 0.85rem; font-weight: 700; color: var(--dark); margin-bottom: 0.4rem; }
+    .dklk-field input[type="text"], .dklk-field input[type="email"] {
+      width: 100%; padding: 15px 18px; border: 2px solid var(--beige-dark); border-radius: 14px;
+      font-family: var(--font); font-size: 1.05rem; color: var(--dark); background: var(--beige); outline: none; transition: border-color 0.2s;
+    }
+    .dklk-field input:focus { border-color: var(--green-dark); background: #fff; }
+
+    .dklk-consent { display: flex; align-items: flex-start; gap: 0.65rem; font-size: 0.85rem; color: rgba(38,29,24,0.7); line-height: 1.5; cursor: pointer; margin-bottom: 0.85rem; }
+    .dklk-consent input[type="checkbox"] { margin-top: 3px; flex-shrink: 0; width: 20px; height: 20px; accent-color: var(--green-dark); cursor: pointer; }
+    .dklk-consent a { color: var(--green-dark); }
+
+    .dklk-submit {
+      width: 100%; padding: 17px; border: none; border-radius: 100px; background: var(--green-dark);
+      color: #fff; font-family: var(--font); font-size: 1.15rem; font-weight: 800; cursor: pointer;
+      transition: background 0.2s, transform 0.1s; margin-top: 0.5rem;
+    }
+    .dklk-submit:hover { background: var(--green-deeper); }
+    .dklk-submit:active { transform: scale(0.98); }
+    .dklk-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    /* ── Erfolgs-Overlay ── */
+    .dklk-success {
+      position: absolute; inset: 0; background: var(--green-dark); color: #fff;
+      display: none; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem;
+    }
+    .dklk-success.show { display: flex; }
+    .dklk-success .check { font-size: 3.5rem; line-height: 1; margin-bottom: 0.75rem; }
+    .dklk-success h2 { font-size: 1.6rem; font-weight: 800; margin: 0 0 0.4rem; color: #fff; }
+    .dklk-success p { font-size: 1.05rem; margin: 0; color: rgba(255,255,255,0.85); }
+
+    .dklk-err { display: none; background: #fde8e8; color: #8b2020; font-size: 0.9rem; padding: 12px 16px; border-radius: 12px; margin-top: 0.85rem; line-height: 1.5; }
+    .dklk-err.show { display: block; }
+
+    /* ── Offline-Badge ── */
+    .dklk-queue { position: fixed; bottom: 14px; right: 14px; background: #e8a030; color: #fff; font-size: 0.8rem; font-weight: 700; padding: 7px 14px; border-radius: 100px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); display: none; z-index: 50; }
+    .dklk-queue.show { display: block; }
+
+    .dklk-foot { text-align: center; margin-top: 1.75rem; }
+    .dklk-foot a { font-size: 0.78rem; color: rgba(38,29,24,0.4); text-decoration: none; margin: 0 0.75rem; }
+  </style>
+</head>
+<body>
+
+  <div class="dklk-wrap">
+
+    <div class="dklk-logo">
+      <img src="../assets/images/logo.png" alt="EDULEO Akademie">
+    </div>
+
+    <div class="dklk-head">
+      <h1>🎉 Mitmachen &amp; gewinnen</h1>
+      <p>Wähle deinen Wunsch-Preis und trag dich ein.</p>
+    </div>
+
+    <div class="dklk-tabs" id="dklk-tabs"></div>
+
+    <div class="dklk-card">
+      <span class="dklk-prize-label" id="prize-label">Gewinn</span>
+      <h2 class="dklk-prize-title" id="prize-title">–</h2>
+      <p class="dklk-prize-desc" id="prize-desc">–</p>
+
+      <form id="dklk-form" autocomplete="off">
+        <div class="dklk-field">
+          <label for="dklk-name">Vorname</label>
+          <input type="text" id="dklk-name" name="name" placeholder="Vorname" required>
+        </div>
+        <div class="dklk-field">
+          <label for="dklk-email">E-Mail-Adresse</label>
+          <input type="email" id="dklk-email" name="email" placeholder="deine@email.de" required inputmode="email" autocapitalize="off" spellcheck="false">
+        </div>
+
+        <label class="dklk-consent">
+          <input type="checkbox" id="dklk-consent" required>
+          <span>Ich nehme am Gewinnspiel teil und bin einverstanden, dass EDULEO mich zur Gewinnbenachrichtigung per E-Mail kontaktiert. Datenschutz <a href="../datenschutz.html" target="_blank">hier</a>.</span>
+        </label>
+
+        <label class="dklk-consent">
+          <input type="checkbox" id="dklk-newsletter">
+          <span>Ja, schickt mir zusätzlich kostenlose Praxisimpulse &amp; Infos (Newsletter). Jederzeit abbestellbar.</span>
+        </label>
+
+        <button type="submit" class="dklk-submit">Jetzt eintragen</button>
+        <p class="dklk-err" id="dklk-err"></p>
+      </form>
+
+      <div class="dklk-success" id="dklk-success">
+        <div class="check">✓</div>
+        <h2>Eingetragen!</h2>
+        <p>Viel Glück &amp; danke fürs Mitmachen. 🍀</p>
+      </div>
+    </div>
+
+    <div class="dklk-foot">
+      <a href="../impressum.html" target="_blank">Impressum</a>
+      <a href="../datenschutz.html" target="_blank">Datenschutz</a>
+    </div>
+
+  </div>
+
+  <div class="dklk-queue" id="dklk-queue"></div>
+
+  <script>
+    // ══════════════════════════════════════════════════════════
+    //  GEWINNE ANPASSEN: Hier Titel + Beschreibung eintragen.
+    //  slug NICHT ändern (muss zu den Brevo-Listen im Worker passen).
+    // ══════════════════════════════════════════════════════════
+    var PREISE = [
+      { slug: 'freebie-1',  tab: 'Freebie 1',   label: 'Freebie',              titel: 'Freebie 1',              beschreibung: 'Beschreibung folgt.' },
+      { slug: 'freebie-2',  tab: 'Freebie 2',   label: 'Freebie',              titel: 'Freebie 2',              beschreibung: 'Beschreibung folgt.' },
+      { slug: 'freebie-3',  tab: 'Freebie 3',   label: 'Freebie',              titel: 'Freebie 3',              beschreibung: 'Beschreibung folgt.' },
+      { slug: 'tagesfobi',  tab: 'Tagesfobi',   label: 'Tagesfortbildung',     titel: 'Tagesfortbildung',       beschreibung: 'Eine Tagesfortbildung deiner Wahl.' },
+      { slug: 'monatsfobi', tab: '3-Monats-Fobi', label: '3-Monats-Fortbildung', titel: '3-Monats-Fortbildung', beschreibung: 'Eine 3-Monats-Fortbildung deiner Wahl.' },
+    ];
+
+    var current = PREISE[0];
+    var tabsEl    = document.getElementById('dklk-tabs');
+    var labelEl   = document.getElementById('prize-label');
+    var titleEl   = document.getElementById('prize-title');
+    var descEl    = document.getElementById('prize-desc');
+    var form      = document.getElementById('dklk-form');
+    var successEl = document.getElementById('dklk-success');
+    var errEl     = document.getElementById('dklk-err');
+    var nameEl    = document.getElementById('dklk-name');
+    var emailEl   = document.getElementById('dklk-email');
+    var consentEl = document.getElementById('dklk-consent');
+    var newsEl    = document.getElementById('dklk-newsletter');
+    var queueEl   = document.getElementById('dklk-queue');
+
+    // Reiter aufbauen
+    PREISE.forEach(function(p, i) {
+      var b = document.createElement('button');
+      b.className = 'dklk-tab' + (i === 0 ? ' active' : '');
+      b.textContent = p.tab;
+      b.addEventListener('click', function() {
+        document.querySelectorAll('.dklk-tab').forEach(function(t){ t.classList.remove('active'); });
+        b.classList.add('active');
+        current = p;
+        renderPrize();
+        resetForm();
+      });
+      tabsEl.appendChild(b);
+    });
+
+    function renderPrize() {
+      labelEl.textContent = current.label;
+      titleEl.textContent = current.titel;
+      descEl.textContent  = current.beschreibung;
+    }
+
+    function resetForm() {
+      form.reset();
+      errEl.classList.remove('show');
+    }
+
+    renderPrize();
+
+    // ── Offline-Puffer ──
+    function getQueue()  { try { return JSON.parse(localStorage.getItem('dklkQueue') || '[]'); } catch(e){ return []; } }
+    function setQueue(q) { localStorage.setItem('dklkQueue', JSON.stringify(q)); updateBadge(); }
+    function updateBadge() {
+      var n = getQueue().length;
+      if (n > 0) { queueEl.textContent = n === 1 ? '1 Eintrag wartet auf Internet' : n + ' Einträge warten auf Internet'; queueEl.classList.add('show'); }
+      else queueEl.classList.remove('show');
+    }
+
+    async function send(payload) {
+      var resp = await fetch('/dklk-signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      return resp;
+    }
+
+    async function flushQueue() {
+      var q = getQueue();
+      if (!q.length) return;
+      var remaining = [];
+      for (var i = 0; i < q.length; i++) {
+        try {
+          var r = await send(q[i]);
+          if (!r.ok) remaining.push(q[i]);
+        } catch (e) { remaining.push(q[i]); }
+      }
+      setQueue(remaining);
+    }
+
+    window.addEventListener('online', flushQueue);
+    setInterval(flushQueue, 20000);
+    flushQueue();
+    updateBadge();
+
+    // ── Absenden ──
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      errEl.classList.remove('show');
+
+      var payload = {
+        name: nameEl.value.trim(),
+        email: emailEl.value.trim(),
+        list: current.slug,
+        newsletter: newsEl.checked,
+      };
+
+      var btn = form.querySelector('.dklk-submit');
+      btn.disabled = true;
+      btn.textContent = 'Wird eingetragen…';
+
+      function showSuccess() {
+        successEl.classList.add('show');
+        setTimeout(function() {
+          successEl.classList.remove('show');
+          resetForm();
+          nameEl.focus();
+        }, 2500);
+      }
+
+      try {
+        var resp = await send(payload);
+        if (resp.ok) {
+          showSuccess();
+        } else {
+          errEl.textContent = 'Etwas hat nicht geklappt. Bitte E-Mail prüfen und erneut eintragen.';
+          errEl.classList.add('show');
+        }
+      } catch (err) {
+        // Kein Internet → lokal puffern, gilt trotzdem als eingetragen
+        var q = getQueue(); q.push(payload); setQueue(q);
+        showSuccess();
+      }
+
+      btn.disabled = false;
+      btn.textContent = 'Jetzt eintragen';
+    });
+  </script>
+
+</body>
+</html>

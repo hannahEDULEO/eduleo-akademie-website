@@ -41,6 +41,11 @@ export default {
       return handleNewsletterConfirm(request, env);
     }
 
+    // API: DKLK-Messe-Anmeldung (trägt direkt in die passende Brevo-Liste ein)
+    if (path === '/dklk-signup') {
+      return handleDklkSignup(request, env);
+    }
+
     // API: Termine von SimplyOrg
     if (path === '/api/termine') {
       return handleTermine(url);
@@ -322,6 +327,61 @@ async function signHmac(data, secret) {
   );
   const sig = await crypto.subtle.sign('HMAC', key, enc.encode(data));
   return Array.from(new Uint8Array(sig)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+async function handleDklkSignup(request, env) {
+  const jsonH = { 'Content-Type': 'application/json' };
+
+  if (request.method !== 'POST') {
+    return new Response(JSON.stringify({ ok: false, msg: 'Method not allowed' }), { status: 405, headers: jsonH });
+  }
+
+  // Brevo-Listen-IDs pro DKLK-Gewinn (Stand 10.09.2026)
+  const listMap = {
+    'freebie-1':  16,
+    'freebie-2':  17,
+    'freebie-3':  18,
+    'tagesfobi':  19,
+    'monatsfobi': 20,
+  };
+
+  try {
+    const { name, email, list, newsletter } = await request.json();
+    const listId = listMap[list];
+
+    if (!email || !listId) {
+      return new Response(JSON.stringify({ ok: false, msg: 'Fehlende oder ungültige Angaben.' }), { status: 400, headers: jsonH });
+    }
+
+    // Bei Newsletter-Einwilligung zusätzlich in die Freebies-Newsletter-Liste (#12)
+    const listIds = [listId];
+    if (newsletter) listIds.push(Number(env.BREVO_FREEBIE_LIST_ID));
+
+    const attributes = {};
+    if (name) attributes.VORNAME = String(name).trim();
+
+    // KV-Backup IMMER zuerst (auch falls Brevo hakt, geht keine Anmeldung verloren)
+    const key = 'dklk:' + new Date().toISOString() + '_' + Math.random().toString(36).slice(2, 8);
+    const kvPut = env.FORM_SUBMISSIONS.put(key, JSON.stringify({
+      name: name || '', email, list, listId, newsletter: !!newsletter, _receivedAt: key,
+    }));
+
+    const brevoResp = await fetch('https://api.brevo.com/v3/contacts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'api-key': env.BREVO_API_KEY },
+      body: JSON.stringify({ email, attributes, listIds, updateEnabled: true }),
+    });
+
+    await kvPut;
+
+    if (brevoResp.ok) {
+      return new Response(JSON.stringify({ ok: true }), { headers: jsonH });
+    }
+    const err = await brevoResp.text();
+    return new Response(JSON.stringify({ ok: false, msg: err.substring(0, 200) }), { status: 500, headers: jsonH });
+  } catch (e) {
+    return new Response(JSON.stringify({ ok: false, msg: String(e) }), { status: 500, headers: jsonH });
+  }
 }
 
 async function handleSubmit(request, env) {
