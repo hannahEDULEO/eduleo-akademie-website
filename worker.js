@@ -345,6 +345,14 @@ async function handleDklkSignup(request, env) {
     'monatsfobi': 20,
   };
 
+  // Freebies werden sofort per E-Mail verschickt. name + pdf hier eintragen.
+  // Tagesfobi/3-Monats-Fobi bewusst NICHT hier → werden separat kontaktiert.
+  const freebieMeta = {
+    'freebie-1': { name: 'Elterngespräch-Leitfaden',              pdf: 'https://www.eduleo-akademie.de/assets/downloads/dklk-elterngespraech-leitfaden.pdf' },
+    'freebie-2': { name: 'Hinhören: 5 Ideen für echtes Zuhören',  pdf: 'https://www.eduleo-akademie.de/assets/downloads/dklk-hinhoeren.pdf' },
+    'freebie-3': { name: 'Schulfähigkeit im Kita-Alltag erkennen', pdf: 'https://www.eduleo-akademie.de/assets/downloads/dklk-schulfaehigkeit-kita-alltag.pdf' },
+  };
+
   try {
     const { name, email, list, newsletter } = await request.json();
     const listId = listMap[list];
@@ -373,6 +381,23 @@ async function handleDklkSignup(request, env) {
     });
 
     await kvPut;
+
+    // Bei Freebie-Gewinnen: PDF sofort per E-Mail schicken (nur wenn PDF hinterlegt).
+    // Tagesfobi/3-Monats-Fobi werden separat von Hand kontaktiert.
+    const meta = freebieMeta[list];
+    if (meta && meta.pdf) {
+      const anrede = name ? `Hallo ${String(name).trim()},` : 'Hallo,';
+      await fetch('https://api.brevo.com/v3/smtp/email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'api-key': env.BREVO_API_KEY },
+        body: JSON.stringify({
+          sender: { name: 'EDULEO Akademie', email: 'neuigkeiten@eduleo-akademie.de' },
+          to: [{ email }],
+          subject: `Dein Gewinn vom DKLK: ${meta.name}`,
+          htmlContent: `<!DOCTYPE html><html lang="de"><body style="margin:0;padding:0;background:#f5f0eb;font-family:sans-serif;"><div style="max-width:560px;margin:40px auto;background:#fff;border-radius:18px;padding:40px 32px;box-shadow:0 2px 12px rgba(38,29,24,0.08);"><p style="margin:0 0 16px;font-size:15px;color:#3d3026;line-height:1.6;">${anrede}</p><p style="margin:0 0 24px;font-size:15px;color:#3d3026;line-height:1.6;">schön, dass du uns am EDULEO-Stand auf dem DKLK besucht hast! Hier ist dein Gewinn:</p><p style="margin:0 0 24px;font-size:15px;font-weight:700;color:#3d3026;">🎁 ${meta.name}</p><a href="${meta.pdf}" clicktracking="off" style="display:inline-block;padding:14px 32px;background:#4a7c3f;color:#fff;text-decoration:none;border-radius:100px;font-weight:700;font-size:15px;">PDF herunterladen</a><p style="margin:32px 0 0;font-size:13px;color:rgba(61,48,38,0.45);line-height:1.5;">Der Link ist dauerhaft gültig, du kannst ihn jederzeit erneut aufrufen.<br>Viel Freude damit! 🌱</p></div></body></html>`,
+        }),
+      });
+    }
 
     if (brevoResp.ok) {
       return new Response(JSON.stringify({ ok: true }), { headers: jsonH });

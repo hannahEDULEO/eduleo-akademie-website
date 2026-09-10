@@ -117,8 +117,8 @@
         </label>
 
         <label class="dklk-consent">
-          <input type="checkbox" id="dklk-newsletter">
-          <span>Ja, schickt mir zusätzlich kostenlose Praxisimpulse &amp; Infos (Newsletter). Jederzeit abbestellbar.</span>
+          <input type="checkbox" id="dklk-newsletter" required>
+          <span>Ja, ich möchte kostenlose Praxisimpulse &amp; Infos von EDULEO per E-Mail erhalten (Newsletter). Jederzeit abbestellbar.</span>
         </label>
 
         <button type="submit" class="dklk-submit">Jetzt eintragen</button>
@@ -151,11 +151,11 @@
     //  slug NICHT ändern (muss zu den Brevo-Listen im Worker passen).
     // ══════════════════════════════════════════════════════════
     var PREISE = [
-      { slug: 'freebie-1',  tab: 'Freebie 1',   label: 'Freebie',              titel: 'Freebie 1',              beschreibung: 'Beschreibung folgt.' },
-      { slug: 'freebie-2',  tab: 'Freebie 2',   label: 'Freebie',              titel: 'Freebie 2',              beschreibung: 'Beschreibung folgt.' },
-      { slug: 'freebie-3',  tab: 'Freebie 3',   label: 'Freebie',              titel: 'Freebie 3',              beschreibung: 'Beschreibung folgt.' },
-      { slug: 'tagesfobi',  tab: 'Tagesfobi',   label: 'Tagesfortbildung',     titel: 'Tagesfortbildung',       beschreibung: 'Eine Tagesfortbildung deiner Wahl.' },
-      { slug: 'monatsfobi', tab: '3-Monats-Fobi', label: '3-Monats-Fortbildung', titel: '3-Monats-Fortbildung', beschreibung: 'Eine 3-Monats-Fortbildung deiner Wahl.' },
+      { slug: 'freebie-1',  tab: 'Elterngespräch', label: 'Freebie',            titel: 'Elterngespräch-Leitfaden',               beschreibung: 'Dein Schritt-für-Schritt-Fahrplan für ein gutes Elterngespräch, vom Einstieg bis zu schwierigen Themen. Kommt direkt per E-Mail.' },
+      { slug: 'freebie-2',  tab: 'Hinhören',       label: 'Freebie',            titel: 'Hinhören: 5 Ideen für echtes Zuhören',   beschreibung: '5 Ideen, wie du Kindern wirklich zuhörst, auch wenn sie kaum Worte benutzen. Kommt direkt per E-Mail.' },
+      { slug: 'freebie-3',  tab: 'Schulfähigkeit', label: 'Freebie',            titel: 'Schulfähigkeit im Kita-Alltag erkennen', beschreibung: 'Praktische Beobachtungshilfe, um Schulfähigkeit an Alltagssituationen zu erkennen. Kommt direkt per E-Mail.' },
+      { slug: 'tagesfobi',  tab: 'Tagesfobi',   label: 'Tagesfortbildung',     titel: 'Tagesfortbildung',       beschreibung: 'Eine Tagesfortbildung deiner Wahl. Wir melden uns per E-Mail bei dir.' },
+      { slug: 'monatsfobi', tab: '3-Monats-Fobi', label: '3-Monats-Fortbildung', titel: '3-Monats-Fortbildung', beschreibung: 'Eine 3-Monats-Fortbildung deiner Wahl. Wir melden uns per E-Mail bei dir.' },
     ];
 
     var current = PREISE[0];
