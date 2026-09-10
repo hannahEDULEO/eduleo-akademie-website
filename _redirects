@@ -29,9 +29,9 @@
 /eduleo-akademie-de/erzieherin-weiterbildung-viel-spass-beim-lernen-durch-spielen/ /fortbildungen/ 301
 /eduleo-akademie-de/* /fortbildungen/ 301
 
+
 # ===== 5xx-Altlasten aus Search Console (09.09.2026) =====
 # Tote Wix/Jimdo-URLs -> passende Seite. /newsletter/ ausgenommen (lebt).
-# Alte Einzelseiten -> beste vorhandene Entsprechung
 /kita-alltag-gestalten-mit-kinderyoga/ /fortbildungen/kinderyoga-kursleitung/ 301
 /anmeldebedingungen-fortbildungen/ /anmeldebedingungen.html 301
 /übergang-kita-schule-gestalten/ /übergänge-in-der-kita/ 301
@@ -69,62 +69,39 @@
 /verhaltensauffälligkeiten-verstehen-und-liebevoll-begleiten /fortbildungen/kita-expertin-verhaltensauffaelligkeiten/ 301
 /fortbildungen/adhs-und-autismus/ /fortbildungen/kita-expertin-adhs-autismus/ 301
 
-# Nicht (mehr) migrierte Blogartikel -> Blog-Uebersicht
-# HINWEIS: Wenn ein Artikel spaeter unter derselben URL migriert wird, die passende Zeile hier entfernen!
-/2022/08/09/spielen-und-basteln-in-der-natur-im-herbst/ /blog-1/ 301
+# Alte Blog-Jahrgaenge 2022/2023 komplett tot -> als Wildcard (spart Regeln, Limit 100)
+/2022/* /blog-1/ 301
+/2023/* /blog-1/ 301
+
+# Einzelne nicht migrierte Blogartikel (2021/2024/2025/2026) -> Blog bzw. passender Artikel
+# HINWEIS: Wird ein Artikel spaeter unter derselben URL migriert, die Zeile hier entfernen!
 /2024/11/11/digitale-medien-im-kita-alter-chancen-grenzen-und-apps-für-kinder/ /blog-1/ 301
 /2024/08/21/konfliktarten-und-der-umgang-mit-konflikten-in-der-kita/ /blog-1/ 301
-/2022/10/09/vorteile-der-bilingualen-erziehung/ /blog-1/ 301
 /2026/02/16/weiterbildung-darf-sich-leicht-anfühlen-und-genau-das-haben-wir-verändert/ /blog-1/ 301
-/2022/01/13/reizüberflutung-wann-wird-es-zu-viel/ /blog-1/ 301
-/2022/03/24/medienzeit-wann-wird-es-zu-viel/ /blog-1/ 301
 /2024/07/17/burnout-in-der-kita-ursachen-symptome-und-stressbewältigung/ /blog-1/ 301
 /2024/03/25/dein-notfallplan-für-personalmangel-in-der-kita/ /blog-1/ 301
 /2024/06/19/autismus-in-der-kita-tipps-für-den-erfolgreichen-alltag/ /autismus-in-der-kita/ 301
-/2022/03/01/so-gelingt-die-eingewöhnung-das-berliner-modell/ /blog-1/ 301
-/2023/06/12/bilinguale-erziehung-und-deren-effekte-auf-die-kindliche-entwicklung/ /blog-1/ 301
-/2022/05/05/lernen-zu-hause-tipps-für-mehr-motivation/ /blog-1/ 301
 /2025/01/07/winter-endspurt-in-der-kita-kreative-ideen-und-projekte/ /blog-1/ 301
 /2024/08/15/kinderschutz-in-der-kita-was-ist-wichtig-für-erzieherinnen/ /blog-1/ 301
-/2022/06/23/so-stärkst-du-die-bindung-zu-deinem-kind/ /blog-1/ 301
 /2024/06/05/wie-entsteht-eine-gesunde-teamkultur-in-der-kita/ /blog-1/ 301
-/2022/02/07/wie-kinder-sich-das-lernen-im-winter-gestalten-können/ /blog-1/ 301
-/2023/02/20/motivation-nach-dem-zwischenzeugnis-nicht-verlieren-sondern-neu-durchstarten/ /blog-1/ 301
-/2023/09/01/lernen-in-bewegung/ /blog-1/ 301
 /2024/11/20/adventsfreude-mit-der-eduleo-akademie-der-fortbildungs-adventskalender/ /blog-1/ 301
 /2024/04/29/wie-kann-ich-mein-kita-kind-auf-die-schule-vorbereiten/ /blog-1/ 301
-/2022/02/17/trotzphase-was-nun/ /blog-1/ 301
-/2022/04/07/welcher-kindergarten-ist-der-richtige-für-mein-kind/ /blog-1/ 301
 /2024/06/25/herausforderndes-verhalten-von-kindern-verstehen-und-begleiten/ /blog-1/ 301
 /2025/03/14/entdecke-die-eduleo-akademie-dein-online-tag-der-offenen-tür/ /blog-1/ 301
-/2023/01/26/warum-grenzen-setzen-so-wichtig-ist/ /blog-1/ 301
 /2025/09/01/schluss-mit-hinten-anstellen-wie-dich-dieser-glaubenssatz-kaputtmacht-und-was-du-dagegen-tun-kannst/ /blog-1/ 301
 /2024/03/13/wer-steckt-hinter-der-eduleo-akademie/ /blog-1/ 301
-/2022/07/07/wie-bereitet-man-sich-auf-das-neue-schuljahr-vor/ /blog-1/ 301
-/2022/09/20/selbstbewusstsein-warum-ist-es-so-wichtig-und-wie-stärkst-du-es/ /blog-1/ 301
-/2023/04/04/wie-gestalte-ich-eine-angenehme-lernatmosphäre/ /blog-1/ 301
 /2021/11/04/sprachförderung-in-der-kita-von-anfang-an/ /blog-1/ 301
-/2023/07/27/lernspaziergänge-gestalten/ /blog-1/ 301
 /2025/06/30/sommerzeit-ist-draußenzeit-so-gestaltest-du-entwicklungsfördernde-aktivitäten-im-freien/ /blog-1/ 301
 /2024/12/16/weihnachtstipps-für-die-familie-so-wird-das-fest-entspannt-und-unvergesslich/ /blog-1/ 301
-/2022/06/09/pausen-und-ruhezeiten-für-kinder-warum-sind-sie-wichtig/ /blog-1/ 301
 /2024/07/04/so-kannst-du-dein-kita-team-leiten-und-stärken-fünf-schritte-zum-erfolg/ /blog-1/ 301
-/2022/04/28/so-entsteht-vertrauen/ /blog-1/ 301
-/2022/01/28/herausforderungen-für-vorschulkinder/ /blog-1/ 301
 /2024/04/02/kinderyoga-ideen-für-den-frühling/ /blog-1/ 301
-/2022/03/10/wie-geht-man-mit-gefühlsausbrüchen-von-kindern-um/ /blog-1/ 301
 /2024/12/17/gesundes-neues-jahr-so-starten-kinder-fit-und-fröhlich-ins-kita-jahr/ /blog-1/ 301
 /2025/02/03/herausfordernde-zeiten-meistern-strategien-für-den-umgang-mit-personalmangel-im-kita-team/ /blog-1/ 301
 /2025/08/18/warum-klappt-hier-nix-wie-du-mit-klaren-teamabsprachen-deinen-kita-alltag-rettest/ /blog-1/ 301
 /2024/06/28/erstelle-dein-vorschulkonzept-für-die-kita/ /vorschulkonzept-für-die-kita/ 301
 /2025/02/10/elternarbeit-auf-augenhöhe-partnerschaftlich-und-professionell/ /blog-1/ 301
-/2022/12/12/rituale-für-den-winter/ /blog-1/ 301
-/2022/07/21/sprachentwicklung-von-kindern/ /blog-1/ 301
 /2025/05/05/emotionale-intelligenz-bei-kita-kindern-warum-sie-wichtig-ist-und-wie-sie-gefördert-werden-kann/ /blog-1/ 301
 /2025/05/06/sommerzeit-ist-draußenzeit-so-gestaltest-du-entwicklungsfördernde-aktivitäten-im-freien/ /blog-1/ 301
 /2024/05/29/die-rollenverteilung-im-kita-team/ /blog-1/ 301
 /2024/10/14/3-vorschulideen-für-die-kita-kreative-und-pädagogische-ansätze/ /blog-1/ 301
-/2022/11/07/umgang-mit-personalmangel-im-kita-alltag/ /blog-1/ 301
-/2022/05/27/unzufrieden-mit-der-kita-was-kann-man-machen/ /blog-1/ 301
 /2025/06/07/28/herausforderung-elterngespräch-so-bleibst-du-ruhig-klar-und-wertschätzend-auch-wenn-s-brenzlig-wird/ /blog-1/ 301
-/2022/12/22/10-tipps-für-die-gelungene-silvesterparty-mit-und-für-kinder/ /blog-1/ 301

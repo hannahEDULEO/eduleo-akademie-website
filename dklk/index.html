@@ -74,7 +74,10 @@
     .dklk-queue { position: fixed; bottom: 14px; right: 14px; background: #e8a030; color: #fff; font-size: 0.8rem; font-weight: 700; padding: 7px 14px; border-radius: 100px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); display: none; z-index: 50; }
     .dklk-queue.show { display: block; }
 
-    .dklk-foot { text-align: center; margin-top: 1.75rem; }
+    .dklk-terms { margin-top: 1.5rem; font-size: 0.72rem; line-height: 1.55; color: rgba(38,29,24,0.42); text-align: left; }
+    .dklk-terms strong { color: rgba(38,29,24,0.55); font-weight: 700; }
+
+    .dklk-foot { text-align: center; margin-top: 1.25rem; }
     .dklk-foot a { font-size: 0.78rem; color: rgba(38,29,24,0.4); text-decoration: none; margin: 0 0.75rem; }
   </style>
 </head>
@@ -87,8 +90,8 @@
     </div>
 
     <div class="dklk-head">
-      <h1>🎉 Mitmachen &amp; gewinnen</h1>
-      <p>Wähle deinen Wunsch-Preis und trag dich ein.</p>
+      <h1>🎉 Glückwunsch!</h1>
+      <p>Tippe oben deinen gezogenen Gewinn an und trag dich ein, dann bekommst du ihn per E-Mail.</p>
     </div>
 
     <div class="dklk-tabs" id="dklk-tabs"></div>
@@ -110,7 +113,7 @@
 
         <label class="dklk-consent">
           <input type="checkbox" id="dklk-consent" required>
-          <span>Ich nehme am Gewinnspiel teil und bin einverstanden, dass EDULEO mich zur Gewinnbenachrichtigung per E-Mail kontaktiert. Datenschutz <a href="../datenschutz.html" target="_blank">hier</a>.</span>
+          <span>Ich möchte meinen Gewinn per E-Mail erhalten und bin einverstanden, dass EDULEO mich dafür kontaktiert. Datenschutz <a href="../datenschutz.html" target="_blank">hier</a>.</span>
         </label>
 
         <label class="dklk-consent">
@@ -125,9 +128,13 @@
       <div class="dklk-success" id="dklk-success">
         <div class="check">✓</div>
         <h2>Eingetragen!</h2>
-        <p>Viel Glück &amp; danke fürs Mitmachen. 🍀</p>
+        <p>Dein Gewinn kommt per E-Mail. 🎁</p>
       </div>
     </div>
+
+    <p class="dklk-terms">
+      <strong>Teilnahmebedingungen:</strong> Die Teilnahme ist kostenlos und ohne Kaufverpflichtung, ausschließlich vor Ort auf dem DKLK an unserem Stand. Der Gewinn ergibt sich aus dem gezogenen Los. Die Gewinnbenachrichtigung und Zusendung des Gewinns erfolgt per E-Mail. Die angegebenen Daten werden nur zur Abwicklung des Gewinnspiels verwendet, ein Newsletter-Versand erfolgt nur bei ausdrücklicher Einwilligung. Es erfolgt keine Weitergabe an Dritte. Eine Barauszahlung des Gewinns ist ausgeschlossen. Veranstalter: Klumper &amp; Flunkert EDULEO GbR. Der Rechtsweg ist ausgeschlossen. Weitere Infos zum Datenschutz findest du <a href="../datenschutz.html" target="_blank" style="color:rgba(38,29,24,0.55);">hier</a>.
+    </p>
 
     <div class="dklk-foot">
       <a href="../impressum.html" target="_blank">Impressum</a>
