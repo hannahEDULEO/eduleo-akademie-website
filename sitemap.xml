@@ -233,6 +233,12 @@
 
   <!-- Blogartikel – Slug-basiert -->
   <url>
+    <loc>https://www.eduleo-akademie.de/elterngespraeche-die-wirklich-ankommen/</loc>
+    <lastmod>2026-09-02</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.eduleo-akademie.de/vorschule-konzentration-leitfaden/</loc>
     <lastmod>2026-09-11</lastmod>
     <changefreq>yearly</changefreq>
