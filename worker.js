@@ -233,6 +233,8 @@ async function handleFreebieConfirm(request, env) {
       'bindung-als-basis':           'Bindung als Basis: 3 Impulse für die ersten Wochen',
       'elterngespraeche-leitfaden':  'Elterngespräch-Leitfaden',
       'vorschule-konzentration':     'Leitfaden: Wenn ein Vorschulkind noch nicht still sitzen kann',
+      'adhs-autismus-kita':          'ADHS & Autismus im Kita-Alltag: 5 Sofort-Strategien',
+      'herausforderndes-verhalten':  'Herausforderndes Verhalten: die 5 häufigsten Auslöser im Kita-Alltag',
     };
     const freebiePdfs = {
       'vorschulideen-10':            'https://www.eduleo-akademie.de/assets/downloads/vorschulideen-10.pdf',
@@ -243,6 +245,8 @@ async function handleFreebieConfirm(request, env) {
       'bindung-als-basis':           'https://www.eduleo-akademie.de/assets/downloads/bindung-als-basis.pdf',
       'elterngespraeche-leitfaden':  'https://www.eduleo-akademie.de/assets/blog/elterngespraeche/leitfaden.pdf',
       'vorschule-konzentration':     'https://www.eduleo-akademie.de/assets/downloads/vorschule-konzentration-leitfaden.pdf',
+      'adhs-autismus-kita':          'https://www.eduleo-akademie.de/assets/downloads/adhs-autismus-kita-alltag.pdf',
+      'herausforderndes-verhalten':  'https://www.eduleo-akademie.de/assets/downloads/herausforderndes-verhalten-kita.pdf',
     };
     const freebieName = freebieNames[freebie] || 'dein Freebie';
     const pdfUrl = freebiePdfs[freebie];
