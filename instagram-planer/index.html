@@ -517,13 +517,15 @@ function urgency(days, typ) {
 }
 
 // Kalender-Zuordnung: category_YYYY-MM-DD → spezifische Dozentin für diesen Termin
-// Eingetragen aus EDULEO Apple-Kalender, Stand 20.08.2026
+// Eingetragen aus EDULEO Apple-Kalender, Stand 12.09.2026
 const DATE_OVERRIDES = {
   // ── Tagesfortbildungen ──
   // KA 1 – Stressbewältigung im Kita-Alltag (ID 9)
   "9_2026-09-07":  ["nadja"],
   "9_2026-12-14":  ["nadja"],
   "9_2027-01-11":  ["nadja"],
+  // KA 2 – Gewaltfreie Kommunikation (ID 10) — Christin im Kalender, Nadja übernimmt
+  "10_2026-10-28": ["nadja"],
   // KA 3 – Elterngespräche führen (ID 11)
   "11_2026-10-12": ["nadja"],
   // KA 4 – Sexualentwicklung 0–6 Jahre (ID 12)
@@ -563,6 +565,11 @@ const DATE_OVERRIDES = {
   "23_2026-10-05": ["nadja"],
   // Baldur – Zahlen & Mengen (ID 41)
   "41_2026-12-04": ["nadja"],
+  // KL 1 – Meine Führungsrolle als Kita-Leitung (ID 24) — Christin im Kalender, Nadja übernimmt
+  "24_2026-11-16": ["nadja"],
+  // KL 2 – Teams leiten und stärken (ID 25) — Christin im Kalender, Nadja übernimmt
+  "25_2026-09-30": ["nadja"],
+  "25_2026-12-08": ["nadja"],
 
   // ── 3-Monats-Kurse (Starttermine der Durchgänge) ──
   // TC – Teamcoach (ID 33)
@@ -579,6 +586,8 @@ const DATE_OVERRIDES = {
   "28_2027-01-05": ["nadja"],
   // Stresscoach Z3 (ID 29)
   "29_2027-01-07": ["nadja"],
+  // AA Okt-Durchgang – Kita-ExpertIn ADHS & Autismus (ID 30): Sarah führt den Start an, danach Isabelle
+  "30_2026-10-06": ["sarah"],
 };
 
 function copyStory(btn, text) {
